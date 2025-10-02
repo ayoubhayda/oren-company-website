@@ -43,11 +43,13 @@ export function useLanguage() {
 const translations: Record<Language, Record<string, string>> = {
   en: {
     // Navigation
+    "nav.home": "Home",
     "nav.services": "Services",
     "nav.portfolio": "Portfolio",
     "nav.about": "About",
     "nav.blog": "Blog",
     "nav.contact": "Contact",
+    "nav.logo": "Oren",
 
     // Hero
     "hero.title": "Build Your Digital Future",
@@ -183,11 +185,13 @@ const translations: Record<Language, Record<string, string>> = {
   },
   ar: {
     // Navigation
+    "nav.home": "الرئيسية",
     "nav.services": "الخدمات",
     "nav.portfolio": "الأعمال",
     "nav.about": "من نحن",
     "nav.blog": "المدونة",
     "nav.contact": "اتصل بنا",
+    "nav.logo": "أورين",
 
     // Hero
     "hero.title": "ابنِ مستقبلك الرقمي",
@@ -318,16 +322,18 @@ const translations: Record<Language, Record<string, string>> = {
   },
   fr: {
     // Navigation
+    "nav.home": "Accueil",
     "nav.services": "Services",
     "nav.portfolio": "Portfolio",
     "nav.about": "À propos",
     "nav.blog": "Blog",
     "nav.contact": "Contact",
+    "nav.logo": "Oren",
 
     // Hero
-    "hero.title": "Construisez Votre Avenir Numérique",
+    "hero.title": "Votre Partenaire Digital",
     "hero.subtitle":
-      "Développement web professionnel, plateformes personnalisées et solutions numériques qui stimulent la croissance des startups et des entreprises.",
+      "Solutions web sur mesure et plateformes innovantes pour accélérer votre croissance et transformer votre présence digitale.",
     "hero.cta.primary": "Demander un devis",
     "hero.cta.secondary": "Voir nos réalisations",
     "hero.badge": "Disponible pour de nouveaux projets",

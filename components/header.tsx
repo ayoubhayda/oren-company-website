@@ -2,11 +2,15 @@
 
 import Link from "next/link"
 import { useState, useEffect } from "react"
+import { usePathname } from "next/navigation"
 import { Button } from "@/components/ui/button"
 import { Menu, X, Moon, Sun, Globe } from "lucide-react"
 import { useTheme } from "next-themes"
 import { useLanguage } from "@/components/language-provider"
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
+import Image from "next/image"
+import darkLogo from "@/assets/logo/oren-blue-logo-dark.png";
+import lightLogo from "@/assets/logo/oren-blue-logo-light.png";
 
 export function Header() {
   const [isScrolled, setIsScrolled] = useState(false)
@@ -14,6 +18,7 @@ export function Header() {
   const { theme, setTheme } = useTheme()
   const { language, setLanguage, t } = useLanguage()
   const [mounted, setMounted] = useState(false)
+  const pathname = usePathname()
 
   useEffect(() => {
     setMounted(true)
@@ -25,6 +30,7 @@ export function Header() {
   }, [])
 
   const navItems = [
+    { label: t("nav.home"), href: "/" },
     { label: t("nav.services"), href: "/services" },
     { label: t("nav.portfolio"), href: "/portfolio" },
     { label: t("nav.about"), href: "/about" },
@@ -32,20 +38,29 @@ export function Header() {
     { label: t("nav.contact"), href: "/contact" },
   ]
 
+  const isActiveNavItem = (href: string) => {
+    if (href === "/" && pathname === "/") return true
+    if (href !== "/" && pathname.startsWith(href)) return true
+    return false
+  }
+
   if (!mounted) return null
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled ? "bg-background/80 backdrop-blur-lg border-b border-border" : "bg-transparent"
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300  ${
+        isScrolled ? "bg-background/80 backdrop-blur-lg border-b border-border" : "bg-transparent border-b md:border-none border-border"
       }`}
     >
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 lg:h-20">
           {/* Logo */}
-          <Link href="/" className="flex items-center space-x-2">
-            <div className="text-2xl font-bold text-foreground">
-              oren<span className="text-primary">.</span>
+          <Link href="/" className="flex items-center gap-2.5 hover:opacity-80 transition-opacity cursor-pointer">
+          <Image src={darkLogo} alt="Oren logo" width={36} height={36} className="rounded-md hidden dark:block h-[34px] w-[34px] md:h-9 md:w-9" />
+          <Image src={lightLogo} alt="Oren logo"  width={36} height={36} className="rounded-md dark:hidden h-[34px] w-[34px] md:h-9 md:w-9"/>
+          
+            <div className="text-[22px] md:text-2xl font-bold text-foreground">
+              {t("nav.logo")}
             </div>
           </Link>
 
@@ -55,7 +70,11 @@ export function Header() {
               <Link
                 key={item.href}
                 href={item.href}
-                className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
+                className={`text-sm font-medium transition-colors ${
+                  isActiveNavItem(item.href)
+                    ? "text-foreground"
+                    : "text-muted-foreground hover:text-foreground"
+                }`}
               >
                 {item.label}
               </Link>
@@ -117,13 +136,17 @@ export function Header() {
 
         {/* Mobile Menu */}
         {isMobileMenuOpen && (
-          <div className="lg:hidden py-4 border-t border-border">
+          <div className="lg:hidden py-4 border-t border-border bg-background">
             <nav className="flex flex-col space-y-4">
               {navItems.map((item) => (
                 <Link
                   key={item.href}
                   href={item.href}
-                  className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
+                  className={`text-sm font-medium transition-colors ${
+                    isActiveNavItem(item.href)
+                      ? "text-foreground"
+                      : "text-muted-foreground hover:text-foreground"
+                  }`}
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
                   {item.label}
