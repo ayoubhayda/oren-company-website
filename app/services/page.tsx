@@ -1,11 +1,12 @@
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
-import { Code, Palette, ShoppingCart, TrendingUp, Share2, Zap } from "lucide-react"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { Code, Palette, ShoppingCart, TrendingUp, Share2, Zap, ArrowRight, CheckCircle2, Users2, Settings, LifeBuoy } from "lucide-react"
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
+import { Badge } from "@/components/ui/badge"
 import Link from "next/link"
 import { CTASection } from "@/components/cta-section"
-// Will use static text for now since service details aren't in translation file
+import SectionSeparator from "@/components/general/SectionSeparator"
 
 const services = [
   {
@@ -15,6 +16,7 @@ const services = [
       "Custom websites and web applications built with modern technologies for optimal performance and scalability.",
     features: ["Responsive Design", "Performance Optimization", "SEO-Friendly", "Cross-Browser Compatible"],
     href: "/services/web-development",
+    badge: "Most Popular"
   },
   {
     icon: Zap,
@@ -50,104 +52,179 @@ const services = [
     description: "Beautiful, intuitive interfaces that provide exceptional user experiences across all devices.",
     features: ["User Research", "Wireframing", "Prototyping", "Design Systems"],
     href: "/services/design",
+    badge: "Featured"
   },
 ]
 
 export default function ServicesPage() {
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-background">
       <Header />
       <main>
-        {/* Hero Section */}
-        <section className="pt-32 pb-20 lg:pt-40 lg:pb-32 bg-gradient-to-b from-muted/50 to-background">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="max-w-3xl mx-auto text-center space-y-6">
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-foreground">Our Services</h1>
-              <p className="text-lg sm:text-xl text-muted-foreground leading-relaxed">
-                Comprehensive digital solutions designed to help your business thrive in the modern digital landscape
+        {/* Hero Section - Enhanced */}
+        <section className="relative pt-32 pb-20 lg:pt-40 lg:pb-32 overflow-hidden">
+          {/* Subtle gradient background */}
+          <div className="absolute inset-0 bg-gradient-to-b from-primary/5 via-background to-background" />
+          
+          <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto text-center space-y-8">
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-medium">
+                <Zap className="w-4 h-4" />
+                <span>Premium Digital Services</span>
+              </div>
+              
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold text-foreground tracking-tight">
+                Elevate Your Digital
+                <span className="block text-primary mt-2">Presence</span>
+              </h1>
+              
+              <p className="text-lg sm:text-xl text-muted-foreground leading-relaxed max-w-2xl mx-auto">
+                Comprehensive digital solutions designed to help your business thrive in the modern digital landscape with cutting-edge technology and creative excellence
               </p>
+              
+              <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
+                <Button size="lg" asChild className="text-base">
+                  <Link href="#services">
+                    Explore Services
+                    <ArrowRight className="ml-2 h-5 w-5" />
+                  </Link>
+                </Button>
+                <Button size="lg" variant="outline" asChild className="text-base">
+                  <Link href="/contact">Schedule Consultation</Link>
+                </Button>
+              </div>
             </div>
           </div>
         </section>
 
-        {/* Services Grid */}
-        <section className="py-20 lg:py-32">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {/* Seperator Section */}
+        <SectionSeparator />
+
+        {/* Services Grid - Enhanced */}
+        <section id="services" className="py-20 lg:py-32">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-16">
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-4">
+                Our Services
+              </h2>
+              <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+                End-to-end solutions tailored to transform your digital vision into reality
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
               {services.map((service, index) => (
                 <Card
                   key={index}
-                  className="group hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border-border"
+                  className="group hover:border-primary/30 transition-all duration-300 hover:-translate-y-1 border-border flex flex-col justify-between"
                 >
-                  <CardHeader>
-                    <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-colors">
+                  {/* Gradient overlay on hover */}
+                  <div className="absolute inset-0 bg-gradient-to-br from-primary/0 via-primary/0 to-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                  
+                  <div className="relative flex flex-col gap-5">
+                    <CardHeader className="space-y-4">
+                      <div className="flex items-start justify-between">
+                      <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
                       <service.icon className="h-7 w-7 text-primary" />
                     </div>
-                    <CardTitle className="text-2xl">{service.title}</CardTitle>
-                  </CardHeader>
-                  <CardContent className="space-y-4">
-                    <CardDescription className="text-muted-foreground leading-relaxed">
-                      {service.description}
-                    </CardDescription>
-                    <ul className="space-y-2">
-                      {service.features.map((feature, idx) => (
-                        <li key={idx} className="flex items-center text-sm text-muted-foreground">
-                          <span className="w-1.5 h-1.5 rounded-full bg-primary mr-2" />
-                          {feature}
-                        </li>
-                      ))}
-                    </ul>
-                    <Button asChild className="w-full mt-4">
+                        {service.badge && (
+                          <Badge variant="secondary" className="text-xs">
+                            {service.badge}
+                          </Badge>
+                        )}
+                      </div>
+                      <CardTitle className="text-2xl">{service.title}</CardTitle>
+                    </CardHeader>
+                    
+                    <CardContent className="space-y-5">
+                      <CardDescription className="text-muted-foreground leading-relaxed text-base">
+                        {service.description}
+                      </CardDescription>
+                      
+                      <div className="space-y-2.5">
+                        {service.features.map((feature, idx) => (
+                          <div key={idx} className="flex items-center gap-3 text-sm text-foreground/80">
+                            <CheckCircle2 className="w-4 h-4 text-primary flex-shrink-0" />
+                            <span>{feature}</span>
+                          </div>
+                        ))}
+                      </div>
+                    </CardContent>
+                  </div>
+                  
+                  <CardFooter className="relative z-40">
+                  <Button variant="outline" asChild className="w-full hover:bg-primary/5">
                       <Link href={service.href}>Learn More</Link>
                     </Button>
-                  </CardContent>
+                  </CardFooter>
                 </Card>
               ))}
             </div>
           </div>
         </section>
 
-        {/* Why Choose Us */}
-        <section className="py-20 lg:py-32 bg-muted/30">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Seperator Section */}
+        <SectionSeparator />
+
+        {/* Why Choose Us - Enhanced */}
+        <section className="py-20 lg:py-32 bg-gradient-to-b from-background via-muted/30 to-background">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-3xl mx-auto text-center mb-16">
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-4">Why Choose Oren</h2>
-              <p className="text-lg text-muted-foreground">
-                We combine technical expertise with creative innovation to deliver exceptional results
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-6">
+                Why Choose Oren
+              </h2>
+              <p className="text-lg text-muted-foreground leading-relaxed">
+                We combine technical expertise with creative innovation to deliver exceptional results that drive measurable business growth
               </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {/* Why Choose Us - Elegant Grid */}
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6">
               {[
                 {
                   title: "Expert Team",
-                  description:
-                    "Skilled professionals with years of experience in web development and digital solutions",
+                  description: "Skilled professionals with years of experience in web development and digital solutions",
+                  icon: Users2,
                 },
                 {
                   title: "Custom Solutions",
                   description: "Tailored approaches designed specifically for your business needs and goals",
+                  icon: Settings,
                 },
                 {
                   title: "Proven Results",
                   description: "Track record of successful projects and satisfied clients across various industries",
+                  icon: TrendingUp,
                 },
                 {
                   title: "Ongoing Support",
                   description: "Continuous maintenance and support to ensure your digital presence stays optimal",
+                  icon: LifeBuoy,
                 },
               ].map((item, index) => (
-                <div key={index} className="text-center space-y-3">
-                  <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mx-auto">
-                    <span className="text-2xl font-bold text-primary">{index + 1}</span>
+                <div
+                  key={index}
+                  className="group relative bg-card backdrop-blur-sm border border-border rounded-xl p-4 lg:p-5 transition-all duration-300 hover:-translate-y-0.5 hover:border-primary/30"
+                >
+                  {/* Icon */}
+                  <div className="flex items-center justify-center w-8 h-8 lg:w-10 lg:h-10 rounded-lg bg-primary/10 text-primary mb-3 group-hover:bg-primary/20 transition-colors">
+                    <item.icon className="w-4 h-4 lg:w-5 lg:h-5" />
                   </div>
-                  <h3 className="text-xl font-semibold text-foreground">{item.title}</h3>
-                  <p className="text-sm text-muted-foreground leading-relaxed">{item.description}</p>
+
+                  <h3 className="text-sm lg:text-base font-semibold text-foreground mb-2 group-hover:text-primary transition-colors">
+                    {item.title}
+                  </h3>
+                  <p className="text-xs lg:text-sm text-muted-foreground leading-relaxed">
+                    {item.description}
+                  </p>
                 </div>
               ))}
             </div>
           </div>
         </section>
+
+        {/* Seperator Section */}
+        <SectionSeparator />
 
         <CTASection />
       </main>

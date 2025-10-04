@@ -65,6 +65,7 @@ const translations: Record<Language, Record<string, string>> = {
     // Services
     "services.title": "Our Services",
     "services.subtitle": "Comprehensive digital solutions tailored to your business needs",
+    "services.headerBadge": "What We Offer",
     "services.web-dev": "Web Development",
     "services.web-dev.desc":
       "Custom websites and web applications built with modern technologies for optimal performance.",
@@ -83,6 +84,7 @@ const translations: Record<Language, Record<string, string>> = {
       "Comprehensive digital solutions designed to help your business thrive in the digital age",
     "services.cta.title": "Ready to Get Started?",
     "services.cta.description": "Let's discuss your project and find the perfect solution for your business needs.",
+    "services.viewAllServices": "View All Services",
 
     // Process
     "process.title": "How We Work",
@@ -92,9 +94,17 @@ const translations: Record<Language, Record<string, string>> = {
     "process.develop": "Develop",
     "process.launch": "Launch",
     "process.support": "Support",
+    "process.discover.desc": "We analyze your business needs, target audience, and project goals to create a strategic roadmap.",
+    "process.design.desc": "Our designers craft beautiful, user-centric interfaces that align with your brand identity.",
+    "process.develop.desc": "We build robust, scalable solutions using cutting-edge technologies and best practices.",
+    "process.launch.desc": "We deploy your project with thorough testing and ensure a smooth, successful launch.",
+    "process.support.desc": "Ongoing maintenance, updates, and support to keep your digital presence running smoothly.",
+    "process.badge": "Our Process",
+    "process.cta": "Let's get started",
 
     // Portfolio
-    "portfolio.title": "Featured Projects",
+    "portfolio.title": "We Recent Work",
+    "portfolio.badge": "Featured Projects",
     "portfolio.subtitle": "Explore our recent work and see how we've helped businesses achieve their digital goals",
     "portfolio.view-all": "View All Projects",
     "portfolio.filter.all": "All Projects",
@@ -116,12 +126,27 @@ const translations: Record<Language, Record<string, string>> = {
     "cta.button": "Get Started",
 
     // Footer
+    "footer.description": "Professional web development and digital solutions that drive growth for startups and enterprises.",
+    "footer.stayUpdated": "Stay updated",
+    "footer.emailPlaceholder": "Enter your email",
+    "footer.subscribe": "Subscribe",
     "footer.newsletter": "Stay updated",
     "footer.newsletter.placeholder": "Enter your email",
     "footer.newsletter.button": "Subscribe",
     "footer.company": "Company",
     "footer.legal": "Legal",
     "footer.rights": "All rights reserved.",
+    "footer.services.web-dev": "Web Development",
+    "footer.services.custom-platforms": "Custom Platforms",
+    "footer.services.ecommerce": "E-commerce",
+    "footer.services.digital-marketing": "Digital Marketing",
+    "footer.legal.privacy": "Privacy Policy",
+    "footer.legal.terms": "Terms of Service",
+    "footer.legal.accessibility": "Accessibility",
+    "footer.social.github": "GitHub",
+    "footer.social.linkedin": "LinkedIn",
+    "footer.social.twitter": "Twitter",
+    "footer.social.email": "Email",
 
     // Contact Form
     "contact.title": "Get in Touch",
@@ -182,6 +207,12 @@ const translations: Record<Language, Record<string, string>> = {
     "common.contactUs": "Contact Us",
     "common.backTo": "Back to",
     "common.loading": "Loading...",
+    "common.live": "Live",
+    "common.liveDemo": "Live Demo",
+    "common.code": "Code",
+    "common.sourceCode": "Source Code",
+    "common.viewDetails": "View Details",
+    "common.more": "more",
   },
   ar: {
     // Navigation
@@ -206,6 +237,7 @@ const translations: Record<Language, Record<string, string>> = {
     // Services
     "services.title": "خدماتنا",
     "services.subtitle": "حلول رقمية شاملة مصممة خصيصاً لاحتياجات عملك",
+    "services.headerBadge": "ما نقدمه",
     "services.web-dev": "تطوير المواقع",
     "services.web-dev.desc": "مواقع وتطبيقات ويب مخصصة مبنية بتقنيات حديثة لأداء مثالي.",
     "services.custom-platforms": "منصات مخصصة",
@@ -222,6 +254,7 @@ const translations: Record<Language, Record<string, string>> = {
     "services.page.subtitle": "حلول رقمية شاملة مصممة لمساعدة عملك على الازدهار في العصر الرقمي",
     "services.cta.title": "هل أنت مستعد للبدء؟",
     "services.cta.description": "دعنا نناقش مشروعك ونجد الحل المثالي لاحتياجات عملك.",
+    "services.viewAllServices": "عرض جميع الخدمات",
 
     // Process
     "process.title": "كيف نعمل",
@@ -231,9 +264,17 @@ const translations: Record<Language, Record<string, string>> = {
     "process.develop": "تطوير",
     "process.launch": "إطلاق",
     "process.support": "دعم",
+    "process.discover.desc": "نحلل احتياجات عملك والجمهور المستهدف وأهداف المشروع لإنشاء خارطة طريق استراتيجية.",
+    "process.design.desc": "يصمم مصممونا واجهات جميلة تركز على المستخدم وتتماشى مع هوية علامتك التجارية.",
+    "process.develop.desc": "نبني حلولاً قوية وقابلة للتطوير باستخدام أحدث التقنيات وأفضل الممارسات.",
+    "process.launch.desc": "ننشر مشروعك مع اختبارات شاملة ونضمن إطلاقاً سلساً وناجحاً.",
+    "process.support.desc": "صيانة مستمرة وتحديثات ودعم للحفاظ على حضورك الرقمي يعمل بسلاسة.",
+    "process.badge": "عمليتنا",
+    "process.cta": "لنبدأ",
 
     // Portfolio
-    "portfolio.title": "مشاريع مميزة",
+    "portfolio.title": "أعمالنا الأخيرة",
+    "portfolio.badge": "المشاريع المميزة",
     "portfolio.subtitle": "استكشف أعمالنا الأخيرة وشاهد كيف ساعدنا الشركات على تحقيق أهدافها الرقمية",
     "portfolio.view-all": "عرض جميع المشاريع",
     "portfolio.filter.all": "جميع المشاريع",
@@ -253,12 +294,27 @@ const translations: Record<Language, Record<string, string>> = {
     "cta.button": "ابدأ الآن",
 
     // Footer
+    "footer.description": "تطوير مواقع احترافية وحلول رقمية تدفع النمو للشركات الناشئة والمؤسسات.",
+    "footer.stayUpdated": "ابق على اطلاع",
+    "footer.emailPlaceholder": "أدخل بريدك الإلكتروني",
+    "footer.subscribe": "اشترك",
     "footer.newsletter": "ابق على اطلاع",
     "footer.newsletter.placeholder": "أدخل بريدك الإلكتروني",
     "footer.newsletter.button": "اشترك",
     "footer.company": "الشركة",
     "footer.legal": "قانوني",
     "footer.rights": "جميع الحقوق محفوظة.",
+    "footer.services.web-dev": "تطوير المواقع",
+    "footer.services.custom-platforms": "منصات مخصصة",
+    "footer.services.ecommerce": "التجارة الإلكترونية",
+    "footer.services.digital-marketing": "التسويق الرقمي",
+    "footer.legal.privacy": "سياسة الخصوصية",
+    "footer.legal.terms": "شروط الخدمة",
+    "footer.legal.accessibility": "إمكانية الوصول",
+    "footer.social.github": "جيت هاب",
+    "footer.social.linkedin": "لينكد إن",
+    "footer.social.twitter": "تويتر",
+    "footer.social.email": "البريد الإلكتروني",
 
     // Contact Form
     "contact.title": "تواصل معنا",
@@ -319,6 +375,12 @@ const translations: Record<Language, Record<string, string>> = {
     "common.contactUs": "اتصل بنا",
     "common.backTo": "العودة إلى",
     "common.loading": "جاري التحميل...",
+    "common.live": "مباشر",
+    "common.liveDemo": "عرض مباشر",
+    "common.code": "الكود",
+    "common.sourceCode": "الكود المصدري",
+    "common.viewDetails": "عرض التفاصيل",
+    "common.more": "أخرى",
   },
   fr: {
     // Navigation
@@ -344,6 +406,7 @@ const translations: Record<Language, Record<string, string>> = {
     // Services
     "services.title": "Nos Services",
     "services.subtitle": "Solutions numériques complètes adaptées aux besoins de votre entreprise",
+    "services.headerBadge": "Ce Que Nous Proposons",
     "services.web-dev": "Développement Web",
     "services.web-dev.desc":
       "Sites web et applications personnalisés construits avec des technologies modernes pour des performances optimales.",
@@ -365,6 +428,7 @@ const translations: Record<Language, Record<string, string>> = {
     "services.cta.title": "Prêt à commencer?",
     "services.cta.description":
       "Discutons de votre projet et trouvons la solution parfaite pour les besoins de votre entreprise.",
+    "services.viewAllServices": "Voir Tous les Services",
 
     // Process
     "process.title": "Comment Nous Travaillons",
@@ -374,9 +438,17 @@ const translations: Record<Language, Record<string, string>> = {
     "process.develop": "Développer",
     "process.launch": "Lancer",
     "process.support": "Soutenir",
+    "process.discover.desc": "Nous analysons les besoins de votre entreprise, votre audience cible et les objectifs du projet pour créer une feuille de route stratégique.",
+    "process.design.desc": "Nos concepteurs créent des interfaces belles et centrées sur l'utilisateur qui s'alignent avec l'identité de votre marque.",
+    "process.develop.desc": "Nous construisons des solutions robustes et évolutives en utilisant des technologies de pointe et les meilleures pratiques.",
+    "process.launch.desc": "Nous déployons votre projet avec des tests approfondis et assurons un lancement fluide et réussi.",
+    "process.support.desc": "Maintenance continue, mises à jour et support pour maintenir votre présence numérique fonctionnant sans heurts.",
+    "process.badge": "Notre Processus",
+    "process.cta": "Commençons",
 
     // Portfolio
-    "portfolio.title": "Projets en Vedette",
+    "portfolio.title": "Nos Travaux Récents",
+    "portfolio.badge": "Projets en Vedette",
     "portfolio.subtitle":
       "Explorez nos travaux récents et voyez comment nous avons aidé les entreprises à atteindre leurs objectifs numériques",
     "portfolio.view-all": "Voir Tous les Projets",
@@ -399,12 +471,27 @@ const translations: Record<Language, Record<string, string>> = {
     "cta.button": "Commencer",
 
     // Footer
+    "footer.description": "Développement web professionnel et solutions numériques qui stimulent la croissance des startups et des entreprises.",
+    "footer.stayUpdated": "Restez informé",
+    "footer.emailPlaceholder": "Entrez votre email",
+    "footer.subscribe": "S'abonner",
     "footer.newsletter": "Restez informé",
     "footer.newsletter.placeholder": "Entrez votre email",
     "footer.newsletter.button": "S'abonner",
     "footer.company": "Entreprise",
     "footer.legal": "Légal",
     "footer.rights": "Tous droits réservés.",
+    "footer.services.web-dev": "Développement Web",
+    "footer.services.custom-platforms": "Plateformes Personnalisées",
+    "footer.services.ecommerce": "E-commerce",
+    "footer.services.digital-marketing": "Marketing Digital",
+    "footer.legal.privacy": "Politique de Confidentialité",
+    "footer.legal.terms": "Conditions de Service",
+    "footer.legal.accessibility": "Accessibilité",
+    "footer.social.github": "GitHub",
+    "footer.social.linkedin": "LinkedIn",
+    "footer.social.twitter": "Twitter",
+    "footer.social.email": "Email",
 
     // Contact Form
     "contact.title": "Contactez-nous",
@@ -466,5 +553,11 @@ const translations: Record<Language, Record<string, string>> = {
     "common.contactUs": "Nous contacter",
     "common.backTo": "Retour à",
     "common.loading": "Chargement...",
+    "common.live": "En direct",
+    "common.liveDemo": "Démo en direct",
+    "common.code": "Code",
+    "common.sourceCode": "Code source",
+    "common.viewDetails": "Voir les détails",
+    "common.more": "plus",
   },
 }

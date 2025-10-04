@@ -1,93 +1,128 @@
-"use client"
+"use client";
 
-import Image from "next/image"
-import Link from "next/link"
-import { Card, CardContent } from "@/components/ui/card"
-import { Button } from "@/components/ui/button"
-import { Badge } from "@/components/ui/badge"
-import { ArrowRight } from "lucide-react"
-import { useLanguage } from "@/components/language-provider"
-import { AnimatedSection, StaggerContainer, StaggerItem } from "@/components/animated-section"
+import Image from "next/image";
+import Link from "next/link";
+import { Card, CardContent } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
+import { ArrowRight, Sparkles } from "lucide-react";
+import { useLanguage } from "@/components/language-provider";
+import {
+  AnimatedSection,
+  StaggerContainer,
+  StaggerItem,
+} from "@/components/animated-section";
+import ProjectCard from "./general/ProjectCard";
 
 const projects = [
   {
-    title: "E-commerce Platform",
-    description: "Modern online store with advanced filtering and seamless checkout experience",
-    image: "/modern-ecommerce-website.png",
-    tags: ["E-commerce", "React", "Node.js"],
-    href: "/portfolio/ecommerce-platform",
+    slug: "ecommerce-platform",
+    title: "BrewHaus - Modern Coffee Shop Website",
+    description:
+      "A sleek and responsive coffee shop website crafted with Next.js, TypeScript, TailwindCSS, and shadcn/ui. It features elegant animations and smooth interactions powered by Framer Motion.",
+    technologies: [
+      "Next.js",
+      "TypeScript",
+      "TailwindCSS",
+      "shadcn/ui",
+      "framer-motion",
+      "Vercel",
+    ],
+    image:
+      "https://9457m1r99j.ufs.sh/f/IOGyRQdjvdUuQKL8l4A9Jac2vkrD1p5ZlPq0hdgjwSKsxWVN",
+    demoLink: "#",
+    githubLink: "#",
   },
   {
-    title: "SaaS Dashboard",
-    description: "Analytics dashboard for B2B software with real-time data visualization",
-    image: "/saas-analytics-dashboard.png",
-    tags: ["SaaS", "Dashboard", "TypeScript"],
-    href: "/portfolio/saas-dashboard",
+    slug: "saas-dashboard",
+    title: "PizzaCraft - Modern Pizza Shop Website",
+    description:
+      "A sleek and responsive pizza shop website built with React.js, TailwindCSS, shadcn/ui, and Framer Motion. Designed for all devices with smooth animations and an elegant user interface.",
+    technologies: [
+      "React.js",
+      "TailwindCSS",
+      "Headless UI",
+      "shadcn/ui",
+      "Framer Motion",
+      "Vite",
+      "TypeScript",
+      "Responsive Design",
+      "CSS Grid",
+      "Flexbox",
+    ],
+    image:
+      "https://9457m1r99j.ufs.sh/f/IOGyRQdjvdUu64aTFL048Y3UCAXi9qMFSTxhr6a2OcnjPRey",
+    demoLink: "#",
+    githubLink: "#",
   },
   {
-    title: "Corporate Website",
-    description: "Professional corporate site with multilingual support and CMS integration",
-    image: "/professional-corporate-website.png",
-    tags: ["Corporate", "CMS", "Multilingual"],
-    href: "/portfolio/corporate-website",
+    slug: "corporate-website",
+    title: "Cactus - Modern Plant Showcase",
+    description:
+      "A beautifully designed cactus-themed website built with React.js, TailwindCSS, shadcn/ui, and Framer Motion. Fully responsive and crafted to provide a smooth and elegant user experience across all devices.",
+    technologies: [
+      "Next.js",
+      "TailwindCSS",
+      "shadcn/ui",
+      "Framer Motion",
+      "TypeScript",
+      "Responsive Design",
+      "Component Architecture",
+    ],
+    image:
+      "https://9457m1r99j.ufs.sh/f/IOGyRQdjvdUule4JhpGseMcJCWhN8YURXIw1tip4l6FLSHdZ",
+    demoLink: "#",
+    githubLink: "#",
   },
-]
+];
 
 export function PortfolioPreview() {
-  const { t } = useLanguage()
+  const { t } = useLanguage();
 
   return (
-    <section className="py-20 lg:py-32">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="py-20">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <AnimatedSection className="max-w-3xl mx-auto text-center mb-16">
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-4">{t("portfolio.title")}</h2>
-          <p className="text-lg text-muted-foreground">{t("portfolio.subtitle")}</p>
+          {/* Header Badge */}
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 mb-6">
+            <Sparkles className="w-4 h-4 text-primary" />
+            <span className="text-primary font-medium text-sm">
+              {t("portfolio.badge")}
+            </span>
+          </div>
+          {/* Portfolio title */}
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-4">
+            {t("portfolio.title")}
+          </h2>
+          <p className="text-lg text-muted-foreground">
+            {t("portfolio.subtitle")}
+          </p>
         </AnimatedSection>
 
         {/* Projects Grid */}
-        <StaggerContainer className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {projects.map((project, index) => (
             <StaggerItem key={index}>
-              <Link href={project.href} className="group block">
-                <Card className="overflow-hidden border-border hover:shadow-xl transition-all duration-300 h-full">
-                  <div className="relative aspect-[3/2] overflow-hidden bg-muted">
-                    <Image
-                      src={project.image || "/placeholder.svg"}
-                      alt={project.title}
-                      fill
-                      className="object-cover transition-transform duration-300 group-hover:scale-105"
-                    />
-                  </div>
-                  <CardContent className="p-6">
-                    <div className="flex flex-wrap gap-2 mb-3">
-                      {project.tags.map((tag) => (
-                        <Badge key={tag} variant="secondary" className="text-xs">
-                          {tag}
-                        </Badge>
-                      ))}
-                    </div>
-                    <h3 className="text-xl font-semibold text-foreground mb-2 group-hover:text-primary transition-colors">
-                      {project.title}
-                    </h3>
-                    <p className="text-muted-foreground text-sm leading-relaxed">{project.description}</p>
-                  </CardContent>
-                </Card>
-              </Link>
+              <ProjectCard key={index} project={project} />
             </StaggerItem>
           ))}
         </StaggerContainer>
 
-        {/* CTA */}
-        <AnimatedSection delay={0.3} className="text-center mt-12">
-          <Button size="lg" asChild className="group">
-            <Link href="/portfolio">
+        {/* Call to Action */}
+        <AnimatedSection delay={0.3} className="text-center mt-16">
+          <div className="inline-flex items-center gap-2 text-sm text-muted-foreground">
+            <div className="w-8 h-px bg-gradient-to-r rtl:bg-gradient-to-l  from-transparent to-primary"></div>
+            <Link
+              href="/portfolio"
+              className="hover:text-primary transition-colors"
+            >
               {t("portfolio.view-all")}
-              <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
             </Link>
-          </Button>
+            <div className="w-8 h-px bg-gradient-to-l rtl:bg-gradient-to-r  from-transparent to-primary"></div>
+          </div>
         </AnimatedSection>
       </div>
     </section>
-  )
+  );
 }

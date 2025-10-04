@@ -103,10 +103,10 @@ export function HeroSection() {
   if (!mounted) return null;
 
   return (
-    <section className="h-screen flex justify-center items-end relative bg-[#00020d]">
+    <section className="h-screen flex justify-center items-end relative">
       {/* Gradient Overlay */}
-      <div className="absolute inset-0 z-1  bg-gradient-to-b from-[#00020d]/50 via-[#00020d]/80 to-[#00020d]" />
-      <div className="absolute z-0 inset-0">
+      <div className="absolute inset-0 z-1  bg-gradient-to-b from-background/50 via-background/80 to-background" />
+      {/* <div className="absolute z-0 inset-0">
         <Silk
           speed={9}
           scale={1}
@@ -114,7 +114,7 @@ export function HeroSection() {
           noiseIntensity={1.5}
           rotation={0}
         />
-      </div>
+      </div> */}
 
       <div className="relative h-[calc(100vh-64px)] lg:h-[calc(100vh-80px)] w-full flex items-center justify-center overflow-hidden">
         {/* Content */}
@@ -147,8 +147,8 @@ export function HeroSection() {
                 className="group w-full sm:w-auto shadow-none transition-all"
               >
                 <Link href="/contact">
-                  {t("hero.cta.primary")}
-                  <Sparkles className="ms-2 h-4 w-4 transition-transform group-hover:rotate-12 group-hover:scale-110" />
+                {t("hero.cta.primary")}
+                <ArrowRight className="ms-2 h-4 w-4 transform rtl:rotate-180 " />
                 </Link>
               </Button>
               <Button

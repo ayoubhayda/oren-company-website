@@ -1,11 +1,13 @@
-import { Header } from "@/components/header"
-import { Footer } from "@/components/footer"
-import { HeroSection } from "@/components/hero-section"
-import { ServicesSection } from "@/components/services-section"
-import { PortfolioPreview } from "@/components/portfolio-preview"
-import { ProcessSection } from "@/components/process-section"
-import { TestimonialsSection } from "@/components/testimonials-section"
-import { CTASection } from "@/components/cta-section"
+import { Header } from "@/components/header";
+import { Footer } from "@/components/footer";
+import { HeroSection } from "@/components/hero-section";
+import { ServicesSection } from "@/components/services-section";
+import { PortfolioPreview } from "@/components/portfolio-preview";
+import { ProcessSection } from "@/components/process-section";
+import { TestimonialsSection } from "@/components/testimonials-section";
+import { CTASection } from "@/components/cta-section";
+import ServicesBar from "@/components/general/ServicesBar";
+import SectionSeparator from "@/components/general/SectionSeparator";
 
 export const metadata = {
   title: "Oren - Professional Web Development & Digital Solutions",
@@ -25,7 +27,7 @@ export const metadata = {
       "Transform your digital presence with professional web development, custom platforms, and digital marketing services.",
     type: "website",
   },
-}
+};
 
 export default function HomePage() {
   return (
@@ -33,13 +35,19 @@ export default function HomePage() {
       <Header />
       <main>
         <HeroSection />
+        {/* Services bar */}
+        <section>
+          <ServicesBar />
+        </section>
         <ServicesSection />
+        <SectionSeparator />
         <ProcessSection />
+        <SectionSeparator />
         <PortfolioPreview />
-        <TestimonialsSection />
+        <SectionSeparator />
         <CTASection />
       </main>
       <Footer />
     </div>
-  )
+  );
 }

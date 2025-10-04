@@ -1,11 +1,30 @@
-"use client"
+"use client";
 
-import { Code, Palette, ShoppingCart, TrendingUp, Share2, Zap } from "lucide-react"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Button } from "@/components/ui/button"
-import { useLanguage } from "@/components/language-provider"
-import Link from "next/link"
-import { AnimatedSection, StaggerContainer, StaggerItem } from "@/components/animated-section"
+import {
+  Code,
+  Palette,
+  ShoppingCart,
+  TrendingUp,
+  Share2,
+  Zap,
+  ArrowRight,
+  Wrench,
+} from "lucide-react";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { useLanguage } from "@/components/language-provider";
+import Link from "next/link";
+import {
+  AnimatedSection,
+  StaggerContainer,
+  StaggerItem,
+} from "@/components/animated-section";
 
 const services = [
   {
@@ -44,39 +63,57 @@ const services = [
     descKey: "services.design.desc",
     href: "/services/design",
   },
-]
+];
 
 export function ServicesSection() {
-  const { t } = useLanguage()
+  const { t } = useLanguage();
 
   return (
-    <section className="py-20 lg:py-32 bg-muted/30">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="py-20 bg-background">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <AnimatedSection className="max-w-3xl mx-auto text-center mb-16">
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-4">{t("services.title")}</h2>
-          <p className="text-lg text-muted-foreground">{t("services.subtitle")}</p>
+          {/* Header Badge */}
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 mb-6">
+            <Wrench className="w-4 h-4 text-primary" />
+            <span className="text-primary font-medium text-sm">
+              {t("services.headerBadge")}
+            </span>
+          </div>
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-4">
+            {t("services.title")}
+          </h2>
+          <p className="text-lg text-muted-foreground">
+            {t("services.subtitle")}
+          </p>
         </AnimatedSection>
 
         {/* Services Grid */}
         <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
           {services.map((service, index) => (
             <StaggerItem key={index}>
-              <Card className="group hover:shadow-lg transition-all duration-300 hover:-translate-y-1 border-border h-full">
+              <Card className="group hover:border-primary/30 transition-all duration-300 hover:-translate-y-1 border-border h-full">
                 <CardHeader>
                   <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-colors">
                     <service.icon className="h-6 w-6 text-primary" />
                   </div>
-                  <CardTitle className="text-xl">{t(service.titleKey)}</CardTitle>
+                  <CardTitle className="text-xl">
+                    {t(service.titleKey)}
+                  </CardTitle>
                 </CardHeader>
                 <CardContent>
                   <CardDescription className="text-muted-foreground mb-4 leading-relaxed">
                     {t(service.descKey)}
                   </CardDescription>
-                  <Button variant="link" asChild className="p-0 h-auto font-semibold group/link">
+                  <Button
+                    variant="link"
+                    asChild
+                    className="!p-0 h-auto font-semibold group/link hover:text-black dark:hover:text-white hover:no-underline"
+                  >
                     <Link href={service.href}>
                       {t("common.learnMore")}
-                      <span className="ml-1 transition-transform group-hover/link:translate-x-1 inline-block">→</span>
+
+                      <ArrowRight className="ms-0.5 transform rtl:rotate-180" />
                     </Link>
                   </Button>
                 </CardContent>
@@ -85,13 +122,17 @@ export function ServicesSection() {
           ))}
         </StaggerContainer>
 
-        {/* CTA */}
-        <AnimatedSection delay={0.3} className="text-center mt-12">
-          <Button size="lg" asChild>
-            <Link href="/services">{t("common.viewAll")}</Link>
-          </Button>
+        {/* Call to Action */}
+        <AnimatedSection delay={0.3} className="text-center mt-16">
+          <div className="inline-flex items-center gap-2 text-sm text-muted-foreground">
+            <div className="w-8 h-px bg-gradient-to-r rtl:bg-gradient-to-l  from-transparent to-primary"></div>
+            <Link href="/services" className="hover:text-primary transition-colors">
+              {t("services.viewAllServices")}
+            </Link>
+            <div className="w-8 h-px bg-gradient-to-l rtl:bg-gradient-to-r  from-transparent to-primary"></div>
+          </div>
         </AnimatedSection>
       </div>
     </section>
-  )
+  );
 }
