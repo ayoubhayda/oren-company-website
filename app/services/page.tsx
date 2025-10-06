@@ -1,62 +1,66 @@
+"use client"
+
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
-import { Code, Palette, ShoppingCart, TrendingUp, Share2, Zap, ArrowRight, CheckCircle2, Users2, Settings, LifeBuoy } from "lucide-react"
+import { Code, Palette, ShoppingCart, TrendingUp, Share2, Zap, ArrowRight, CheckCircle2, Users2, Settings, LifeBuoy, Wrench, Sparkles } from "lucide-react"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import Link from "next/link"
 import { CTASection } from "@/components/cta-section"
 import SectionSeparator from "@/components/general/SectionSeparator"
+import { useLanguage } from "@/components/language-provider"
 
 const services = [
   {
     icon: Code,
-    title: "Web Development",
-    description:
-      "Custom websites and web applications built with modern technologies for optimal performance and scalability.",
-    features: ["Responsive Design", "Performance Optimization", "SEO-Friendly", "Cross-Browser Compatible"],
+    titleKey: "services.web-dev",
+    descriptionKey: "services.web-dev.desc",
+    features: ["services.web-dev.feature.1", "services.web-dev.feature.2", "services.web-dev.feature.3", "services.web-dev.feature.4"],
     href: "/services/web-development",
-    badge: "Most Popular"
+    badge: "services.web-dev.badge"
   },
   {
     icon: Zap,
-    title: "Custom Platforms",
-    description: "Tailored digital platforms designed to meet your unique business requirements and workflows.",
-    features: ["Custom Solutions", "Scalable Architecture", "API Integration", "Cloud Deployment"],
+    titleKey: "services.custom-platforms",
+    descriptionKey: "services.custom-platforms.desc",
+    features: ["services.custom-platforms.feature.1", "services.custom-platforms.feature.2", "services.custom-platforms.feature.3", "services.custom-platforms.feature.4"],
     href: "/services/custom-platforms",
   },
   {
     icon: ShoppingCart,
-    title: "E-commerce Solutions",
-    description: "Complete online stores with secure payments, inventory management, and seamless user experience.",
-    features: ["Payment Integration", "Inventory Management", "Order Tracking", "Analytics Dashboard"],
+    titleKey: "services.ecommerce",
+    descriptionKey: "services.ecommerce.desc",
+    features: ["services.ecommerce.feature.1", "services.ecommerce.feature.2", "services.ecommerce.feature.3", "services.ecommerce.feature.4"],
     href: "/services/ecommerce",
   },
   {
     icon: TrendingUp,
-    title: "Digital Marketing",
-    description: "Data-driven marketing strategies to increase your online visibility and drive conversions.",
-    features: ["SEO Optimization", "Content Strategy", "PPC Campaigns", "Analytics & Reporting"],
+    titleKey: "services.marketing",
+    descriptionKey: "services.marketing.desc",
+    features: ["services.marketing.feature.1", "services.marketing.feature.2", "services.marketing.feature.3", "services.marketing.feature.4"],
     href: "/services/digital-marketing",
   },
   {
     icon: Share2,
-    title: "Social Media Management",
-    description: "Comprehensive social media strategies to build your brand and engage with your audience.",
-    features: ["Content Creation", "Community Management", "Campaign Planning", "Performance Tracking"],
+    titleKey: "services.social",
+    descriptionKey: "services.social.desc",
+    features: ["services.social.feature.1", "services.social.feature.2", "services.social.feature.3", "services.social.feature.4"],
     href: "/services/social-media",
   },
   {
     icon: Palette,
-    title: "UI/UX Design",
-    description: "Beautiful, intuitive interfaces that provide exceptional user experiences across all devices.",
-    features: ["User Research", "Wireframing", "Prototyping", "Design Systems"],
+    titleKey: "services.design",
+    descriptionKey: "services.design.desc",
+    features: ["services.design.feature.1", "services.design.feature.2", "services.design.feature.3", "services.design.feature.4"],
     href: "/services/design",
-    badge: "Featured"
+    badge: "services.design.badge"
   },
 ]
 
 export default function ServicesPage() {
+  const { t } = useLanguage()
+
   return (
     <div className="min-h-screen bg-background">
       <Header />
@@ -65,33 +69,40 @@ export default function ServicesPage() {
         <section className="relative pt-32 pb-20 lg:pt-40 lg:pb-32 overflow-hidden">
           {/* Subtle gradient background */}
           <div className="absolute inset-0 bg-gradient-to-b from-primary/5 via-background to-background" />
-          
+
           <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto text-center space-y-8">
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-medium">
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 text-primary text-sm font-medium">
                 <Zap className="w-4 h-4" />
-                <span>Premium Digital Services</span>
+                <span>{t("services.hero.badge")}</span>
               </div>
-              
+
               <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold text-foreground tracking-tight">
-                Elevate Your Digital
-                <span className="block text-primary mt-2">Presence</span>
+                {t("services.hero.title.line1")}
+                <span className="block text-primary mt-2">{t("services.hero.title.line2")}</span>
               </h1>
-              
+
               <p className="text-lg sm:text-xl text-muted-foreground leading-relaxed max-w-2xl mx-auto">
-                Comprehensive digital solutions designed to help your business thrive in the modern digital landscape with cutting-edge technology and creative excellence
+                {t("services.hero.subtitle")}
               </p>
-              
+
               <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
                 <Button size="lg" asChild className="text-base">
                   <Link href="#services">
-                    Explore Services
-                    <ArrowRight className="ml-2 h-5 w-5" />
+                    {t("services.hero.button.explore")}
+                    <ArrowRight className="ms-0.5 h-5 w-5 transform rtl:rotate-180" />
                   </Link>
                 </Button>
                 <Button size="lg" variant="outline" asChild className="text-base">
-                  <Link href="/contact">Schedule Consultation</Link>
+                  <Link href="/contact">{t("services.hero.button.consultation")}</Link>
                 </Button>
+              </div>
+
+              {/* Hero CTA */}
+              <div className="inline-flex items-center gap-2 text-sm text-muted-foreground pt-8">
+                <div className="w-8 h-px bg-gradient-to-r rtl:bg-gradient-to-l from-transparent to-primary"></div>
+                <span>{t("services.hero.cta")}</span>
+                <div className="w-8 h-px bg-gradient-to-l rtl:bg-gradient-to-r from-transparent to-primary"></div>
               </div>
             </div>
           </div>
@@ -103,12 +114,20 @@ export default function ServicesPage() {
         {/* Services Grid - Enhanced */}
         <section id="services" className="py-20 lg:py-32">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-16">
+            {/* Section Header */}
+            <div className="max-w-3xl mx-auto text-center mb-16">
+              {/* Header Badge */}
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 mb-6">
+                <Wrench className="w-4 h-4 text-primary" />
+                <span className="text-primary font-medium text-sm">
+                  {t("services.services.badge")}
+                </span>
+              </div>
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-4">
-                Our Services
+                {t("services.title")}
               </h2>
               <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-                End-to-end solutions tailored to transform your digital vision into reality
+                {t("services.subtitle")}
               </p>
             </div>
 
@@ -129,23 +148,23 @@ export default function ServicesPage() {
                     </div>
                         {service.badge && (
                           <Badge variant="secondary" className="text-xs">
-                            {service.badge}
+                            {t(service.badge)}
                           </Badge>
                         )}
                       </div>
-                      <CardTitle className="text-2xl">{service.title}</CardTitle>
+                      <CardTitle className="text-2xl">{t(service.titleKey)}</CardTitle>
                     </CardHeader>
-                    
+
                     <CardContent className="space-y-5">
                       <CardDescription className="text-muted-foreground leading-relaxed text-base">
-                        {service.description}
+                        {t(service.descriptionKey)}
                       </CardDescription>
-                      
+
                       <div className="space-y-2.5">
                         {service.features.map((feature, idx) => (
                           <div key={idx} className="flex items-center gap-3 text-sm text-foreground/80">
                             <CheckCircle2 className="w-4 h-4 text-primary flex-shrink-0" />
-                            <span>{feature}</span>
+                            <span>{t(feature)}</span>
                           </div>
                         ))}
                       </div>
@@ -154,11 +173,22 @@ export default function ServicesPage() {
                   
                   <CardFooter className="relative z-40">
                   <Button variant="outline" asChild className="w-full hover:bg-primary/5">
-                      <Link href={service.href}>Learn More</Link>
+                      <Link href={service.href}>{t("common.learnMore")}</Link>
                     </Button>
                   </CardFooter>
                 </Card>
               ))}
+            </div>
+
+            {/* Services CTA */}
+            <div className="text-center mt-16">
+              <div className="inline-flex items-center gap-2 text-sm text-muted-foreground">
+                <div className="w-8 h-px bg-gradient-to-r rtl:bg-gradient-to-l from-transparent to-primary"></div>
+                <Link href="/contact" className="hover:text-primary transition-colors">
+                  {t("services.viewAllServices")}
+                </Link>
+                <div className="w-8 h-px bg-gradient-to-l rtl:bg-gradient-to-r from-transparent to-primary"></div>
+              </div>
             </div>
           </div>
         </section>
@@ -169,12 +199,20 @@ export default function ServicesPage() {
         {/* Why Choose Us - Enhanced */}
         <section className="py-20 lg:py-32 bg-gradient-to-b from-background via-muted/30 to-background">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            {/* Section Header */}
             <div className="max-w-3xl mx-auto text-center mb-16">
+              {/* Header Badge */}
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 mb-6">
+                <Sparkles className="w-4 h-4 text-primary" />
+                <span className="text-primary font-medium text-sm">
+                  {t("services.whychooseus.badge")}
+                </span>
+              </div>
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-6">
-                Why Choose Oren
+                {t("services.whychooseus.title")}
               </h2>
               <p className="text-lg text-muted-foreground leading-relaxed">
-                We combine technical expertise with creative innovation to deliver exceptional results that drive measurable business growth
+                {t("services.whychooseus.description")}
               </p>
             </div>
 
@@ -182,23 +220,23 @@ export default function ServicesPage() {
             <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6">
               {[
                 {
-                  title: "Expert Team",
-                  description: "Skilled professionals with years of experience in web development and digital solutions",
+                  titleKey: "services.whychooseus.expert.title",
+                  descriptionKey: "services.whychooseus.expert.description",
                   icon: Users2,
                 },
                 {
-                  title: "Custom Solutions",
-                  description: "Tailored approaches designed specifically for your business needs and goals",
+                  titleKey: "services.whychooseus.custom.title",
+                  descriptionKey: "services.whychooseus.custom.description",
                   icon: Settings,
                 },
                 {
-                  title: "Proven Results",
-                  description: "Track record of successful projects and satisfied clients across various industries",
+                  titleKey: "services.whychooseus.results.title",
+                  descriptionKey: "services.whychooseus.results.description",
                   icon: TrendingUp,
                 },
                 {
-                  title: "Ongoing Support",
-                  description: "Continuous maintenance and support to ensure your digital presence stays optimal",
+                  titleKey: "services.whychooseus.support.title",
+                  descriptionKey: "services.whychooseus.support.description",
                   icon: LifeBuoy,
                 },
               ].map((item, index) => (
@@ -212,13 +250,22 @@ export default function ServicesPage() {
                   </div>
 
                   <h3 className="text-sm lg:text-base font-semibold text-foreground mb-2 group-hover:text-primary transition-colors">
-                    {item.title}
+                    {t(item.titleKey)}
                   </h3>
                   <p className="text-xs lg:text-sm text-muted-foreground leading-relaxed">
-                    {item.description}
+                    {t(item.descriptionKey)}
                   </p>
                 </div>
               ))}
+            </div>
+
+            {/* Why Choose Us CTA */}
+            <div className="text-center mt-16">
+              <div className="inline-flex items-center gap-2 text-sm text-muted-foreground">
+                <div className="w-8 h-px bg-gradient-to-r rtl:bg-gradient-to-l from-transparent to-primary"></div>
+                <span>{t("services.whychooseus.cta")}</span>
+                <div className="w-8 h-px bg-gradient-to-l rtl:bg-gradient-to-r from-transparent to-primary"></div>
+              </div>
             </div>
           </div>
         </section>
