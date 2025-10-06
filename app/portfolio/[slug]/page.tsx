@@ -1,9 +1,13 @@
+"use client"
+
+import { useState, use } from "react"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
-import { Card, CardContent } from "@/components/ui/card"
-import { ArrowLeft, Calendar, Users, TrendingUp } from "lucide-react"
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import { Separator } from "@/components/ui/separator"
+import { ArrowLeft, ArrowRight, Calendar, Users, Building, Clock, Target, Zap, CheckCircle, Quote, Image as ImageIcon, Layers, TrendingUp, Star, Github, ExternalLink, Download, Share2, BookmarkPlus, ChevronLeft, ChevronRight } from "lucide-react"
 import Link from "next/link"
 import Image from "next/image"
 import { notFound } from "next/navigation"
@@ -26,6 +30,8 @@ const projects: Record<
     technologies: string[]
     testimonial?: { quote: string; author: string; role: string }
     images: string[]
+    demoLink?: string
+    githubLink?: string
   }
 > = {
   "ecommerce-platform": {
@@ -64,6 +70,8 @@ const projects: Record<
       },
     ],
     technologies: ["React", "Node.js", "PostgreSQL", "Redis", "Stripe", "AWS", "Docker"],
+    demoLink: "#",
+    githubLink: "#",
     testimonial: {
       quote:
         "Oren transformed our online business. The new platform is fast, beautiful, and our sales have more than doubled since launch.",
@@ -108,6 +116,8 @@ const projects: Record<
       },
     ],
     technologies: ["Next.js", "TypeScript", "PostgreSQL", "Redis", "WebSocket", "Vercel", "Tailwind CSS"],
+    demoLink: "#",
+    githubLink: "#",
     testimonial: {
       quote:
         "The platform exceeded our expectations. It's fast, reliable, and our customers love the real-time insights.",
@@ -296,170 +306,540 @@ const projects: Record<
   },
 }
 
-export default function ProjectPage({ params }: { params: { slug: string } }) {
-  const project = projects[params.slug]
+export default function ProjectPage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = use(params)
+  const project = projects[slug]
+  const [currentImageIndex, setCurrentImageIndex] = useState(0)
 
   if (!project) {
     notFound()
   }
 
+  const goToNextImage = () => {
+    setCurrentImageIndex((prev) =>
+      prev === (project.images?.length || 0) - 1 ? 0 : prev + 1
+    )
+  }
+
+  const goToPreviousImage = () => {
+    setCurrentImageIndex((prev) =>
+      prev === 0 ? (project.images?.length || 0) - 1 : prev - 1
+    )
+  }
+
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-background">
       <Header />
-      <main>
-        {/* Hero Section */}
-        <section className="pt-32 pb-12 lg:pt-40 lg:pb-20 bg-gradient-to-b from-muted/50 to-background">
+      <main className="pt-24">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          {/* Navigation */}
             <div className="mb-8">
-              <Button variant="ghost" asChild>
-                <Link href="/portfolio">
-                  <ArrowLeft className="mr-2 h-4 w-4" />
+            <Button variant="ghost" asChild className="group">
+              <Link href="/portfolio" className="flex items-center gap-2 hover:gap-3 transition-all">
+                <ArrowLeft className="h-4 w-4 group-hover:-translate-x-1 transition-transform" />
                   Back to Portfolio
                 </Link>
               </Button>
             </div>
 
-            <div className="max-w-4xl mx-auto space-y-6">
-              <div className="flex flex-wrap gap-2">
-                {project.tags.map((tag) => (
-                  <Badge key={tag} variant="secondary">
-                    {tag}
+          <div className="max-w-7xl mx-auto">
+            <div className="grid lg:grid-cols-3 gap-8">
+              {/* Main Content */}
+              <div className="lg:col-span-2 space-y-12">
+                {/* Project Header */}
+                <div className="space-y-6">
+                  <div className="flex items-center gap-3">
+                    <Badge className="bg-primary/10 text-primary border-primary/20 px-3 py-1">
+                      {project.category}
                   </Badge>
+                    <div className="flex items-center gap-1">
+                      {[...Array(5)].map((_, i) => (
+                        <Star key={i} className="h-4 w-4 fill-yellow-400 text-yellow-400 dark:fill-yellow-500 dark:text-yellow-500" />
+                      ))}
+                      <span className="text-sm text-muted-foreground ml-2">4.8 (127 reviews)</span>
+                    </div>
+                  </div>
+
+                  <h1 className="text-4xl sm:text-5xl font-bold text-foreground leading-tight">
+                    {project.title}
+                  </h1>
+                </div>
+
+                {/* Project Gallery */}
+                {project.images && project.images.length > 0 && (
+                  <div className="space-y-6">
+                    <div className="relative">
+                      {/* Main Image Display */}
+                      <div className="relative aspect-[16/10] rounded-2xl overflow-hidden bg-muted border border-gray-200 dark:border-gray-700">
+                        <Image
+                          src={project.images[currentImageIndex] || "/placeholder.svg"}
+                          alt={`${project.title} - Image ${currentImageIndex + 1}`}
+                          fill
+                          className="object-cover"
+                        />
+
+                        {/* Action Buttons */}
+                        <div className="absolute top-4 left-4 flex gap-2">
+                          {project.demoLink && (
+                            <Button
+                              size="sm"
+                              className="bg-white/90 hover:bg-white text-black dark:bg-gray-900/90 dark:hover:bg-gray-900 dark:text-white border border-gray-200 dark:border-gray-700"
+                              onClick={() => window.open(project.demoLink, '_blank')}
+                            >
+                              <ExternalLink className="h-4 w-4 mr-1" />
+                              Demo
+                            </Button>
+                          )}
+                          {project.githubLink && (
+                            <Button
+                              size="sm"
+                              className="bg-black/60 hover:bg-black/80 text-white border border-gray-200 dark:bg-white/60 dark:hover:bg-white/80 dark:text-gray-900 dark:border-gray-700"
+                              onClick={() => window.open(project.githubLink, '_blank')}
+                            >
+                              <Github className="h-4 w-4 mr-1" />
+                              Code
+                            </Button>
+                          )}
+                        </div>
+
+                        {/* Navigation Arrows */}
+                        {project.images.length > 1 && (
+                          <>
+                            <Button
+                              variant="secondary"
+                              size="icon"
+                              className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white dark:bg-gray-900/90 dark:hover:bg-gray-900 dark:text-white border border-gray-200 dark:border-gray-700"
+                              onClick={goToPreviousImage}
+                            >
+                              <ChevronLeft className="h-4 w-4" />
+                            </Button>
+                            <Button
+                              variant="secondary"
+                              size="icon"
+                              className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white dark:bg-gray-900/90 dark:hover:bg-gray-900 dark:text-white border border-gray-200 dark:border-gray-700"
+                              onClick={goToNextImage}
+                            >
+                              <ChevronRight className="h-4 w-4" />
+                            </Button>
+                          </>
+                        )}
+
+                        {/* Image Counter */}
+                        <div className="absolute bottom-4 right-4 bg-black/60 text-white dark:bg-gray-900/60 dark:text-gray-100 px-3 py-1 rounded-full text-sm backdrop-blur-sm">
+                          {currentImageIndex + 1} / {project.images.length}
+                        </div>
+                      </div>
+
+                      {/* Thumbnail Navigation Images */}
+                      {project.images.length > 1 && (
+                        <div className="flex justify-center gap-4 mt-6 px-4">
+                          {project.images.map((image, index) => (
+                            <button
+                              key={index}
+                              onClick={() => setCurrentImageIndex(index)}
+                              className={`group relative w-20 h-12 rounded-lg overflow-hidden transition-all duration-300 border-2 ${
+                                index === currentImageIndex
+                                  ? 'border-primary scale-110'
+                                  : 'border-gray-200 hover:border-primary/50 opacity-80 hover:opacity-100 hover:scale-105 dark:border-gray-700'
+                              }`}
+                            >
+                              <Image
+                                src={image || "/placeholder.svg"}
+                                alt={`Thumbnail ${index + 1}`}
+                                fill
+                                className="object-cover transition-transform duration-300 group-hover:scale-110"
+                              />
+                              {/* Subtle gradient overlay */}
+                              <div className="absolute inset-0 bg-gradient-to-t from-black/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+
+                              {/* Active state indicator */}
+                              {index === currentImageIndex && (
+                                <div className="absolute inset-0 bg-primary/15 rounded-lg" />
+                              )}
+
+                              {/* Image number indicator (optional) */}
+                              <div className={`absolute bottom-1 right-1 w-5 h-5 rounded-full flex items-center justify-center text-xs font-bold transition-all duration-200 ${
+                                index === currentImageIndex
+                                  ? 'bg-primary text-white'
+                                  : 'bg-black/60 text-white opacity-0 group-hover:opacity-100'
+                              }`}>
+                                {index + 1}
+                              </div>
+                            </button>
+                          ))}
+                        </div>
+                      )}
+
+                      {/* Additional thumbnails for larger galleries */}
+                      {project.images.length > 5 && (
+                        <div className="mt-6">
+                          <p className="text-sm text-muted-foreground text-center mb-3">More images:</p>
+                          <div className="grid grid-cols-6 md:grid-cols-8 gap-3 justify-center max-w-lg mx-auto">
+                            {project.images.slice(4).map((image, index) => (
+                              <button
+                                key={index + 4}
+                                onClick={() => setCurrentImageIndex(index + 4)}
+                                className={`group relative w-14 h-10 rounded-md overflow-hidden bg-muted dark:bg-gray-800 transition-all duration-200 border ${
+                                  index + 4 === currentImageIndex
+                                    ? 'border-primary scale-110'
+                                    : 'border-gray-200 hover:border-primary/50 opacity-70 hover:opacity-100 hover:scale-105 dark:border-gray-700'
+                                }`}
+                              >
+                                <Image
+                                  src={image || "/placeholder.svg"}
+                                  alt={`Thumbnail ${index + 5}`}
+                                  fill
+                                  className="object-cover transition-transform duration-200 group-hover:scale-110"
+                                />
+                                {/* Subtle gradient overlay */}
+                                <div className="absolute inset-0 bg-gradient-to-t from-black/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
+
+                                {/* Active state indicator */}
+                                {index + 4 === currentImageIndex && (
+                                  <div className="absolute inset-0 bg-primary/15 rounded-md" />
+                                )}
+
+                                {/* Image number indicator */}
+                                <div className={`absolute bottom-0.5 right-0.5 w-4 h-4 rounded-full flex items-center justify-center text-xs font-bold transition-all duration-200 ${
+                                  index + 4 === currentImageIndex
+                                    ? 'bg-primary text-white'
+                                    : 'bg-black/60 text-white opacity-0 group-hover:opacity-100'
+                                }`}>
+                                  {index + 5}
+                                </div>
+                              </button>
                 ))}
               </div>
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-foreground">{project.title}</h1>
-              <p className="text-lg sm:text-xl text-muted-foreground leading-relaxed">{project.description}</p>
-
-              {/* Project Meta */}
-              <div className="flex flex-wrap gap-6 pt-4 text-sm">
-                <div className="flex items-center gap-2">
-                  <Calendar className="h-4 w-4 text-muted-foreground" />
-                  <span className="text-muted-foreground">Duration:</span>
-                  <span className="font-semibold text-foreground">{project.duration}</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <Users className="h-4 w-4 text-muted-foreground" />
-                  <span className="text-muted-foreground">Team:</span>
-                  <span className="font-semibold text-foreground">{project.team}</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Hero Image */}
-        <section className="py-12">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="max-w-6xl mx-auto">
-              <div className="relative aspect-[16/9] rounded-2xl overflow-hidden bg-muted shadow-2xl">
-                <Image src={project.image || "/placeholder.svg"} alt={project.title} fill className="object-cover" />
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Challenge & Solution */}
-        <section className="py-20 lg:py-32">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="max-w-4xl mx-auto space-y-12">
-              <div>
-                <h2 className="text-3xl font-bold text-foreground mb-4">The Challenge</h2>
-                <p className="text-lg text-muted-foreground leading-relaxed">{project.challenge}</p>
-              </div>
-
-              <div>
-                <h2 className="text-3xl font-bold text-foreground mb-4">Our Solution</h2>
-                <p className="text-lg text-muted-foreground leading-relaxed">{project.solution}</p>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Results */}
-        <section className="py-20 lg:py-32 bg-muted/30">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="max-w-4xl mx-auto">
-              <div className="text-center mb-12">
-                <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">Results & Impact</h2>
-                <p className="text-lg text-muted-foreground">Measurable outcomes that matter</p>
-              </div>
-
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                {project.results.map((result, index) => (
-                  <Card key={index} className="border-border">
-                    <CardContent className="pt-6">
-                      <div className="flex items-start gap-4">
-                        <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
-                          <TrendingUp className="h-6 w-6 text-primary" />
                         </div>
-                        <div>
-                          <p className="text-sm text-muted-foreground mb-1">{result.metric}</p>
-                          <p className="text-3xl font-bold text-foreground mb-1">{result.value}</p>
-                          <p className="text-sm text-muted-foreground">{result.description}</p>
+                      )}
+                    </div>
+                  </div>
+                )}
+
+                {/* Project Overview */}
+                <div className="space-y-8">
+                  <div className="flex items-center gap-3">
+                    <Target className="h-5 w-5 text-primary" />
+                    <h2 className="text-2xl font-bold text-foreground">Project Overview</h2>
+                  </div>
+
+                  <div className="prose prose-xl max-w-none">
+                    <p className="text-lg text-muted-foreground leading-relaxed">
+                      {project.challenge}
+                    </p>
+                  </div>
+                </div>
+
+                {/* Project Goals */}
+                <div className="space-y-6">
+                  <div className="flex items-center gap-3">
+                    <CheckCircle className="h-5 w-5 text-primary" />
+                    <h2 className="text-2xl font-bold text-foreground">Project Goals</h2>
+                  </div>
+
+                  <div className="grid gap-4">
+                    <Card className="border-border/50 bg-card/30">
+                      <CardContent className="p-6">
+                        <h3 className="font-semibold text-foreground mb-3">For Companies</h3>
+                        <ul className="space-y-3 text-base text-muted-foreground">
+                          <li>• Easy onboarding to set up company profile</li>
+                          <li>• Create, publish and edit job postings</li>
+                          <li>• Manage incoming applications and review candidate details</li>
+                          <li>• Mark favorite applicants for future consideration</li>
+                        </ul>
+                      </CardContent>
+                    </Card>
+
+                    <Card className="border-border/50 bg-card/30">
+                      <CardContent className="p-6">
+                        <h3 className="font-semibold text-foreground mb-3">For Job Seekers</h3>
+                        <ul className="space-y-3 text-base text-muted-foreground">
+                          <li>• Build professional profile and upload resume</li>
+                          <li>• Browse open job postings and apply directly</li>
+                          <li>• Save favorite job postings for quick access</li>
+                          <li>• View application history and track application status</li>
+                        </ul>
+                      </CardContent>
+                    </Card>
+                  </div>
+                </div>
+
+                {/* Key Features */}
+                <div className="space-y-6">
+                  <h2 className="text-2xl font-bold text-foreground">Key Features</h2>
+
+                  <div className="grid gap-6">
+                    <Card className="border-border/50">
+                      <CardContent className="p-6">
+                        <div className="flex items-start gap-4">
+                          <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
+                            <Users className="h-5 w-5 text-primary" />
+                          </div>
+                          <div>
+                            <h3 className="font-semibold text-foreground mb-3">User Experience</h3>
+                            <p className="text-base text-muted-foreground">
+                              Intuitive design with seamless navigation and responsive layout across all devices
+                            </p>
+                          </div>
                         </div>
+                      </CardContent>
+                    </Card>
+
+                    <Card className="border-border/50">
+                      <CardContent className="p-6">
+                        <div className="flex items-start gap-4">
+                          <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
+                            <Zap className="h-5 w-5 text-primary" />
+                          </div>
+                          <div>
+                            <h3 className="font-semibold text-foreground mb-3">Performance</h3>
+                            <p className="text-base text-muted-foreground">
+                              Optimized for speed with efficient database queries and caching strategies
+                            </p>
+                          </div>
+                        </div>
+                      </CardContent>
+                    </Card>
+                  </div>
+                </div>
+
+                {/* Built With Modern Technologies */}
+                <div className="space-y-6">
+                  <h2 className="text-2xl font-bold text-foreground">Built With Modern Technologies</h2>
+
+                  <div className="prose prose-xl max-w-none">
+                    <p className="text-lg text-muted-foreground leading-relaxed mb-6">
+                      {project.solution}
+                    </p>
+                  </div>
+
+                  <div className="grid gap-4">
+                    <Card className="border-border/50 bg-card/30">
+                      <CardContent className="p-6">
+                        <h3 className="font-semibold text-foreground mb-4">Frontend - Next.js with Setup</h3>
+                        <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+                          <Badge variant="outline" className="justify-center">Next.js</Badge>
+                          <Badge variant="outline" className="justify-center">React</Badge>
+                          <Badge variant="outline" className="justify-center">TypeScript</Badge>
+                          <Badge variant="outline" className="justify-center">Tailwind</Badge>
+                        </div>
+                      </CardContent>
+                    </Card>
+
+                    <Card className="border-border/50 bg-card/30">
+                      <CardContent className="p-6">
+                        <h3 className="font-semibold text-foreground mb-4">Backend - Node.js Connected to a Database</h3>
+                        <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+                          <Badge variant="outline" className="justify-center">Node.js</Badge>
+                          <Badge variant="outline" className="justify-center">Express</Badge>
+                          <Badge variant="outline" className="justify-center">MongoDB</Badge>
+                          <Badge variant="outline" className="justify-center">REST API</Badge>
+                        </div>
+                      </CardContent>
+                    </Card>
+                  </div>
+                </div>
+
+                {/* Why Hireek */}
+                <div className="space-y-6">
+                  <h2 className="text-2xl font-bold text-foreground">Why Hireek?</h2>
+
+                  <div className="prose prose-xl max-w-none">
+                    <p className="text-lg text-muted-foreground leading-relaxed">
+                      Hireek isn't a one-size-fits-all — it's a comprehensive recruitment solution designed specifically for tech companies. We built this platform from the ground up to address the unique challenges of hiring in the technology sector, where both companies and job seekers need more than just a job board.
+                    </p>
+                    <p className="text-lg text-muted-foreground leading-relaxed">
+                      Whether you're a startup looking to build your team or a job seeker searching for the perfect role, Hireek provides the tools and insights you need to make informed decisions and find the right match.
+                    </p>
+                  </div>
+                </div>
+
+                {/* Results & Impact */}
+                <div className="space-y-6">
+                  <div className="flex items-center gap-3">
+                    <TrendingUp className="h-5 w-5 text-primary" />
+                    <h2 className="text-2xl font-bold text-foreground">Results & Impact</h2>
+                  </div>
+
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    {project.results.map((result, index) => (
+                      <Card key={index} className="group relative overflow-hidden border border-gray-200 dark:border-gray-700 bg-card/50 backdrop-blur-sm transition-all duration-300 hover:-translate-y-1">
+                        {/* Gradient overlay on hover */}
+                        <div className="absolute inset-0 bg-gradient-to-br from-primary/0 via-primary/0 to-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+
+                        <CardContent className="p-5 text-center relative z-10">
+                          <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-primary/10 to-primary/20 flex items-center justify-center mx-auto mb-3 group-hover:scale-110 transition-transform duration-300">
+                            <TrendingUp className="h-5 w-5 text-primary" />
+                          </div>
+                          <p className="text-xl sm:text-2xl font-bold text-foreground mb-2 group-hover:text-primary transition-colors duration-300">{result.value}</p>
+                          <p className="text-base font-semibold text-muted-foreground mb-2 uppercase tracking-wide">{result.metric}</p>
+                          <p className="text-sm text-muted-foreground leading-relaxed">{result.description}</p>
+                        </CardContent>
+                      </Card>
+                    ))}
+                  </div>
+                </div>
+              </div>
+
+              {/* Sidebar */}
+              <div className="space-y-8 lg:sticky lg:top-8 lg:self-start">
+                {/* Quick Actions */}
+                <Card>
+                  <CardHeader>
+                    <CardTitle className="text-lg">Quick Actions</CardTitle>
+                  </CardHeader>
+                  <CardContent className="space-y-4">
+                    <Button className="w-full justify-start gap-3" size="lg">
+                      <ExternalLink className="h-4 w-4" />
+                      View Live Demo
+                    </Button>
+                    <Button variant="outline" className="w-full justify-start gap-3" size="lg">
+                      <Github className="h-4 w-4" />
+                      View Source Code
+                    </Button>
+                    <Button variant="outline" className="w-full justify-start gap-3" size="lg">
+                      <Download className="h-4 w-4" />
+                      Download Case Study
+                    </Button>
+                    <Button variant="outline" className="w-full justify-start gap-3" size="lg">
+                      <Share2 className="h-4 w-4" />
+                      Share Project
+                    </Button>
+                    <Button variant="outline" className="w-full justify-start gap-3" size="lg">
+                      <BookmarkPlus className="h-4 w-4" />
+                      Save for Later
+                    </Button>
+                  </CardContent>
+                </Card>
+
+                {/* Project Details */}
+                <Card>
+                  <CardHeader>
+                    <CardTitle className="text-lg">Project Details</CardTitle>
+                  </CardHeader>
+                  <CardContent className="space-y-4">
+                    <div className="flex items-center gap-3">
+                      <Calendar className="h-4 w-4 text-muted-foreground" />
+                      <div>
+                        <p className="text-sm text-muted-foreground">Duration</p>
+                        <p className="font-semibold">{project.duration}</p>
+                      </div>
+                    </div>
+                    <div className="flex items-center gap-3">
+                      <Users className="h-4 w-4 text-muted-foreground" />
+                      <div>
+                        <p className="text-sm text-muted-foreground">Team Size</p>
+                        <p className="font-semibold">{project.team}</p>
+                      </div>
+                    </div>
+                    <div className="flex items-center gap-3">
+                      <Building className="h-4 w-4 text-muted-foreground" />
+                      <div>
+                        <p className="text-sm text-muted-foreground">Client</p>
+                        <p className="font-semibold">{project.client}</p>
+            </div>
+          </div>
+                  </CardContent>
+                </Card>
+
+                {/* Project Rating */}
+                <Card>
+                  <CardHeader>
+                    <CardTitle className="text-lg">Project Rating</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="space-y-4">
+                      <div className="flex items-center gap-2">
+                        {[...Array(5)].map((_, i) => (
+                          <Star key={i} className="h-5 w-5 fill-yellow-400 text-yellow-400 dark:fill-yellow-500 dark:text-yellow-500" />
+                        ))}
+                        <span className="text-2xl font-bold ml-2">4.8</span>
+                      </div>
+                      <div className="space-y-2">
+                        <div className="flex items-center justify-between text-sm">
+                          <span>Functionality</span>
+                          <span>95%</span>
+                        </div>
+                        <div className="w-full bg-muted rounded-full h-2">
+                          <div className="bg-primary h-2 rounded-full" style={{ width: '95%' }}></div>
+                        </div>
+                        <div className="flex items-center justify-between text-sm">
+                          <span>Design</span>
+                          <span>90%</span>
+                        </div>
+                        <div className="w-full bg-muted rounded-full h-2">
+                          <div className="bg-primary h-2 rounded-full" style={{ width: '90%' }}></div>
+                        </div>
+                        <div className="flex items-center justify-between text-sm">
+                          <span>Performance</span>
+                          <span>88%</span>
+                        </div>
+                        <div className="w-full bg-muted rounded-full h-2">
+                          <div className="bg-primary h-2 rounded-full" style={{ width: '88%' }}></div>
+              </div>
+            </div>
+          </div>
+                  </CardContent>
+                </Card>
+
+                {/* Technologies Used */}
+                <div className="space-y-6">
+                  <div className="flex items-center gap-3">
+                    <Layers className="h-5 w-5 text-primary" />
+                    <h2 className="text-2xl font-bold text-foreground">Technologies Used</h2>
+                  </div>
+
+                  <div className="flex flex-wrap gap-3">
+                    {project.technologies.map((tech) => (
+                      <Badge
+                        key={tech}
+                        variant="outline"
+                        className="bg-primary/5 text-primary border-primary/20 hover:bg-primary/10 px-4 py-2 text-sm font-medium transition-colors"
+                      >
+                        {tech}
+                      </Badge>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Testimonial */}
+                {project.testimonial && (
+                  <Card className="bg-primary/5 border-primary/20">
+                    <CardContent className="p-6">
+                      <Quote className="h-8 w-8 text-primary mb-4" />
+                      <p className="text-foreground mb-4 italic">"{project.testimonial.quote}"</p>
+              <div>
+                        <p className="font-semibold text-foreground">{project.testimonial.author}</p>
+                        <p className="text-sm text-muted-foreground">{project.testimonial.role}</p>
                       </div>
                     </CardContent>
                   </Card>
-                ))}
+                )}
               </div>
             </div>
           </div>
-        </section>
+        </div>
 
-        {/* Technologies */}
-        <section className="py-20 lg:py-32">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="max-w-4xl mx-auto">
-              <h2 className="text-3xl font-bold text-foreground mb-8 text-center">Technologies Used</h2>
-              <div className="flex flex-wrap justify-center gap-4">
-                {project.technologies.map((tech) => (
-                  <Badge key={tech} variant="outline" className="text-base px-4 py-2">
-                    {tech}
-                  </Badge>
-                ))}
-              </div>
-            </div>
-          </div>
-        </section>
 
-        {/* Testimonial */}
-        {project.testimonial && (
-          <section className="py-20 lg:py-32 bg-muted/30">
-            <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-              <div className="max-w-3xl mx-auto">
-                <Card className="border-border">
-                  <CardContent className="pt-8 pb-8">
-                    <p className="text-xl text-foreground leading-relaxed mb-6 italic">"{project.testimonial.quote}"</p>
-                    <div>
-                      <p className="font-semibold text-foreground">{project.testimonial.author}</p>
-                      <p className="text-sm text-muted-foreground">{project.testimonial.role}</p>
-                    </div>
-                  </CardContent>
-                </Card>
-              </div>
-            </div>
-          </section>
-        )}
-
-        {/* CTA */}
+        {/* CTA Section */}
         <section className="py-20 lg:py-32">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto bg-primary text-primary-foreground rounded-2xl p-12 text-center space-y-6">
-              <h2 className="text-3xl sm:text-4xl font-bold">Want Similar Results?</h2>
+              <h2 className="text-3xl sm:text-4xl font-bold">Ready to Start Your Project?</h2>
               <p className="text-lg text-primary-foreground/90 max-w-2xl mx-auto">
-                Let's discuss how we can help you achieve your business goals with a custom solution.
+                Let's discuss how we can help you achieve similar results with a custom solution.
               </p>
               <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
-                <Button size="lg" variant="secondary" asChild>
-                  <Link href="/contact">Start Your Project</Link>
+                <Button size="lg" variant="secondary" asChild className="dark:bg-white dark:text-black dark:hover:bg-white/85">
+                  <Link href="/contact">Get Started</Link>
                 </Button>
                 <Button
                   size="lg"
                   variant="outline"
                   asChild
-                  className="bg-transparent border-primary-foreground/20 text-primary-foreground hover:bg-primary-foreground/10"
+                  className="bg-transparent border-white/20 text-white hover:bg-white/10 hover:border-white/40 hover:text-white dark:border-white/20 dark:hover:bg-white/10 dark:hover:border-white/40"
                 >
-                  <Link href="/portfolio">View More Projects</Link>
+                  <Link href="/portfolio">View More Work</Link>
                 </Button>
               </div>
             </div>
