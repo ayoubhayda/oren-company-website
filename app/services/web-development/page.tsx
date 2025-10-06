@@ -201,7 +201,7 @@ export default function WebDevelopmentPage() {
 
         {/* What You Get */}
         <section className="py-20 lg:py-32">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             {/* Section Header */}
             <div className="max-w-3xl mx-auto text-center mb-16">
               {/* Header Badge */}
@@ -280,7 +280,7 @@ export default function WebDevelopmentPage() {
 
         {/* Technologies */}
         <section className="py-20 lg:py-32 bg-muted/30">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             {/* Section Header */}
             <div className="max-w-3xl mx-auto text-center mb-16">
               {/* Header Badge */}
@@ -334,7 +334,7 @@ export default function WebDevelopmentPage() {
 
         {/* Process */}
         <section className="py-20 lg:py-32">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             {/* Section Header */}
             <div className="max-w-3xl mx-auto text-center mb-16">
               {/* Header Badge */}
@@ -403,7 +403,7 @@ export default function WebDevelopmentPage() {
 
         {/* FAQ */}
         <section className="py-20 lg:py-32 bg-muted/30">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             {/* Section Header */}
             <div className="max-w-3xl mx-auto text-center mb-16">
               {/* Header Badge */}
@@ -481,7 +481,7 @@ export default function WebDevelopmentPage() {
 
         {/* CTA */}
         <section className="py-20 lg:py-32">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto bg-primary text-primary-foreground rounded-2xl p-12 text-center space-y-6">
               <h2 className="text-3xl sm:text-4xl font-bold">{t("services.web-dev.cta.title")}</h2>
               <p className="text-lg text-primary-foreground/90 max-w-2xl mx-auto">
