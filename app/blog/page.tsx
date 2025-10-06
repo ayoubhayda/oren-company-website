@@ -9,10 +9,16 @@ import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
-import { Calendar, Clock, Search } from "lucide-react"
+import { Calendar, Clock, Search, Zap, ArrowRight } from "lucide-react"
 import { useLanguage } from "@/components/language-provider"
 
-const categories = ["All", "Web Development", "Design", "Marketing", "Technology"]
+const categories = [
+  { key: "all", label: "All" },
+  { key: "webdev", label: "Web Development" },
+  { key: "design", label: "Design" },
+  { key: "marketing", label: "Marketing" },
+  { key: "technology", label: "Technology" }
+]
 
 const posts = [
   {
@@ -79,12 +85,12 @@ const posts = [
 ]
 
 export default function BlogPage() {
-  const [selectedCategory, setSelectedCategory] = useState("All")
+  const [selectedCategory, setSelectedCategory] = useState("all")
   const [searchQuery, setSearchQuery] = useState("")
   const { t } = useLanguage()
 
   const filteredPosts = posts.filter((post) => {
-    const matchesCategory = selectedCategory === "All" || post.category === selectedCategory
+    const matchesCategory = selectedCategory === "all" || post.category.toLowerCase() === selectedCategory
     const matchesSearch =
       searchQuery === "" ||
       post.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -97,30 +103,61 @@ export default function BlogPage() {
       <Header />
       <main>
         {/* Hero Section */}
-        <section className="pt-32 pb-20 lg:pt-40 lg:pb-32 bg-gradient-to-b from-muted/50 to-background">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="max-w-3xl mx-auto text-center space-y-6">
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-foreground">Blog & Insights</h1>
-              <p className="text-lg sm:text-xl text-muted-foreground leading-relaxed">
-                Expert insights, tutorials, and industry trends to help you stay ahead in the digital world
+        <section className="relative h-screen flex items-center overflow-hidden">
+          {/* Subtle gradient background */}
+          <div className="absolute inset-0 bg-gradient-to-b from-primary/5 via-background to-background" />
+
+          <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto text-center space-y-8">
+              {/* Badge */}
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 text-sm font-medium text-primary backdrop-blur-sm">
+                <span className="relative flex h-2 w-2">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
+                </span>
+                {t("blog.hero.badge")}
+              </div>
+
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold text-foreground tracking-tight">
+                {t("blog.hero.title")}
+                <span className="block text-primary mt-2">{t("blog.hero.titleHighlight")}</span>
+              </h1>
+
+              <p className="text-lg sm:text-xl text-muted-foreground leading-relaxed max-w-2xl mx-auto">
+                {t("blog.hero.subtitle")}
               </p>
+
+              {/* CTA Buttons */}
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
+                <Button size="lg" asChild className="group">
+                  <Link href="#blog-posts">
+                    {t("blog.hero.cta.primary")}
+                    <ArrowRight className="ms-2 h-4 w-4" />
+                  </Link>
+                </Button>
+                <Button size="lg" variant="outline" asChild className="bg-transparent hover:bg-primary/5">
+                  <Link href="/contact">
+                    {t("blog.hero.cta.contact")}
+                  </Link>
+                </Button>
+              </div>
             </div>
           </div>
         </section>
 
         {/* Search & Filter */}
-        <section className="py-12 border-b border-border">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <section className="py-12">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto space-y-6">
               {/* Search */}
               <div className="relative">
-                <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+                <Search className="absolute left-3 rtl:right-3 rtl:left-auto top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
                 <Input
                   type="text"
                   placeholder={t("blog.searchPlaceholder")}
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  className="pl-10"
+                  className="pl-10 rtl:pr-10 rtl:pl-3"
                 />
               </div>
 
@@ -128,12 +165,12 @@ export default function BlogPage() {
               <div className="flex flex-wrap justify-center gap-3">
                 {categories.map((category) => (
                   <Button
-                    key={category}
-                    variant={selectedCategory === category ? "default" : "outline"}
-                    onClick={() => setSelectedCategory(category)}
+                    key={category.key}
+                    variant={selectedCategory === category.key ? "default" : "outline"}
+                    onClick={() => setSelectedCategory(category.key)}
                     className="rounded-full"
                   >
-                    {category}
+                    {t(`blog.category.${category.key}`)}
                   </Button>
                 ))}
               </div>
@@ -142,8 +179,8 @@ export default function BlogPage() {
         </section>
 
         {/* Blog Posts */}
-        <section className="py-20 lg:py-32">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <section id="blog-posts" className="py-20 lg:py-32">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {filteredPosts.map((post) => (
                 <Link key={post.id} href={`/blog/${post.id}`} className="group">
@@ -179,7 +216,7 @@ export default function BlogPage() {
                         </div>
                         <div className="flex items-center gap-1">
                           <Clock className="h-3 w-3" />
-                          <span>{post.readTime}</span>
+                          <span>{post.readTime.replace("min read", t("blog.readTime"))}</span>
                         </div>
                       </div>
                     </CardContent>
@@ -191,7 +228,12 @@ export default function BlogPage() {
             {/* Empty State */}
             {filteredPosts.length === 0 && (
               <div className="text-center py-12">
-                <p className="text-muted-foreground">No articles found matching your criteria.</p>
+                <p className="text-muted-foreground">
+                  {searchQuery
+                    ? `${t("blog.empty.search")} "${searchQuery}"`
+                    : t("blog.empty.title")
+                  }
+                </p>
               </div>
             )}
           </div>
@@ -199,12 +241,11 @@ export default function BlogPage() {
 
         {/* Newsletter */}
         <section className="py-20 lg:py-32 bg-muted/30">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-2xl mx-auto text-center space-y-6">
-              <h2 className="text-3xl sm:text-4xl font-bold text-foreground">Stay Updated</h2>
+              <h2 className="text-3xl sm:text-4xl font-bold text-foreground">{t("blog.newsletter.title")}</h2>
               <p className="text-lg text-muted-foreground">
-                Subscribe to our newsletter for the latest insights, tutorials, and industry news delivered to your
-                inbox.
+                {t("blog.newsletter.description")}
               </p>
               <div className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
                 <Input type="email" placeholder={t("footer.emailPlaceholder")} className="flex-1" />

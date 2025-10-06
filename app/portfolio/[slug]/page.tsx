@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Separator } from "@/components/ui/separator"
-import { ArrowLeft, ArrowRight, Calendar, Users, Building, Clock, Target, Zap, CheckCircle, Quote, Image as ImageIcon, Layers, TrendingUp, Star, Github, ExternalLink, Download, Share2, BookmarkPlus, ChevronLeft, ChevronRight } from "lucide-react"
+import { ArrowLeft, ArrowRight, Calendar, Users, Building, Clock, Target, Zap, Quote, Image as ImageIcon, Layers, Star, Github, ExternalLink, Share2, ChevronLeft, ChevronRight } from "lucide-react"
 import Link from "next/link"
 import Image from "next/image"
 import { notFound } from "next/navigation"
@@ -331,7 +331,7 @@ export default function ProjectPage({ params }: { params: Promise<{ slug: string
     <div className="min-h-screen bg-background">
       <Header />
       <main className="pt-24">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Navigation */}
             <div className="mb-8">
             <Button variant="ghost" asChild className="group">
@@ -530,45 +530,12 @@ export default function ProjectPage({ params }: { params: Promise<{ slug: string
                   </div>
                 </div>
 
-                {/* Project Goals */}
-                <div className="space-y-6">
-                  <div className="flex items-center gap-3">
-                    <CheckCircle className="h-5 w-5 text-primary" />
-                    <h2 className="text-2xl font-bold text-foreground">Project Goals</h2>
-                  </div>
-
-                  <div className="grid gap-4">
-                    <Card className="border-border/50 bg-card/30">
-                      <CardContent className="p-6">
-                        <h3 className="font-semibold text-foreground mb-3">For Companies</h3>
-                        <ul className="space-y-3 text-base text-muted-foreground">
-                          <li>• Easy onboarding to set up company profile</li>
-                          <li>• Create, publish and edit job postings</li>
-                          <li>• Manage incoming applications and review candidate details</li>
-                          <li>• Mark favorite applicants for future consideration</li>
-                        </ul>
-                      </CardContent>
-                    </Card>
-
-                    <Card className="border-border/50 bg-card/30">
-                      <CardContent className="p-6">
-                        <h3 className="font-semibold text-foreground mb-3">For Job Seekers</h3>
-                        <ul className="space-y-3 text-base text-muted-foreground">
-                          <li>• Build professional profile and upload resume</li>
-                          <li>• Browse open job postings and apply directly</li>
-                          <li>• Save favorite job postings for quick access</li>
-                          <li>• View application history and track application status</li>
-                        </ul>
-                      </CardContent>
-                    </Card>
-                  </div>
-                </div>
 
                 {/* Key Features */}
                 <div className="space-y-6">
                   <h2 className="text-2xl font-bold text-foreground">Key Features</h2>
 
-                  <div className="grid gap-6">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <Card className="border-border/50">
                       <CardContent className="p-6">
                         <div className="flex items-start gap-4">
@@ -600,89 +567,47 @@ export default function ProjectPage({ params }: { params: Promise<{ slug: string
                         </div>
                       </CardContent>
                     </Card>
-                  </div>
-                </div>
 
-                {/* Built With Modern Technologies */}
-                <div className="space-y-6">
-                  <h2 className="text-2xl font-bold text-foreground">Built With Modern Technologies</h2>
-
-                  <div className="prose prose-xl max-w-none">
-                    <p className="text-lg text-muted-foreground leading-relaxed mb-6">
-                      {project.solution}
-                    </p>
-                  </div>
-
-                  <div className="grid gap-4">
-                    <Card className="border-border/50 bg-card/30">
+                    <Card className="border-border/50">
                       <CardContent className="p-6">
-                        <h3 className="font-semibold text-foreground mb-4">Frontend - Next.js with Setup</h3>
-                        <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
-                          <Badge variant="outline" className="justify-center">Next.js</Badge>
-                          <Badge variant="outline" className="justify-center">React</Badge>
-                          <Badge variant="outline" className="justify-center">TypeScript</Badge>
-                          <Badge variant="outline" className="justify-center">Tailwind</Badge>
-                        </div>
-                      </CardContent>
-                    </Card>
-
-                    <Card className="border-border/50 bg-card/30">
-                      <CardContent className="p-6">
-                        <h3 className="font-semibold text-foreground mb-4">Backend - Node.js Connected to a Database</h3>
-                        <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
-                          <Badge variant="outline" className="justify-center">Node.js</Badge>
-                          <Badge variant="outline" className="justify-center">Express</Badge>
-                          <Badge variant="outline" className="justify-center">MongoDB</Badge>
-                          <Badge variant="outline" className="justify-center">REST API</Badge>
-                        </div>
-                      </CardContent>
-                    </Card>
-                  </div>
-                </div>
-
-                {/* Why Hireek */}
-                <div className="space-y-6">
-                  <h2 className="text-2xl font-bold text-foreground">Why Hireek?</h2>
-
-                  <div className="prose prose-xl max-w-none">
-                    <p className="text-lg text-muted-foreground leading-relaxed">
-                      Hireek isn't a one-size-fits-all — it's a comprehensive recruitment solution designed specifically for tech companies. We built this platform from the ground up to address the unique challenges of hiring in the technology sector, where both companies and job seekers need more than just a job board.
-                    </p>
-                    <p className="text-lg text-muted-foreground leading-relaxed">
-                      Whether you're a startup looking to build your team or a job seeker searching for the perfect role, Hireek provides the tools and insights you need to make informed decisions and find the right match.
-                    </p>
-                  </div>
-                </div>
-
-                {/* Results & Impact */}
-                <div className="space-y-6">
-                  <div className="flex items-center gap-3">
-                    <TrendingUp className="h-5 w-5 text-primary" />
-                    <h2 className="text-2xl font-bold text-foreground">Results & Impact</h2>
-                  </div>
-
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                    {project.results.map((result, index) => (
-                      <Card key={index} className="group relative overflow-hidden border border-gray-200 dark:border-gray-700 bg-card/50 backdrop-blur-sm transition-all duration-300 hover:-translate-y-1">
-                        {/* Gradient overlay on hover */}
-                        <div className="absolute inset-0 bg-gradient-to-br from-primary/0 via-primary/0 to-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-
-                        <CardContent className="p-5 text-center relative z-10">
-                          <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-primary/10 to-primary/20 flex items-center justify-center mx-auto mb-3 group-hover:scale-110 transition-transform duration-300">
-                            <TrendingUp className="h-5 w-5 text-primary" />
+                        <div className="flex items-start gap-4">
+                          <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
+                            <Target className="h-5 w-5 text-primary" />
                           </div>
-                          <p className="text-xl sm:text-2xl font-bold text-foreground mb-2 group-hover:text-primary transition-colors duration-300">{result.value}</p>
-                          <p className="text-base font-semibold text-muted-foreground mb-2 uppercase tracking-wide">{result.metric}</p>
-                          <p className="text-sm text-muted-foreground leading-relaxed">{result.description}</p>
-                        </CardContent>
-                      </Card>
-                    ))}
+                          <div>
+                            <h3 className="font-semibold text-foreground mb-3">Reliability</h3>
+                            <p className="text-base text-muted-foreground">
+                              Robust architecture with 99.9% uptime and comprehensive error handling
+                            </p>
+                          </div>
+                        </div>
+                      </CardContent>
+                    </Card>
+
+                    <Card className="border-border/50">
+                      <CardContent className="p-6">
+                        <div className="flex items-start gap-4">
+                          <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
+                            <Layers className="h-5 w-5 text-primary" />
+                          </div>
+                          <div>
+                            <h3 className="font-semibold text-foreground mb-3">Scalability</h3>
+                            <p className="text-base text-muted-foreground">
+                              Built to grow with your business, handling increased traffic and data seamlessly
+                            </p>
+                          </div>
+                        </div>
+                      </CardContent>
+                    </Card>
                   </div>
                 </div>
+
+
+
               </div>
 
               {/* Sidebar */}
-              <div className="space-y-8 lg:sticky lg:top-8 lg:self-start">
+              <div className="space-y-8">
                 {/* Quick Actions */}
                 <Card>
                   <CardHeader>
@@ -698,16 +623,8 @@ export default function ProjectPage({ params }: { params: Promise<{ slug: string
                       View Source Code
                     </Button>
                     <Button variant="outline" className="w-full justify-start gap-3" size="lg">
-                      <Download className="h-4 w-4" />
-                      Download Case Study
-                    </Button>
-                    <Button variant="outline" className="w-full justify-start gap-3" size="lg">
                       <Share2 className="h-4 w-4" />
                       Share Project
-                    </Button>
-                    <Button variant="outline" className="w-full justify-start gap-3" size="lg">
-                      <BookmarkPlus className="h-4 w-4" />
-                      Save for Later
                     </Button>
                   </CardContent>
                 </Card>
@@ -823,7 +740,7 @@ export default function ProjectPage({ params }: { params: Promise<{ slug: string
 
         {/* CTA Section */}
         <section className="py-20 lg:py-32">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto bg-primary text-primary-foreground rounded-2xl p-12 text-center space-y-6">
               <h2 className="text-3xl sm:text-4xl font-bold">Ready to Start Your Project?</h2>
               <p className="text-lg text-primary-foreground/90 max-w-2xl mx-auto">

@@ -1,3 +1,5 @@
+"use client"
+
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import { Button } from "@/components/ui/button"
@@ -8,6 +10,7 @@ import { ArrowLeft, Calendar, Clock, Share2 } from "lucide-react"
 import Link from "next/link"
 import Image from "next/image"
 import { notFound } from "next/navigation"
+import { useLanguage } from "@/components/language-provider"
 
 // Mock data - in a real app, this would come from a CMS or database
 const posts: Record<
@@ -416,6 +419,7 @@ const posts: Record<
 
 export default function BlogPostPage({ params }: { params: { slug: string } }) {
   const post = posts[params.slug]
+  const { t } = useLanguage()
 
   if (!post) {
     notFound()
@@ -427,12 +431,12 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
       <main>
         {/* Hero Section */}
         <section className="pt-32 pb-12 lg:pt-40 lg:pb-20 bg-gradient-to-b from-muted/50 to-background">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="mb-8">
               <Button variant="ghost" asChild>
                 <Link href="/blog">
                   <ArrowLeft className="mr-2 h-4 w-4" />
-                  Back to Blog
+                  {t("blog.backToBlog")}
                 </Link>
               </Button>
             </div>
@@ -467,12 +471,12 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
                   </div>
                   <div className="flex items-center gap-1">
                     <Clock className="h-4 w-4" />
-                    <span>{post.readTime}</span>
+                          <span>{post.readTime.replace("min read", t("blog.readTime"))}</span>
                   </div>
                 </div>
                 <Button variant="outline" size="sm" className="ml-auto bg-transparent">
                   <Share2 className="h-4 w-4 mr-2" />
-                  Share
+                  {t("blog.shareArticle")}
                 </Button>
               </div>
             </div>
@@ -481,7 +485,7 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
 
         {/* Featured Image */}
         <section className="py-12">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
               <div className="relative aspect-[16/9] rounded-2xl overflow-hidden bg-muted shadow-2xl">
                 <Image src={post.image || "/placeholder.svg"} alt={post.title} fill className="object-cover" />
@@ -492,7 +496,7 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
 
         {/* Content */}
         <section className="py-20 lg:py-32">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-3xl mx-auto">
               <div
                 className="prose prose-lg dark:prose-invert max-w-none"
@@ -505,9 +509,9 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
         {/* Related Posts */}
         {post.relatedPosts && post.relatedPosts.length > 0 && (
           <section className="py-20 lg:py-32 bg-muted/30">
-            <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
               <div className="max-w-4xl mx-auto">
-                <h2 className="text-3xl font-bold text-foreground mb-8">Related Articles</h2>
+                <h2 className="text-3xl font-bold text-foreground mb-8">{t("blog.relatedArticles")}</h2>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                   {post.relatedPosts.map((relatedPost) => (
                     <Link key={relatedPost.id} href={`/blog/${relatedPost.id}`} className="group">

@@ -66,7 +66,7 @@ export default function ServicesPage() {
       <Header />
       <main>
         {/* Hero Section - Enhanced */}
-        <section className="relative pt-32 pb-20 lg:pt-40 lg:pb-32 overflow-hidden">
+        <section className="relative h-screen flex items-center overflow-hidden">
           {/* Subtle gradient background */}
           <div className="absolute inset-0 bg-gradient-to-b from-primary/5 via-background to-background" />
 
@@ -98,12 +98,6 @@ export default function ServicesPage() {
                 </Button>
               </div>
 
-              {/* Hero CTA */}
-              <div className="inline-flex items-center gap-2 text-sm text-muted-foreground pt-8">
-                <div className="w-8 h-px bg-gradient-to-r rtl:bg-gradient-to-l from-transparent to-primary"></div>
-                <span>{t("services.hero.cta")}</span>
-                <div className="w-8 h-px bg-gradient-to-l rtl:bg-gradient-to-r from-transparent to-primary"></div>
-              </div>
             </div>
           </div>
         </section>
@@ -185,7 +179,7 @@ export default function ServicesPage() {
               <div className="inline-flex items-center gap-2 text-sm text-muted-foreground">
                 <div className="w-8 h-px bg-gradient-to-r rtl:bg-gradient-to-l from-transparent to-primary"></div>
                 <Link href="/contact" className="hover:text-primary transition-colors">
-                  {t("services.viewAllServices")}
+                  {t("services.hero.cta")}
                 </Link>
                 <div className="w-8 h-px bg-gradient-to-l rtl:bg-gradient-to-r from-transparent to-primary"></div>
               </div>
