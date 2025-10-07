@@ -14,6 +14,7 @@ import { Mail, Phone, MapPin, Send, Clock, MessageCircle, Zap } from "lucide-rea
 import { useState } from "react"
 import { useLanguage } from "@/components/language-provider"
 import { AnimatedSection, StaggerContainer, StaggerItem } from "@/components/animated-section"
+import SectionSeparator from "@/components/general/SectionSeparator"
 
 export default function ContactPage() {
   const { t } = useLanguage()
@@ -43,59 +44,45 @@ export default function ContactPage() {
       <main>
         {/* Hero Section */}
         <section className="relative h-screen flex items-center overflow-hidden">
-          {/* Animated Background */}
-          <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-background to-primary/10" />
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-primary/10 via-transparent to-transparent" />
+          {/* Subtle gradient background */}
+          <div className="absolute inset-0 bg-gradient-to-b from-primary/5 via-background to-background" />
 
-          {/* Floating Elements */}
-          <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-primary/5 rounded-full blur-3xl animate-pulse" />
-          <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-primary/3 rounded-full blur-3xl animate-pulse delay-1000" />
-
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
-            <AnimatedSection>
-              <div className="max-w-4xl mx-auto text-center space-y-8">
-                {/* Badge */}
-                <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 text-sm font-medium text-primary backdrop-blur-sm">
-                  <span className="relative flex h-2 w-2">
-                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
-                    <span className="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
-                  </span>
-{t("contact.hero.badge")}
-                </div>
-
-                <h1 className="text-4xl sm:text-5xl lg:text-7xl font-bold text-foreground leading-tight">
-                  {t("contact.hero.title").split(" ")[0]}{" "}
-                  <span className="bg-gradient-to-r from-primary via-primary/80 to-primary/60 bg-clip-text text-transparent">
-                    {t("contact.hero.title").split(" ")[1]}
-                  </span>
-                </h1>
-
-                <p className="text-lg sm:text-xl text-muted-foreground leading-relaxed max-w-2xl mx-auto">
-                  {t("contact.hero.subtitle")}
-                </p>
-
-                {/* CTA Buttons */}
-                <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
-                  <Button size="lg" asChild className="group">
-                    <a href="mailto:hello@oren.com">
-                      <Mail className="ms-2 h-4 w-4" />
-                      {t("contact.hero.cta.email")}
-                    </a>
-                  </Button>
-                  <Button size="lg" variant="outline" asChild className="bg-transparent hover:bg-primary/5">
-                    <a href="tel:+1234567890">
-                      <Phone className="ms-2 h-4 w-4" />
-                      {t("contact.hero.cta.call")}
-                    </a>
-                  </Button>
-                </div>
+          <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto text-center space-y-8">
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 text-primary text-sm font-medium">
+                <Zap className="w-4 h-4" />
+                <span>{t("contact.hero.badge")}</span>
               </div>
-            </AnimatedSection>
+
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold text-foreground tracking-tight">
+                {t("contact.hero.title")}
+                <span className="block text-primary mt-2">{t("contact.hero.title.highlight")}</span>
+              </h1>
+
+              <p className="text-lg sm:text-xl text-muted-foreground leading-relaxed max-w-2xl mx-auto">
+                {t("contact.hero.subtitle")}
+              </p>
+
+              <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
+                <Button size="lg" asChild className="text-base">
+                  <a href="mailto:hello@oren.com">
+                    {t("contact.hero.cta.email")}
+                    <Mail className="ms-0.5 h-5 w-5" />
+                  </a>
+                </Button>
+                <Button size="lg" variant="outline" asChild className="text-base">
+                  <a href="tel:+1234567890">{t("contact.hero.cta.call")}</a>
+                </Button>
+              </div>
+
+            </div>
           </div>
         </section>
 
+        <SectionSeparator />
+
         {/* Contact Form & Info */}
-        <section className="relative py-20 lg:py-32 bg-muted/30">
+        <section className="relative py-20 lg:py-32 bg-background">
           {/* Background Elements */}
           <div className="absolute inset-0 bg-gradient-to-b from-transparent via-primary/5 to-transparent" />
 

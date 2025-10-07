@@ -1,5 +1,6 @@
 "use client"
 
+import React from "react"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import { Button } from "@/components/ui/button"
@@ -32,33 +33,99 @@ const posts: Record<
     excerpt:
       "Explore the latest trends shaping web development, from AI integration to progressive web apps and beyond.",
     content: `
-      <p>The web development landscape continues to evolve at a rapid pace, with new technologies and methodologies emerging constantly. As we move through 2025, several key trends are shaping how we build and deploy web applications.</p>
+      <h1>Modern Web Development Trends in 2025: What's Shaping the Future of the Web</h1>
 
-      <h2>AI-Powered Development</h2>
-      <p>Artificial intelligence is no longer just a buzzword—it's becoming an integral part of the development process. From AI-assisted coding to automated testing and optimization, developers are leveraging AI tools to increase productivity and code quality.</p>
-      
-      <p>Tools like GitHub Copilot, ChatGPT, and specialized AI coding assistants are now standard in many development workflows. These tools help with code completion, bug detection, documentation generation, and even architectural decisions. The key is learning to work alongside AI rather than being replaced by it.</p>
+      <div class="lead">
+        <p>The web development landscape is evolving faster than ever. In 2025, developers and digital agencies are embracing new tools and technologies that prioritize <strong>speed, user experience, AI-integration, and sustainability</strong>. Whether you're a brand owner, developer, or designer, understanding these trends can help you stay competitive in a digital-first world.</p>
+      </div>
 
-      <h2>Progressive Web Apps (PWAs)</h2>
-      <p>PWAs continue to bridge the gap between web and native applications, offering offline functionality, push notifications, and app-like experiences directly through the browser. Major companies are investing heavily in PWA technology to reach users across all platforms.</p>
-      
-      <p>The latest PWA capabilities include improved offline support, better integration with device features, and enhanced performance. Companies like Twitter, Starbucks, and Uber have seen significant improvements in user engagement after adopting PWA technology.</p>
+      <section class="trend-section">
+        <h2>AI-Driven Development & Automation</h2>
+        <p>Artificial Intelligence is transforming the way websites are built and maintained. From <strong>AI-powered code generation</strong> tools like GitHub Copilot to <strong>personalized UX based on user behavior</strong>, automation is cutting development time and boosting creativity.</p>
+        <div class="trend-highlight">
+          <p><strong>Key Insight:</strong> AI chatbots and content assistants are now standard for websites, not luxuries.</p>
+        </div>
+      </section>
 
-      <h2>Edge Computing</h2>
-      <p>With the rise of edge computing, we're seeing faster, more responsive web applications. By processing data closer to the user, edge computing reduces latency and improves performance, especially for real-time applications.</p>
-      
-      <p>Platforms like Vercel Edge Functions and Cloudflare Workers are making it easier than ever to deploy code at the edge. This is particularly beneficial for applications that require low latency, such as gaming, video streaming, and real-time collaboration tools.</p>
+      <section class="trend-section">
+        <h2>Performance-First Architecture</h2>
+        <p>Google's focus on <strong>Core Web Vitals</strong> continues in 2025. Fast loading times, smooth interactivity, and visual stability are more important than ever. Developers are using <strong>Next.js 14, Astro, and Vite</strong> to build ultra-fast, performance-driven websites.</p>
+        <div class="trend-highlight">
+          <p><strong>Pro Tip:</strong> Optimize images, implement lazy loading, and leverage edge caching for global audiences.</p>
+        </div>
+      </section>
 
-      <h2>WebAssembly Growth</h2>
-      <p>WebAssembly (Wasm) is enabling high-performance applications in the browser, opening up new possibilities for web-based gaming, video editing, and complex computational tasks that were previously only possible with native applications.</p>
-      
-      <p>Languages like Rust, C++, and Go can now be compiled to WebAssembly, bringing near-native performance to web applications. This is revolutionizing industries like CAD software, scientific computing, and multimedia processing.</p>
+      <section class="trend-section">
+        <h2>Serverless & Edge Computing</h2>
+        <p>Serverless architecture and <strong>edge deployment</strong> are redefining scalability. Platforms like <strong>Vercel, Netlify, and Cloudflare Workers</strong> allow developers to deploy code closer to users, improving latency and performance dramatically.</p>
+        <p>This shift also reduces costs and simplifies backend infrastructure management.</p>
+      </section>
 
-      <h2>Serverless Architecture</h2>
-      <p>Serverless computing continues to gain traction, allowing developers to focus on code rather than infrastructure. This approach reduces operational overhead and scales automatically based on demand.</p>
+      <section class="trend-section">
+        <h2>Progressive Web Apps (PWAs) 2.0</h2>
+        <p>PWAs continue to blur the line between web and native mobile apps. In 2025, they support <strong>push notifications, offline access, and full-screen capabilities</strong> even better.</p>
+        <p>Brands use them to deliver app-like experiences without the cost of native development.</p>
+      </section>
 
-      <h2>Conclusion</h2>
-      <p>Staying current with these trends is essential for developers who want to build modern, efficient, and user-friendly web applications. The future of web development is exciting, with new possibilities emerging every day. By embracing these technologies and methodologies, developers can create better experiences for users while improving their own productivity and code quality.</p>
+      <section class="trend-section">
+        <h2>Motion UI & Interactive Design</h2>
+        <p>Static designs are out. Motion UI, <strong>micro-animations</strong>, and <strong>3D scroll effects</strong> are leading the way to immersive experiences. Tools like <strong>Framer Motion</strong> and <strong>GSAP</strong> make it easy to add personality and emotion to interfaces.</p>
+        <div class="trend-highlight warning">
+          <p><strong>Important:</strong> Motion should enhance UX — not overwhelm it.</p>
+        </div>
+      </section>
+
+      <section class="trend-section">
+        <h2>Sustainable Web Design</h2>
+        <p>Eco-friendly design is not just a buzzword. Websites are now optimized to <strong>consume less energy</strong>, using <strong>dark themes, minimal resources, and efficient code</strong>. Developers and agencies are prioritizing green hosting solutions to reduce carbon footprints.</p>
+      </section>
+
+      <section class="trend-section">
+        <h2>Security & Privacy by Design</h2>
+        <p>As users become more privacy-aware, <strong>secure authentication systems</strong>, <strong>zero-trust architecture</strong>, and <strong>encrypted APIs</strong> are now standard. Compliance with GDPR, CCPA, and global data policies remains a top priority for developers and brands.</p>
+      </section>
+
+      <section class="trend-section">
+        <h2>Low-Code Revolution</h2>
+        <p>Businesses want to move fast. Low-code and no-code tools like <strong>Webflow, Bubble, and Builder.io</strong> empower non-developers to create functional prototypes — while developers focus on integrations, performance, and custom logic.</p>
+      </section>
+
+      <section class="trend-section">
+        <h2>Headless & Composable Architecture</h2>
+        <p>Headless CMSs such as <strong>Strapi, Sanity, and Contentful</strong> dominate 2025, offering flexibility across devices and platforms. Paired with <strong>JAMstack</strong> and <strong>GraphQL</strong>, they enable faster content delivery and a seamless multi-channel experience.</p>
+      </section>
+
+      <section class="trend-section">
+        <h2>Web3 & Blockchain Integration</h2>
+        <p>Web3 adoption is rising with <strong>decentralized authentication, smart contracts</strong>, and <strong>digital ownership</strong> features. While still early for mainstream brands, more startups are exploring blockchain-based user identity and NFT-linked memberships.</p>
+      </section>
+
+      <section class="key-takeaways">
+        <h2>Key Takeaways</h2>
+        <div class="takeaways-grid">
+          <div class="takeaway-item">
+            <strong>AI Integration:</strong> Automation tools are becoming essential for faster development
+          </div>
+          <div class="takeaway-item">
+            <strong>Performance First:</strong> Core Web Vitals and optimization are non-negotiable
+          </div>
+          <div class="takeaway-item">
+            <strong>Sustainability:</strong> Green hosting and energy-efficient design matter
+          </div>
+          <div class="takeaway-item">
+            <strong>Flexibility:</strong> Headless and composable architectures offer better scalability
+          </div>
+        </div>
+      </section>
+
+      <section class="conclusion">
+        <h2>Looking Ahead</h2>
+        <p>Web development in 2025 is defined by <strong>AI, automation, and agility</strong>. The key is balancing <strong>performance, creativity, and sustainability</strong>. At MarketMedia.ma, we're already adopting these modern technologies to build faster, smarter, and future-proof websites for our clients.</p>
+
+        <div class="cta-box">
+          <p><strong>Ready to embrace these trends?</strong> <a href="/contact">Contact us</a> to discuss how we can help transform your web presence with cutting-edge technology.</p>
+        </div>
+      </section>
     `,
     image: "/placeholder.svg?key=blog1",
     category: "Web Development",
@@ -417,8 +484,9 @@ const posts: Record<
   },
 }
 
-export default function BlogPostPage({ params }: { params: { slug: string } }) {
-  const post = posts[params.slug]
+export default function BlogPostPage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = React.use(params)
+  const post = posts[slug]
   const { t } = useLanguage()
 
   if (!post) {
@@ -441,7 +509,7 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
               </Button>
             </div>
 
-            <div className="max-w-4xl mx-auto space-y-6">
+            <div className="space-y-6">
               <Badge variant="secondary">{post.category}</Badge>
               <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-foreground">{post.title}</h1>
               <p className="text-lg sm:text-xl text-muted-foreground leading-relaxed">{post.excerpt}</p>
@@ -497,12 +565,10 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
         {/* Content */}
         <section className="py-20 lg:py-32">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="max-w-3xl mx-auto">
-              <div
-                className="prose prose-lg dark:prose-invert max-w-none"
-                dangerouslySetInnerHTML={{ __html: post.content }}
-              />
-            </div>
+            <div
+              className="prose prose-lg dark:prose-invert max-w-none"
+              dangerouslySetInnerHTML={{ __html: post.content }}
+            />
           </div>
         </section>
 

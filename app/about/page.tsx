@@ -1,14 +1,16 @@
 "use client"
 
+import { useEffect, useRef, useState } from "react"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import { Card, CardContent } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
-import { Target, Lightbulb, Users, Award, Linkedin, Twitter, Github, Heart, Users as UsersIcon, Zap, TrendingUp } from "lucide-react"
+import { Target, Lightbulb, Users, Award, Linkedin, Twitter, Github, Heart, Users as UsersIcon, Zap } from "lucide-react"
 import Link from "next/link"
 import Image from "next/image"
 import { AnimatedSection, StaggerContainer, StaggerItem } from "@/components/animated-section"
 import { useLanguage } from "@/components/language-provider"
+import SectionSeparator from "@/components/general/SectionSeparator"
 
 const team = [
   {
@@ -56,79 +58,151 @@ const values = [
   },
 ]
 
-const stats = [
-  { value: "50+", label: "Projects Completed", icon: TrendingUp },
-  { value: "30+", label: "Happy Clients", icon: UsersIcon },
-  { value: "5+", label: "Years Experience", icon: Award },
-  { value: "98%", label: "Client Satisfaction", icon: Heart },
-]
-
-const achievementItems = [
-  {
-    icon: TrendingUp,
-    number: "50+",
-    label: "Projects Completed",
-    description: "Successful deliveries across various industries",
-    key: "projects"
-  },
-  {
-    icon: Heart,
-    number: "98%",
-    label: "Client Satisfaction",
-    description: "Consistently exceeding expectations",
-    key: "client"
-  },
-  {
-    icon: Award,
-    number: "5+",
-    label: "Years Experience",
-    description: "Building digital solutions since 2019",
-    key: "experience"
-  },
-  {
-    icon: UsersIcon,
-    number: "24/7",
-    label: "Support Available",
-    description: "Always here when you need us",
-    key: "support"
-  }
-]
-
 export default function AboutPage() {
   const { t } = useLanguage()
+  const canvasRef = useRef<HTMLCanvasElement>(null)
+  const [mounted, setMounted] = useState(false)
+
+  useEffect(() => {
+    setMounted(true)
+    const canvas = canvasRef.current
+    if (!canvas) return
+
+    const ctx = canvas.getContext("2d")
+    if (!ctx) return
+
+    // Set canvas size
+    const resizeCanvas = () => {
+      canvas.width = window.innerWidth
+      canvas.height = window.innerHeight
+    }
+    resizeCanvas()
+    window.addEventListener("resize", resizeCanvas)
+
+    // Particle system for animated background
+    const particles: Array<{
+      x: number
+      y: number
+      vx: number
+      vy: number
+      radius: number
+    }> = []
+
+    const particleCount = 50
+    for (let i = 0; i < particleCount; i++) {
+      particles.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        vx: (Math.random() - 0.5) * 0.5,
+        vy: (Math.random() - 0.5) * 0.5,
+        radius: Math.random() * 2 + 1,
+      })
+    }
+
+    let animationFrameId: number
+
+    const animate = () => {
+      ctx.clearRect(0, 0, canvas.width, canvas.height)
+
+      // Update and draw particles
+      particles.forEach((particle, i) => {
+        particle.x += particle.vx
+        particle.y += particle.vy
+
+        // Wrap around edges
+        if (particle.x < 0) particle.x = canvas.width
+        if (particle.x > canvas.width) particle.x = 0
+        if (particle.y < 0) particle.y = canvas.height
+        if (particle.y > canvas.height) particle.y = 0
+
+        // Draw particle
+        ctx.beginPath()
+        ctx.arc(particle.x, particle.y, particle.radius, 0, Math.PI * 2)
+        ctx.fillStyle = "rgba(0, 105, 255, 0.3)"
+        ctx.fill()
+
+        // Draw connections
+        particles.slice(i + 1).forEach((otherParticle) => {
+          const dx = particle.x - otherParticle.x
+          const dy = particle.y - otherParticle.y
+          const distance = Math.sqrt(dx * dx + dy * dy)
+
+          if (distance < 150) {
+            ctx.beginPath()
+            ctx.moveTo(particle.x, particle.y)
+            ctx.lineTo(otherParticle.x, otherParticle.y)
+            ctx.strokeStyle = `rgba(0, 105, 255, ${
+              0.2 * (1 - distance / 150)
+            })`
+            ctx.lineWidth = 1
+            ctx.stroke()
+          }
+        })
+      })
+
+      animationFrameId = requestAnimationFrame(animate)
+    }
+
+    animate()
+
+    return () => {
+      window.removeEventListener("resize", resizeCanvas)
+      cancelAnimationFrame(animationFrameId)
+    }
+  }, [])
+
+  if (!mounted) return null
 
   return (
     <div className="min-h-screen">
       <Header />
       <main>
         {/* Hero Section */}
-        <section className="min-h-screen lg:h-screen flex flex-col justify-center lg:justify-end lg:items-end relative overflow-hidden">
-          {/* Animated Background */}
-          <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-background to-primary/10" />
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-primary/10 via-transparent to-transparent" />
+        <section className="h-screen flex justify-center items-end relative">
+          {/* Animated Background Canvas */}
+          <canvas
+            ref={canvasRef}
+            className="absolute inset-0 z-0"
+            style={{ background: 'transparent' }}
+          />
 
-          {/* Floating Elements */}
-          <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-primary/5 rounded-full blur-3xl animate-pulse" />
-          <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-primary/3 rounded-full blur-3xl animate-pulse delay-1000" />
+          {/* Gradient Overlay */}
+          <div className="absolute inset-0 z-1 bg-gradient-to-b from-background/50 via-background/80 to-background" />
 
-          <div className="relative min-h-[calc(100vh-64px)] lg:h-[calc(100vh-80px)] w-full flex items-center justify-center overflow-hidden">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative py-20 lg:py-32">
-              <AnimatedSection>
-                <div className="max-w-4xl mx-auto text-center space-y-8">
-                {/* Badge */}
-                <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 text-sm font-medium text-primary backdrop-blur-sm">
+          <div className="relative h-[calc(100vh-64px)] lg:h-[calc(100vh-80px)] w-full flex items-center justify-center overflow-hidden">
+            {/* Content */}
+            <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-32">
+              <div className="max-w-4xl mx-auto text-center space-y-8">
+                {/* Animated Badge */}
+                <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 text-sm font-medium text-primary">
                   <span className="relative flex h-2 w-2">
                     <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
                     <span className="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
                   </span>
-{t("about.hero.badge")}
+                  {t("about.hero.badge")}
                 </div>
 
+                {/* Main Heading */}
                 <h1 className="text-4xl sm:text-5xl lg:text-7xl font-bold text-foreground leading-tight">
-                  {t("about.hero.title").split(" ")[0]}{" "}
-                  <span className="bg-gradient-to-r from-primary via-primary/80 to-primary/60 bg-clip-text text-transparent">
-                    {t("about.hero.title").split(" ")[1]}
-                  </span>
+                  {(() => {
+                    const title = t("about.hero.title");
+                    if (title.includes("Oren")) {
+                      return (
+                        <>
+                          {title.replace("Oren", "")}
+                          <span className="text-primary">Oren</span>
+                        </>
+                      );
+                    } else if (title.includes("أورين")) {
+                      return (
+                        <>
+                          {title.replace("أورين", "")}
+                          <span className="text-primary">أورين</span>
+                        </>
+                      );
+                    }
+                    return title;
+                  })()}
                 </h1>
 
                 <p className="text-lg sm:text-xl text-muted-foreground leading-relaxed max-w-2xl mx-auto">
@@ -136,56 +210,65 @@ export default function AboutPage() {
                 </p>
 
                 {/* CTA Buttons */}
-                <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
-                  <Button size="lg" asChild className="group">
+                <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4 w-full sm:w-auto px-4 sm:px-0">
+                  <Button
+                    size="lg"
+                    asChild
+                    className="group w-full sm:w-auto shadow-none transition-all"
+                  >
                     <Link href="/contact">
                       {t("about.hero.cta.primary")}
                       <Zap className="ms-2 h-4 w-4" />
                     </Link>
                   </Button>
-                  <Button size="lg" variant="outline" asChild className="bg-transparent hover:bg-primary/5">
+                  <Button
+                    size="lg"
+                    variant="outline"
+                    asChild
+                    className="group bg-transparent hover:bg-primary/5 w-full sm:w-auto transition-all"
+                  >
                     <Link href="/portfolio">
                       {t("about.hero.cta.secondary")}
                     </Link>
                   </Button>
                 </div>
 
-                {/* Our Impact in Numbers - Integrated into Hero */}
-                <div className="pt-16 pb-8">
-
-                  <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 max-w-5xl mx-auto">
-                    {achievementItems.map((item, index) => (
-                      <AnimatedSection key={index} delay={index * 0.1}>
-                        <Card className="bg-card/50 backdrop-blur-sm border-border/50 text-center group hover:bg-card/80 transition-all duration-300 h-full">
-                          <CardContent className="p-4 lg:p-6">
-                            <div className="w-10 h-10 lg:w-12 lg:h-12 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-3 lg:mb-4 group-hover:bg-primary/20 group-hover:scale-110 transition-all duration-300">
-                              <item.icon className="h-5 w-5 lg:h-6 lg:w-6 text-primary" />
-                            </div>
-                      <p className="text-2xl lg:text-3xl font-bold mb-1 lg:mb-2 text-foreground">
-                        {item.number}
-                      </p>
-                      <p className="text-xs lg:text-sm font-semibold mb-1 text-muted-foreground">
-                        {t(`about.achievements.${item.key}.title`)}
-                      </p>
-                      <p className="text-xs text-muted-foreground/70 leading-tight">
-                        {t(`about.achievements.${item.key}.description`)}
-                      </p>
-                          </CardContent>
-                        </Card>
-                      </AnimatedSection>
-                    ))}
+                {/* Trust Signals */}
+                <div className="pt-8 sm:pt-12 flex flex-wrap items-center justify-center gap-5 sm:gap-12 text-xs sm:text-sm text-muted-foreground">
+                  <div className="flex items-center gap-1.5 sm:gap-2">
+                    <span className="text-lg sm:text-2xl font-bold text-foreground">
+                      50+
+                    </span>
+                    <span className="text-[10px] sm:text-sm">
+                      {t("about.hero.stats.projects")}
+                    </span>
+                  </div>
+                  <div className="flex items-center gap-2 sm:gap-3">
+                    <span className="text-lg sm:text-2xl font-bold text-foreground">
+                      98%
+                    </span>
+                    <span className="text-[10px] sm:text-sm">
+                      {t("about.hero.stats.satisfaction")}
+                    </span>
+                  </div>
+                  <div className="flex items-center gap-2 sm:gap-3">
+                    <span className="text-lg sm:text-2xl font-bold text-foreground">
+                      24/7
+                    </span>
+                    <span className="text-[10px] sm:text-sm">
+                      {t("about.hero.stats.support")}
+                    </span>
                   </div>
                 </div>
               </div>
-            </AnimatedSection>
             </div>
           </div>
         </section>
 
+        <SectionSeparator />
+
         {/* Mission & Vision */}
-        <section className="relative py-20 lg:py-32 bg-muted/30">
-          {/* Background Elements */}
-          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-primary/5 to-transparent" />
+        <section className="py-20 bg-background">
 
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
             {/* Section Header */}
@@ -254,6 +337,8 @@ export default function AboutPage() {
           </div>
         </section>
 
+        <SectionSeparator />
+
         {/* Values */}
         <section className="py-20 lg:py-32">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -297,10 +382,10 @@ export default function AboutPage() {
           </div>
         </section>
 
+        <SectionSeparator />
+
         {/* Team */}
-        <section className="relative py-20 lg:py-32 bg-muted/30">
-          {/* Background Elements */}
-          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-primary/5 to-transparent" />
+        <section className="py-20 bg-background">
 
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
             {/* Section Header */}
@@ -379,6 +464,8 @@ export default function AboutPage() {
             </div>
           </div>
         </section>
+
+        <SectionSeparator />
 
         {/* CTA */}
         <section className="relative py-20 lg:py-32 bg-gradient-to-br from-primary/5 via-background to-primary/10 overflow-hidden">

@@ -5,11 +5,11 @@ import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import Image from "next/image"
 import Link from "next/link"
-import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
-import { ArrowRight, Sparkles, Filter, Grid3X3 } from "lucide-react"
+import { ArrowRight, Sparkles, Filter, Grid3X3, Eye, Github, Star } from "lucide-react"
 import { useLanguage } from "@/components/language-provider"
+import SectionSeparator from "@/components/general/SectionSeparator"
 
 const categories = ["All", "Web Development", "E-commerce", "SaaS", "Corporate", "Marketing"]
 
@@ -268,6 +268,9 @@ export default function PortfolioPage() {
           </div>
         </section>
 
+        {/* Seperator Section */}
+        <SectionSeparator />
+
         {/* Filter & Projects */}
         <section id="projects" className="py-20 lg:py-32 bg-muted/30">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -305,62 +308,153 @@ export default function PortfolioPage() {
             {/* Projects Grid */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {filteredProjects.map((project, index) => (
-                <Link key={project.slug} href={`/portfolio/${project.slug}`}>
-                  <Card className="group relative overflow-hidden border-border hover:border-primary/30 transition-all duration-300 hover:-translate-y-1 h-full">
-                    {/* Gradient overlay on hover */}
-                    <div className="absolute inset-0 bg-gradient-to-br from-primary/0 via-primary/0 to-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-
-                    <div className="relative aspect-[3/2] overflow-hidden bg-muted">
+                <div key={index} className="group relative">
+                  <div className="relative bg-card border border-border rounded-lg overflow-hidden transition-all duration-300 hover:border-primary/50">
+                    {/* Project Image */}
+                    <div className="relative aspect-video overflow-hidden bg-muted">
                       <Image
                         src={project.image || "/placeholder.svg"}
                         alt={project.title}
                         fill
-                        className="object-cover transition-transform duration-300 group-hover:scale-105"
+                        className="object-cover transition-transform duration-500 group-hover:scale-105"
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                       />
-                    </div>
-                    <CardContent className="p-6">
-                      <div className="flex flex-wrap gap-2 mb-3">
-                        {project.technologies.slice(0, 3).map((tag) => (
-                          <Badge key={tag} variant="secondary" className="text-xs bg-primary/10 text-primary border-primary/20">
-                            {tag}
-                          </Badge>
-                        ))}
-                        {project.technologies.length > 3 && (
-                          <Badge variant="outline" className="text-xs">
-                            +{project.technologies.length - 3} more
-                          </Badge>
+
+                      {/* Project Status Badge */}
+                      <div className="absolute top-4 right-4 flex gap-2">
+                        <Badge className="bg-green-500/20 text-green-400 border-green-500/30 backdrop-blur-sm text-xs font-medium px-2 py-1">
+                          <div className="w-1.5 h-1.5 bg-green-400 rounded-full mr-1.5 animate-pulse" />
+                          {t("common.live")}
+                        </Badge>
+                      </div>
+
+                      {/* Desktop Hover Overlay with Action Buttons */}
+                      <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 hidden md:block" />
+
+                      <div className="absolute inset-0 hidden md:flex items-center justify-center gap-4 opacity-0 group-hover:opacity-100 transition-all duration-500 transform translate-y-8 group-hover:translate-y-0 ">
+                        {project.demoLink && project.demoLink !== "#" && (
+                          <a
+                            href={project.demoLink}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="flex items-center gap-2 bg-white backdrop-blur-sm text-black px-4 py-2 rounded-full font-semibold text-sm transition-all duration-300 hover:scale-105 shadow-lg"
+                          >
+                            <Eye className="w-4 h-4" />
+                            {t("common.liveDemo")}
+                          </a>
+                        )}
+
+                        {project.githubLink && project.githubLink !== "#" && (
+                          <a
+                            href={project.githubLink}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="flex items-center gap-2 bg-black/80 backdrop-blur-sm border border-zinc-700/80 text-white px-4 py-2 rounded-full font-semibold text-sm transition-all duration-300 hover:scale-105 shadow-lg"
+                          >
+                            <Github className="w-4 h-4" />
+                            {t("common.code")}
+                          </a>
                         )}
                       </div>
-                      <h3 className="text-xl font-semibold text-foreground mb-2 group-hover:text-primary transition-colors">
+                    </div>
+
+                    {/* Project Details */}
+                    <div className="p-6">
+                      <Link
+                        className="text-xl font-bold mb-3 group-hover:text-primary transition-colors duration-200 line-clamp-1"
+                        href={`/portfolio/${project.slug}`}
+                      >
                         {project.title}
-                      </h3>
+                      </Link>
+
                       <p className="text-muted-foreground text-sm leading-relaxed mb-4 line-clamp-3">
                         {project.description}
                       </p>
 
-                      {/* Action Footer */}
-                      <div className="flex items-center justify-between pt-4 border-t border-border/50">
-                        <span className="text-sm text-primary font-semibold inline-flex items-center gap-2">
-                          {t("portfolio.viewDetails")}
-                          <ArrowRight className="w-4 h-4 transform rtl:rotate-180" />
-                        </span>
+                      {/* Tech Stack */}
+                      <div className="flex flex-wrap gap-2 mb-6">
+                        {project.technologies.slice(0, 3).map((tech, techIndex) => (
+                          <Badge
+                            key={techIndex}
+                            variant="secondary"
+                            className="text-xs px-2 py-1 bg-primary/10 text-primary border-primary/20 hover:bg-primary/20 transition-colors shadow-none"
+                          >
+                            {tech}
+                          </Badge>
+                        ))}
+                        {project.technologies.length > 3 && (
+                          <Badge
+                            variant="outline"
+                            className="text-xs px-2 py-1 text-muted-foreground shadow-none"
+                          >
+                            +{project.technologies.length - 3} {t("common.more")}
+                          </Badge>
+                        )}
+                      </div>
 
-                        <div className="flex items-center gap-4">
-                          {project.demoLink && (
-                            <span className="text-sm text-muted-foreground">
-                              {t("portfolio.liveDemo")}
-                            </span>
+                      {/* Action Footer */}
+                      <div className="space-y-4">
+                        {/* Primary Action Buttons - Mobile Only */}
+                        <div className="flex md:hidden gap-3">
+                          {project.demoLink && project.demoLink !== "#" && (
+                            <a
+                              href={project.demoLink}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="flex-1 bg-primary text-primary-foreground px-4 py-2 rounded-md font-semibold text-sm transition-all duration-300 hover:scale-105 text-center flex items-center justify-center gap-2"
+                            >
+                              <Eye className="w-4 h-4" />
+                              {t("common.liveDemo")}
+                            </a>
                           )}
 
-                          <div className="flex items-center gap-1 text-sm text-muted-foreground">
-                            <span className="text-yellow-500">★</span>
-                            <span className="font-medium">4.8</span>
+                          {project.githubLink && project.githubLink !== "#" && (
+                            <a
+                              href={project.githubLink}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="flex-1 border border-border px-4 py-2 rounded-md font-semibold text-sm transition-all duration-300 hover:scale-105 text-center flex items-center justify-center gap-2"
+                            >
+                              <Github className="w-4 h-4" />
+                              {t("common.sourceCode")}
+                            </a>
+                          )}
+                        </div>
+
+                        {/* Secondary Info */}
+                        <div className="flex items-center justify-between pt-4 border-t border-border/50">
+                          <Link
+                            className="text-sm text-primary hover:text-black dark:hover:text-white font-semibold inline-flex items-center gap-2 transition-all duration-200 cursor-pointer"
+                            href={`/portfolio/${project.slug}`}
+                          >
+                            {t("common.viewDetails")}
+                            <ArrowRight className="w-4 h-4 transform rtl:rotate-180" />
+                          </Link>
+
+                          <div className="flex items-center gap-4">
+                            <a
+                              href={project.githubLink}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="text-sm text-muted-foreground hover:text-foreground hidden md:inline-flex items-center gap-1.5 transition-colors duration-200 font-medium"
+                            >
+                              <Github className="w-3.5 h-3.5" />
+                              {t("common.code")}
+                            </a>
+
+                            <div className="flex items-center gap-1 text-sm text-muted-foreground">
+                              <Star className="w-3.5 h-3.5 text-yellow-500" />
+                              <span className="font-medium">4.8</span>
+                            </div>
                           </div>
                         </div>
                       </div>
-                    </CardContent>
-                  </Card>
-                </Link>
+                    </div>
+
+                    {/* Enhanced Hover Effect Border */}
+                    <div className="absolute inset-0 rounded-lg bg-gradient-to-r from-primary/20 via-primary/10 to-primary/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10 blur-xl" />
+                  </div>
+                </div>
               ))}
             </div>
 
@@ -372,6 +466,9 @@ export default function PortfolioPage() {
             )}
           </div>
         </section>
+
+        {/* Seperator Section */}
+        <SectionSeparator />
 
         {/* CTA */}
         <section className="py-20 lg:py-32">

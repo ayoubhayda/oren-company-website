@@ -9,8 +9,9 @@ import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
-import { Calendar, Clock, Search, Zap, ArrowRight } from "lucide-react"
+import { Calendar, Clock, Search, Zap, ArrowRight, ArrowLeft } from "lucide-react"
 import { useLanguage } from "@/components/language-provider"
+import SectionSeparator from "@/components/general/SectionSeparator"
 
 const categories = [
   { key: "all", label: "All" },
@@ -132,7 +133,7 @@ export default function BlogPage() {
                 <Button size="lg" asChild className="group">
                   <Link href="#blog-posts">
                     {t("blog.hero.cta.primary")}
-                    <ArrowRight className="ms-2 h-4 w-4" />
+                    <ArrowRight className="ms-2 h-4 w-4 transform rtl:rotate-180" />
                   </Link>
                 </Button>
                 <Button size="lg" variant="outline" asChild className="bg-transparent hover:bg-primary/5">
@@ -145,10 +146,13 @@ export default function BlogPage() {
           </div>
         </section>
 
-        {/* Search & Filter */}
-        <section className="py-12">
+        <SectionSeparator />
+
+        {/* Search & Filter + Blog Posts */}
+        <section className="py-20 lg:py-32">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="max-w-4xl mx-auto space-y-6">
+            {/* Search & Filter */}
+            <div className="max-w-4xl mx-auto mb-12 space-y-6">
               {/* Search */}
               <div className="relative">
                 <Search className="absolute left-3 rtl:right-3 rtl:left-auto top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
@@ -175,13 +179,9 @@ export default function BlogPage() {
                 ))}
               </div>
             </div>
-          </div>
-        </section>
 
-        {/* Blog Posts */}
-        <section id="blog-posts" className="py-20 lg:py-32">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {/* Blog Posts */}
+            <div id="blog-posts" className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {filteredPosts.map((post) => (
                 <Link key={post.id} href={`/blog/${post.id}`} className="group">
                   <Card className="overflow-hidden border-border hover:shadow-xl transition-all duration-300 h-full">
@@ -239,8 +239,10 @@ export default function BlogPage() {
           </div>
         </section>
 
+        <SectionSeparator />
+
         {/* Newsletter */}
-        <section className="py-20 lg:py-32 bg-muted/30">
+        <section className="py-20 lg:py-32">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-2xl mx-auto text-center space-y-6">
               <h2 className="text-3xl sm:text-4xl font-bold text-foreground">{t("blog.newsletter.title")}</h2>
