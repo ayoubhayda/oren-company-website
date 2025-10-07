@@ -40,6 +40,7 @@ const services = [
     descriptionKey: "services.marketing.desc",
     features: ["services.marketing.feature.1", "services.marketing.feature.2", "services.marketing.feature.3", "services.marketing.feature.4"],
     href: "/services/digital-marketing",
+    comingSoon: true,
   },
   {
     icon: Share2,
@@ -47,6 +48,7 @@ const services = [
     descriptionKey: "services.social.desc",
     features: ["services.social.feature.1", "services.social.feature.2", "services.social.feature.3", "services.social.feature.4"],
     href: "/services/social-media",
+    comingSoon: true,
   },
   {
     icon: Palette,
@@ -54,7 +56,8 @@ const services = [
     descriptionKey: "services.design.desc",
     features: ["services.design.feature.1", "services.design.feature.2", "services.design.feature.3", "services.design.feature.4"],
     href: "/services/design",
-    badge: "services.design.badge"
+    badge: "services.design.badge",
+    comingSoon: true,
   },
 ]
 
@@ -129,46 +132,73 @@ export default function ServicesPage() {
               {services.map((service, index) => (
                 <Card
                   key={index}
-                  className="group hover:border-primary/30 transition-all duration-300 hover:-translate-y-1 border-border flex flex-col justify-between"
+                  className={`group transition-all duration-300 border-border flex flex-col justify-between ${
+                    service.comingSoon
+                      ? "opacity-75 hover:border-muted-foreground/30 hover:-translate-y-0"
+                      : "hover:border-primary/30 hover:-translate-y-1"
+                  }`}
                 >
                   {/* Gradient overlay on hover */}
-                  <div className="absolute inset-0 bg-gradient-to-br from-primary/0 via-primary/0 to-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                  
+                  <div className={`absolute inset-0 bg-gradient-to-br from-primary/0 via-primary/0 to-primary/5 transition-opacity duration-500 ${
+                    service.comingSoon ? "opacity-0" : "opacity-0 group-hover:opacity-100"
+                  }`} />
+
                   <div className="relative flex flex-col gap-5">
                     <CardHeader className="space-y-4">
                       <div className="flex items-start justify-between">
-                      <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
-                      <service.icon className="h-7 w-7 text-primary" />
+                      <div className={`w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center transition-colors ${
+                        service.comingSoon
+                          ? "bg-muted-foreground/10"
+                          : "group-hover:bg-primary/20"
+                      }`}>
+                      <service.icon className={`h-7 w-7 transition-colors ${
+                        service.comingSoon ? "text-muted-foreground" : "text-primary"
+                      }`} />
                     </div>
-                        {service.badge && (
-                          <Badge variant="secondary" className="text-xs">
-                            {t(service.badge)}
-                          </Badge>
-                        )}
+                        <div className="flex gap-2">
+                          {service.badge && (
+                            <Badge variant="secondary" className="text-xs">
+                              {t(service.badge)}
+                            </Badge>
+                          )}
+                          {service.comingSoon && (
+                            <Badge variant="outline" className="text-xs text-muted-foreground border-muted-foreground/30">
+                              Coming Soon
+                            </Badge>
+                          )}
+                        </div>
                       </div>
-                      <CardTitle className="text-2xl">{t(service.titleKey)}</CardTitle>
+                      <CardTitle className={`text-2xl ${service.comingSoon ? "text-muted-foreground" : ""}`}>
+                        {t(service.titleKey)}
+                      </CardTitle>
                     </CardHeader>
 
                     <CardContent className="space-y-5">
-                      <CardDescription className="text-muted-foreground leading-relaxed text-base">
+                      <CardDescription className={`leading-relaxed text-base ${service.comingSoon ? "text-muted-foreground/80" : "text-muted-foreground"}`}>
                         {t(service.descriptionKey)}
                       </CardDescription>
 
                       <div className="space-y-2.5">
                         {service.features.map((feature, idx) => (
-                          <div key={idx} className="flex items-center gap-3 text-sm text-foreground/80">
-                            <CheckCircle2 className="w-4 h-4 text-primary flex-shrink-0" />
+                          <div key={idx} className={`flex items-center gap-3 text-sm ${service.comingSoon ? "text-muted-foreground/60" : "text-foreground/80"}`}>
+                            <CheckCircle2 className={`w-4 h-4 flex-shrink-0 ${service.comingSoon ? "text-muted-foreground/40" : "text-primary"}`} />
                             <span>{t(feature)}</span>
                           </div>
                         ))}
                       </div>
                     </CardContent>
                   </div>
-                  
+
                   <CardFooter className="relative z-40">
-                  <Button variant="outline" asChild className="w-full hover:bg-primary/5">
-                      <Link href={service.href}>{t("common.learnMore")}</Link>
-                    </Button>
+                    {service.comingSoon ? (
+                      <Button variant="outline" disabled className="w-full opacity-50 cursor-not-allowed">
+                        Coming Soon
+                      </Button>
+                    ) : (
+                      <Button variant="outline" asChild className="w-full hover:bg-primary/5">
+                        <Link href={service.href}>{t("common.learnMore")}</Link>
+                      </Button>
+                    )}
                   </CardFooter>
                 </Card>
               ))}

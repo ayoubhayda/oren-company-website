@@ -167,6 +167,92 @@ h6 {
 	text-wrap: balance;
 }
 
+/* Blog Content Styling */
+.prose {
+	@apply max-w-none;
+}
+
+.prose .lead {
+	@apply text-xl leading-relaxed mb-8 p-6 bg-muted/50 rounded-lg border-l-4 border-primary;
+}
+
+.prose .trend-section {
+	@apply mb-8 p-6 bg-card rounded-lg border shadow-sm;
+}
+
+.prose .trend-section h2 {
+	@apply text-2xl font-bold mb-4 text-primary;
+}
+
+.prose .trend-section p {
+	@apply text-base leading-relaxed mb-4;
+}
+
+.prose .trend-highlight {
+	@apply p-4 bg-primary/5 border-l-4 border-primary/20 rounded-r-md mb-4;
+}
+
+.prose .trend-highlight.warning {
+	@apply bg-orange-50 border-orange-200 dark:bg-orange-950/20 dark:border-orange-800;
+}
+
+.prose .key-takeaways {
+	@apply mb-8 p-8 bg-gradient-to-r from-primary/5 to-secondary/5 rounded-xl border-2 border-primary/10;
+}
+
+.prose .key-takeaways h2 {
+	@apply text-3xl font-bold mb-6 text-center text-primary;
+}
+
+.prose .takeaways-grid {
+	@apply grid grid-cols-1 md:grid-cols-2 gap-4;
+}
+
+.prose .takeaway-item {
+	@apply p-4 bg-background rounded-lg border shadow-sm hover:shadow-md transition-shadow;
+}
+
+.prose .conclusion {
+	@apply mb-8;
+}
+
+.prose .conclusion h2 {
+	@apply text-2xl font-bold mb-4 text-primary;
+}
+
+.prose .cta-box {
+	@apply p-6 bg-primary text-primary-foreground rounded-lg text-center;
+}
+
+.prose .cta-box p {
+	@apply mb-0;
+}
+
+/* Improved spacing for prose content */
+.prose p {
+	@apply mb-6 leading-relaxed;
+}
+
+.prose h1 {
+	@apply text-4xl font-bold mb-6;
+}
+
+.prose h2 {
+	@apply text-2xl font-bold mb-4 mt-8;
+}
+
+.prose h3 {
+	@apply text-xl font-semibold mb-3 mt-6;
+}
+
+.prose ul {
+	@apply mb-6 pl-6;
+}
+
+.prose li {
+	@apply mb-2;
+}
+
 /* Reduced motion support */
 @media (prefers-reduced-motion: reduce) {
 	*,

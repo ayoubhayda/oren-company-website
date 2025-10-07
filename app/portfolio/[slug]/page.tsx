@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Separator } from "@/components/ui/separator"
-import { ArrowLeft, ArrowRight, Calendar, Users, Building, Clock, Target, Zap, Quote, Image as ImageIcon, Layers, Star, Github, ExternalLink, Share2, ChevronLeft, ChevronRight } from "lucide-react"
+import { ArrowLeft, ArrowRight, Calendar, Users, Building, Clock, Target, Zap, Quote, Image as ImageIcon, Layers, Star, Share2, ChevronLeft, ChevronRight } from "lucide-react"
 import Link from "next/link"
 import Image from "next/image"
 import { notFound } from "next/navigation"
@@ -378,29 +378,6 @@ export default function ProjectPage({ params }: { params: Promise<{ slug: string
                           className="object-cover"
                         />
 
-                        {/* Action Buttons */}
-                        <div className="absolute top-4 left-4 flex gap-2">
-                          {project.demoLink && (
-                            <Button
-                              size="sm"
-                              className="bg-white/90 hover:bg-white text-black dark:bg-gray-900/90 dark:hover:bg-gray-900 dark:text-white border border-gray-200 dark:border-gray-700"
-                              onClick={() => window.open(project.demoLink, '_blank')}
-                            >
-                              <ExternalLink className="h-4 w-4 mr-1" />
-                              Demo
-                            </Button>
-                          )}
-                          {project.githubLink && (
-                            <Button
-                              size="sm"
-                              className="bg-black/60 hover:bg-black/80 text-white border border-gray-200 dark:bg-white/60 dark:hover:bg-white/80 dark:text-gray-900 dark:border-gray-700"
-                              onClick={() => window.open(project.githubLink, '_blank')}
-                            >
-                              <Github className="h-4 w-4 mr-1" />
-                              Code
-                            </Button>
-                          )}
-                        </div>
 
                         {/* Navigation Arrows */}
                         {project.images.length > 1 && (
@@ -614,14 +591,6 @@ export default function ProjectPage({ params }: { params: Promise<{ slug: string
                     <CardTitle className="text-lg">Quick Actions</CardTitle>
                   </CardHeader>
                   <CardContent className="space-y-4">
-                    <Button className="w-full justify-start gap-3" size="lg">
-                      <ExternalLink className="h-4 w-4" />
-                      View Live Demo
-                    </Button>
-                    <Button variant="outline" className="w-full justify-start gap-3" size="lg">
-                      <Github className="h-4 w-4" />
-                      View Source Code
-                    </Button>
                     <Button variant="outline" className="w-full justify-start gap-3" size="lg">
                       <Share2 className="h-4 w-4" />
                       Share Project
