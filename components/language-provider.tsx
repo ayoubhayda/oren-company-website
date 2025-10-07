@@ -527,6 +527,9 @@ const translations: Record<Language, Record<string, string>> = {
     "portfolio.liveDemo": "Live Demo",
     "portfolio.noProjects": "No projects found in this category.",
     "portfolio.filter.all": "All Projects",
+    "portfolio.filter.webdev": "Web Development",
+    "portfolio.filter.ecommerce": "E-commerce",
+    "portfolio.filter.saas": "SaaS",
     "portfolio.notfound.title": "Project Not Found",
     "portfolio.notfound.description": "The project you're looking for doesn't exist or has been removed.",
     "portfolio.notfound.button": "View All Projects",
@@ -535,6 +538,44 @@ const translations: Record<Language, Record<string, string>> = {
       "Let's create something amazing together. Get in touch to discuss your project requirements and bring your vision to life.",
     "portfolio.cta.button.primary": "Get Started",
     "portfolio.cta.button.secondary": "View Services",
+
+    // Project Details
+    "project.backToPortfolio": "Back to Portfolio",
+    "project.overview": "Project Overview",
+    "project.keyFeatures": "Key Features",
+    "project.userExperience": "User Experience",
+    "project.performance": "Performance",
+    "project.reliability": "Reliability",
+    "project.scalability": "Scalability",
+    "project.technologiesUsed": "Technologies Used",
+    "project.quickActions": "Quick Actions",
+    "project.shareProject": "Share Project",
+    "project.viewLiveDemo": "View Live Demo",
+    "project.sourceCode": "Source Code",
+    "project.projectDetails": "Project Details",
+    "project.techStack": "Tech Stack",
+    "project.technologies": "technologies",
+    "project.client": "Client",
+    "project.duration": "Duration",
+    "project.duration.3months": "3 months",
+    "project.duration.4months": "4 months",
+    "project.duration.5months": "5 months",
+    "project.duration.6months": "6 months",
+    "project.duration.7months": "7 months",
+    "project.projectRating": "Project Rating",
+    "project.functionality": "Functionality",
+    "project.design": "Design",
+    "project.live": "Live",
+    "project.more": "more",
+    "project.rating": "4.8",
+    "project.reviews": "127 reviews",
+    "project.userExperienceDesc": "Intuitive design with seamless navigation and responsive layout across all devices",
+    "project.performanceDesc": "Optimized for speed with efficient database queries and caching strategies",
+    "project.reliabilityDesc": "Robust architecture with 99.9% uptime and comprehensive error handling",
+    "project.scalabilityDesc": "Built to grow with your business, handling increased traffic and data seamlessly",
+    "project.testimonialQuote": "Oren transformed our online business. The new platform is fast, beautiful, and our sales have more than doubled since launch.",
+    "project.testimonialAuthor": "Sarah Johnson",
+    "project.testimonialRole": "CEO, Fashion Retailer",
 
     // Testimonials
     "testimonials.title": "What Our Clients Say",
@@ -644,6 +685,7 @@ const translations: Record<Language, Record<string, string>> = {
     "blog.category.design": "Design",
     "blog.category.marketing": "Marketing",
     "blog.category.technology": "Technology",
+    "blog.minRead": "min read",
     "blog.empty.title": "No articles found matching your criteria.",
     "blog.empty.search": "No articles found for",
     "blog.readTime": "min read",
@@ -656,6 +698,113 @@ const translations: Record<Language, Record<string, string>> = {
     "blog.notfound.title": "Article Not Found",
     "blog.notfound.description": "The article you're looking for doesn't exist or has been removed.",
     "blog.notfound.button": "View All Articles",
+
+    // Blog Post: Modern Web Development Trends in 2025
+    "blog.post.trends2025.title": "Modern Web Development Trends in 2025",
+    "blog.post.trends2025.excerpt": "Explore the latest trends shaping web development, from AI integration to progressive web apps and beyond.",
+
+    // Blog Post: Next.js Performance Optimization
+    "blog.post.nextjsPerformance.title": "Next.js Performance Optimization Tips",
+    "blog.post.nextjsPerformance.excerpt": "Learn essential strategies to boost your website's speed and user engagement with these Next.js optimization techniques.",
+
+    // Blog Post: AI in Web Development
+    "blog.post.aiInWebDev.title": "How AI is Transforming Web Development",
+    "blog.post.aiInWebDev.excerpt": "Discover how artificial intelligence is revolutionizing web development processes, from code generation to personalized user experiences.",
+    "blog.post.trends2025.content": `
+      <h1>Modern Web Development Trends in 2025: What's Shaping the Future of the Web</h1>
+
+      <div class="lead">
+        <p>The web development landscape is evolving faster than ever. In 2025, developers and digital agencies are embracing new tools and technologies that prioritize <strong>speed, user experience, AI-integration, and sustainability</strong>. Whether you're a brand owner, developer, or designer, understanding these trends can help you stay competitive in a digital-first world.</p>
+      </div>
+
+      <section class="trend-section">
+        <h2>AI-Driven Development & Automation</h2>
+        <p>Artificial Intelligence is transforming the way websites are built and maintained. From <strong>AI-powered code generation</strong> tools like GitHub Copilot to <strong>personalized UX based on user behavior</strong>, automation is cutting development time and boosting creativity.</p>
+        <div class="trend-highlight">
+          <p><strong>Key Insight:</strong> AI chatbots and content assistants are now standard for websites, not luxuries.</p>
+        </div>
+      </section>
+
+      <section class="trend-section mt-0">
+        <h2>Performance-First Architecture</h2>
+        <p>Google's focus on <strong>Core Web Vitals</strong> continues in 2025. Fast loading times, smooth interactivity, and visual stability are more important than ever. Developers are using <strong>Next.js 14, Astro, and Vite</strong> to build ultra-fast, performance-driven websites.</p>
+        <div class="trend-highlight mb-0">
+          <p><strong>Pro Tip:</strong> Optimize images, implement lazy loading, and leverage edge caching for global audiences.</p>
+        </div>
+      </section>
+
+      <section class="trend-section">
+        <h2>Serverless & Edge Computing</h2>
+        <p>Serverless architecture and <strong>edge deployment</strong> are redefining scalability. Platforms like <strong>Vercel, Netlify, and Cloudflare Workers</strong> allow developers to deploy code closer to users, improving latency and performance dramatically.</p>
+        <p>This shift also reduces costs and simplifies backend infrastructure management.</p>
+      </section>
+
+      <section class="trend-section">
+        <h2>Progressive Web Apps (PWAs) 2.0</h2>
+        <p>PWAs continue to blur the line between web and native mobile apps. In 2025, they support <strong>push notifications, offline access, and full-screen capabilities</strong> even better.</p>
+        <p>Brands use them to deliver app-like experiences without the cost of native development.</p>
+      </section>
+
+      <section class="trend-section">
+        <h2>Motion UI & Interactive Design</h2>
+        <p>Static designs are out. Motion UI, <strong>micro-animations</strong>, and <strong>3D scroll effects</strong> are leading the way to immersive experiences. Tools like <strong>Framer Motion</strong> and <strong>GSAP</strong> make it easy to add personality and emotion to interfaces.</p>
+        <div class="trend-highlight warning">
+          <p><strong>Important:</strong> Motion should enhance UX — not overwhelm it.</p>
+        </div>
+      </section>
+
+      <section class="trend-section">
+        <h2>Sustainable Web Design</h2>
+        <p>Eco-friendly design is not just a buzzword. Websites are now optimized to <strong>consume less energy</strong>, using <strong>dark themes, minimal resources, and efficient code</strong>. Developers and agencies are prioritizing green hosting solutions to reduce carbon footprints.</p>
+      </section>
+
+      <section class="trend-section">
+        <h2>Security & Privacy by Design</h2>
+        <p>As users become more privacy-aware, <strong>secure authentication systems</strong>, <strong>zero-trust architecture</strong>, and <strong>encrypted APIs</strong> are now standard. Compliance with GDPR, CCPA, and global data policies remains a top priority for developers and brands.</p>
+      </section>
+
+      <section class="trend-section">
+        <h2>Low-Code Revolution</h2>
+        <p>Businesses want to move fast. Low-code and no-code tools like <strong>Webflow, Bubble, and Builder.io</strong> empower non-developers to create functional prototypes — while developers focus on integrations, performance, and custom logic.</p>
+      </section>
+
+      <section class="trend-section">
+        <h2>Headless & Composable Architecture</h2>
+        <p>Headless CMSs such as <strong>Strapi, Sanity, and Contentful</strong> dominate 2025, offering flexibility across devices and platforms. Paired with <strong>JAMstack</strong> and <strong>GraphQL</strong>, they enable faster content delivery and a seamless multi-channel experience.</p>
+      </section>
+
+      <section class="trend-section">
+        <h2>Web3 & Blockchain Integration</h2>
+        <p>Web3 adoption is rising with <strong>decentralized authentication, smart contracts</strong>, and <strong>digital ownership</strong> features. While still early for mainstream brands, more startups are exploring blockchain-based user identity and NFT-linked memberships.</p>
+      </section>
+
+      <section class="key-takeaways">
+        <h2>Key Takeaways</h2>
+        <div class="takeaways-grid">
+          <div class="takeaway-item">
+            <strong>AI Integration:</strong> Automation tools are becoming essential for faster development
+          </div>
+          <div class="takeaway-item">
+            <strong>Performance First:</strong> Core Web Vitals and optimization are non-negotiable
+          </div>
+          <div class="takeaway-item">
+            <strong>Sustainability:</strong> Green hosting and energy-efficient design matter
+          </div>
+          <div class="takeaway-item">
+            <strong>Flexibility:</strong> Headless and composable architectures offer better scalability
+          </div>
+        </div>
+      </section>
+
+      <section class="conclusion">
+        <h2>Looking Ahead</h2>
+        <p>Web development in 2025 is defined by <strong>AI, automation, and agility</strong>. The key is balancing <strong>performance, creativity, and sustainability</strong>. At Oren, we're already adopting these modern technologies to build faster, smarter, and future-proof websites for our clients.</p>
+
+        <div class="cta-box">
+          <p><strong>Ready to embrace these trends?</strong> <a href="/contact">Contact us</a> to discuss how we can help transform your web presence with cutting-edge technology.</p>
+        </div>
+      </section>
+    `,
 
     // About
     "about.title": "About Oren",
@@ -1219,6 +1368,9 @@ const translations: Record<Language, Record<string, string>> = {
     "portfolio.liveDemo": "عرض مباشر",
     "portfolio.noProjects": "لا توجد مشاريع في هذه الفئة.",
     "portfolio.filter.all": "جميع المشاريع",
+    "portfolio.filter.webdev": "تطوير المواقع",
+    "portfolio.filter.ecommerce": "التجارة الإلكترونية",
+    "portfolio.filter.saas": "البرمجيات كخدمة",
     "portfolio.notfound.title": "المشروع غير موجود",
     "portfolio.notfound.description": "المشروع الذي تبحث عنه غير موجود أو تم حذفه.",
     "portfolio.notfound.button": "عرض جميع المشاريع",
@@ -1226,6 +1378,44 @@ const translations: Record<Language, Record<string, string>> = {
     "portfolio.cta.subtitle": "دعنا نخلق شيئاً مذهلاً معاً. تواصل معنا لمناقشة متطلبات مشروعك وإحياء رؤيتك.",
     "portfolio.cta.button.primary": "ابدأ الآن",
     "portfolio.cta.button.secondary": "عرض الخدمات",
+
+    // Project Details
+    "project.backToPortfolio": "العودة إلى المعرض",
+    "project.overview": "نظرة عامة على المشروع",
+    "project.keyFeatures": "الميزات الرئيسية",
+    "project.userExperience": "تجربة المستخدم",
+    "project.performance": "الأداء",
+    "project.reliability": "الموثوقية",
+    "project.scalability": "القابلية للتطوير",
+    "project.technologiesUsed": "التقنيات المستخدمة",
+    "project.quickActions": "الإجراءات السريعة",
+    "project.shareProject": "مشاركة المشروع",
+    "project.viewLiveDemo": "عرض تجريبي مباشر",
+    "project.sourceCode": "كود المصدر",
+    "project.projectDetails": "تفاصيل المشروع",
+    "project.techStack": "مجموعة التقنيات",
+    "project.technologies": "تقنيات",
+    "project.client": "العميل",
+    "project.duration": "المدة",
+    "project.duration.3months": "3 أشهر",
+    "project.duration.4months": "4 أشهر",
+    "project.duration.5months": "5 أشهر",
+    "project.duration.6months": "6 أشهر",
+    "project.duration.7months": "7 أشهر",
+    "project.projectRating": "تقييم المشروع",
+    "project.functionality": "الوظائف",
+    "project.design": "التصميم",
+    "project.live": "مباشر",
+    "project.more": "المزيد",
+    "project.rating": "4.8",
+    "project.reviews": "127 تقييم",
+    "project.userExperienceDesc": "تصميم بديهي مع تنقل سلس وتخطيط متجاوب عبر جميع الأجهزة",
+    "project.performanceDesc": "محسن للسرعة مع استعلامات قاعدة بيانات فعالة واستراتيجيات التخزين المؤقت",
+    "project.reliabilityDesc": "هيكل قوي مع وقت تشغيل 99.9% ومعالجة شاملة للأخطاء",
+    "project.scalabilityDesc": "مبني للنمو مع أعمالك، يتعامل مع زيادة حركة المرور والبيانات بسلاسة",
+    "project.testimonialQuote": "حولت أورن أعمالنا عبر الإنترنت. المنصة الجديدة سريعة وجميلة، وازدادت مبيعاتنا أكثر من الضعف منذ الإطلاق.",
+    "project.testimonialAuthor": "سارة جونسون",
+    "project.testimonialRole": "المدير التنفيذي، متجر الأزياء",
 
     // Testimonials
     "testimonials.title": "ماذا يقول عملاؤنا",
@@ -1334,6 +1524,7 @@ const translations: Record<Language, Record<string, string>> = {
     "blog.category.design": "التصميم",
     "blog.category.marketing": "التسويق",
     "blog.category.technology": "التكنولوجيا",
+    "blog.minRead": "دقيقة قراءة",
     "blog.empty.title": "لم يتم العثور على مقالات تطابق معاييرك.",
     "blog.empty.search": "لم يتم العثور على مقالات لـ",
     "blog.readTime": "دقيقة قراءة",
@@ -1346,6 +1537,113 @@ const translations: Record<Language, Record<string, string>> = {
     "blog.notfound.title": "المقال غير موجود",
     "blog.notfound.description": "المقال الذي تبحث عنه غير موجود أو تم حذفه.",
     "blog.notfound.button": "عرض جميع المقالات",
+
+    // Blog Post: Modern Web Development Trends in 2025 (Arabic)
+    "blog.post.trends2025.title": "توجهات تطوير الويب الحديثة في عام 2025",
+    "blog.post.trends2025.excerpt": "استكشف أحدث التوجهات التي تشكل تطوير الويب، من تكامل الذكاء الاصطناعي إلى تطبيقات الويب التقدمية وما بعدها.",
+
+    // Blog Post: Next.js Performance Optimization (Arabic)
+    "blog.post.nextjsPerformance.title": "نصائح تحسين أداء Next.js",
+    "blog.post.nextjsPerformance.excerpt": "تعلم الاستراتيجيات الأساسية لتعزيز سرعة موقعك وتفاعل المستخدمين مع تقنيات تحسين Next.js هذه.",
+
+    // Blog Post: AI in Web Development (Arabic)
+    "blog.post.aiInWebDev.title": "كيف يحول الذكاء الاصطناعي تطوير الويب",
+    "blog.post.aiInWebDev.excerpt": "اكتشف كيف يحدث الذكاء الاصطناعي ثورة في عمليات تطوير الويب، من توليد الكود إلى تجارب المستخدمين المخصصة.",
+    "blog.post.trends2025.content": `
+      <h1>توجهات تطوير الويب الحديثة في عام 2025: ما الذي يشكل مستقبل الويب</h1>
+
+      <div class="lead">
+        <p>مشهد تطوير الويب يتطور بسرعة أكبر من أي وقت مضى. في عام 2025، يتبنى المطورون والوكالات الرقمية أدوات وتقنيات جديدة تركز على <strong>السرعة وتجربة المستخدم وتكامل الذكاء الاصطناعي والاستدامة</strong>. سواء كنت صاحب علامة تجارية أو مطور أو مصمم، فإن فهم هذه التوجهات يمكن أن يساعدك على البقاء تنافسيًا في عالم رقمي أولاً.</p>
+      </div>
+
+      <section class="trend-section">
+        <h2>التطوير المعتمد على الذكاء الاصطناعي والأتمتة</h2>
+        <p>الذكاء الاصطناعي يحول طريقة بناء وصيانة المواقع. من أدوات <strong>توليد الكود بالذكاء الاصطناعي</strong> مثل GitHub Copilot إلى <strong>تجربة المستخدم المخصصة بناءً على سلوك المستخدم</strong>، الأتمتة تقطع وقت التطوير وتعزز الإبداع.</p>
+        <div class="trend-highlight">
+          <p><strong>الرؤية الرئيسية:</strong> روبوتات الدردشة بالذكاء الاصطناعي ومساعدي المحتوى أصبحت الآن معيارًا للمواقع، وليست رفاهية.</p>
+        </div>
+      </section>
+
+      <section class="trend-section">
+        <h2>الهيكلية الأولى بالأداء</h2>
+        <p>تركيز جوجل على <strong>Core Web Vitals</strong> يستمر في عام 2025. أوقات التحميل السريعة والتفاعل السلس والاستقرار البصري أصبحت أكثر أهمية من أي وقت مضى. يستخدم المطورون <strong>Next.js 14 وAstro وVite</strong> لبناء مواقع فائقة السرعة تعتمد على الأداء.</p>
+        <div class="trend-highlight">
+          <p><strong>نصيحة احترافية:</strong> قم بتحسين الصور وتطبيق التحميل الكسول والاستفادة من التخزين المؤقت للجمهور العالمي.</p>
+        </div>
+      </section>
+
+      <section class="trend-section">
+        <h2>الحوسبة بدون خادم والحافة</h2>
+        <p>هيكلية بدون خادم و<strong>نشر الحافة</strong> تعيد تعريف قابلية التطوير. منصات مثل <strong>Vercel وNetlify وCloudflare Workers</strong> تسمح للمطورين بنشر الكود قريبًا من المستخدمين، مما يحسن الكمون والأداء بشكل كبير.</p>
+        <p>يقلل هذا التحول أيضًا التكاليف ويبسط إدارة البنية التحتية الخلفية.</p>
+      </section>
+
+      <section class="trend-section">
+        <h2>تطبيقات الويب التقدمية (PWAs) 2.0</h2>
+        <p>تستمر PWAs في طمس الحدود بين الويب والتطبيقات الأصلية للهواتف المحمولة. في عام 2025، تدعم <strong>إشعارات الدفع والوصول دون اتصال والقدرات كاملة الشاشة</strong> بشكل أفضل.</p>
+        <p>تستخدم العلامات التجارية PWAs لتقديم تجارب تشبه التطبيقات دون تكلفة التطوير الأصلي.</p>
+      </section>
+
+      <section class="trend-section">
+        <h2>واجهة المستخدم بالحركة والتصميم التفاعلي</h2>
+        <p>التصاميم الثابتة انتهت. واجهة المستخدم بالحركة و<strong>الرسوم المتحركة الدقيقة</strong> و<strong>تأثيرات التمرير ثلاثية الأبعاد</strong> تقود الطريق نحو تجارب غامرة. أدوات مثل <strong>Framer Motion</strong> و<strong>GSAP</strong> تجعل من السهل إضافة الشخصية والعاطفة إلى الواجهات.</p>
+        <div class="trend-highlight warning">
+          <p><strong>مهم:</strong> يجب أن تعزز الحركة تجربة المستخدم - وليس إغراقها.</p>
+        </div>
+      </section>
+
+      <section class="trend-section">
+        <h2>تصميم الويب المستدام</h2>
+        <p>التصميم الصديق للبيئة ليس مجرد كلمة طنانة. المواقع الآن محسنة ل<strong>استهلاك طاقة أقل</strong>، باستخدام <strong>السمات الداكنة والموارد البسيطة والكود الفعال</strong>. يركز المطورون والوكالات على حلول الاستضافة الخضراء لتقليل البصمة الكربونية.</p>
+      </section>
+
+      <section class="trend-section">
+        <h2>الأمان والخصوصية بالتصميم</h2>
+        <p>مع تزايد وعي المستخدمين بالخصوصية، أصبحت <strong>أنظمة المصادقة الآمنة</strong> و<strong>هيكلية عدم الثقة</strong> و<strong>واجهات برمجة التطبيقات المشفرة</strong> معيارًا. يظل الامتثال لـ GDPR وCCPA وسياسات البيانات العالمية أولوية قصوى للمطورين والعلامات التجارية.</p>
+      </section>
+
+      <section class="trend-section">
+        <h2>ثورة الكود المنخفض</h2>
+        <p>تريد الشركات التحرك بسرعة. أدوات الكود المنخفض والكود الخالي مثل <strong>Webflow وBubble وBuilder.io</strong> تمكن غير المطورين من إنشاء نماذج أولية وظيفية - بينما يركز المطورون على التكاملات والأداء والمنطق المخصص.</p>
+      </section>
+
+      <section class="trend-section">
+        <h2>الهيكلية بدون رأس والقابلة للتجميع</h2>
+        <p>تهيمن أنظمة إدارة المحتوى بدون رأس مثل <strong>Strapi وSanity وContentful</strong> على عام 2025، وتوفر المرونة عبر الأجهزة والمنصات. مقترنة بـ <strong>JAMstack</strong> و<strong>GraphQL</strong>، تمكن تسليم المحتوى بشكل أسرع وتجربة متعددة القنوات سلسة.</p>
+      </section>
+
+      <section class="trend-section">
+        <h2>تكامل Web3 والبلوكشين</h2>
+        <p>يزداد تبني Web3 مع ميزات <strong>المصادقة اللامركزية والعقود الذكية</strong> و<strong>الملكية الرقمية</strong>. على الرغم من أنه لا يزال مبكرًا للعلامات التجارية السائدة، إلا أن المزيد من الشركات الناشئة تستكشف هوية المستخدم القائمة على البلوكشين والعضويات المرتبطة بالـ NFT.</p>
+      </section>
+
+      <section class="key-takeaways">
+        <h2>النقاط الرئيسية</h2>
+        <div class="takeaways-grid">
+          <div class="takeaway-item">
+            <strong>تكامل الذكاء الاصطناعي:</strong> أدوات الأتمتة أصبحت ضرورية للتطوير الأسرع
+          </div>
+          <div class="takeaway-item">
+            <strong>الأداء أولاً:</strong> Core Web Vitals والتحسين غير قابل للتفاوض
+          </div>
+          <div class="takeaway-item">
+            <strong>الاستدامة:</strong> الاستضافة الخضراء والتصميم الموفر للطاقة مهم
+          </div>
+          <div class="takeaway-item">
+            <strong>المرونة:</strong> الهيكليات بدون رأس والقابلة للتجميع توفر قابلية تطوير أفضل
+          </div>
+        </div>
+      </section>
+
+      <section class="conclusion">
+        <h2>النظر إلى الأمام</h2>
+        <p>تطوير الويب في عام 2025 يُعرف بـ <strong>الذكاء الاصطناعي والأتمتة والمرونة</strong>. المفتاح هو التوازن بين <strong>الأداء والإبداع والاستدامة</strong>. في MarketMedia.ma، نحن نتبنى بالفعل هذه التقنيات الحديثة لبناء مواقع أسرع وأذكى ومستقبلية لعملائنا.</p>
+
+        <div class="cta-box">
+          <p><strong>هل أنت مستعد لتبني هذه التوجهات؟</strong> <a href="/contact">تواصل معنا</a> لمناقشة كيف يمكننا مساعدتك في تحويل حضورك على الويب باستخدام التكنولوجيا المتطورة.</p>
+        </div>
+      </section>
+    `,
 
     // About
     "about.title": "عن أورين",
@@ -1915,6 +2213,9 @@ const translations: Record<Language, Record<string, string>> = {
     "portfolio.liveDemo": "Démo en Direct",
     "portfolio.noProjects": "Aucun projet trouvé dans cette catégorie.",
     "portfolio.filter.all": "Tous les projets",
+    "portfolio.filter.webdev": "Développement Web",
+    "portfolio.filter.ecommerce": "E-commerce",
+    "portfolio.filter.saas": "SaaS",
     "portfolio.notfound.title": "Projet introuvable",
     "portfolio.notfound.description": "Le projet que vous recherchez n'existe pas ou a été supprimé.",
     "portfolio.notfound.button": "Voir tous les projets",
@@ -1923,6 +2224,44 @@ const translations: Record<Language, Record<string, string>> = {
       "Créons quelque chose d'incroyable ensemble. Contactez-nous pour discuter de vos exigences de projet et donner vie à votre vision.",
     "portfolio.cta.button.primary": "Commencer",
     "portfolio.cta.button.secondary": "Voir les Services",
+
+    // Project Details
+    "project.backToPortfolio": "Retour au Portfolio",
+    "project.overview": "Aperçu du Projet",
+    "project.keyFeatures": "Fonctionnalités Clés",
+    "project.userExperience": "Expérience Utilisateur",
+    "project.performance": "Performance",
+    "project.reliability": "Fiabilité",
+    "project.scalability": "Évolutivité",
+    "project.technologiesUsed": "Technologies Utilisées",
+    "project.quickActions": "Actions Rapides",
+    "project.shareProject": "Partager le Projet",
+    "project.viewLiveDemo": "Voir la Démo en Direct",
+    "project.sourceCode": "Code Source",
+    "project.projectDetails": "Détails du Projet",
+    "project.techStack": "Pile Technologique",
+    "project.technologies": "technologies",
+    "project.client": "Client",
+    "project.duration": "Durée",
+    "project.duration.3months": "3 mois",
+    "project.duration.4months": "4 mois",
+    "project.duration.5months": "5 mois",
+    "project.duration.6months": "6 mois",
+    "project.duration.7months": "7 mois",
+    "project.projectRating": "Évaluation du Projet",
+    "project.functionality": "Fonctionnalité",
+    "project.design": "Design",
+    "project.live": "En Direct",
+    "project.more": "plus",
+    "project.rating": "4.8",
+    "project.reviews": "127 avis",
+    "project.userExperienceDesc": "Design intuitif avec navigation fluide et mise en page réactive sur tous les appareils",
+    "project.performanceDesc": "Optimisé pour la vitesse avec des requêtes de base de données efficaces et des stratégies de mise en cache",
+    "project.reliabilityDesc": "Architecture robuste avec 99,9% de disponibilité et gestion complète des erreurs",
+    "project.scalabilityDesc": "Construit pour croître avec votre entreprise, gérant l'augmentation du trafic et des données de manière transparente",
+    "project.testimonialQuote": "Oren a transformé notre entreprise en ligne. La nouvelle plateforme est rapide, belle, et nos ventes ont plus que doublé depuis le lancement.",
+    "project.testimonialAuthor": "Sarah Johnson",
+    "project.testimonialRole": "PDG, Détaillant de Mode",
 
     // Testimonials
     "testimonials.title": "Ce Que Disent Nos Clients",
@@ -2033,6 +2372,7 @@ const translations: Record<Language, Record<string, string>> = {
     "blog.category.design": "Design",
     "blog.category.marketing": "Marketing",
     "blog.category.technology": "Technologie",
+    "blog.minRead": "min de lecture",
     "blog.empty.title": "Aucun article trouvé correspondant à vos critères.",
     "blog.empty.search": "Aucun article trouvé pour",
     "blog.readTime": "min de lecture",
@@ -2045,6 +2385,113 @@ const translations: Record<Language, Record<string, string>> = {
     "blog.notfound.title": "Article introuvable",
     "blog.notfound.description": "L'article que vous recherchez n'existe pas ou a été supprimé.",
     "blog.notfound.button": "Voir tous les articles",
+
+    // Blog Post: Modern Web Development Trends in 2025 (French)
+    "blog.post.trends2025.title": "Tendances du Développement Web Moderne en 2025",
+    "blog.post.trends2025.excerpt": "Explorez les dernières tendances qui façonnent le développement web, de l'intégration de l'IA aux applications web progressives et au-delà.",
+
+    // Blog Post: Next.js Performance Optimization (French)
+    "blog.post.nextjsPerformance.title": "Conseils d'Optimisation des Performances Next.js",
+    "blog.post.nextjsPerformance.excerpt": "Apprenez les stratégies essentielles pour améliorer la vitesse de votre site web et l'engagement des utilisateurs avec ces techniques d'optimisation Next.js.",
+
+    // Blog Post: AI in Web Development (French)
+    "blog.post.aiInWebDev.title": "Comment l'IA Transforme le Développement Web",
+    "blog.post.aiInWebDev.excerpt": "Découvrez comment l'intelligence artificielle révolutionne les processus de développement web, de la génération de code aux expériences utilisateur personnalisées.",
+    "blog.post.trends2025.content": `
+      <h1>Tendances du Développement Web Moderne en 2025 : Ce qui façonne l'avenir du Web</h1>
+
+      <div class="lead">
+        <p>Le paysage du développement web évolue plus rapidement que jamais. En 2025, les développeurs et les agences numériques adoptent de nouveaux outils et technologies qui priorisent <strong>la vitesse, l'expérience utilisateur, l'intégration de l'IA et la durabilité</strong>. Que vous soyez propriétaire d'une marque, développeur ou designer, comprendre ces tendances peut vous aider à rester compétitif dans un monde numérique d'abord.</p>
+      </div>
+
+      <section class="trend-section">
+        <h2>Développement piloté par l'IA et automatisation</h2>
+        <p>L'intelligence artificielle transforme la façon dont les sites web sont construits et maintenus. Des outils de <strong>génération de code alimentés par l'IA</strong> comme GitHub Copilot à <strong>l'UX personnalisée basée sur le comportement des utilisateurs</strong>, l'automatisation réduit le temps de développement et stimule la créativité.</p>
+        <div class="trend-highlight">
+          <p><strong>Insight clé :</strong> Les chatbots IA et les assistants de contenu sont désormais standard pour les sites web, pas des luxes.</p>
+        </div>
+      </section>
+
+      <section class="trend-section">
+        <h2>Architecture axée sur les performances</h2>
+        <p>L'accent mis par Google sur les <strong>Core Web Vitals</strong> se poursuit en 2025. Les temps de chargement rapides, l'interactivité fluide et la stabilité visuelle sont plus importants que jamais. Les développeurs utilisent <strong>Next.js 14, Astro et Vite</strong> pour construire des sites ultra-rapides et axés sur les performances.</p>
+        <div class="trend-highlight">
+          <p><strong>Conseil pro :</strong> Optimisez les images, implémentez le chargement paresseux et tirez parti de la mise en cache périphérique pour les audiences mondiales.</p>
+        </div>
+      </section>
+
+      <section class="trend-section">
+        <h2>Serveurless et informatique de périphérie</h2>
+        <p>L'architecture serveurless et le <strong>déploiement périphérique</strong> redéfinissent l'évolutivité. Des plateformes comme <strong>Vercel, Netlify et Cloudflare Workers</strong> permettent aux développeurs de déployer du code plus près des utilisateurs, améliorant considérablement la latence et les performances.</p>
+        <p>Cette évolution réduit également les coûts et simplifie la gestion de l'infrastructure backend.</p>
+      </section>
+
+      <section class="trend-section">
+        <h2>Applications Web Progressives (PWA) 2.0</h2>
+        <p>Les PWA continuent de brouiller la frontière entre le web et les applications mobiles natives. En 2025, elles supportent <strong>les notifications push, l'accès hors ligne et les capacités plein écran</strong> encore mieux.</p>
+        <p>Les marques les utilisent pour offrir des expériences semblables à des applications sans le coût du développement natif.</p>
+      </section>
+
+      <section class="trend-section">
+        <h2>UI Motion et design interactif</h2>
+        <p>Les designs statiques sont terminés. L'UI Motion, les <strong>micro-animations</strong> et les <strong>effets de défilement 3D</strong> mènent la voie vers des expériences immersives. Des outils comme <strong>Framer Motion</strong> et <strong>GSAP</strong> facilitent l'ajout de personnalité et d'émotion aux interfaces.</p>
+        <div class="trend-highlight warning">
+          <p><strong>Important :</strong> Le mouvement devrait améliorer l'UX - pas l'écraser.</p>
+        </div>
+      </section>
+
+      <section class="trend-section">
+        <h2>Design web durable</h2>
+        <p>Le design écologique n'est pas qu'un mot à la mode. Les sites web sont maintenant optimisés pour <strong>consommer moins d'énergie</strong>, en utilisant <strong>des thèmes sombres, des ressources minimales et du code efficace</strong>. Les développeurs et agences priorisent les solutions d'hébergement vertes pour réduire l'empreinte carbone.</p>
+      </section>
+
+      <section class="trend-section">
+        <h2>Sécurité et confidentialité par conception</h2>
+        <p>Alors que les utilisateurs deviennent plus conscients de la confidentialité, les <strong>systèmes d'authentification sécurisés</strong>, l'<strong>architecture zéro confiance</strong> et les <strong>APIs chiffrées</strong> sont désormais standard. La conformité avec le RGPD, le CCPA et les politiques de données mondiales reste une priorité absolue pour les développeurs et les marques.</p>
+      </section>
+
+      <section class="trend-section">
+        <h2>Révolution du low-code</h2>
+        <p>Les entreprises veulent avancer vite. Les outils low-code et no-code comme <strong>Webflow, Bubble et Builder.io</strong> permettent aux non-développeurs de créer des prototypes fonctionnels - tandis que les développeurs se concentrent sur les intégrations, les performances et la logique personnalisée.</p>
+      </section>
+
+      <section class="trend-section">
+        <h2>Architecture headless et composable</h2>
+        <p>Les CMS headless comme <strong>Strapi, Sanity et Contentful</strong> dominent 2025, offrant de la flexibilité sur tous les appareils et plateformes. Associés au <strong>JAMstack</strong> et <strong>GraphQL</strong>, ils permettent une livraison de contenu plus rapide et une expérience multi-canal transparente.</p>
+      </section>
+
+      <section class="trend-section">
+        <h2>Intégration Web3 et blockchain</h2>
+        <p>L'adoption de Web3 augmente avec des fonctionnalités d'<strong>authentification décentralisée, contrats intelligents</strong> et de <strong>propriété numérique</strong>. Bien que toujours précoce pour les marques grand public, de plus en plus de startups explorent l'identité utilisateur basée sur la blockchain et les adhésions liées aux NFT.</p>
+      </section>
+
+      <section class="key-takeaways">
+        <h2>Points clés à retenir</h2>
+        <div class="takeaways-grid">
+          <div class="takeaway-item">
+            <strong>Intégration IA :</strong> Les outils d'automatisation deviennent essentiels pour un développement plus rapide
+          </div>
+          <div class="takeaway-item">
+            <strong>Performance d'abord :</strong> Les Core Web Vitals et l'optimisation sont non négociables
+          </div>
+          <div class="takeaway-item">
+            <strong>Durabilité :</strong> L'hébergement vert et le design économe en énergie comptent
+          </div>
+          <div class="takeaway-item">
+            <strong>Flexibilité :</strong> Les architectures headless et composables offrent une meilleure évolutivité
+          </div>
+        </div>
+      </section>
+
+      <section class="conclusion">
+        <h2>Regard vers l'avenir</h2>
+        <p>Le développement web en 2025 est défini par <strong>l'IA, l'automatisation et l'agilité</strong>. La clé est d'équilibrer <strong>les performances, la créativité et la durabilité</strong>. Chez Oren, nous adoptons déjà ces technologies modernes pour construire des sites web plus rapides, plus intelligents et prêts pour l'avenir pour nos clients.</p>
+
+        <div class="cta-box">
+          <p><strong>Prêt à adopter ces tendances ?</strong> <a href="/contact">Contactez-nous</a> pour discuter de la façon dont nous pouvons aider à transformer votre présence web avec une technologie de pointe.</p>
+        </div>
+      </section>
+    `,
 
     // About
     "about.title": "À propos d'Oren",

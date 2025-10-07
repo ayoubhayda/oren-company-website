@@ -27,7 +27,7 @@ const posts = [
     title: "Modern Web Development Trends in 2025",
     excerpt:
       "Explore the latest trends shaping web development, from AI integration to progressive web apps and beyond.",
-    image: "/placeholder.svg?key=blog1",
+    image: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
     category: "Web Development",
     author: "Sarah Johnson",
     date: "2025-01-15",
@@ -154,14 +154,14 @@ export default function BlogPage() {
             {/* Search & Filter */}
             <div className="max-w-4xl mx-auto mb-12 space-y-6">
               {/* Search */}
-              <div className="relative">
-                <Search className="absolute left-3 rtl:right-3 rtl:left-auto top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+              <div className="relative max-w-3xl mx-auto">
+                <Search className="absolute left-4 rtl:right-4 rtl:left-auto top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
                 <Input
                   type="text"
                   placeholder={t("blog.searchPlaceholder")}
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  className="pl-10 rtl:pr-10 rtl:pl-3"
+                  className="h-12 pl-12 rtl:pr-12 rtl:pl-4 text-base bg-background/50 border-gray-200 focus:outline-none focus:border-primary focus:ring-0 focus-visible:border-primary focus-visible:ring-0 focus-visible:ring-offset-0 dark:bg-background dark:border-border dark:focus:border-primary"
                 />
               </div>
 
@@ -184,7 +184,10 @@ export default function BlogPage() {
             <div id="blog-posts" className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {filteredPosts.map((post) => (
                 <Link key={post.id} href={`/blog/${post.id}`} className="group">
-                  <Card className="overflow-hidden border-border hover:shadow-xl transition-all duration-300 h-full">
+                  <Card className="group transition-all duration-300 border-border flex flex-col justify-between h-full hover:border-primary/30 hover:-translate-y-1 overflow-hidden py-0">
+                    {/* Gradient overlay on hover */}
+                    <div className="absolute inset-0 bg-gradient-to-br from-primary/0 via-primary/0 to-primary/5 transition-opacity duration-500 opacity-0 group-hover:opacity-100 pointer-events-none" />
+
                     <div className="relative aspect-[16/9] overflow-hidden bg-muted">
                       <Image
                         src={post.image || "/placeholder.svg"}
@@ -193,7 +196,7 @@ export default function BlogPage() {
                         className="object-cover transition-transform duration-300 group-hover:scale-105"
                       />
                     </div>
-                    <CardContent className="p-6">
+                    <CardContent className="p-6 relative z-10">
                       <Badge variant="secondary" className="mb-3">
                         {post.category}
                       </Badge>

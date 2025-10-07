@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { Card, CardContent } from "@/components/ui/card"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
-import { ArrowLeft, Calendar, Clock, Share2 } from "lucide-react"
+import { ArrowLeft, ArrowRight, Calendar, Clock, Share2 } from "lucide-react"
 import Link from "next/link"
 import Image from "next/image"
 import { notFound } from "next/navigation"
@@ -29,106 +29,12 @@ const posts: Record<
   }
 > = {
   "modern-web-development-trends-2025": {
-    title: "Modern Web Development Trends in 2025",
+    title: "blog.post.trends2025.title",
     excerpt:
-      "Explore the latest trends shaping web development, from AI integration to progressive web apps and beyond.",
-    content: `
-      <h1>Modern Web Development Trends in 2025: What's Shaping the Future of the Web</h1>
-
-      <div class="lead">
-        <p>The web development landscape is evolving faster than ever. In 2025, developers and digital agencies are embracing new tools and technologies that prioritize <strong>speed, user experience, AI-integration, and sustainability</strong>. Whether you're a brand owner, developer, or designer, understanding these trends can help you stay competitive in a digital-first world.</p>
-      </div>
-
-      <section class="trend-section">
-        <h2>AI-Driven Development & Automation</h2>
-        <p>Artificial Intelligence is transforming the way websites are built and maintained. From <strong>AI-powered code generation</strong> tools like GitHub Copilot to <strong>personalized UX based on user behavior</strong>, automation is cutting development time and boosting creativity.</p>
-        <div class="trend-highlight">
-          <p><strong>Key Insight:</strong> AI chatbots and content assistants are now standard for websites, not luxuries.</p>
-        </div>
-      </section>
-
-      <section class="trend-section">
-        <h2>Performance-First Architecture</h2>
-        <p>Google's focus on <strong>Core Web Vitals</strong> continues in 2025. Fast loading times, smooth interactivity, and visual stability are more important than ever. Developers are using <strong>Next.js 14, Astro, and Vite</strong> to build ultra-fast, performance-driven websites.</p>
-        <div class="trend-highlight">
-          <p><strong>Pro Tip:</strong> Optimize images, implement lazy loading, and leverage edge caching for global audiences.</p>
-        </div>
-      </section>
-
-      <section class="trend-section">
-        <h2>Serverless & Edge Computing</h2>
-        <p>Serverless architecture and <strong>edge deployment</strong> are redefining scalability. Platforms like <strong>Vercel, Netlify, and Cloudflare Workers</strong> allow developers to deploy code closer to users, improving latency and performance dramatically.</p>
-        <p>This shift also reduces costs and simplifies backend infrastructure management.</p>
-      </section>
-
-      <section class="trend-section">
-        <h2>Progressive Web Apps (PWAs) 2.0</h2>
-        <p>PWAs continue to blur the line between web and native mobile apps. In 2025, they support <strong>push notifications, offline access, and full-screen capabilities</strong> even better.</p>
-        <p>Brands use them to deliver app-like experiences without the cost of native development.</p>
-      </section>
-
-      <section class="trend-section">
-        <h2>Motion UI & Interactive Design</h2>
-        <p>Static designs are out. Motion UI, <strong>micro-animations</strong>, and <strong>3D scroll effects</strong> are leading the way to immersive experiences. Tools like <strong>Framer Motion</strong> and <strong>GSAP</strong> make it easy to add personality and emotion to interfaces.</p>
-        <div class="trend-highlight warning">
-          <p><strong>Important:</strong> Motion should enhance UX — not overwhelm it.</p>
-        </div>
-      </section>
-
-      <section class="trend-section">
-        <h2>Sustainable Web Design</h2>
-        <p>Eco-friendly design is not just a buzzword. Websites are now optimized to <strong>consume less energy</strong>, using <strong>dark themes, minimal resources, and efficient code</strong>. Developers and agencies are prioritizing green hosting solutions to reduce carbon footprints.</p>
-      </section>
-
-      <section class="trend-section">
-        <h2>Security & Privacy by Design</h2>
-        <p>As users become more privacy-aware, <strong>secure authentication systems</strong>, <strong>zero-trust architecture</strong>, and <strong>encrypted APIs</strong> are now standard. Compliance with GDPR, CCPA, and global data policies remains a top priority for developers and brands.</p>
-      </section>
-
-      <section class="trend-section">
-        <h2>Low-Code Revolution</h2>
-        <p>Businesses want to move fast. Low-code and no-code tools like <strong>Webflow, Bubble, and Builder.io</strong> empower non-developers to create functional prototypes — while developers focus on integrations, performance, and custom logic.</p>
-      </section>
-
-      <section class="trend-section">
-        <h2>Headless & Composable Architecture</h2>
-        <p>Headless CMSs such as <strong>Strapi, Sanity, and Contentful</strong> dominate 2025, offering flexibility across devices and platforms. Paired with <strong>JAMstack</strong> and <strong>GraphQL</strong>, they enable faster content delivery and a seamless multi-channel experience.</p>
-      </section>
-
-      <section class="trend-section">
-        <h2>Web3 & Blockchain Integration</h2>
-        <p>Web3 adoption is rising with <strong>decentralized authentication, smart contracts</strong>, and <strong>digital ownership</strong> features. While still early for mainstream brands, more startups are exploring blockchain-based user identity and NFT-linked memberships.</p>
-      </section>
-
-      <section class="key-takeaways">
-        <h2>Key Takeaways</h2>
-        <div class="takeaways-grid">
-          <div class="takeaway-item">
-            <strong>AI Integration:</strong> Automation tools are becoming essential for faster development
-          </div>
-          <div class="takeaway-item">
-            <strong>Performance First:</strong> Core Web Vitals and optimization are non-negotiable
-          </div>
-          <div class="takeaway-item">
-            <strong>Sustainability:</strong> Green hosting and energy-efficient design matter
-          </div>
-          <div class="takeaway-item">
-            <strong>Flexibility:</strong> Headless and composable architectures offer better scalability
-          </div>
-        </div>
-      </section>
-
-      <section class="conclusion">
-        <h2>Looking Ahead</h2>
-        <p>Web development in 2025 is defined by <strong>AI, automation, and agility</strong>. The key is balancing <strong>performance, creativity, and sustainability</strong>. At MarketMedia.ma, we're already adopting these modern technologies to build faster, smarter, and future-proof websites for our clients.</p>
-
-        <div class="cta-box">
-          <p><strong>Ready to embrace these trends?</strong> <a href="/contact">Contact us</a> to discuss how we can help transform your web presence with cutting-edge technology.</p>
-        </div>
-      </section>
-    `,
-    image: "/placeholder.svg?key=blog1",
-    category: "Web Development",
+      "blog.post.trends2025.excerpt",
+    content: "blog.post.trends2025.content",
+    image: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
+    category: "blog.category.webdev",
     author: {
       name: "Sarah Johnson",
       avatar: "/professional-woman-diverse.png",
@@ -139,13 +45,13 @@ const posts: Record<
     relatedPosts: [
       {
         id: "nextjs-performance-optimization",
-        title: "Next.js Performance Optimization Tips",
-        image: "/placeholder.svg?key=blog4",
+        title: "blog.post.nextjsPerformance.title",
+        image: "https://images.unsplash.com/photo-1555949963-aa79dcee981c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
       },
       {
         id: "ai-in-web-development",
-        title: "How AI is Transforming Web Development",
-        image: "/placeholder.svg?key=blog6",
+        title: "blog.post.aiInWebDev.title",
+        image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
       },
     ],
   },
@@ -487,7 +393,7 @@ const posts: Record<
 export default function BlogPostPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = React.use(params)
   const post = posts[slug]
-  const { t } = useLanguage()
+  const { t, language } = useLanguage()
 
   if (!post) {
     notFound()
@@ -498,43 +404,36 @@ export default function BlogPostPage({ params }: { params: Promise<{ slug: strin
       <Header />
       <main>
         {/* Hero Section */}
-        <section className="pt-32 pb-12 lg:pt-40 lg:pb-20 bg-gradient-to-b from-muted/50 to-background">
+        <section className="pt-24 pb-12 lg:pt-24 lg:pb-10 bg-gradient-to-b from-background/50 via-background/80 to-background">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="mb-8">
               <Button variant="ghost" asChild>
                 <Link href="/blog">
-                  <ArrowLeft className="mr-2 h-4 w-4" />
+                  {language === "ar" ? (
+                    <ArrowRight className="ml-2 h-4 w-4" />
+                  ) : (
+                    <ArrowLeft className="mr-2 h-4 w-4" />
+                  )}
                   {t("blog.backToBlog")}
                 </Link>
               </Button>
             </div>
 
             <div className="space-y-6">
-              <Badge variant="secondary">{post.category}</Badge>
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-foreground">{post.title}</h1>
-              <p className="text-lg sm:text-xl text-muted-foreground leading-relaxed">{post.excerpt}</p>
-
-              {/* Meta */}
-              <div className="flex flex-wrap items-center gap-6 pt-4">
-                <div className="flex items-center gap-3">
-                  <Avatar className="h-12 w-12">
-                    <AvatarImage src={post.author.avatar || "/placeholder.svg"} alt={post.author.name} />
-                    <AvatarFallback>{post.author.name.charAt(0)}</AvatarFallback>
-                  </Avatar>
-                  <div>
-                    <p className="font-semibold text-foreground">{post.author.name}</p>
-                    <p className="text-sm text-muted-foreground">{post.author.role}</p>
-                  </div>
-                </div>
+              <div className="flex flex-wrap items-center gap-4">
+                <Badge variant="secondary">{t(post.category)}</Badge>
                 <div className="flex items-center gap-4 text-sm text-muted-foreground">
                   <div className="flex items-center gap-1">
                     <Calendar className="h-4 w-4" />
                     <span>
-                      {new Date(post.date).toLocaleDateString("en-US", {
-                        month: "long",
-                        day: "numeric",
-                        year: "numeric",
-                      })}
+                      {new Date(post.date).toLocaleDateString(
+                        language === "ar" ? "ar-SA" : language === "fr" ? "fr-FR" : "en-US",
+                        {
+                          month: "long",
+                          day: "numeric",
+                          year: "numeric",
+                        }
+                      )}
                     </span>
                   </div>
                   <div className="flex items-center gap-1">
@@ -542,20 +441,23 @@ export default function BlogPostPage({ params }: { params: Promise<{ slug: strin
                           <span>{post.readTime.replace("min read", t("blog.readTime"))}</span>
                   </div>
                 </div>
-                <Button variant="outline" size="sm" className="ml-auto bg-transparent">
-                  <Share2 className="h-4 w-4 mr-2" />
-                  {t("blog.shareArticle")}
+                <div className="flex-1"></div>
+                <Button variant="outline" size="sm" className="bg-transparent">
+                  <Share2 className="h-4 w-4" />
                 </Button>
               </div>
+
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-foreground">{t(post.title)}</h1>
+              <p className="text-lg sm:text-xl text-muted-foreground leading-relaxed">{t(post.excerpt)}</p>
             </div>
           </div>
         </section>
 
         {/* Featured Image */}
-        <section className="py-12">
+        <section className="py-2">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
-              <div className="relative aspect-[16/9] rounded-2xl overflow-hidden bg-muted shadow-2xl">
+              <div className="relative aspect-[16/9] rounded-2xl overflow-hidden bg-muted">
                 <Image src={post.image || "/placeholder.svg"} alt={post.title} fill className="object-cover" />
               </div>
             </div>
@@ -563,25 +465,28 @@ export default function BlogPostPage({ params }: { params: Promise<{ slug: strin
         </section>
 
         {/* Content */}
-        <section className="py-20 lg:py-32">
+        <section className="py-12 lg:py-16">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div
               className="prose prose-lg dark:prose-invert max-w-none"
-              dangerouslySetInnerHTML={{ __html: post.content }}
+              dangerouslySetInnerHTML={{ __html: t(post.content) }}
             />
           </div>
         </section>
 
         {/* Related Posts */}
         {post.relatedPosts && post.relatedPosts.length > 0 && (
-          <section className="py-20 lg:py-32 bg-muted/30">
+          <section className="py-12 lg:py-20 bg-background">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
               <div className="max-w-4xl mx-auto">
                 <h2 className="text-3xl font-bold text-foreground mb-8">{t("blog.relatedArticles")}</h2>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                   {post.relatedPosts.map((relatedPost) => (
                     <Link key={relatedPost.id} href={`/blog/${relatedPost.id}`} className="group">
-                      <Card className="overflow-hidden border-border hover:shadow-lg transition-shadow">
+                      <Card className="group transition-all duration-300 border-border flex flex-col justify-between h-full hover:border-primary/30 hover:-translate-y-1 overflow-hidden py-0">
+                        {/* Gradient overlay on hover */}
+                        <div className="absolute inset-0 bg-gradient-to-br from-primary/0 via-primary/0 to-primary/5 transition-opacity duration-500 opacity-0 group-hover:opacity-100 pointer-events-none" />
+
                         <div className="relative aspect-[16/9] overflow-hidden bg-muted">
                           <Image
                             src={relatedPost.image || "/placeholder.svg"}
@@ -590,10 +495,39 @@ export default function BlogPostPage({ params }: { params: Promise<{ slug: strin
                             className="object-cover transition-transform duration-300 group-hover:scale-105"
                           />
                         </div>
-                        <CardContent className="p-6">
-                          <h3 className="text-lg font-semibold text-foreground group-hover:text-primary transition-colors">
-                            {relatedPost.title}
+                        <CardContent className="p-6 relative z-10">
+                          <Badge variant="secondary" className="mb-3">
+                            {t("blog.category.webdev")}
+                          </Badge>
+                          <h3 className="text-xl font-semibold text-foreground mb-2 group-hover:text-primary transition-colors line-clamp-2">
+                            {t(relatedPost.title)}
                           </h3>
+                          <p className="text-muted-foreground text-sm leading-relaxed mb-4 line-clamp-2">
+                            {relatedPost.id === "nextjs-performance-optimization"
+                              ? t("blog.post.nextjsPerformance.excerpt")
+                              : t("blog.post.aiInWebDev.excerpt")}
+                          </p>
+
+                          {/* Meta */}
+                          <div className="flex items-center gap-4 text-xs text-muted-foreground pt-4 border-t border-border">
+                            <div className="flex items-center gap-1">
+                              <Calendar className="h-3 w-3" />
+                              <span>
+                                {new Date("2024-12-28").toLocaleDateString(
+                                  language === "ar" ? "ar-SA" : language === "fr" ? "fr-FR" : "en-US",
+                                  {
+                                    month: "short",
+                                    day: "numeric",
+                                    year: "numeric",
+                                  }
+                                )}
+                              </span>
+                            </div>
+                            <div className="flex items-center gap-1">
+                              <Clock className="h-3 w-3" />
+                              <span>7 {t("blog.minRead")}</span>
+                            </div>
+                          </div>
                         </CardContent>
                       </Card>
                     </Link>

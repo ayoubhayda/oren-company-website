@@ -7,11 +7,16 @@ import Image from "next/image"
 import Link from "next/link"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
-import { ArrowRight, Sparkles, Filter, Grid3X3, Eye, Github, Star } from "lucide-react"
+import { ArrowRight, Filter, Grid3X3, Eye, Github, Star } from "lucide-react"
 import { useLanguage } from "@/components/language-provider"
 import SectionSeparator from "@/components/general/SectionSeparator"
 
-const categories = ["All", "Web Development", "E-commerce", "SaaS", "Corporate", "Marketing"]
+const categories = [
+  { key: "portfolio.filter.all", value: "All" },
+  { key: "portfolio.filter.webdev", value: "Web Development" },
+  { key: "portfolio.filter.ecommerce", value: "E-commerce" },
+  { key: "portfolio.filter.saas", value: "SaaS" }
+]
 
 const projects = [
   {
@@ -42,7 +47,7 @@ const projects = [
     demoLink: "#",
     githubLink: "#",
     technologies: ["Next.js", "Sanity CMS", "i18n", "TypeScript", "TailwindCSS", "Vercel"],
-    category: "Corporate",
+    category: "Web Development",
   },
   {
     slug: "booking-platform",
@@ -197,7 +202,7 @@ export default function PortfolioPage() {
               <div className="max-w-4xl mx-auto text-center space-y-8">
                 {/* Animated Badge */}
                 <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 text-sm font-medium text-primary">
-                  <Sparkles className="w-4 h-4" />
+                  <div className="w-2 h-2 rounded-full bg-primary"></div>
                   {t("portfolio.badge")}
                 </div>
 
@@ -295,12 +300,12 @@ export default function PortfolioPage() {
             <div className="flex flex-wrap justify-center gap-3 mb-16">
               {categories.map((category) => (
                 <Button
-                  key={category}
-                  variant={selectedCategory === category ? "default" : "outline"}
-                  onClick={() => setSelectedCategory(category)}
+                  key={category.key}
+                  variant={selectedCategory === category.value ? "default" : "outline"}
+                  onClick={() => setSelectedCategory(category.value)}
                   className="rounded-full transition-all duration-300 hover:scale-105"
                 >
-                  {category}
+                  {t(category.key)}
                 </Button>
               ))}
             </div>
