@@ -10,6 +10,8 @@ import { Button } from "@/components/ui/button"
 import { ArrowRight, Filter, Grid3X3, Eye, Github, Star } from "lucide-react"
 import { useLanguage } from "@/components/language-provider"
 import SectionSeparator from "@/components/general/SectionSeparator"
+import MinimalSectionSeparator from "@/components/general/MinimalSectionSeparator"
+import { HeroSectionBackground } from "@/components/animations/HeroSectionBackground"
 
 const categories = [
   { key: "portfolio.filter.all", value: "All" },
@@ -84,95 +86,10 @@ const projects = [
 export default function PortfolioPage() {
   const { t } = useLanguage()
   const [selectedCategory, setSelectedCategory] = useState("All")
-  const canvasRef = useRef<HTMLCanvasElement>(null)
   const [mounted, setMounted] = useState(false)
 
   useEffect(() => {
     setMounted(true)
-    const canvas = canvasRef.current
-    if (!canvas) return
-
-    const ctx = canvas.getContext("2d")
-    if (!ctx) return
-
-    // Set canvas size
-    const resizeCanvas = () => {
-      canvas.width = window.innerWidth
-      canvas.height = window.innerHeight
-    }
-    resizeCanvas()
-    window.addEventListener("resize", resizeCanvas)
-
-    // Particle system for animated background
-    const particles: Array<{
-      x: number
-      y: number
-      vx: number
-      vy: number
-      radius: number
-    }> = []
-
-    const particleCount = 50
-    for (let i = 0; i < particleCount; i++) {
-      particles.push({
-        x: Math.random() * canvas.width,
-        y: Math.random() * canvas.height,
-        vx: (Math.random() - 0.5) * 0.5,
-        vy: (Math.random() - 0.5) * 0.5,
-        radius: Math.random() * 2 + 1,
-      })
-    }
-
-    let animationFrameId: number
-
-    const animate = () => {
-      ctx.clearRect(0, 0, canvas.width, canvas.height)
-
-      // Update and draw particles
-      particles.forEach((particle, i) => {
-        particle.x += particle.vx
-        particle.y += particle.vy
-
-        // Wrap around edges
-        if (particle.x < 0) particle.x = canvas.width
-        if (particle.x > canvas.width) particle.x = 0
-        if (particle.y < 0) particle.y = canvas.height
-        if (particle.y > canvas.height) particle.y = 0
-
-        // Draw particle
-        ctx.beginPath()
-        ctx.arc(particle.x, particle.y, particle.radius, 0, Math.PI * 2)
-        ctx.fillStyle = "rgba(0, 105, 255, 0.3)"
-        ctx.fill()
-
-        // Draw connections
-        particles.slice(i + 1).forEach((otherParticle) => {
-          const dx = particle.x - otherParticle.x
-          const dy = particle.y - otherParticle.y
-          const distance = Math.sqrt(dx * dx + dy * dy)
-
-          if (distance < 150) {
-            ctx.beginPath()
-            ctx.moveTo(particle.x, particle.y)
-            ctx.lineTo(otherParticle.x, otherParticle.y)
-            ctx.strokeStyle = `rgba(0, 105, 255, ${
-              0.2 * (1 - distance / 150)
-            })`
-            ctx.lineWidth = 1
-            ctx.stroke()
-          }
-        })
-      })
-
-      animationFrameId = requestAnimationFrame(animate)
-    }
-
-    animate()
-
-    return () => {
-      window.removeEventListener("resize", resizeCanvas)
-      cancelAnimationFrame(animationFrameId)
-    }
   }, [])
 
   if (!mounted) return null
@@ -184,100 +101,43 @@ export default function PortfolioPage() {
     <div className="min-h-screen">
       <Header />
       <main>
-        {/* Hero Section */}
-        <section className="h-screen flex justify-center items-end relative">
-          {/* Animated Background Canvas */}
-          <canvas
-            ref={canvasRef}
-            className="absolute inset-0 z-0"
-            style={{ background: 'transparent' }}
-          />
+        {/* Hero Section - Interactive Digital Experience */}
+        <section className="relative overflow-hidden py-18 lg:py-22 bg-gradient-to-b from-background via-background to-primary/10" id="hero-section">
+          {/* Hero Section Background Component */}
+          <HeroSectionBackground />
 
-          {/* Gradient Overlay */}
-          <div className="absolute inset-0 z-1 bg-gradient-to-b from-background/50 via-background/80 to-background" />
+          {/* ===== CONTENT ===== */}
+          <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div className="text-center">
+              {/* digital crumbs */}
+              <div className="mx-auto mb-8 flex w-full max-w-[320px] items-center justify-center gap-3">
+                <div className="h-px flex-1 bg-gradient-to-r from-transparent to-[#0069FF]/60" />
+                <div className="h-2 w-2 rounded-full bg-[#0069FF]" />
+                <div className="h-px flex-1 bg-gradient-to-l from-transparent to-[#00BFFF]/60" />
+              </div>
 
-          <div className="relative h-[calc(100vh-64px)] lg:h-[calc(100vh-80px)] w-full flex items-center justify-center overflow-hidden">
-            {/* Content */}
-            <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-32">
-              <div className="max-w-4xl mx-auto text-center space-y-8">
-                {/* Animated Badge */}
-                <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 text-sm font-medium text-primary">
-                  <div className="w-2 h-2 rounded-full bg-primary"></div>
-                  {t("portfolio.badge")}
-                </div>
+              <h1 className="mx-auto max-w-5xl text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-foreground leading-tight">
+                Showcase Your Digital
+                <span className="relative mt-2 block text-transparent bg-clip-text bg-gradient-to-r from-[#0069FF] to-[#00BFFF]">
+                  Success Stories
+                </span>
+              </h1>
 
-                {/* Main Heading */}
-                <h1 className="text-4xl sm:text-5xl lg:text-7xl font-bold text-foreground leading-tight">
-                  {t("portfolio.title")}
-                </h1>
-
-                {/* Subheading */}
-                <p className="text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-                  {t("portfolio.subtitle")}
-                </p>
-
-                {/* CTA Buttons */}
-                <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4 w-full sm:w-auto px-4 sm:px-0">
-                  <Button
-                    size="lg"
-                    asChild
-                    className="group w-full sm:w-auto shadow-none transition-all"
-                  >
-                    <Link href="#projects">
-                      {t("portfolio.explore")}
-                      <ArrowRight className="ms-2 h-4 w-4 transform rtl:rotate-180" />
-                    </Link>
-                  </Button>
-                  <Button
-                    size="lg"
-                    variant="outline"
-                    asChild
-                    className="group bg-transparent hover:bg-primary/5 w-full sm:w-auto transition-all"
-                  >
-                    <Link href="/contact">
-                      {t("portfolio.discuss")}
-                      <Filter className="ms-2 h-4 w-4 transform rtl:rotate-180" />
-                    </Link>
-                  </Button>
-                </div>
-
-                {/* Trust Signals */}
-                <div className="pt-8 sm:pt-12 flex flex-wrap items-center justify-center gap-5 sm:gap-12 text-xs sm:text-sm text-muted-foreground">
-                  <div className="flex items-center gap-1.5 sm:gap-2">
-                    <span className="text-lg sm:text-2xl font-bold text-foreground">
-                      50+
-                    </span>
-                    <span className="text-[10px] sm:text-sm">
-                      {t("portfolio.stats.projects")}
-                    </span>
-                  </div>
-                  <div className="flex items-center gap-2 sm:gap-3">
-                    <span className="text-lg sm:text-2xl font-bold text-foreground">
-                      98%
-                    </span>
-                    <span className="text-[10px] sm:text-sm">
-                      {t("portfolio.stats.satisfaction")}
-                    </span>
-                  </div>
-                  <div className="flex items-center gap-2 sm:gap-3">
-                    <span className="text-lg sm:text-2xl font-bold text-foreground">
-                      24/7
-                    </span>
-                    <span className="text-[10px] sm:text-sm">
-                      {t("portfolio.stats.support")}
-                    </span>
-                  </div>
-                </div>
+              <div className="mt-6 inline-flex items-center gap-2 text-sm text-muted-foreground">
+                <span className="h-1 w-1 rounded-full bg-[#0069FF]/70" />
+                Explore our portfolio below
+                <span className="h-1 w-1 rounded-full bg-[#0069FF]/70" />
               </div>
             </div>
           </div>
         </section>
 
-        {/* Seperator Section */}
-        <SectionSeparator />
-
         {/* Filter & Projects */}
-        <section id="projects" className="py-20 lg:py-32 bg-muted/30">
+        <section id="projects" className="relative py-20 lg:py-32">
+          {/* Minimal Section Separator - positioned at intersection */}
+          <div className="absolute -top-12 left-0 right-0 z-10">
+            <MinimalSectionSeparator />
+          </div>
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             {/* Section Header */}
             <div className="max-w-3xl mx-auto text-center mb-16">

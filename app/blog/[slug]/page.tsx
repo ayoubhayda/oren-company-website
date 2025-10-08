@@ -203,20 +203,21 @@ export default function BlogPostPage({ params }: { params: Promise<{ slug: strin
         {/* Hero Section */}
         <section className="pt-24 pb-12 lg:pt-24 lg:pb-10 bg-gradient-to-b from-background/50 via-background/80 to-background">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="mb-8">
-              <Button variant="ghost" asChild>
-                <Link href="/blog">
-                  {language === "ar" ? (
-                    <ArrowRight className="ml-2 h-4 w-4" />
-                  ) : (
-                    <ArrowLeft className="mr-2 h-4 w-4" />
-                  )}
-                  {t("blog.backToBlog")}
-                </Link>
-              </Button>
-            </div>
+            <div className="max-w-4xl mx-auto">
+              <div className="mb-8">
+                <Button variant="ghost" asChild className="group">
+                  <Link href="/blog" className="flex items-center gap-2 hover:gap-3 transition-all">
+                    {language === "ar" ? (
+                      <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                    ) : (
+                      <ArrowLeft className="h-4 w-4 group-hover:-translate-x-1 transition-transform" />
+                    )}
+                    {t("blog.backToBlog")}
+                  </Link>
+                </Button>
+              </div>
 
-            <div className="space-y-6">
+              <div className="space-y-6">
               <div className="flex flex-wrap items-center gap-4">
                 <Badge variant="secondary">{t(post.category)}</Badge>
                 <div className="flex items-center gap-4 text-sm text-muted-foreground">
@@ -244,8 +245,9 @@ export default function BlogPostPage({ params }: { params: Promise<{ slug: strin
                 </Button>
               </div>
 
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-foreground">{t(post.title)}</h1>
-              <p className="text-lg sm:text-xl text-muted-foreground leading-relaxed">{t(post.excerpt)}</p>
+                <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-foreground">{t(post.title)}</h1>
+                <p className="text-lg sm:text-xl text-muted-foreground leading-relaxed">{t(post.excerpt)}</p>
+              </div>
             </div>
           </div>
         </section>
@@ -264,10 +266,12 @@ export default function BlogPostPage({ params }: { params: Promise<{ slug: strin
         {/* Content */}
         <section className="py-12 lg:py-16">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div
-              className="prose prose-lg dark:prose-invert max-w-none"
-              dangerouslySetInnerHTML={{ __html: t(post.content) }}
-            />
+            <div className="max-w-4xl mx-auto">
+              <div
+                className="prose prose-lg dark:prose-invert max-w-none"
+                dangerouslySetInnerHTML={{ __html: t(post.content) }}
+              />
+            </div>
           </div>
         </section>
 

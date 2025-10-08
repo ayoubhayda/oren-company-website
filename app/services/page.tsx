@@ -1,5 +1,7 @@
 "use client"
 
+import { useEffect, useState } from "react"
+import { motion } from "framer-motion"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import { Code, Palette, ShoppingCart, TrendingUp, Share2, Zap, ArrowRight, CheckCircle2, Users2, Settings, LifeBuoy, Wrench, Sparkles } from "lucide-react"
@@ -9,6 +11,8 @@ import { Badge } from "@/components/ui/badge"
 import Link from "next/link"
 import { CTASection } from "@/components/cta-section"
 import SectionSeparator from "@/components/general/SectionSeparator"
+import MinimalSectionSeparator from "@/components/general/MinimalSectionSeparator"
+import { HeroSectionBackground } from "@/components/animations/HeroSectionBackground"
 import { useLanguage } from "@/components/language-provider"
 
 const services = [
@@ -63,53 +67,108 @@ const services = [
 
 export default function ServicesPage() {
   const { t } = useLanguage()
+  const [mounted, setMounted] = useState(false)
+  const [isClient, setIsClient] = useState(false)
+
+  // Interactive background effects
+  useEffect(() => {
+    setMounted(true)
+    setIsClient(true)
+
+    const setupInteractiveEffects = () => {
+      const heroSection = document.getElementById('hero-section')
+      const interactiveBg = document.getElementById('interactive-bg')
+      const particleContainer = document.getElementById('particle-container')
+
+      if (!heroSection || !interactiveBg || !particleContainer) {
+        setTimeout(setupInteractiveEffects, 100)
+        return
+      }
+
+      const particles = interactiveBg.querySelectorAll('.particle-1, .particle-2, .particle-3, .particle-4, .particle-5, .particle-6, .particle-7, .particle-8, .particle-9, .particle-10, .particle-11')
+      const shapes = interactiveBg.querySelectorAll('.shape-1, .shape-2, .shape-3, .shape-4, .shape-5, .shape-6, .shape-7, .shape-8, .shape-9, .shape-10')
+      const serviceIcons = interactiveBg.querySelectorAll('[id^="service-icon-"]')
+      const orbs = interactiveBg.querySelectorAll('.orb-1, .orb-2, .orb-3, .orb-4, .orb-5, .orb-6')
+
+      // Store original computed styles for smooth resets
+      const originalStyles = new Map()
+
+      // Initialize original styles - preserve CSS animations
+        particles.forEach((particle) => {
+          const element = particle as HTMLElement
+        const computedStyle = window.getComputedStyle(element)
+        originalStyles.set(element, {
+          transform: computedStyle.transform || '',
+          opacity: computedStyle.opacity || ''
+        })
+      })
+
+        shapes.forEach((shape) => {
+          const element = shape as HTMLElement
+        const computedStyle = window.getComputedStyle(element)
+        originalStyles.set(element, {
+          transform: computedStyle.transform || '',
+          opacity: computedStyle.opacity || ''
+        })
+      })
+
+      // Mouse effects disabled - only autonomous animations
+
+      // Mouse effects completely disabled - only autonomous animations run
+    }
+
+    const timeoutId = setTimeout(setupInteractiveEffects, 100)
+
+    return () => {
+      clearTimeout(timeoutId)
+    }
+  }, [])
+
+  if (!mounted) return null
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen">
       <Header />
       <main>
-        {/* Hero Section - Enhanced */}
-        <section className="relative h-screen flex items-center overflow-hidden">
-          {/* Subtle gradient background */}
-          <div className="absolute inset-0 bg-gradient-to-b from-primary/5 via-background to-background pointer-events-none" />
+        {/* Hero Section - Interactive Digital Experience */}
+    <section className="relative overflow-hidden py-18 lg:py-22 bg-gradient-to-b from-background via-background to-primary/10" id="hero-section">
+      {/* Hero Section Background Component */}
+      <HeroSectionBackground />
 
-          <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 z-10">
-            <div className="max-w-4xl mx-auto text-center space-y-8">
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 text-primary text-sm font-medium">
-                <div className="w-2 h-2 rounded-full bg-primary"></div>
-                <span>{t("services.hero.badge")}</span>
-              </div>
-
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold text-foreground tracking-tight">
-                {t("services.hero.title.line1")}
-                <span className="block text-primary mt-2">{t("services.hero.title.line2")}</span>
-              </h1>
-
-              <p className="text-lg sm:text-xl text-muted-foreground leading-relaxed max-w-2xl mx-auto">
-                {t("services.hero.subtitle")}
-              </p>
-
-              <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
-                <Button size="lg" asChild className="text-base">
-                  <Link href="#services">
-                    {t("services.hero.button.explore")}
-                    <ArrowRight className="ms-0.5 h-5 w-5 transform rtl:rotate-180" />
-                  </Link>
-                </Button>
-                <Button size="lg" variant="outline" asChild className="text-base">
-                  <Link href="/contact">{t("services.hero.button.consultation")}</Link>
-                </Button>
-              </div>
-
-            </div>
+      {/* ===== CONTENT ===== */}
+      <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="text-center">
+          {/* digital crumbs */}
+          <div className="mx-auto mb-8 flex w-full max-w-[320px] items-center justify-center gap-3">
+            <div className="h-px flex-1 bg-gradient-to-r from-transparent to-[#0069FF]/60" />
+            <div className="h-2 w-2 rounded-full bg-[#0069FF]" />
+            <div className="h-px flex-1 bg-gradient-to-l from-transparent to-[#00BFFF]/60" />
           </div>
-        </section>
 
-        {/* Seperator Section */}
-        <SectionSeparator />
+          <h1 className="mx-auto max-w-5xl text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-foreground leading-tight">
+            Elevate Your Digital
+            <span className="relative mt-2 block text-transparent bg-clip-text bg-gradient-to-r from-[#0069FF] to-[#00BFFF]">
+              Presence
+            </span>
+          </h1>
+
+          <div className="mt-6 inline-flex items-center gap-2 text-sm text-muted-foreground">
+            <span className="h-1 w-1 rounded-full bg-[#0069FF]/70" />
+            Explore our services below
+            <span className="h-1 w-1 rounded-full bg-[#0069FF]/70" />
+          </div>
+        </div>
+      </div>
+
+    </section>
 
         {/* Services Grid - Enhanced */}
-        <section id="services" className="py-20 lg:py-32">
+        <section id="services" className="relative py-20 lg:py-32">
+          {/* Minimal Section Separator - positioned at intersection */}
+          <div className="absolute -top-12 left-0 right-0 z-10">
+            <MinimalSectionSeparator />
+          </div>
+
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             {/* Section Header */}
             <div className="max-w-3xl mx-auto text-center mb-16">
@@ -221,7 +280,7 @@ export default function ServicesPage() {
         <SectionSeparator />
 
         {/* Why Choose Us - Enhanced */}
-        <section className="py-20 lg:py-32 bg-gradient-to-b from-background via-muted/30 to-background">
+        <section className="py-20 lg:py-32">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             {/* Section Header */}
             <div className="max-w-3xl mx-auto text-center mb-16">

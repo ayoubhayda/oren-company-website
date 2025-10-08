@@ -25,6 +25,8 @@ import { useState } from "react"
 import { useLanguage } from "@/components/language-provider"
 import { AnimatedSection } from "@/components/animated-section"
 import SectionSeparator from "@/components/general/SectionSeparator"
+import MinimalSectionSeparator from "@/components/general/MinimalSectionSeparator"
+import { HeroSectionBackground } from "@/components/animations/HeroSectionBackground"
 
 export default function ContactPage() {
   const { t } = useLanguage()
@@ -47,45 +49,43 @@ export default function ContactPage() {
     <div className="min-h-screen">
       <Header />
       <main>
-        {/* Hero */}
-        <section className="relative h-screen flex items-center overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-b from-primary/5 via-background to-background" />
-          <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="max-w-4xl mx-auto text-center space-y-8">
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 text-primary text-sm font-medium">
-                <Zap className="w-4 h-4" />
-                <span>{t("contact.hero.badge")}</span>
+        {/* Hero Section - Interactive Digital Experience */}
+        <section className="relative overflow-hidden py-18 lg:py-22 bg-gradient-to-b from-background via-background to-primary/10" id="hero-section">
+          {/* Hero Section Background Component */}
+          <HeroSectionBackground />
+
+          {/* ===== CONTENT ===== */}
+          <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div className="text-center">
+              {/* digital crumbs */}
+              <div className="mx-auto mb-8 flex w-full max-w-[320px] items-center justify-center gap-3">
+                <div className="h-px flex-1 bg-gradient-to-r from-transparent to-[#0069FF]/60" />
+                <div className="h-2 w-2 rounded-full bg-[#0069FF]" />
+                <div className="h-px flex-1 bg-gradient-to-l from-transparent to-[#00BFFF]/60" />
               </div>
 
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold text-foreground tracking-tight">
-                {t("contact.hero.title")}
-                <span className="block text-primary mt-2">{t("contact.hero.title.highlight")}</span>
+              <h1 className="mx-auto max-w-5xl text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-foreground leading-tight">
+                Let's Start Your Digital
+                <span className="relative mt-2 block text-transparent bg-clip-text bg-gradient-to-r from-[#0069FF] to-[#00BFFF]">
+                  Journey Together
+                </span>
               </h1>
 
-              <p className="text-lg sm:text-xl text-muted-foreground leading-relaxed max-w-2xl mx-auto">
-                {t("contact.hero.subtitle")}
-              </p>
-
-              <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
-                <Button size="lg" asChild className="text-base">
-                  <a href="mailto:hello@auren.agency">
-                    {t("contact.hero.cta.email")}
-                    <Mail className="ms-0.5 h-5 w-5" />
-                  </a>
-                </Button>
-                <Button size="lg" variant="outline" asChild className="text-base">
-                  <a href="tel:+212666666666">{t("contact.hero.cta.call")}</a>
-                </Button>
+              <div className="mt-6 inline-flex items-center gap-2 text-sm text-muted-foreground">
+                <span className="h-1 w-1 rounded-full bg-[#0069FF]/70" />
+                Ready to bring your vision to life?
+                <span className="h-1 w-1 rounded-full bg-[#0069FF]/70" />
               </div>
             </div>
           </div>
         </section>
 
-        <SectionSeparator />
-
         {/* Contact Section */}
-        <section className="relative py-20 lg:py-32 bg-background">
-          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-primary/5 to-transparent" />
+        <section className="relative py-20 lg:py-32">
+          {/* Minimal Section Separator - positioned at intersection */}
+          <div className="absolute -top-12 left-0 right-0 z-10">
+            <MinimalSectionSeparator />
+          </div>
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 max-w-7xl mx-auto">
               {/* Left: Info */}
