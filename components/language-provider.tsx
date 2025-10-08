@@ -956,93 +956,67 @@ const translations: Record<Language, Record<string, string>> = {
         <p>The web development landscape is evolving faster than ever. In 2025, developers and digital agencies are embracing new tools and technologies that prioritize <strong>speed, user experience, AI-integration, and sustainability</strong>. Whether you're a brand owner, developer, or designer, understanding these trends can help you stay competitive in a digital-first world.</p>
       </div>
 
-      <section class="trend-section">
-        <h2>AI-Driven Development & Automation</h2>
-        <p>Artificial Intelligence is transforming the way websites are built and maintained. From <strong>AI-powered code generation</strong> tools like GitHub Copilot to <strong>personalized UX based on user behavior</strong>, automation is cutting development time and boosting creativity.</p>
-        <div class="trend-highlight">
-          <p><strong>Key Insight:</strong> AI chatbots and content assistants are now standard for websites, not luxuries.</p>
-        </div>
-      </section>
+      <h2>AI-Driven Development & Automation</h2>
+      <p>Artificial Intelligence is transforming the way websites are built and maintained. From <strong>AI-powered code generation</strong> tools like GitHub Copilot to <strong>personalized UX based on user behavior</strong>, automation is cutting development time and boosting creativity.</p>
 
-      <section class="trend-section mt-0">
-        <h2>Performance-First Architecture</h2>
-        <p>Google's focus on <strong>Core Web Vitals</strong> continues in 2025. Fast loading times, smooth interactivity, and visual stability are more important than ever. Developers are using <strong>Next.js 14, Astro, and Vite</strong> to build ultra-fast, performance-driven websites.</p>
-        <div class="trend-highlight mb-0">
-          <p><strong>Pro Tip:</strong> Optimize images, implement lazy loading, and leverage edge caching for global audiences.</p>
-        </div>
-      </section>
+      <p>AI chatbots and content assistants are now standard for websites, not luxuries. This technology allows for more dynamic and responsive user experiences while reducing the manual workload on development teams.</p>
 
-      <section class="trend-section">
-        <h2>Serverless & Edge Computing</h2>
-        <p>Serverless architecture and <strong>edge deployment</strong> are redefining scalability. Platforms like <strong>Vercel, Netlify, and Cloudflare Workers</strong> allow developers to deploy code closer to users, improving latency and performance dramatically.</p>
-        <p>This shift also reduces costs and simplifies backend infrastructure management.</p>
-      </section>
+      <h2>Performance-First Architecture</h2>
+      <p>Google's focus on <strong>Core Web Vitals</strong> continues in 2025. Fast loading times, smooth interactivity, and visual stability are more important than ever. Developers are using <strong>Next.js 14, Astro, and Vite</strong> to build ultra-fast, performance-driven websites.</p>
 
-      <section class="trend-section">
-        <h2>Progressive Web Apps (PWAs) 2.0</h2>
-        <p>PWAs continue to blur the line between web and native mobile apps. In 2025, they support <strong>push notifications, offline access, and full-screen capabilities</strong> even better.</p>
-        <p>Brands use them to deliver app-like experiences without the cost of native development.</p>
-      </section>
+      <p>Optimize images, implement lazy loading, and leverage edge caching for global audiences. These techniques ensure that websites load quickly regardless of the user's location or device capabilities.</p>
 
-      <section class="trend-section">
-        <h2>Motion UI & Interactive Design</h2>
-        <p>Static designs are out. Motion UI, <strong>micro-animations</strong>, and <strong>3D scroll effects</strong> are leading the way to immersive experiences. Tools like <strong>Framer Motion</strong> and <strong>GSAP</strong> make it easy to add personality and emotion to interfaces.</p>
-        <div class="trend-highlight warning">
-          <p><strong>Important:</strong> Motion should enhance UX — not overwhelm it.</p>
-        </div>
-      </section>
+      <h2>Serverless & Edge Computing</h2>
+      <p>Serverless architecture and <strong>edge deployment</strong> are redefining scalability. Platforms like <strong>Vercel, Netlify, and Cloudflare Workers</strong> allow developers to deploy code closer to users, improving latency and performance dramatically.</p>
 
-      <section class="trend-section">
-        <h2>Sustainable Web Design</h2>
-        <p>Eco-friendly design is not just a buzzword. Websites are now optimized to <strong>consume less energy</strong>, using <strong>dark themes, minimal resources, and efficient code</strong>. Developers and agencies are prioritizing green hosting solutions to reduce carbon footprints.</p>
-      </section>
+      <p>This shift also reduces costs and simplifies backend infrastructure management. Teams can focus more on building features rather than maintaining servers.</p>
 
-      <section class="trend-section">
-        <h2>Security & Privacy by Design</h2>
-        <p>As users become more privacy-aware, <strong>secure authentication systems</strong>, <strong>zero-trust architecture</strong>, and <strong>encrypted APIs</strong> are now standard. Compliance with GDPR, CCPA, and global data policies remains a top priority for developers and brands.</p>
-      </section>
+      <h2>Progressive Web Apps (PWAs) 2.0</h2>
+      <p>PWAs continue to blur the line between web and native mobile apps. In 2025, they support <strong>push notifications, offline access, and full-screen capabilities</strong> even better.</p>
 
-      <section class="trend-section">
-        <h2>Low-Code Revolution</h2>
-        <p>Businesses want to move fast. Low-code and no-code tools like <strong>Webflow, Bubble, and Builder.io</strong> empower non-developers to create functional prototypes — while developers focus on integrations, performance, and custom logic.</p>
-      </section>
+      <p>Brands use them to deliver app-like experiences without the cost of native development. Users get the convenience of an app without needing to download anything from an app store.</p>
 
-      <section class="trend-section">
-        <h2>Headless & Composable Architecture</h2>
-        <p>Headless CMSs such as <strong>Strapi, Sanity, and Contentful</strong> dominate 2025, offering flexibility across devices and platforms. Paired with <strong>JAMstack</strong> and <strong>GraphQL</strong>, they enable faster content delivery and a seamless multi-channel experience.</p>
-      </section>
+      <h2>Motion UI & Interactive Design</h2>
+      <p>Static designs are out. Motion UI, <strong>micro-animations</strong>, and <strong>3D scroll effects</strong> are leading the way to immersive experiences. Tools like <strong>Framer Motion</strong> and <strong>GSAP</strong> make it easy to add personality and emotion to interfaces.</p>
 
-      <section class="trend-section">
-        <h2>Web3 & Blockchain Integration</h2>
-        <p>Web3 adoption is rising with <strong>decentralized authentication, smart contracts</strong>, and <strong>digital ownership</strong> features. While still early for mainstream brands, more startups are exploring blockchain-based user identity and NFT-linked memberships.</p>
-      </section>
+      <p>Motion should enhance UX — not overwhelm it. The key is to use animations that guide users and provide feedback without being distracting.</p>
 
-      <section class="key-takeaways">
-        <h2>Key Takeaways</h2>
-        <div class="takeaways-grid">
-          <div class="takeaway-item">
-            <strong>AI Integration:</strong> Automation tools are becoming essential for faster development
-          </div>
-          <div class="takeaway-item">
-            <strong>Performance First:</strong> Core Web Vitals and optimization are non-negotiable
-          </div>
-          <div class="takeaway-item">
-            <strong>Sustainability:</strong> Green hosting and energy-efficient design matter
-          </div>
-          <div class="takeaway-item">
-            <strong>Flexibility:</strong> Headless and composable architectures offer better scalability
-          </div>
-        </div>
-      </section>
+      <h2>Sustainable Web Design</h2>
+      <p>Eco-friendly design is not just a buzzword. Websites are now optimized to <strong>consume less energy</strong>, using <strong>dark themes, minimal resources, and efficient code</strong>. Developers and agencies are prioritizing green hosting solutions to reduce carbon footprints.</p>
 
-      <section class="conclusion">
-        <h2>Looking Ahead</h2>
-        <p>Web development in 2025 is defined by <strong>AI, automation, and agility</strong>. The key is balancing <strong>performance, creativity, and sustainability</strong>. At Oren, we're already adopting these modern technologies to build faster, smarter, and future-proof websites for our clients.</p>
+      <p>This approach not only benefits the environment but also improves performance and user experience. Lighter websites load faster and use less battery power on mobile devices.</p>
 
-        <div class="cta-box">
-          <p><strong>Ready to embrace these trends?</strong> <a href="/contact">Contact us</a> to discuss how we can help transform your web presence with cutting-edge technology.</p>
-        </div>
-      </section>
+      <h2>Security & Privacy by Design</h2>
+      <p>As users become more privacy-aware, <strong>secure authentication systems</strong>, <strong>zero-trust architecture</strong>, and <strong>encrypted APIs</strong> are now standard. Compliance with GDPR, CCPA, and global data policies remains a top priority for developers and brands.</p>
+
+      <p>Building security into the design process from the beginning prevents vulnerabilities and builds user trust. Regular security audits and updates are essential for maintaining a safe web presence.</p>
+
+      <h2>Low-Code Revolution</h2>
+      <p>Businesses want to move fast. Low-code and no-code tools like <strong>Webflow, Bubble, and Builder.io</strong> empower non-developers to create functional prototypes — while developers focus on integrations, performance, and custom logic.</p>
+
+      <p>This democratization of web development is creating new opportunities for rapid prototyping and faster time-to-market for digital products and services.</p>
+
+      <h2>Headless & Composable Architecture</h2>
+      <p>Headless CMSs such as <strong>Strapi, Sanity, and Contentful</strong> dominate 2025, offering flexibility across devices and platforms. Paired with <strong>JAMstack</strong> and <strong>GraphQL</strong>, they enable faster content delivery and a seamless multi-channel experience.</p>
+
+      <p>Content creators can work independently from developers, while the technical team focuses on creating robust APIs and integrations. This separation of concerns leads to more efficient workflows and better content management.</p>
+
+      <h2>Web3 & Blockchain Integration</h2>
+      <p>Web3 adoption is rising with <strong>decentralized authentication, smart contracts</strong>, and <strong>digital ownership</strong> features. While still early for mainstream brands, more startups are exploring blockchain-based user identity and NFT-linked memberships.</p>
+
+      <p>These technologies offer new possibilities for user engagement and ownership, though they require careful consideration of scalability and user experience implications.</p>
+
+      <h2>Key Takeaways</h2>
+      <p>Staying ahead in web development means embracing these trends while maintaining focus on user experience and performance. The future belongs to developers and agencies who can balance innovation with reliability.</p>
+
+      <p>Remember: technology should serve users, not the other way around. As we move into 2025 and beyond, the most successful digital experiences will be those that put people first while leveraging the latest tools and techniques.</p>
+
+      <p>The key to success in 2025 and beyond will be finding the right balance between cutting-edge technology and timeless user experience principles. Stay curious, keep learning, and always prioritize your users' needs above all else.</p>
+
+      <h2>Looking Ahead</h2>
+      <p>Web development in 2025 is defined by <strong>AI, automation, and agility</strong>. The key is balancing <strong>performance, creativity, and sustainability</strong>. At Oren, we're already adopting these modern technologies to build faster, smarter, and future-proof websites for our clients.</p>
+
+      <p><strong>Ready to embrace these trends?</strong> <a href="/contact">Contact us</a> to discuss how we can help transform your web presence with cutting-edge technology.</p>
     `,
 
     // About
@@ -2034,13 +2008,10 @@ const translations: Record<Language, Record<string, string>> = {
         <p>مشهد تطوير الويب يتطور بسرعة أكبر من أي وقت مضى. في عام 2025، يتبنى المطورون والوكالات الرقمية أدوات وتقنيات جديدة تركز على <strong>السرعة وتجربة المستخدم وتكامل الذكاء الاصطناعي والاستدامة</strong>. سواء كنت صاحب علامة تجارية أو مطور أو مصمم، فإن فهم هذه التوجهات يمكن أن يساعدك على البقاء تنافسيًا في عالم رقمي أولاً.</p>
       </div>
 
-      <section class="trend-section">
-        <h2>التطوير المعتمد على الذكاء الاصطناعي والأتمتة</h2>
-        <p>الذكاء الاصطناعي يحول طريقة بناء وصيانة المواقع. من أدوات <strong>توليد الكود بالذكاء الاصطناعي</strong> مثل GitHub Copilot إلى <strong>تجربة المستخدم المخصصة بناءً على سلوك المستخدم</strong>، الأتمتة تقطع وقت التطوير وتعزز الإبداع.</p>
-        <div class="trend-highlight">
-          <p><strong>الرؤية الرئيسية:</strong> روبوتات الدردشة بالذكاء الاصطناعي ومساعدي المحتوى أصبحت الآن معيارًا للمواقع، وليست رفاهية.</p>
-        </div>
-      </section>
+      <h2>التطوير المعتمد على الذكاء الاصطناعي والأتمتة</h2>
+      <p>الذكاء الاصطناعي يحول طريقة بناء وصيانة المواقع. من أدوات <strong>توليد الكود بالذكاء الاصطناعي</strong> مثل GitHub Copilot إلى <strong>تجربة المستخدم المخصصة بناءً على سلوك المستخدم</strong>، الأتمتة تقطع وقت التطوير وتعزز الإبداع.</p>
+
+      <p>روبوتات الدردشة بالذكاء الاصطناعي ومساعدي المحتوى أصبحت الآن معيارًا للمواقع، وليست رفاهية. تتيح هذه التكنولوجيا تجارب مستخدمين أكثر ديناميكية واستجابة مع تقليل العبء اليدوي على فرق التطوير.</p>
 
       <section class="trend-section">
         <h2>الهيكلية الأولى بالأداء</h2>

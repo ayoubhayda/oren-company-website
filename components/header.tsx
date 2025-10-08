@@ -135,31 +135,35 @@ export function Header() {
         </div>
 
         {/* Mobile Menu */}
-        {isMobileMenuOpen && (
-          <div className="lg:hidden py-4 border-t border-border bg-background">
-            <nav className="flex flex-col space-y-4">
+        <div className={`lg:hidden overflow-hidden transition-all duration-300 ease-in-out ${
+          isMobileMenuOpen ? "max-h-96 opacity-100 pb-4" : "max-h-0 opacity-0"
+        }`}>
+          <div className="border-t border-border bg-background/95 backdrop-blur-sm">
+            <nav className="flex flex-col space-y-3 px-4 pt-4">
               {navItems.map((item) => (
                 <Link
                   key={item.href}
                   href={item.href}
-                  className={`text-sm font-medium transition-colors ${
+                  className={`text-sm font-medium transition-colors py-2 px-3 rounded-md ${
                     isActiveNavItem(item.href)
-                      ? "text-foreground"
-                      : "text-muted-foreground hover:text-foreground"
+                      ? "text-foreground bg-primary/10"
+                      : "text-muted-foreground hover:text-foreground hover:bg-muted/50"
                   }`}
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
                   {item.label}
                 </Link>
               ))}
-              <Button asChild className="w-full">
-                <Link href="/contact" onClick={() => setIsMobileMenuOpen(false)}>
-                  {t("hero.cta.primary")}
-                </Link>
-              </Button>
+              <div className="pt-2">
+                <Button asChild className="w-full">
+                  <Link href="/contact" onClick={() => setIsMobileMenuOpen(false)}>
+                    {t("hero.cta.primary")}
+                  </Link>
+                </Button>
+              </div>
             </nav>
           </div>
-        )}
+        </div>
       </div>
     </header>
   )

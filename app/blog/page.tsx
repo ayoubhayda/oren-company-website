@@ -12,6 +12,8 @@ import { Input } from "@/components/ui/input"
 import { Calendar, Clock, Search, Zap, ArrowRight, ArrowLeft } from "lucide-react"
 import { useLanguage } from "@/components/language-provider"
 import SectionSeparator from "@/components/general/SectionSeparator"
+import MinimalSectionSeparator from "@/components/general/MinimalSectionSeparator"
+import { HeroSectionBackground } from "@/components/animations/HeroSectionBackground"
 
 const categories = [
   { key: "all", labelKey: "blog.category.all" },
@@ -103,53 +105,43 @@ export default function BlogPage() {
     <div className="min-h-screen">
       <Header />
       <main>
-        {/* Hero Section */}
-        <section className="relative h-screen flex items-center overflow-hidden">
-          {/* Subtle gradient background */}
-          <div className="absolute inset-0 bg-gradient-to-b from-primary/5 via-background to-background" />
+        {/* Hero Section - Interactive Digital Experience */}
+        <section className="relative overflow-hidden py-18 lg:py-22 bg-gradient-to-b from-background via-background to-primary/10" id="hero-section">
+          {/* Hero Section Background Component */}
+          <HeroSectionBackground />
 
-          <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="max-w-4xl mx-auto text-center space-y-8">
-              {/* Badge */}
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 text-sm font-medium text-primary backdrop-blur-sm">
-                <span className="relative flex h-2 w-2">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
-                  <span className="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
-                </span>
-                {t("blog.hero.badge")}
+          {/* ===== CONTENT ===== */}
+          <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div className="text-center">
+              {/* digital crumbs */}
+              <div className="mx-auto mb-8 flex w-full max-w-[320px] items-center justify-center gap-3">
+                <div className="h-px flex-1 bg-gradient-to-r from-transparent to-[#0069FF]/60" />
+                <div className="h-2 w-2 rounded-full bg-[#0069FF]" />
+                <div className="h-px flex-1 bg-gradient-to-l from-transparent to-[#00BFFF]/60" />
               </div>
 
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold text-foreground tracking-tight">
-                {t("blog.hero.title")}
-                <span className="block text-primary mt-2">{t("blog.hero.titleHighlight")}</span>
+              <h1 className="mx-auto max-w-5xl text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-foreground leading-tight">
+                Insights & Stories from
+                <span className="relative mt-2 block text-transparent bg-clip-text bg-gradient-to-r from-[#0069FF] to-[#00BFFF]">
+                  Our Experts
+                </span>
               </h1>
 
-              <p className="text-lg sm:text-xl text-muted-foreground leading-relaxed max-w-2xl mx-auto">
-                {t("blog.hero.subtitle")}
-              </p>
-
-              {/* CTA Buttons */}
-              <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
-                <Button size="lg" asChild className="group">
-                  <Link href="#blog-posts">
-                    {t("blog.hero.cta.primary")}
-                    <ArrowRight className="ms-2 h-4 w-4 transform rtl:rotate-180" />
-                  </Link>
-                </Button>
-                <Button size="lg" variant="outline" asChild className="bg-transparent hover:bg-primary/5">
-                  <Link href="/contact">
-                    {t("blog.hero.cta.contact")}
-                  </Link>
-                </Button>
+              <div className="mt-6 inline-flex items-center gap-2 text-sm text-muted-foreground">
+                <span className="h-1 w-1 rounded-full bg-[#0069FF]/70" />
+                Explore our latest articles below
+                <span className="h-1 w-1 rounded-full bg-[#0069FF]/70" />
               </div>
             </div>
           </div>
         </section>
 
-        <SectionSeparator />
-
         {/* Search & Filter + Blog Posts */}
-        <section className="py-20 lg:py-32">
+        <section className="relative py-20 lg:py-32">
+          {/* Minimal Section Separator - positioned at intersection */}
+          <div className="absolute -top-12 left-0 right-0 z-10">
+            <MinimalSectionSeparator />
+          </div>
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             {/* Search & Filter */}
             <div className="max-w-4xl mx-auto mb-12 space-y-6">
