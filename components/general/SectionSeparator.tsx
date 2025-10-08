@@ -24,7 +24,7 @@ const SectionSeparator = () => {
   return (
     <div className="relative w-full h-24 overflow-hidden flex items-center justify-center">
       {/* Background with subtle pattern */}
-      <div className="absolute inset-0 bg-gradient-to-r from-transparent via-primary/10 dark:via-primary/5 to-transparent"></div>
+      {/* <div className="absolute inset-0 bg-gradient-to-r from-transparent via-primary/10 dark:via-primary/5 to-transparent"></div> */}
 
       {/* Animated stars - only render on client */}
       {isClient && (
