@@ -2,32 +2,13 @@
 
 import * as React from "react";
 import {
-  closestCenter,
-  DndContext,
-  KeyboardSensor,
-  MouseSensor,
-  TouchSensor,
-  useSensor,
-  useSensors,
-  type DragEndEvent,
-  type UniqueIdentifier,
-} from "@dnd-kit/core";
-import { restrictToVerticalAxis } from "@dnd-kit/modifiers";
-import {
-  arrayMove,
-  SortableContext,
-  useSortable,
-  verticalListSortingStrategy,
-} from "@dnd-kit/sortable";
-import { CSS } from "@dnd-kit/utilities";
-import {
   IconChevronDown,
   IconDotsVertical,
   IconEdit,
   IconEye,
   IconPlus,
   IconTrash,
-  IconTrendingUp,
+  IconClock,
 } from "@tabler/icons-react";
 import {
   ColumnDef,
@@ -49,6 +30,17 @@ import Image from "next/image";
 
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from "@/components/ui/alert-dialog";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -74,60 +66,113 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { type ProjectTableData } from "@/utils/zodSchemas";
+import { deleteProjectMutation } from "@/lib/actions";
+import Link from "next/link";
 
-// Create a separate component for the drag handle
-function DragHandle({ id }: { id: string }) {
-  const { attributes, listeners } = useSortable({
-    id,
-  });
-
+// Thumbnail cell component
+function ThumbnailCell({ project }: { project: ProjectTableData }) {
   return (
-    <Button
-      {...attributes}
-      {...listeners}
-      variant="ghost"
-      size="icon"
-      className="text-muted-foreground size-7 hover:bg-transparent"
-    >
-      <IconTrendingUp className="text-muted-foreground size-3" />
-      <span className="sr-only">Drag to reorder</span>
-    </Button>
+    <div className="relative h-9 w-14 overflow-hidden rounded border bg-muted/30 flex-shrink-0">
+      <Image
+        src={project.thumbnailUrl}
+        alt={project.shortTitleEN}
+        fill
+        className="object-cover"
+      />
+    </div>
   );
 }
 
 // Project title cell component with thumbnail
 function ProjectTitleCell({ project }: { project: ProjectTableData }) {
+  const [formattedDate, setFormattedDate] = React.useState<string>("");
+
+  React.useEffect(() => {
+    // Format date only on the client side to avoid hydration mismatch
+    setFormattedDate(
+      new Date(project.createdAt).toLocaleDateString("en-US", {
+        month: "short",
+        day: "numeric",
+        year: "numeric",
+      })
+    );
+  }, [project.createdAt]);
+
   return (
     <div className="flex items-center gap-3">
-      <div className="relative h-10 w-10 overflow-hidden rounded-md">
-        <Image
-          src={project.thumbnailUrl}
-          alt={project.shortTitleEN}
-          fill
-          className="object-cover"
-        />
-      </div>
-      <div className="space-y-1">
-        <div className="font-medium">{project.shortTitleEN}</div>
-        <div className="text-sm text-muted-foreground">
-          Created {new Date(project.createdAt).toLocaleDateString()}
+      <ThumbnailCell project={project} />
+      <div className="space-y-0.5 min-w-[200px]">
+        <div className="font-medium text-sm leading-tight">
+          {project.shortTitleEN}
+        </div>
+        {/* Created at */}
+        <div className="text-xs text-muted-foreground">
+          {formattedDate ? (
+            `Created ${formattedDate}`
+          ) : (
+            <span className="inline-block w-24 h-3" />
+          )}
         </div>
       </div>
     </div>
   );
 }
 
-// Technologies cell component
+// Category badge with enhanced styling
+function CategoryBadge({ category }: { category: string }) {
+  const categoryStyles: Record<string, string> = {
+    "web-development":
+      "bg-blue-50 text-blue-700 border-blue-200 dark:bg-blue-500/10 dark:text-blue-400 dark:border-blue-500/20",
+    "mobile-app":
+      "bg-purple-50 text-purple-700 border-purple-200 dark:bg-purple-500/10 dark:text-purple-400 dark:border-purple-500/20",
+    ecommerce:
+      "bg-green-50 text-green-700 border-green-200 dark:bg-green-500/10 dark:text-green-400 dark:border-green-500/20",
+    design:
+      "bg-pink-50 text-pink-700 border-pink-200 dark:bg-pink-500/10 dark:text-pink-400 dark:border-pink-500/20",
+    "digital-marketing":
+      "bg-orange-50 text-orange-700 border-orange-200 dark:bg-orange-500/10 dark:text-orange-400 dark:border-orange-500/20",
+    "custom-platforms":
+      "bg-indigo-50 text-indigo-700 border-indigo-200 dark:bg-indigo-500/10 dark:text-indigo-400 dark:border-indigo-500/20",
+  };
+
+  const formatCategory = (cat: string) => {
+    return cat
+      .split("-")
+      .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+      .join(" ");
+  };
+
+  return (
+    <Badge
+      variant="outline"
+      className={`px-2.5 py-1 text-xs font-medium ${
+        categoryStyles[category] ||
+        "bg-gray-50 text-gray-700 border-gray-200 dark:bg-gray-500/10 dark:text-gray-400 dark:border-gray-500/20"
+      }`}
+    >
+      {formatCategory(category)}
+    </Badge>
+  );
+}
+
+// Technologies cell component with enhanced badges
 function TechnologiesCell({ technologies }: { technologies: string[] }) {
   return (
-    <div className="flex flex-wrap gap-1">
+    <div className="flex flex-wrap gap-1.5 max-w-[280px]">
       {technologies.slice(0, 3).map((tech, index) => (
-        <Badge key={index} variant="secondary" className="text-xs">
+        <Badge
+          key={index}
+          variant="outline"
+          className={`px-2.5 py-1 text-xs font-medium bg-emerald-50 text-emerald-700 border-emerald-200 dark:bg-emerald-500/10 dark:text-emerald-400 dark:border-emerald-500/20`}
+        >
           {tech}
         </Badge>
       ))}
       {technologies.length > 3 && (
-        <Badge variant="outline" className="text-xs">
+        <Badge
+          variant="outline"
+          className="px-2 py-0.5 text-xs font-medium bg-muted text-muted-foreground border-muted-foreground/20"
+        >
           +{technologies.length - 3}
         </Badge>
       )}
@@ -135,14 +180,31 @@ function TechnologiesCell({ technologies }: { technologies: string[] }) {
   );
 }
 
+// Duration cell component
+function DurationCell({ duration }: { duration: number }) {
+  return (
+    <div className="flex items-center gap-2 text-sm text-muted-foreground">
+      <IconClock className="size-3.5" />
+      <span className="font-medium">
+        {duration} {duration === 1 ? "day" : "days"}
+      </span>
+    </div>
+  );
+}
+
 // Actions cell component
 function ActionsCell({ project }: { project: ProjectTableData }) {
   const handleEdit = () => {
-    toast.info("Edit functionality will be implemented soon");
+    window.location.href = `/dashboard/projects/${project.id}/edit`;
   };
 
-  const handleDelete = () => {
-    toast.info("Delete functionality will be implemented soon");
+  const handleDelete = async () => {
+    try {
+      await deleteProjectMutation(project.id);
+    } catch (error) {
+      console.error("Error deleting project:", error);
+      toast.error("Failed to delete project");
+    }
   };
 
   const handleView = () => {
@@ -150,43 +212,62 @@ function ActionsCell({ project }: { project: ProjectTableData }) {
   };
 
   return (
-    <DropdownMenu>
-      <DropdownMenuTrigger asChild>
-        <Button
-          variant="ghost"
-          className="data-[state=open]:bg-muted text-muted-foreground flex size-8"
-          size="icon"
-        >
-          <IconDotsVertical />
-          <span className="sr-only">Open menu</span>
-        </Button>
-      </DropdownMenuTrigger>
-      <DropdownMenuContent align="end" className="w-40">
-        <DropdownMenuItem onClick={handleView}>
-          <IconEye className="mr-2 h-4 w-4" />
-          View Details
-        </DropdownMenuItem>
-        <DropdownMenuItem onClick={handleEdit}>
-          <IconEdit className="mr-2 h-4 w-4" />
-          Edit Project
-        </DropdownMenuItem>
-        <DropdownMenuSeparator />
-        <DropdownMenuItem onClick={handleDelete} variant="destructive">
-          <IconTrash className="mr-2 h-4 w-4" />
-          Delete Project
-        </DropdownMenuItem>
-      </DropdownMenuContent>
-    </DropdownMenu>
+    <AlertDialog>
+      <DropdownMenu>
+        <DropdownMenuTrigger asChild>
+          <Button
+            variant="ghost"
+            className="data-[state=open]:bg-muted flex size-8 hover:bg-muted/50"
+            size="icon"
+          >
+            <IconDotsVertical className="size-4" />
+            <span className="sr-only">Open menu</span>
+          </Button>
+        </DropdownMenuTrigger>
+        <DropdownMenuContent align="end" className="w-48">
+          <DropdownMenuItem onClick={handleView}>
+            <IconEye className="mr-2 h-4 w-4" />
+            View Details
+          </DropdownMenuItem>
+          <DropdownMenuItem onClick={handleEdit}>
+            <IconEdit className="mr-2 h-4 w-4" />
+            Edit Project
+          </DropdownMenuItem>
+          <DropdownMenuSeparator />
+          <AlertDialogTrigger asChild>
+            <DropdownMenuItem
+              className="text-destructive focus:text-destructive"
+              onSelect={(e) => e.preventDefault()}
+            >
+              <IconTrash className="mr-2 h-4 w-4" />
+              Delete Project
+            </DropdownMenuItem>
+          </AlertDialogTrigger>
+        </DropdownMenuContent>
+      </DropdownMenu>
+      <AlertDialogContent className="bg-background">
+        <AlertDialogHeader>
+          <AlertDialogTitle>Are you sure?</AlertDialogTitle>
+          <AlertDialogDescription>
+            This action cannot be undone. This will permanently delete the project{" "}
+            <strong>{project.shortTitleEN}</strong> and all its associated data.
+          </AlertDialogDescription>
+        </AlertDialogHeader>
+        <AlertDialogFooter>
+          <AlertDialogCancel>Cancel</AlertDialogCancel>
+          <AlertDialogAction
+            onClick={handleDelete}
+            className="bg-destructive text-white hover:bg-destructive/90"
+          >
+            Delete Project
+          </AlertDialogAction>
+        </AlertDialogFooter>
+      </AlertDialogContent>
+    </AlertDialog>
   );
 }
 
 const columns: ColumnDef<ProjectTableData>[] = [
-  {
-    id: "drag",
-    header: () => null,
-    cell: ({ row }) => <DragHandle id={row.original.id} />,
-    size: 40,
-  },
   {
     accessorKey: "shortTitleEN",
     header: "Project",
@@ -197,11 +278,7 @@ const columns: ColumnDef<ProjectTableData>[] = [
   {
     accessorKey: "category",
     header: "Category",
-    cell: ({ row }) => (
-      <Badge variant="outline" className="capitalize">
-        {row.original.category}
-      </Badge>
-    ),
+    cell: ({ row }) => <CategoryBadge category={row.original.category} />,
   },
   {
     accessorKey: "technologies",
@@ -213,37 +290,24 @@ const columns: ColumnDef<ProjectTableData>[] = [
   {
     accessorKey: "duration",
     header: "Duration",
-    cell: ({ row }) => (
-      <div className="text-sm">
-        {row.original.duration} {row.original.duration === 1 ? "day" : "days"}
-      </div>
-    ),
+    cell: ({ row }) => <DurationCell duration={row.original.duration} />,
   },
   {
     id: "actions",
+    header: () => <span className="sr-only">Actions</span>,
     cell: ({ row }) => <ActionsCell project={row.original} />,
     size: 50,
   },
 ];
 
 function DraggableRow({ row }: { row: Row<ProjectTableData> }) {
-  const { transform, transition, setNodeRef, isDragging } = useSortable({
-    id: row.original.id,
-  });
-
   return (
     <TableRow
       data-state={row.getIsSelected() && "selected"}
-      data-dragging={isDragging}
-      ref={setNodeRef}
-      className="relative z-0 data-[dragging=true]:z-10 data-[dragging=true]:opacity-80"
-      style={{
-        transform: CSS.Transform.toString(transform),
-        transition: transition,
-      }}
+      className="hover:bg-muted/40 transition-colors"
     >
       {row.getVisibleCells().map((cell) => (
-        <TableCell key={cell.id}>
+        <TableCell key={cell.id} className="py-3.5 px-4">
           {flexRender(cell.column.columnDef.cell, cell.getContext())}
         </TableCell>
       ))}
@@ -256,7 +320,7 @@ export function ProjectsDataTable({
 }: {
   data: ProjectTableData[];
 }) {
-  const [data, setData] = React.useState(() => initialData);
+  const [data] = React.useState(() => initialData);
   const [rowSelection, setRowSelection] = React.useState({});
   const [columnVisibility, setColumnVisibility] =
     React.useState<VisibilityState>({});
@@ -264,24 +328,12 @@ export function ProjectsDataTable({
     []
   );
   const [sorting, setSorting] = React.useState<SortingState>([
-    { id: "createdAt", desc: true },
+    { id: "shortTitleEN", desc: false },
   ]);
   const [pagination, setPagination] = React.useState({
     pageIndex: 0,
     pageSize: 10,
   });
-
-  const sortableId = React.useId();
-  const sensors = useSensors(
-    useSensor(MouseSensor, {}),
-    useSensor(TouchSensor, {}),
-    useSensor(KeyboardSensor, {})
-  );
-
-  const dataIds = React.useMemo<UniqueIdentifier[]>(
-    () => data?.map(({ id }) => id) || [],
-    [data]
-  );
 
   const table = useReactTable({
     data,
@@ -308,22 +360,11 @@ export function ProjectsDataTable({
     getFacetedUniqueValues: getFacetedUniqueValues(),
   });
 
-  function handleDragEnd(event: DragEndEvent) {
-    const { active, over } = event;
-    if (active && over && active.id !== over.id) {
-      setData((data) => {
-        const oldIndex = dataIds.indexOf(active.id);
-        const newIndex = dataIds.indexOf(over.id);
-        return arrayMove(data, oldIndex, newIndex);
-      });
-    }
-  }
-
   return (
     <div className="space-y-4">
       {/* Header with search and filters */}
-      <div className="flex items-center justify-between">
-        <div className="flex items-center gap-4">
+      <div className="flex items-center justify-between gap-4 flex-wrap">
+        <div className="flex items-center gap-3 flex-wrap">
           <div className="relative">
             <Label htmlFor="search" className="sr-only">
               Search projects
@@ -331,7 +372,7 @@ export function ProjectsDataTable({
             <Input
               id="search"
               placeholder="Search projects..."
-              className="w-64"
+              className="w-64 h-10"
               value={
                 (table.getColumn("shortTitleEN")?.getFilterValue() as string) ??
                 ""
@@ -353,7 +394,7 @@ export function ProjectsDataTable({
                 ?.setFilterValue(value === "all" ? "" : value)
             }
           >
-            <SelectTrigger className="w-40">
+            <SelectTrigger className="w-44 h-10">
               <SelectValue placeholder="All Categories" />
             </SelectTrigger>
             <SelectContent>
@@ -369,76 +410,81 @@ export function ProjectsDataTable({
             </SelectContent>
           </Select>
         </div>
-
-        <Button size="sm">
+        <Link
+          href="/dashboard/projects/create"
+          className="h-10 px-4 py-2 has-[>svg]:px-3 bg-primary text-primary-foreground shadow-none hover:bg-primary/90 cursor-pointer inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive "
+        >
           <IconPlus className="mr-2 h-4 w-4" />
           New Project
-        </Button>
+        </Link>
       </div>
 
       {/* Table */}
-      <div className="overflow-hidden rounded-lg border">
-        <DndContext
-          collisionDetection={closestCenter}
-          modifiers={[restrictToVerticalAxis]}
-          onDragEnd={handleDragEnd}
-          sensors={sensors}
-          id={sortableId}
-        >
-          <Table>
-            <TableHeader className="bg-muted sticky top-0 z-10">
-              {table.getHeaderGroups().map((headerGroup) => (
-                <TableRow key={headerGroup.id}>
-                  {headerGroup.headers.map((header) => {
-                    return (
-                      <TableHead key={header.id} colSpan={header.colSpan}>
-                        {header.isPlaceholder
-                          ? null
-                          : flexRender(
-                              header.column.columnDef.header,
-                              header.getContext()
-                            )}
-                      </TableHead>
-                    );
-                  })}
-                </TableRow>
-              ))}
-            </TableHeader>
-            <TableBody>
-              {table.getRowModel().rows?.length ? (
-                <SortableContext
-                  items={dataIds}
-                  strategy={verticalListSortingStrategy}
+      <div className="overflow-hidden rounded-lg border bg-card">
+        <Table>
+          <TableHeader className="bg-muted/50">
+            {table.getHeaderGroups().map((headerGroup) => (
+              <TableRow
+                key={headerGroup.id}
+                className="hover:bg-transparent border-b"
+              >
+                {headerGroup.headers.map((header) => {
+                  return (
+                    <TableHead
+                      key={header.id}
+                      colSpan={header.colSpan}
+                      className="!px-4"
+                    >
+                      {header.isPlaceholder
+                        ? null
+                        : flexRender(
+                            header.column.columnDef.header,
+                            header.getContext()
+                          )}
+                    </TableHead>
+                  );
+                })}
+              </TableRow>
+            ))}
+          </TableHeader>
+          <TableBody>
+            {table.getRowModel().rows?.length ? (
+              table
+                .getRowModel()
+                .rows.map((row) => <DraggableRow key={row.id} row={row} />)
+            ) : (
+              <TableRow>
+                <TableCell
+                  colSpan={columns.length}
+                  className="h-32 text-center"
                 >
-                  {table.getRowModel().rows.map((row) => (
-                    <DraggableRow key={row.id} row={row} />
-                  ))}
-                </SortableContext>
-              ) : (
-                <TableRow>
-                  <TableCell
-                    colSpan={columns.length}
-                    className="h-24 text-center"
-                  >
-                    No projects found.
-                  </TableCell>
-                </TableRow>
-              )}
-            </TableBody>
-          </Table>
-        </DndContext>
+                  <div className="flex flex-col items-center justify-center gap-2">
+                    <div className="text-muted-foreground text-sm">
+                      No projects found.
+                    </div>
+                    <p className="text-xs text-muted-foreground/70">
+                      Try adjusting your search or filters
+                    </p>
+                  </div>
+                </TableCell>
+              </TableRow>
+            )}
+          </TableBody>
+        </Table>
       </div>
 
       {/* Pagination */}
-      <div className="flex items-center justify-between px-4">
-        <div className="text-muted-foreground hidden flex-1 text-sm lg:flex">
-          {table.getFilteredSelectedRowModel().rows.length} of{" "}
-          {table.getFilteredRowModel().rows.length} project(s) selected.
+      <div className="flex items-center justify-between">
+        <div className="text-sm text-muted-foreground">
+          Showing {table.getFilteredRowModel().rows.length} of{" "}
+          {table.getFilteredRowModel().rows.length} projects
         </div>
-        <div className="flex w-full items-center gap-8 lg:w-fit">
-          <div className="hidden items-center gap-2 lg:flex">
-            <Label htmlFor="rows-per-page" className="text-sm font-medium">
-              Rows per page
+
+        <div className="flex items-center gap-2">
+          {/* Page Size Selector */}
+          <div className="hidden items-center gap-2 text-sm lg:flex">
+            <Label htmlFor="page-size" className="text-muted-foreground">
+              Show
             </Label>
             <Select
               value={`${table.getState().pagination.pageSize}`}
@@ -446,13 +492,11 @@ export function ProjectsDataTable({
                 table.setPageSize(Number(value));
               }}
             >
-              <SelectTrigger size="sm" className="w-20" id="rows-per-page">
-                <SelectValue
-                  placeholder={table.getState().pagination.pageSize}
-                />
+              <SelectTrigger size="sm" className="w-16 h-8" id="page-size">
+                <SelectValue />
               </SelectTrigger>
-              <SelectContent side="top">
-                {[10, 20, 30, 40, 50].map((pageSize) => (
+              <SelectContent>
+                {[10, 20, 30, 50].map((pageSize) => (
                   <SelectItem key={pageSize} value={`${pageSize}`}>
                     {pageSize}
                   </SelectItem>
@@ -460,49 +504,39 @@ export function ProjectsDataTable({
               </SelectContent>
             </Select>
           </div>
-          <div className="flex w-fit items-center justify-center text-sm font-medium">
-            Page {table.getState().pagination.pageIndex + 1} of{" "}
-            {table.getPageCount()}
-          </div>
-          <div className="ml-auto flex items-center gap-2 lg:ml-0">
+
+          {/* Page Navigation */}
+          <div className="flex items-center gap-1">
             <Button
               variant="outline"
-              className="hidden h-8 w-8 p-0 lg:flex"
-              onClick={() => table.setPageIndex(0)}
-              disabled={!table.getCanPreviousPage()}
-            >
-              <span className="sr-only">Go to first page</span>
-              <IconChevronDown className="rotate-90" />
-            </Button>
-            <Button
-              variant="outline"
-              className="size-8"
-              size="icon"
+              size="sm"
               onClick={() => table.previousPage()}
               disabled={!table.getCanPreviousPage()}
+              className="h-8 w-8 p-0"
             >
-              <span className="sr-only">Go to previous page</span>
-              <IconChevronDown className="rotate-45" />
+              <IconChevronDown className="h-4 w-4 rotate-90" />
+              <span className="sr-only">Previous page</span>
             </Button>
+
+            <div className="flex items-center gap-1 px-2">
+              <span className="text-sm font-medium">
+                {table.getState().pagination.pageIndex + 1}
+              </span>
+              <span className="text-sm text-muted-foreground">of</span>
+              <span className="text-sm font-medium">
+                {table.getPageCount()}
+              </span>
+            </div>
+
             <Button
               variant="outline"
-              className="size-8"
-              size="icon"
+              size="sm"
               onClick={() => table.nextPage()}
               disabled={!table.getCanNextPage()}
+              className="h-8 w-8 p-0"
             >
-              <span className="sr-only">Go to next page</span>
-              <IconChevronDown className="rotate-[225deg]" />
-            </Button>
-            <Button
-              variant="outline"
-              className="hidden size-8 lg:flex"
-              size="icon"
-              onClick={() => table.setPageIndex(table.getPageCount() - 1)}
-              disabled={!table.getCanNextPage()}
-            >
-              <span className="sr-only">Go to last page</span>
-              <IconChevronDown className="rotate-270" />
+              <IconChevronDown className="h-4 w-4 -rotate-90" />
+              <span className="sr-only">Next page</span>
             </Button>
           </div>
         </div>

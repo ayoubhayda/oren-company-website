@@ -12,7 +12,6 @@ import {
   IconFileWord,
   IconFolder,
   IconHelp,
-  IconInnerShadowTop,
   IconListDetails,
   IconReport,
   IconSearch,
@@ -39,32 +38,37 @@ import lightLogo from "@/assets/logo/oren-blue-logo-light.png";
 import Image from "next/image"
 import Link from "next/link"
 
-// Simple function to determine if a nav item is active based on current pathname
+// Determines if a nav item is active based on current pathname
 function isNavItemActive(url: string, pathname: string): boolean {
-  if (url === "#") return false
+  // Ignore placeholder links
+  if (url === "#" || !url) return false
 
-  // Define route patterns that should be active for each nav item
-  const routePatterns: Record<string, string[]> = {
-    dashboard: ["/dashboard"],
-    projects: ["/dashboard/projects"],
+  // Exact match for root dashboard
+  if (url === "/dashboard") {
+    return pathname === "/dashboard"
   }
 
-  const patterns = routePatterns[url] || []
-  return patterns.some(pattern =>
-    pathname === pattern || pathname.startsWith(pattern + "/")
-  )
+  // For all other routes, check if pathname starts with the URL
+  // This handles nested routes like /dashboard/projects/123/edit
+  return pathname === url || pathname.startsWith(url + "/")
 }
 
-export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
-  const pathname = usePathname()
+interface UserInfoProps {
+  email: string;
+  name: string;
+  image: string;
+}
+
+export function AppSidebar({ user, ...props }: React.ComponentProps<typeof Sidebar> & { user: UserInfoProps }) {
+  const pathname = usePathname();
 
   const data = {
     navMain: [
       {
         title: "Dashboard",
-        url: "dashboard",
+        url: "/dashboard",
         icon: IconDashboard,
-        isActive: isNavItemActive("dashboard", pathname),
+        isActive: isNavItemActive("/dashboard", pathname),
       },
       {
         title: "Lifecycle",
@@ -82,7 +86,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
         title: "Projects",
         url: "/dashboard/projects",
         icon: IconFolder,
-        isActive: isNavItemActive("projects", pathname),
+        isActive: isNavItemActive("/dashboard/projects", pathname),
       },
       {
         title: "Team",
@@ -187,11 +191,6 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
         ],
       },
     ],
-    user: {
-      name: "shadcn",
-      email: "m@example.com",
-      avatar: "/avatars/shadcn.jpg",
-    },
   }
 
   return (
@@ -219,7 +218,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
         <NavSecondary items={data.navSecondary} className="mt-auto" />
       </SidebarContent>
       <SidebarFooter>
-        <NavUser user={data.user} />
+        <NavUser user={user} />
       </SidebarFooter>
     </Sidebar>
   )
