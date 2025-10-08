@@ -1,17 +1,23 @@
 @import "tailwindcss";
 @import "tw-animate-css";
+@plugin "@tailwindcss/typography";
+
+@import "uploadthing/tw/v4";
+@source "../../node_modules/@uploadthing/react/dist";
 
 @custom-variant dark (&:is(.dark *));
 
 /* RTL Support */
 [dir="rtl"] {
 	text-align: right;
+	direction: rtl;
 }
 
 [dir="rtl"] input,
 [dir="rtl"] textarea,
 [dir="rtl"] select {
 	text-align: right;
+	direction: rtl;
 }
 
 [dir="rtl"] .rtl\:text-left {
@@ -29,6 +35,131 @@
 }
 
 [dir="rtl"] [data-slot="select-item"] {
+	text-align: right;
+}
+
+/* RTL Form Layout Support */
+[dir="rtl"] .rtl\:flex-row-reverse {
+	flex-direction: row-reverse;
+}
+
+[dir="rtl"] .rtl\:ml-auto {
+	margin-left: auto;
+	margin-right: 0;
+}
+
+[dir="rtl"] .rtl\:mr-auto {
+	margin-right: auto;
+	margin-left: 0;
+}
+
+/* RTL Grid Support */
+[dir="rtl"] .rtl\:grid-cols-reverse {
+	direction: rtl;
+}
+
+/* TipTap Editor Content Styling */
+.ProseMirror {
+	@apply text-base leading-tight;
+}
+
+.ProseMirror p {
+	@apply mb-1 leading-tight;
+}
+
+.ProseMirror h1 {
+	@apply text-lg font-semibold mb-1 mt-1 leading-tight;
+}
+
+.ProseMirror h2 {
+	@apply text-base font-semibold mb-1 mt-1 leading-tight;
+}
+
+.ProseMirror h3 {
+	@apply text-sm font-semibold mb-1 mt-1 leading-tight;
+}
+
+.ProseMirror ul, .ProseMirror ol {
+	@apply mb-1 ml-3;
+}
+
+.ProseMirror li {
+	@apply mb-0;
+}
+
+.ProseMirror blockquote {
+	@apply border-l-4 border-primary/20 pl-4 italic mb-2;
+}
+
+.ProseMirror code {
+	@apply bg-muted px-1 py-0.5 rounded text-sm font-mono;
+}
+
+.ProseMirror pre {
+	@apply bg-muted p-3 rounded-md mb-2 overflow-x-auto;
+}
+
+.ProseMirror pre code {
+	@apply bg-transparent p-0;
+}
+
+.ProseMirror a {
+	@apply text-primary underline;
+}
+
+.ProseMirror a:hover {
+	@apply text-primary/80;
+}
+
+/* RTL Text Editor Support */
+[dir="rtl"] .tiptap,
+[dir="rtl"] .ProseMirror {
+	direction: rtl;
+	text-align: right;
+}
+
+[dir="rtl"] .tiptap p,
+[dir="rtl"] .ProseMirror p {
+	direction: rtl;
+	text-align: right;
+}
+
+[dir="rtl"] .tiptap h1,
+[dir="rtl"] .tiptap h2,
+[dir="rtl"] .tiptap h3,
+[dir="rtl"] .tiptap h4,
+[dir="rtl"] .tiptap h5,
+[dir="rtl"] .tiptap h6,
+[dir="rtl"] .ProseMirror h1,
+[dir="rtl"] .ProseMirror h2,
+[dir="rtl"] .ProseMirror h3,
+[dir="rtl"] .ProseMirror h4,
+[dir="rtl"] .ProseMirror h5,
+[dir="rtl"] .ProseMirror h6 {
+	direction: rtl;
+	text-align: right;
+}
+
+[dir="rtl"] .tiptap ul,
+[dir="rtl"] .tiptap ol,
+[dir="rtl"] .ProseMirror ul,
+[dir="rtl"] .ProseMirror ol {
+	direction: rtl;
+	text-align: right;
+	padding-right: 1.5rem;
+	padding-left: 0;
+}
+
+[dir="rtl"] .tiptap li,
+[dir="rtl"] .ProseMirror li {
+	direction: rtl;
+	text-align: right;
+}
+
+/* RTL Placeholder Support */
+[dir="rtl"] input::placeholder,
+[dir="rtl"] textarea::placeholder {
+	direction: rtl;
 	text-align: right;
 }
 
@@ -86,7 +217,7 @@
 	--destructive: oklch(0.396 0.141 25.723);
 	--destructive-foreground: oklch(0.637 0.237 25.331);
 	--border: oklch(27.9% 0.041 260.031);
-	--input: oklch(0.14 0.1 240);
+	--input: oklch(27.9% 0.041 260.031);
 	--ring: oklch(0.45 0.15 240);
 	--chart-1: oklch(0.488 0.243 264.376);
 	--chart-2: oklch(0.696 0.17 162.48);
@@ -230,27 +361,48 @@ h6 {
 
 /* Improved spacing for prose content */
 .prose p {
-	@apply mb-6 leading-relaxed;
+	@apply mb-3 leading-normal;
 }
 
 .prose h1 {
-	@apply text-4xl font-bold mb-6;
+	@apply text-4xl font-bold mb-3;
 }
 
 .prose h2 {
-	@apply text-2xl font-bold mb-4 mt-8;
+	@apply text-2xl font-bold mb-3 mt-4;
 }
 
 .prose h3 {
-	@apply text-xl font-semibold mb-3 mt-6;
+	@apply text-xl font-semibold mb-2 mt-3;
 }
 
 .prose ul {
-	@apply mb-6 pl-6;
+	@apply mb-3 pl-4;
 }
 
 .prose li {
-	@apply mb-2;
+	@apply mb-1;
+}
+
+/* UploadDropzone Custom Styles */
+.ut-button {
+	@apply bg-primary text-primary-foreground hover:bg-primary/90 cursor-pointer transition-colors duration-200;
+}
+
+.ut-label {
+	@apply text-muted-foreground;
+}
+
+.ut-allowed-content {
+	@apply text-muted-foreground text-sm;
+}
+
+.ut-upload-area {
+	@apply border-2 border-dashed border-border hover:border-primary/50 transition-colors duration-200 rounded-lg p-6;
+}
+
+.dark .ut-upload-area {
+	@apply border-border hover:border-primary/50;
 }
 
 /* Reduced motion support */

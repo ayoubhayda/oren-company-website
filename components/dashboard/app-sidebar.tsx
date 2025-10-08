@@ -39,22 +39,32 @@ import lightLogo from "@/assets/logo/oren-blue-logo-light.png";
 import Image from "next/image"
 import Link from "next/link"
 
-// Function to determine if a nav item is active based on current pathname
-function getActiveNavItems(pathname: string) {
-  const isActive = (url: string) => {
-    if (url === "#") return false
-    if (url === "dashboard") return pathname === "/dashboard" || pathname.startsWith("/dashboard/")
-    // Add more specific route matching logic here as needed
-    return pathname.startsWith(`/${url}`)
+// Simple function to determine if a nav item is active based on current pathname
+function isNavItemActive(url: string, pathname: string): boolean {
+  if (url === "#") return false
+
+  // Define route patterns that should be active for each nav item
+  const routePatterns: Record<string, string[]> = {
+    dashboard: ["/dashboard"],
+    projects: ["/dashboard/projects"],
   }
 
-  return {
+  const patterns = routePatterns[url] || []
+  return patterns.some(pattern =>
+    pathname === pattern || pathname.startsWith(pattern + "/")
+  )
+}
+
+export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
+  const pathname = usePathname()
+
+  const data = {
     navMain: [
       {
         title: "Dashboard",
         url: "dashboard",
         icon: IconDashboard,
-        isActive: isActive("dashboard"),
+        isActive: isNavItemActive("dashboard", pathname),
       },
       {
         title: "Lifecycle",
@@ -70,9 +80,9 @@ function getActiveNavItems(pathname: string) {
       },
       {
         title: "Projects",
-        url: "#",
+        url: "/dashboard/projects",
         icon: IconFolder,
-        isActive: false,
+        isActive: isNavItemActive("projects", pathname),
       },
       {
         title: "Team",
@@ -177,20 +187,11 @@ function getActiveNavItems(pathname: string) {
         ],
       },
     ],
-  }
-}
-
-export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
-  const pathname = usePathname()
-  const navData = getActiveNavItems(pathname)
-
-  const data = {
     user: {
       name: "shadcn",
       email: "m@example.com",
       avatar: "/avatars/shadcn.jpg",
     },
-    ...navData,
   }
 
   return (

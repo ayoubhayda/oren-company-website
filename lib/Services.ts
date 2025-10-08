@@ -1,6 +1,41 @@
 import { prisma } from "@/utils/prisma";
 
-// Get prject details
+// Get all projects
+export const getAllProjects = async () => {
+  const projects = await prisma.project.findMany({
+    select: {
+      id: true,
+      shortTitleEN: true,
+      shortTitleFR: true,
+      shortTitleAR: true,
+      longTitleEN: true,
+      longTitleFR: true,
+      longTitleAR: true,
+      shortDescriptionEN: true,
+      shortDescriptionFR: true,
+      shortDescriptionAR: true,
+      longDescriptionEN: true,
+      longDescriptionFR: true,
+      longDescriptionAR: true,
+      thumbnailUrl: true,
+      githubLink: true,
+      demoLink: true,
+      technologies: true,
+      duration: true,
+      images: true,
+      category: true,
+      createdAt: true,
+      updatedAt: true
+    },
+    orderBy: {
+      createdAt: 'desc'
+    }
+  });
+
+  return projects;
+};
+
+// Get project details
 export const getProjectMutation = async (projectId: string) => {
   const projectData = await prisma.project.findUnique({
     where: {
@@ -8,17 +43,27 @@ export const getProjectMutation = async (projectId: string) => {
     },
     select: {
       id: true,
-      shortTitle: true,
-      longTitle: true,
-      shortDescription: true,
-      longDescription: true,
-      technologies: true,
+      shortTitleEN: true,
+      shortTitleFR: true,
+      shortTitleAR: true,
+      longTitleEN: true,
+      longTitleFR: true,
+      longTitleAR: true,
+      shortDescriptionEN: true,
+      shortDescriptionFR: true,
+      shortDescriptionAR: true,
+      longDescriptionEN: true,
+      longDescriptionFR: true,
+      longDescriptionAR: true,
       thumbnailUrl: true,
       githubLink: true,
       demoLink: true,
-      screenShots: true,
+      technologies: true,
+      duration: true,
+      images: true,
+      category: true,
       createdAt: true,
-      updatedAt:true
+      updatedAt: true
     },
   });
 

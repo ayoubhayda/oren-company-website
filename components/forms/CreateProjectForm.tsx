@@ -28,13 +28,20 @@ const CreateProjectForm = () => {
   const form = useForm<ProjectFormData>({
     resolver: zodResolver(projectSchema),
     defaultValues: {
-      shortTitle: "",
-      longTitle: "",
-      shortDescription: "",
-      longDescription: "",
-      thumbnailUrl:
-        "https://6sn8pk7mrd.ufs.sh/f/1T4FQGtliscopg2ISUK7PC9RN0QEAUVp6KJSYq15mOnfGMg8",
-      screenShots: [
+      shortTitleEN: "",
+      shortTitleFR: "",
+      shortTitleAR: "",
+      longTitleEN: "",
+      longTitleFR: "",
+      longTitleAR: "",
+      shortDescriptionEN: "",
+      shortDescriptionFR: "",
+      shortDescriptionAR: "",
+      longDescriptionEN: "",
+      longDescriptionFR: "",
+      longDescriptionAR: "",
+      thumbnailUrl: "https://6sn8pk7mrd.ufs.sh/f/1T4FQGtliscopg2ISUK7PC9RN0QEAUVp6KJSYq15mOnfGMg8",
+      images: [
         "https://6sn8pk7mrd.ufs.sh/f/1T4FQGtliscopg2ISUK7PC9RN0QEAUVp6KJSYq15mOnfGMg8",
         "https://6sn8pk7mrd.ufs.sh/f/1T4FQGtliscovnKHlUrIAJp0iBHEtmCc6nQs53Rqy7PS2XZW",
         "https://6sn8pk7mrd.ufs.sh/f/1T4FQGtliscop6iPEd0K7PC9RN0QEAUVp6KJSYq15mOnfGMg",
@@ -43,6 +50,8 @@ const CreateProjectForm = () => {
       technologies: [],
       githubLink: "",
       demoLink: "",
+      duration: 1,
+      category: "",
     },
   });
 
@@ -59,93 +68,266 @@ const CreateProjectForm = () => {
     }
   };
 
-  const addScreenshot = (url: string) => {
-    const currentScreenshots = form.getValues("screenShots") || [];
-    form.setValue("screenShots", [...currentScreenshots, url]);
+  const addImage = (url: string) => {
+    const currentImages = form.getValues("images") || [];
+    form.setValue("images", [...currentImages, url]);
   };
 
-  const removeScreenshot = (index: number) => {
-    const currentScreenshots = form.getValues("screenShots") || [];
-    const updatedScreenshots = currentScreenshots.filter((_, i) => i !== index);
-    form.setValue("screenShots", updatedScreenshots);
+  const removeImage = (index: number) => {
+    const currentImages = form.getValues("images") || [];
+    const updatedImages = currentImages.filter((_, i) => i !== index);
+    form.setValue("images", updatedImages);
   };
 
   return (
     <Form {...form}>
       <form
         onSubmit={form.handleSubmit(onSubmit)}
-        className="col-span-1 lg:col-span-2 flex flex-col gap-6"
+        className="col-span-1 lg:col-span-2 flex flex-col "
       >
+        {/* main card */}
         <Card className="shadow-none">
           <CardHeader>
             <CardTitle>Project Information</CardTitle>
           </CardHeader>
-          <CardContent className="space-y-6">
-            {/* Project Titles */}
-            {/* Short Title */}
-            <FormField
-              control={form.control}
-              name="shortTitle"
-              render={({ field }) => (
-                <FormItem className="space-y-0.5">
-                  <FormLabel>Short Title</FormLabel>
-                  <FormControl>
-                    <Input placeholder="Enter project short title" {...field} />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
+          <CardContent className="space-y-8">
+            {/* English Section */}
+            <div className="space-y-6 p-6 border rounded-lg bg-muted/20">
+              <h3 className="text-lg font-semibold">English</h3>
 
-            {/* Long Title */}
-            <FormField
-              control={form.control}
-              name="longTitle"
-              render={({ field }) => (
-                <FormItem className="space-y-0.5">
-                  <FormLabel>Long Title</FormLabel>
-                  <FormControl>
-                    <Input placeholder="Enter project full title" {...field} />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
+              {/* English Titles */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <FormField
+                  control={form.control}
+                  name="shortTitleEN"
+                  render={({ field }) => (
+                    <FormItem className="space-y-0.5">
+                      <FormLabel>Short Title</FormLabel>
+                      <FormControl>
+                        <Input
+                          placeholder="Enter project short title in English"
+                          {...field}
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                <FormField
+                  control={form.control}
+                  name="longTitleEN"
+                  render={({ field }) => (
+                    <FormItem className="space-y-0.5">
+                      <FormLabel>Long Title</FormLabel>
+                      <FormControl>
+                        <Input
+                          placeholder="Enter project full title in English"
+                          {...field}
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+              </div>
 
-            {/* Project Descriptions */}
-            {/* Short Description */}
-            <FormField
-              control={form.control}
-              name="shortDescription"
-              render={({ field }) => (
-                <FormItem className="space-y-0.5">
-                  <FormLabel>Short Description</FormLabel>
-                  <FormControl>
-                    <Textarea
-                      placeholder="Brief project description"
-                      className="resize-none h-24"
-                      {...field}
-                    />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
+              {/* English Descriptions */}
+              <div className="space-y-4">
+                <FormField
+                  control={form.control}
+                  name="shortDescriptionEN"
+                  render={({ field }) => (
+                    <FormItem className="space-y-0.5">
+                      <FormLabel>Short Description</FormLabel>
+                      <FormControl>
+                        <Textarea
+                          placeholder="Brief project description in English"
+                          className="resize-none h-24"
+                          {...field}
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                <FormField
+                  control={form.control}
+                  name="longDescriptionEN"
+                  render={({ field }) => (
+                    <FormItem className="space-y-0.5">
+                      <FormLabel>Long Description</FormLabel>
+                      <FormControl>
+                        <DescriptionEditor field={field} />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+              </div>
+            </div>
 
-            {/* Long Description */}
-            <FormField
-              control={form.control}
-              name="longDescription"
-              render={({ field }) => (
-                <FormItem className="space-y-0.5">
-                  <FormLabel>Long Description</FormLabel>
-                  <FormControl>
-                    <DescriptionEditor field={field} />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
+            {/* French Section */}
+            <div className="space-y-6 p-6 border rounded-lg bg-muted/20">
+              <h3 className="text-lg font-semibold">Français</h3>
+
+              {/* French Titles */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <FormField
+                  control={form.control}
+                  name="shortTitleFR"
+                  render={({ field }) => (
+                    <FormItem className="space-y-0.5">
+                      <FormLabel>Titre Court</FormLabel>
+                      <FormControl>
+                        <Input
+                          placeholder="Entrez le titre court en français"
+                          {...field}
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                <FormField
+                  control={form.control}
+                  name="longTitleFR"
+                  render={({ field }) => (
+                    <FormItem className="space-y-0.5">
+                      <FormLabel>Titre Long</FormLabel>
+                      <FormControl>
+                        <Input
+                          placeholder="Entrez le titre complet en français"
+                          {...field}
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+              </div>
+
+              {/* French Descriptions */}
+              <div className="space-y-4">
+                <FormField
+                  control={form.control}
+                  name="shortDescriptionFR"
+                  render={({ field }) => (
+                    <FormItem className="space-y-0.5">
+                      <FormLabel>Description Courte</FormLabel>
+                      <FormControl>
+                        <Textarea
+                          placeholder="Brève description du projet en français"
+                          className="resize-none h-24"
+                          {...field}
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                <FormField
+                  control={form.control}
+                  name="longDescriptionFR"
+                  render={({ field }) => (
+                    <FormItem className="space-y-0.5">
+                      <FormLabel>Description Longue</FormLabel>
+                      <FormControl>
+                        <DescriptionEditor field={field} />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+              </div>
+            </div>
+
+            {/* Arabic Section */}
+            <div
+              className="space-y-6 p-6 border rounded-lg bg-muted/20"
+              dir="rtl"
+            >
+              <h3 className="text-lg font-semibold text-right">العربية</h3>
+
+              {/* Arabic Titles */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <FormField
+                  control={form.control}
+                  name="longTitleAR"
+                  render={({ field }) => (
+                    <FormItem className="space-y-0.5">
+                      <FormLabel className="text-right block">
+                        العنوان الطويل
+                      </FormLabel>
+                      <FormControl>
+                        <Input
+                          placeholder="أدخل العنوان الكامل بالعربية"
+                          className="text-right w-full "
+                          {...field}
+                        />
+                      </FormControl>
+                      <FormMessage className="text-right" />
+                    </FormItem>
+                  )}
+                />
+                <FormField
+                  control={form.control}
+                  name="shortTitleAR"
+                  render={({ field }) => (
+                    <FormItem className="space-y-0.5">
+                      <FormLabel className="text-right block">
+                        العنوان القصير
+                      </FormLabel>
+                      <FormControl>
+                        <Input
+                          placeholder="أدخل العنوان القصير بالعربية"
+                          className="text-right w-full"
+                          {...field}
+                        />
+                      </FormControl>
+                      <FormMessage className="text-right" />
+                    </FormItem>
+                  )}
+                />
+              </div>
+
+              {/* Arabic Descriptions */}
+              <div className="space-y-4">
+                <FormField
+                  control={form.control}
+                  name="shortDescriptionAR"
+                  render={({ field }) => (
+                    <FormItem className="space-y-0.5">
+                      <FormLabel className="text-right block">
+                        الوصف القصير
+                      </FormLabel>
+                      <FormControl>
+                        <Textarea
+                          placeholder="وصف موجز للمشروع بالعربية"
+                          className="resize-none h-24 text-right w-full"
+                          {...field}
+                        />
+                      </FormControl>
+                      <FormMessage className="text-right" />
+                    </FormItem>
+                  )}
+                />
+                <FormField
+                  control={form.control}
+                  name="longDescriptionAR"
+                  render={({ field }) => (
+                    <FormItem className="space-y-0.5">
+                      <FormLabel className="text-right block">
+                        الوصف الطويل
+                      </FormLabel>
+                      <FormControl>
+                        <DescriptionEditor field={field} />
+                      </FormControl>
+                      <FormMessage className="text-right" />
+                    </FormItem>
+                  )}
+                />
+              </div>
+            </div>
 
             {/* Thumbnail Upload */}
             <FormField
@@ -183,7 +365,7 @@ const CreateProjectForm = () => {
                         onUploadError={() => {
                           console.log("Error uploading thumbnail");
                         }}
-                        className="ut-button:bg-primary ut-button:text-white ut-button:hover:bg-primary/90 ut-label:text-muted-foreground ut-button:cursor-pointer ut-allowed-content:text-muted-foreground border-primary"
+                        className="ut-button:bg-primary text-sm md:text-base ut-button:h-9 md:ut-button:h-10 ut-button:rounded-sm ut-button:px-4 md:ut-button:px-6 ut-button:py-2 ut-upload-icon:text-muted-foreground  ut-button:text-white ut-button:hover:bg-primary/90 ut-label:text-muted-foreground ut-button:cursor-pointer ut-allowed-content:text-muted-foreground border-primary p-6 md:p-8"
                       />
                     )}
                   </FormControl>
@@ -192,23 +374,23 @@ const CreateProjectForm = () => {
               )}
             />
 
-            {/* Screenshots Upload */}
+            {/* Project Images Upload */}
             <FormField
               control={form.control}
-              name="screenShots"
+              name="images"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Project Screenshots</FormLabel>
+                  <FormLabel>Project Images</FormLabel>
                   <FormControl>
                     <div className="space-y-4">
-                      {/* Display existing screenshots */}
+                      {/* Display existing images */}
                       {field.value && field.value.length > 0 && (
                         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-                          {field.value.map((screenshot, index) => (
+                          {field.value.map((image, index) => (
                             <div key={index} className="relative">
                               <Image
-                                src={screenshot}
-                                alt={`Screenshot ${index + 1}`}
+                                src={image}
+                                alt={`Project image ${index + 1}`}
                                 width={150}
                                 height={100}
                                 className="rounded-lg object-cover w-full aspect-video"
@@ -218,7 +400,7 @@ const CreateProjectForm = () => {
                                 type="button"
                                 size="icon"
                                 className="absolute -top-2 -right-2 rounded-full cursor-pointer !bg-red-600/80 hover:!bg-red-600/95 transition-all duration-200 ease-in-out !size-6"
-                                onClick={() => removeScreenshot(index)}
+                                onClick={() => removeImage(index)}
                               >
                                 <TrashIcon className="h-3 w-3" />
                               </Button>
@@ -227,16 +409,16 @@ const CreateProjectForm = () => {
                         </div>
                       )}
 
-                      {/* Upload new screenshot */}
+                      {/* Upload new image */}
                       <UploadDropzone
                         endpoint={"imageUploader"}
                         onClientUploadComplete={(files) => {
-                          addScreenshot(files[0].ufsUrl);
+                          addImage(files[0].ufsUrl);
                         }}
                         onUploadError={() => {
-                          console.log("Error uploading screenshot");
+                          console.log("Error uploading image");
                         }}
-                        className="ut-button:bg-primary ut-button:text-white ut-button:hover:bg-primary/90 ut-label:text-muted-foreground ut-button:cursor-pointer ut-allowed-content:text-muted-foreground border-primary"
+                        className="ut-button:bg-primary text-sm md:text-base ut-button:h-9 md:ut-button:h-10 ut-button:rounded-sm ut-button:px-4 md:ut-button:px-6 ut-button:py-2 ut-upload-icon:text-muted-foreground  ut-button:text-white ut-button:hover:bg-primary/90 ut-label:text-muted-foreground ut-button:cursor-pointer ut-allowed-content:text-muted-foreground border-primary p-6 md:p-8"
                       />
                     </div>
                   </FormControl>
@@ -296,17 +478,116 @@ const CreateProjectForm = () => {
                 </FormItem>
               )}
             />
+
+            {/* Project Details */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <FormField
+                control={form.control}
+                name="duration"
+                render={({ field }) => (
+                  <FormItem className="space-y-0.5">
+                    <FormLabel>Project Duration (Days)</FormLabel>
+                    <FormControl>
+                      <Input
+                        type="number"
+                        placeholder="30"
+                        min="1"
+                        max="365"
+                        {...field}
+                        onChange={(e) =>
+                          field.onChange(parseInt(e.target.value) || 1)
+                        }
+                      />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+
+              <FormField
+                control={form.control}
+                name="category"
+                render={({ field }) => (
+                  <FormItem className="space-y-0.5">
+                    <FormLabel>Project Category</FormLabel>
+                    <FormControl>
+                      <select
+                        {...field}
+                        className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+                      >
+                        <option value="">Select a category</option>
+                        <option value="web-development">Web Development</option>
+                        <option value="mobile-app">Mobile App</option>
+                        <option value="desktop-app">Desktop App</option>
+                        <option value="ecommerce">E-commerce</option>
+                        <option value="design">Design</option>
+                        <option value="digital-marketing">
+                          Digital Marketing
+                        </option>
+                        <option value="social-media">Social Media</option>
+                        <option value="custom-platforms">
+                          Custom Platforms
+                        </option>
+                      </select>
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+            </div>
           </CardContent>
         </Card>
 
-        {/* Submit button */}
-        <Button
-          type="submit"
-          disabled={pending}
-          className="w-full cursor-pointer text-white shadow-none"
-        >
-          {pending ? "Creating Project..." : "Create Project"}
-        </Button>
+        {/* Footer Section */}
+        <div className="mt-4 space-y-4">
+          {/* Privacy Notice */}
+          <div className="text-xs text-muted-foreground text-left">
+            <p>
+              By submitting, you agree to our{" "}
+              <a
+                href="/privacy"
+                className="text-primary hover:text-primary/80 underline underline-offset-2 transition-colors"
+              >
+                Privacy Policy
+              </a>{" "}
+              and{" "}
+              <a
+                href="/terms"
+                className="text-primary hover:text-primary/80 underline underline-offset-2 transition-colors"
+              >
+                Terms of Service
+              </a>
+              .
+            </p>
+          </div>
+
+          {/* Action Buttons */}
+          <div className="flex items-center justify-end gap-3 pt-2">
+            <Button
+              type="button"
+              variant="outline"
+              onClick={() => window.history.back()}
+              disabled={pending}
+              className="px-6 py-2 h-10 font-medium transition-all duration-200 min-w-[100px]"
+            >
+              Cancel
+            </Button>
+            <Button
+              type="submit"
+              disabled={pending}
+              className="px-8 py-2 h-10 font-medium text-white bg-primary hover:bg-primary/90 disabled:opacity-50 transition-all duration-200 shadow-sm hover:shadow-md min-w-[120px]"
+            >
+              {pending ? (
+                <div className="flex items-center gap-2">
+                  <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin"></div>
+                  Submitting...
+                </div>
+              ) : (
+                "Submit"
+              )}
+            </Button>
+          </div>
+        </div>
       </form>
     </Form>
   );

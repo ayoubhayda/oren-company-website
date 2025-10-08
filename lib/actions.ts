@@ -9,15 +9,25 @@ export async function createJobMutation(data: ProjectFormData) {
 
   await prisma.project.create({
     data: {
-      shortTitle: validatedData.shortTitle,
-      longTitle: validatedData.longTitle,
-      shortDescription: validatedData.shortDescription,
-      longDescription: validatedData.longDescription,
-      technologies: validatedData.technologies,
+      shortTitleEN: validatedData.shortTitleEN,
+      shortTitleFR: validatedData.shortTitleFR,
+      shortTitleAR: validatedData.shortTitleAR,
+      longTitleEN: validatedData.longTitleEN,
+      longTitleFR: validatedData.longTitleFR,
+      longTitleAR: validatedData.longTitleAR,
+      shortDescriptionEN: validatedData.shortDescriptionEN,
+      shortDescriptionFR: validatedData.shortDescriptionFR,
+      shortDescriptionAR: validatedData.shortDescriptionAR,
+      longDescriptionEN: validatedData.longDescriptionEN,
+      longDescriptionFR: validatedData.longDescriptionFR,
+      longDescriptionAR: validatedData.longDescriptionAR,
       thumbnailUrl: validatedData.thumbnailUrl,
       githubLink: validatedData.githubLink,
       demoLink: validatedData.demoLink,
-      screenShots: validatedData.screenShots,
+      technologies: validatedData.technologies,
+      duration: validatedData.duration,
+      images: validatedData.images,
+      category: validatedData.category,
     },
   });
 

@@ -72,15 +72,25 @@ model VerificationToken {
 model Project {
   id String @id @default(cuid())
 
-  shortTitle       String
-  longTitle        String
-  shortDescription String
-  longDescription  String
-  thumbnailUrl     String
-  screenShots      String[]
-  githubLink       String?
-  demoLink         String?
-  technologies     String[]
+  shortTitleEN       String
+  shortTitleFR       String
+  shortTitleAR       String
+  longTitleEN        String
+  longTitleFR        String
+  longTitleAR        String
+  shortDescriptionEN String
+  shortDescriptionFR String
+  shortDescriptionAR String
+  longDescriptionEN  String
+  longDescriptionFR  String
+  longDescriptionAR  String
+  thumbnailUrl       String
+  githubLink         String?
+  demoLink           String?
+  technologies       String[]
+  duration           Int
+  images             String[]
+  category           String
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt

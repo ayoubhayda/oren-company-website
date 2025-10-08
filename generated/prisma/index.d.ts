@@ -281,8 +281,8 @@ export namespace Prisma {
   export import Exact = $Public.Exact
 
   /**
-   * Prisma Client JS version: 6.16.3
-   * Query Engine version: bb420e667c1820a8c05a38023385f6cc7ef8e83a
+   * Prisma Client JS version: 6.17.0
+   * Query Engine version: c0aafc03b8ef6cdced8654b9a817999e02457d6a
    */
   export type PrismaVersion = {
     client: string
@@ -5646,90 +5646,168 @@ export namespace Prisma {
 
   export type AggregateProject = {
     _count: ProjectCountAggregateOutputType | null
+    _avg: ProjectAvgAggregateOutputType | null
+    _sum: ProjectSumAggregateOutputType | null
     _min: ProjectMinAggregateOutputType | null
     _max: ProjectMaxAggregateOutputType | null
   }
 
+  export type ProjectAvgAggregateOutputType = {
+    duration: number | null
+  }
+
+  export type ProjectSumAggregateOutputType = {
+    duration: number | null
+  }
+
   export type ProjectMinAggregateOutputType = {
     id: string | null
-    shortTitle: string | null
-    longTitle: string | null
-    shortDescription: string | null
-    longDescription: string | null
+    shortTitleEN: string | null
+    shortTitleFR: string | null
+    shortTitleAR: string | null
+    longTitleEN: string | null
+    longTitleFR: string | null
+    longTitleAR: string | null
+    shortDescriptionEN: string | null
+    shortDescriptionFR: string | null
+    shortDescriptionAR: string | null
+    longDescriptionEN: string | null
+    longDescriptionFR: string | null
+    longDescriptionAR: string | null
     thumbnailUrl: string | null
     githubLink: string | null
     demoLink: string | null
+    duration: number | null
+    category: string | null
     createdAt: Date | null
     updatedAt: Date | null
   }
 
   export type ProjectMaxAggregateOutputType = {
     id: string | null
-    shortTitle: string | null
-    longTitle: string | null
-    shortDescription: string | null
-    longDescription: string | null
+    shortTitleEN: string | null
+    shortTitleFR: string | null
+    shortTitleAR: string | null
+    longTitleEN: string | null
+    longTitleFR: string | null
+    longTitleAR: string | null
+    shortDescriptionEN: string | null
+    shortDescriptionFR: string | null
+    shortDescriptionAR: string | null
+    longDescriptionEN: string | null
+    longDescriptionFR: string | null
+    longDescriptionAR: string | null
     thumbnailUrl: string | null
     githubLink: string | null
     demoLink: string | null
+    duration: number | null
+    category: string | null
     createdAt: Date | null
     updatedAt: Date | null
   }
 
   export type ProjectCountAggregateOutputType = {
     id: number
-    shortTitle: number
-    longTitle: number
-    shortDescription: number
-    longDescription: number
+    shortTitleEN: number
+    shortTitleFR: number
+    shortTitleAR: number
+    longTitleEN: number
+    longTitleFR: number
+    longTitleAR: number
+    shortDescriptionEN: number
+    shortDescriptionFR: number
+    shortDescriptionAR: number
+    longDescriptionEN: number
+    longDescriptionFR: number
+    longDescriptionAR: number
     thumbnailUrl: number
-    screenShots: number
     githubLink: number
     demoLink: number
     technologies: number
+    duration: number
+    images: number
+    category: number
     createdAt: number
     updatedAt: number
     _all: number
   }
 
 
+  export type ProjectAvgAggregateInputType = {
+    duration?: true
+  }
+
+  export type ProjectSumAggregateInputType = {
+    duration?: true
+  }
+
   export type ProjectMinAggregateInputType = {
     id?: true
-    shortTitle?: true
-    longTitle?: true
-    shortDescription?: true
-    longDescription?: true
+    shortTitleEN?: true
+    shortTitleFR?: true
+    shortTitleAR?: true
+    longTitleEN?: true
+    longTitleFR?: true
+    longTitleAR?: true
+    shortDescriptionEN?: true
+    shortDescriptionFR?: true
+    shortDescriptionAR?: true
+    longDescriptionEN?: true
+    longDescriptionFR?: true
+    longDescriptionAR?: true
     thumbnailUrl?: true
     githubLink?: true
     demoLink?: true
+    duration?: true
+    category?: true
     createdAt?: true
     updatedAt?: true
   }
 
   export type ProjectMaxAggregateInputType = {
     id?: true
-    shortTitle?: true
-    longTitle?: true
-    shortDescription?: true
-    longDescription?: true
+    shortTitleEN?: true
+    shortTitleFR?: true
+    shortTitleAR?: true
+    longTitleEN?: true
+    longTitleFR?: true
+    longTitleAR?: true
+    shortDescriptionEN?: true
+    shortDescriptionFR?: true
+    shortDescriptionAR?: true
+    longDescriptionEN?: true
+    longDescriptionFR?: true
+    longDescriptionAR?: true
     thumbnailUrl?: true
     githubLink?: true
     demoLink?: true
+    duration?: true
+    category?: true
     createdAt?: true
     updatedAt?: true
   }
 
   export type ProjectCountAggregateInputType = {
     id?: true
-    shortTitle?: true
-    longTitle?: true
-    shortDescription?: true
-    longDescription?: true
+    shortTitleEN?: true
+    shortTitleFR?: true
+    shortTitleAR?: true
+    longTitleEN?: true
+    longTitleFR?: true
+    longTitleAR?: true
+    shortDescriptionEN?: true
+    shortDescriptionFR?: true
+    shortDescriptionAR?: true
+    longDescriptionEN?: true
+    longDescriptionFR?: true
+    longDescriptionAR?: true
     thumbnailUrl?: true
-    screenShots?: true
     githubLink?: true
     demoLink?: true
     technologies?: true
+    duration?: true
+    images?: true
+    category?: true
     createdAt?: true
     updatedAt?: true
     _all?: true
@@ -5773,6 +5851,18 @@ export namespace Prisma {
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
+     * Select which fields to average
+    **/
+    _avg?: ProjectAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: ProjectSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
      * Select which fields to find the minimum value
     **/
     _min?: ProjectMinAggregateInputType
@@ -5803,24 +5893,38 @@ export namespace Prisma {
     take?: number
     skip?: number
     _count?: ProjectCountAggregateInputType | true
+    _avg?: ProjectAvgAggregateInputType
+    _sum?: ProjectSumAggregateInputType
     _min?: ProjectMinAggregateInputType
     _max?: ProjectMaxAggregateInputType
   }
 
   export type ProjectGroupByOutputType = {
     id: string
-    shortTitle: string
-    longTitle: string
-    shortDescription: string
-    longDescription: string
+    shortTitleEN: string
+    shortTitleFR: string
+    shortTitleAR: string
+    longTitleEN: string
+    longTitleFR: string
+    longTitleAR: string
+    shortDescriptionEN: string
+    shortDescriptionFR: string
+    shortDescriptionAR: string
+    longDescriptionEN: string
+    longDescriptionFR: string
+    longDescriptionAR: string
     thumbnailUrl: string
-    screenShots: string[]
     githubLink: string | null
     demoLink: string | null
     technologies: string[]
+    duration: number
+    images: string[]
+    category: string
     createdAt: Date
     updatedAt: Date
     _count: ProjectCountAggregateOutputType | null
+    _avg: ProjectAvgAggregateOutputType | null
+    _sum: ProjectSumAggregateOutputType | null
     _min: ProjectMinAggregateOutputType | null
     _max: ProjectMaxAggregateOutputType | null
   }
@@ -5841,80 +5945,130 @@ export namespace Prisma {
 
   export type ProjectSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    shortTitle?: boolean
-    longTitle?: boolean
-    shortDescription?: boolean
-    longDescription?: boolean
+    shortTitleEN?: boolean
+    shortTitleFR?: boolean
+    shortTitleAR?: boolean
+    longTitleEN?: boolean
+    longTitleFR?: boolean
+    longTitleAR?: boolean
+    shortDescriptionEN?: boolean
+    shortDescriptionFR?: boolean
+    shortDescriptionAR?: boolean
+    longDescriptionEN?: boolean
+    longDescriptionFR?: boolean
+    longDescriptionAR?: boolean
     thumbnailUrl?: boolean
-    screenShots?: boolean
     githubLink?: boolean
     demoLink?: boolean
     technologies?: boolean
+    duration?: boolean
+    images?: boolean
+    category?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }, ExtArgs["result"]["project"]>
 
   export type ProjectSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    shortTitle?: boolean
-    longTitle?: boolean
-    shortDescription?: boolean
-    longDescription?: boolean
+    shortTitleEN?: boolean
+    shortTitleFR?: boolean
+    shortTitleAR?: boolean
+    longTitleEN?: boolean
+    longTitleFR?: boolean
+    longTitleAR?: boolean
+    shortDescriptionEN?: boolean
+    shortDescriptionFR?: boolean
+    shortDescriptionAR?: boolean
+    longDescriptionEN?: boolean
+    longDescriptionFR?: boolean
+    longDescriptionAR?: boolean
     thumbnailUrl?: boolean
-    screenShots?: boolean
     githubLink?: boolean
     demoLink?: boolean
     technologies?: boolean
+    duration?: boolean
+    images?: boolean
+    category?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }, ExtArgs["result"]["project"]>
 
   export type ProjectSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    shortTitle?: boolean
-    longTitle?: boolean
-    shortDescription?: boolean
-    longDescription?: boolean
+    shortTitleEN?: boolean
+    shortTitleFR?: boolean
+    shortTitleAR?: boolean
+    longTitleEN?: boolean
+    longTitleFR?: boolean
+    longTitleAR?: boolean
+    shortDescriptionEN?: boolean
+    shortDescriptionFR?: boolean
+    shortDescriptionAR?: boolean
+    longDescriptionEN?: boolean
+    longDescriptionFR?: boolean
+    longDescriptionAR?: boolean
     thumbnailUrl?: boolean
-    screenShots?: boolean
     githubLink?: boolean
     demoLink?: boolean
     technologies?: boolean
+    duration?: boolean
+    images?: boolean
+    category?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }, ExtArgs["result"]["project"]>
 
   export type ProjectSelectScalar = {
     id?: boolean
-    shortTitle?: boolean
-    longTitle?: boolean
-    shortDescription?: boolean
-    longDescription?: boolean
+    shortTitleEN?: boolean
+    shortTitleFR?: boolean
+    shortTitleAR?: boolean
+    longTitleEN?: boolean
+    longTitleFR?: boolean
+    longTitleAR?: boolean
+    shortDescriptionEN?: boolean
+    shortDescriptionFR?: boolean
+    shortDescriptionAR?: boolean
+    longDescriptionEN?: boolean
+    longDescriptionFR?: boolean
+    longDescriptionAR?: boolean
     thumbnailUrl?: boolean
-    screenShots?: boolean
     githubLink?: boolean
     demoLink?: boolean
     technologies?: boolean
+    duration?: boolean
+    images?: boolean
+    category?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }
 
-  export type ProjectOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "shortTitle" | "longTitle" | "shortDescription" | "longDescription" | "thumbnailUrl" | "screenShots" | "githubLink" | "demoLink" | "technologies" | "createdAt" | "updatedAt", ExtArgs["result"]["project"]>
+  export type ProjectOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "shortTitleEN" | "shortTitleFR" | "shortTitleAR" | "longTitleEN" | "longTitleFR" | "longTitleAR" | "shortDescriptionEN" | "shortDescriptionFR" | "shortDescriptionAR" | "longDescriptionEN" | "longDescriptionFR" | "longDescriptionAR" | "thumbnailUrl" | "githubLink" | "demoLink" | "technologies" | "duration" | "images" | "category" | "createdAt" | "updatedAt", ExtArgs["result"]["project"]>
 
   export type $ProjectPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Project"
     objects: {}
     scalars: $Extensions.GetPayloadResult<{
       id: string
-      shortTitle: string
-      longTitle: string
-      shortDescription: string
-      longDescription: string
+      shortTitleEN: string
+      shortTitleFR: string
+      shortTitleAR: string
+      longTitleEN: string
+      longTitleFR: string
+      longTitleAR: string
+      shortDescriptionEN: string
+      shortDescriptionFR: string
+      shortDescriptionAR: string
+      longDescriptionEN: string
+      longDescriptionFR: string
+      longDescriptionAR: string
       thumbnailUrl: string
-      screenShots: string[]
       githubLink: string | null
       demoLink: string | null
       technologies: string[]
+      duration: number
+      images: string[]
+      category: string
       createdAt: Date
       updatedAt: Date
     }, ExtArgs["result"]["project"]>
@@ -6341,15 +6495,25 @@ export namespace Prisma {
    */
   interface ProjectFieldRefs {
     readonly id: FieldRef<"Project", 'String'>
-    readonly shortTitle: FieldRef<"Project", 'String'>
-    readonly longTitle: FieldRef<"Project", 'String'>
-    readonly shortDescription: FieldRef<"Project", 'String'>
-    readonly longDescription: FieldRef<"Project", 'String'>
+    readonly shortTitleEN: FieldRef<"Project", 'String'>
+    readonly shortTitleFR: FieldRef<"Project", 'String'>
+    readonly shortTitleAR: FieldRef<"Project", 'String'>
+    readonly longTitleEN: FieldRef<"Project", 'String'>
+    readonly longTitleFR: FieldRef<"Project", 'String'>
+    readonly longTitleAR: FieldRef<"Project", 'String'>
+    readonly shortDescriptionEN: FieldRef<"Project", 'String'>
+    readonly shortDescriptionFR: FieldRef<"Project", 'String'>
+    readonly shortDescriptionAR: FieldRef<"Project", 'String'>
+    readonly longDescriptionEN: FieldRef<"Project", 'String'>
+    readonly longDescriptionFR: FieldRef<"Project", 'String'>
+    readonly longDescriptionAR: FieldRef<"Project", 'String'>
     readonly thumbnailUrl: FieldRef<"Project", 'String'>
-    readonly screenShots: FieldRef<"Project", 'String[]'>
     readonly githubLink: FieldRef<"Project", 'String'>
     readonly demoLink: FieldRef<"Project", 'String'>
     readonly technologies: FieldRef<"Project", 'String[]'>
+    readonly duration: FieldRef<"Project", 'Int'>
+    readonly images: FieldRef<"Project", 'String[]'>
+    readonly category: FieldRef<"Project", 'String'>
     readonly createdAt: FieldRef<"Project", 'DateTime'>
     readonly updatedAt: FieldRef<"Project", 'DateTime'>
   }
@@ -6787,15 +6951,25 @@ export namespace Prisma {
 
   export const ProjectScalarFieldEnum: {
     id: 'id',
-    shortTitle: 'shortTitle',
-    longTitle: 'longTitle',
-    shortDescription: 'shortDescription',
-    longDescription: 'longDescription',
+    shortTitleEN: 'shortTitleEN',
+    shortTitleFR: 'shortTitleFR',
+    shortTitleAR: 'shortTitleAR',
+    longTitleEN: 'longTitleEN',
+    longTitleFR: 'longTitleFR',
+    longTitleAR: 'longTitleAR',
+    shortDescriptionEN: 'shortDescriptionEN',
+    shortDescriptionFR: 'shortDescriptionFR',
+    shortDescriptionAR: 'shortDescriptionAR',
+    longDescriptionEN: 'longDescriptionEN',
+    longDescriptionFR: 'longDescriptionFR',
+    longDescriptionAR: 'longDescriptionAR',
     thumbnailUrl: 'thumbnailUrl',
-    screenShots: 'screenShots',
     githubLink: 'githubLink',
     demoLink: 'demoLink',
     technologies: 'technologies',
+    duration: 'duration',
+    images: 'images',
+    category: 'category',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt'
   };
@@ -7179,30 +7353,50 @@ export namespace Prisma {
     OR?: ProjectWhereInput[]
     NOT?: ProjectWhereInput | ProjectWhereInput[]
     id?: StringFilter<"Project"> | string
-    shortTitle?: StringFilter<"Project"> | string
-    longTitle?: StringFilter<"Project"> | string
-    shortDescription?: StringFilter<"Project"> | string
-    longDescription?: StringFilter<"Project"> | string
+    shortTitleEN?: StringFilter<"Project"> | string
+    shortTitleFR?: StringFilter<"Project"> | string
+    shortTitleAR?: StringFilter<"Project"> | string
+    longTitleEN?: StringFilter<"Project"> | string
+    longTitleFR?: StringFilter<"Project"> | string
+    longTitleAR?: StringFilter<"Project"> | string
+    shortDescriptionEN?: StringFilter<"Project"> | string
+    shortDescriptionFR?: StringFilter<"Project"> | string
+    shortDescriptionAR?: StringFilter<"Project"> | string
+    longDescriptionEN?: StringFilter<"Project"> | string
+    longDescriptionFR?: StringFilter<"Project"> | string
+    longDescriptionAR?: StringFilter<"Project"> | string
     thumbnailUrl?: StringFilter<"Project"> | string
-    screenShots?: StringNullableListFilter<"Project">
     githubLink?: StringNullableFilter<"Project"> | string | null
     demoLink?: StringNullableFilter<"Project"> | string | null
     technologies?: StringNullableListFilter<"Project">
+    duration?: IntFilter<"Project"> | number
+    images?: StringNullableListFilter<"Project">
+    category?: StringFilter<"Project"> | string
     createdAt?: DateTimeFilter<"Project"> | Date | string
     updatedAt?: DateTimeFilter<"Project"> | Date | string
   }
 
   export type ProjectOrderByWithRelationInput = {
     id?: SortOrder
-    shortTitle?: SortOrder
-    longTitle?: SortOrder
-    shortDescription?: SortOrder
-    longDescription?: SortOrder
+    shortTitleEN?: SortOrder
+    shortTitleFR?: SortOrder
+    shortTitleAR?: SortOrder
+    longTitleEN?: SortOrder
+    longTitleFR?: SortOrder
+    longTitleAR?: SortOrder
+    shortDescriptionEN?: SortOrder
+    shortDescriptionFR?: SortOrder
+    shortDescriptionAR?: SortOrder
+    longDescriptionEN?: SortOrder
+    longDescriptionFR?: SortOrder
+    longDescriptionAR?: SortOrder
     thumbnailUrl?: SortOrder
-    screenShots?: SortOrder
     githubLink?: SortOrderInput | SortOrder
     demoLink?: SortOrderInput | SortOrder
     technologies?: SortOrder
+    duration?: SortOrder
+    images?: SortOrder
+    category?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -7212,35 +7406,57 @@ export namespace Prisma {
     AND?: ProjectWhereInput | ProjectWhereInput[]
     OR?: ProjectWhereInput[]
     NOT?: ProjectWhereInput | ProjectWhereInput[]
-    shortTitle?: StringFilter<"Project"> | string
-    longTitle?: StringFilter<"Project"> | string
-    shortDescription?: StringFilter<"Project"> | string
-    longDescription?: StringFilter<"Project"> | string
+    shortTitleEN?: StringFilter<"Project"> | string
+    shortTitleFR?: StringFilter<"Project"> | string
+    shortTitleAR?: StringFilter<"Project"> | string
+    longTitleEN?: StringFilter<"Project"> | string
+    longTitleFR?: StringFilter<"Project"> | string
+    longTitleAR?: StringFilter<"Project"> | string
+    shortDescriptionEN?: StringFilter<"Project"> | string
+    shortDescriptionFR?: StringFilter<"Project"> | string
+    shortDescriptionAR?: StringFilter<"Project"> | string
+    longDescriptionEN?: StringFilter<"Project"> | string
+    longDescriptionFR?: StringFilter<"Project"> | string
+    longDescriptionAR?: StringFilter<"Project"> | string
     thumbnailUrl?: StringFilter<"Project"> | string
-    screenShots?: StringNullableListFilter<"Project">
     githubLink?: StringNullableFilter<"Project"> | string | null
     demoLink?: StringNullableFilter<"Project"> | string | null
     technologies?: StringNullableListFilter<"Project">
+    duration?: IntFilter<"Project"> | number
+    images?: StringNullableListFilter<"Project">
+    category?: StringFilter<"Project"> | string
     createdAt?: DateTimeFilter<"Project"> | Date | string
     updatedAt?: DateTimeFilter<"Project"> | Date | string
   }, "id">
 
   export type ProjectOrderByWithAggregationInput = {
     id?: SortOrder
-    shortTitle?: SortOrder
-    longTitle?: SortOrder
-    shortDescription?: SortOrder
-    longDescription?: SortOrder
+    shortTitleEN?: SortOrder
+    shortTitleFR?: SortOrder
+    shortTitleAR?: SortOrder
+    longTitleEN?: SortOrder
+    longTitleFR?: SortOrder
+    longTitleAR?: SortOrder
+    shortDescriptionEN?: SortOrder
+    shortDescriptionFR?: SortOrder
+    shortDescriptionAR?: SortOrder
+    longDescriptionEN?: SortOrder
+    longDescriptionFR?: SortOrder
+    longDescriptionAR?: SortOrder
     thumbnailUrl?: SortOrder
-    screenShots?: SortOrder
     githubLink?: SortOrderInput | SortOrder
     demoLink?: SortOrderInput | SortOrder
     technologies?: SortOrder
+    duration?: SortOrder
+    images?: SortOrder
+    category?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     _count?: ProjectCountOrderByAggregateInput
+    _avg?: ProjectAvgOrderByAggregateInput
     _max?: ProjectMaxOrderByAggregateInput
     _min?: ProjectMinOrderByAggregateInput
+    _sum?: ProjectSumOrderByAggregateInput
   }
 
   export type ProjectScalarWhereWithAggregatesInput = {
@@ -7248,15 +7464,25 @@ export namespace Prisma {
     OR?: ProjectScalarWhereWithAggregatesInput[]
     NOT?: ProjectScalarWhereWithAggregatesInput | ProjectScalarWhereWithAggregatesInput[]
     id?: StringWithAggregatesFilter<"Project"> | string
-    shortTitle?: StringWithAggregatesFilter<"Project"> | string
-    longTitle?: StringWithAggregatesFilter<"Project"> | string
-    shortDescription?: StringWithAggregatesFilter<"Project"> | string
-    longDescription?: StringWithAggregatesFilter<"Project"> | string
+    shortTitleEN?: StringWithAggregatesFilter<"Project"> | string
+    shortTitleFR?: StringWithAggregatesFilter<"Project"> | string
+    shortTitleAR?: StringWithAggregatesFilter<"Project"> | string
+    longTitleEN?: StringWithAggregatesFilter<"Project"> | string
+    longTitleFR?: StringWithAggregatesFilter<"Project"> | string
+    longTitleAR?: StringWithAggregatesFilter<"Project"> | string
+    shortDescriptionEN?: StringWithAggregatesFilter<"Project"> | string
+    shortDescriptionFR?: StringWithAggregatesFilter<"Project"> | string
+    shortDescriptionAR?: StringWithAggregatesFilter<"Project"> | string
+    longDescriptionEN?: StringWithAggregatesFilter<"Project"> | string
+    longDescriptionFR?: StringWithAggregatesFilter<"Project"> | string
+    longDescriptionAR?: StringWithAggregatesFilter<"Project"> | string
     thumbnailUrl?: StringWithAggregatesFilter<"Project"> | string
-    screenShots?: StringNullableListFilter<"Project">
     githubLink?: StringNullableWithAggregatesFilter<"Project"> | string | null
     demoLink?: StringNullableWithAggregatesFilter<"Project"> | string | null
     technologies?: StringNullableListFilter<"Project">
+    duration?: IntWithAggregatesFilter<"Project"> | number
+    images?: StringNullableListFilter<"Project">
+    category?: StringWithAggregatesFilter<"Project"> | string
     createdAt?: DateTimeWithAggregatesFilter<"Project"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"Project"> | Date | string
   }
@@ -7556,105 +7782,175 @@ export namespace Prisma {
 
   export type ProjectCreateInput = {
     id?: string
-    shortTitle: string
-    longTitle: string
-    shortDescription: string
-    longDescription: string
+    shortTitleEN: string
+    shortTitleFR: string
+    shortTitleAR: string
+    longTitleEN: string
+    longTitleFR: string
+    longTitleAR: string
+    shortDescriptionEN: string
+    shortDescriptionFR: string
+    shortDescriptionAR: string
+    longDescriptionEN: string
+    longDescriptionFR: string
+    longDescriptionAR: string
     thumbnailUrl: string
-    screenShots?: ProjectCreatescreenShotsInput | string[]
     githubLink?: string | null
     demoLink?: string | null
     technologies?: ProjectCreatetechnologiesInput | string[]
+    duration: number
+    images?: ProjectCreateimagesInput | string[]
+    category: string
     createdAt?: Date | string
     updatedAt?: Date | string
   }
 
   export type ProjectUncheckedCreateInput = {
     id?: string
-    shortTitle: string
-    longTitle: string
-    shortDescription: string
-    longDescription: string
+    shortTitleEN: string
+    shortTitleFR: string
+    shortTitleAR: string
+    longTitleEN: string
+    longTitleFR: string
+    longTitleAR: string
+    shortDescriptionEN: string
+    shortDescriptionFR: string
+    shortDescriptionAR: string
+    longDescriptionEN: string
+    longDescriptionFR: string
+    longDescriptionAR: string
     thumbnailUrl: string
-    screenShots?: ProjectCreatescreenShotsInput | string[]
     githubLink?: string | null
     demoLink?: string | null
     technologies?: ProjectCreatetechnologiesInput | string[]
+    duration: number
+    images?: ProjectCreateimagesInput | string[]
+    category: string
     createdAt?: Date | string
     updatedAt?: Date | string
   }
 
   export type ProjectUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
-    shortTitle?: StringFieldUpdateOperationsInput | string
-    longTitle?: StringFieldUpdateOperationsInput | string
-    shortDescription?: StringFieldUpdateOperationsInput | string
-    longDescription?: StringFieldUpdateOperationsInput | string
+    shortTitleEN?: StringFieldUpdateOperationsInput | string
+    shortTitleFR?: StringFieldUpdateOperationsInput | string
+    shortTitleAR?: StringFieldUpdateOperationsInput | string
+    longTitleEN?: StringFieldUpdateOperationsInput | string
+    longTitleFR?: StringFieldUpdateOperationsInput | string
+    longTitleAR?: StringFieldUpdateOperationsInput | string
+    shortDescriptionEN?: StringFieldUpdateOperationsInput | string
+    shortDescriptionFR?: StringFieldUpdateOperationsInput | string
+    shortDescriptionAR?: StringFieldUpdateOperationsInput | string
+    longDescriptionEN?: StringFieldUpdateOperationsInput | string
+    longDescriptionFR?: StringFieldUpdateOperationsInput | string
+    longDescriptionAR?: StringFieldUpdateOperationsInput | string
     thumbnailUrl?: StringFieldUpdateOperationsInput | string
-    screenShots?: ProjectUpdatescreenShotsInput | string[]
     githubLink?: NullableStringFieldUpdateOperationsInput | string | null
     demoLink?: NullableStringFieldUpdateOperationsInput | string | null
     technologies?: ProjectUpdatetechnologiesInput | string[]
+    duration?: IntFieldUpdateOperationsInput | number
+    images?: ProjectUpdateimagesInput | string[]
+    category?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type ProjectUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
-    shortTitle?: StringFieldUpdateOperationsInput | string
-    longTitle?: StringFieldUpdateOperationsInput | string
-    shortDescription?: StringFieldUpdateOperationsInput | string
-    longDescription?: StringFieldUpdateOperationsInput | string
+    shortTitleEN?: StringFieldUpdateOperationsInput | string
+    shortTitleFR?: StringFieldUpdateOperationsInput | string
+    shortTitleAR?: StringFieldUpdateOperationsInput | string
+    longTitleEN?: StringFieldUpdateOperationsInput | string
+    longTitleFR?: StringFieldUpdateOperationsInput | string
+    longTitleAR?: StringFieldUpdateOperationsInput | string
+    shortDescriptionEN?: StringFieldUpdateOperationsInput | string
+    shortDescriptionFR?: StringFieldUpdateOperationsInput | string
+    shortDescriptionAR?: StringFieldUpdateOperationsInput | string
+    longDescriptionEN?: StringFieldUpdateOperationsInput | string
+    longDescriptionFR?: StringFieldUpdateOperationsInput | string
+    longDescriptionAR?: StringFieldUpdateOperationsInput | string
     thumbnailUrl?: StringFieldUpdateOperationsInput | string
-    screenShots?: ProjectUpdatescreenShotsInput | string[]
     githubLink?: NullableStringFieldUpdateOperationsInput | string | null
     demoLink?: NullableStringFieldUpdateOperationsInput | string | null
     technologies?: ProjectUpdatetechnologiesInput | string[]
+    duration?: IntFieldUpdateOperationsInput | number
+    images?: ProjectUpdateimagesInput | string[]
+    category?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type ProjectCreateManyInput = {
     id?: string
-    shortTitle: string
-    longTitle: string
-    shortDescription: string
-    longDescription: string
+    shortTitleEN: string
+    shortTitleFR: string
+    shortTitleAR: string
+    longTitleEN: string
+    longTitleFR: string
+    longTitleAR: string
+    shortDescriptionEN: string
+    shortDescriptionFR: string
+    shortDescriptionAR: string
+    longDescriptionEN: string
+    longDescriptionFR: string
+    longDescriptionAR: string
     thumbnailUrl: string
-    screenShots?: ProjectCreatescreenShotsInput | string[]
     githubLink?: string | null
     demoLink?: string | null
     technologies?: ProjectCreatetechnologiesInput | string[]
+    duration: number
+    images?: ProjectCreateimagesInput | string[]
+    category: string
     createdAt?: Date | string
     updatedAt?: Date | string
   }
 
   export type ProjectUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
-    shortTitle?: StringFieldUpdateOperationsInput | string
-    longTitle?: StringFieldUpdateOperationsInput | string
-    shortDescription?: StringFieldUpdateOperationsInput | string
-    longDescription?: StringFieldUpdateOperationsInput | string
+    shortTitleEN?: StringFieldUpdateOperationsInput | string
+    shortTitleFR?: StringFieldUpdateOperationsInput | string
+    shortTitleAR?: StringFieldUpdateOperationsInput | string
+    longTitleEN?: StringFieldUpdateOperationsInput | string
+    longTitleFR?: StringFieldUpdateOperationsInput | string
+    longTitleAR?: StringFieldUpdateOperationsInput | string
+    shortDescriptionEN?: StringFieldUpdateOperationsInput | string
+    shortDescriptionFR?: StringFieldUpdateOperationsInput | string
+    shortDescriptionAR?: StringFieldUpdateOperationsInput | string
+    longDescriptionEN?: StringFieldUpdateOperationsInput | string
+    longDescriptionFR?: StringFieldUpdateOperationsInput | string
+    longDescriptionAR?: StringFieldUpdateOperationsInput | string
     thumbnailUrl?: StringFieldUpdateOperationsInput | string
-    screenShots?: ProjectUpdatescreenShotsInput | string[]
     githubLink?: NullableStringFieldUpdateOperationsInput | string | null
     demoLink?: NullableStringFieldUpdateOperationsInput | string | null
     technologies?: ProjectUpdatetechnologiesInput | string[]
+    duration?: IntFieldUpdateOperationsInput | number
+    images?: ProjectUpdateimagesInput | string[]
+    category?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type ProjectUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
-    shortTitle?: StringFieldUpdateOperationsInput | string
-    longTitle?: StringFieldUpdateOperationsInput | string
-    shortDescription?: StringFieldUpdateOperationsInput | string
-    longDescription?: StringFieldUpdateOperationsInput | string
+    shortTitleEN?: StringFieldUpdateOperationsInput | string
+    shortTitleFR?: StringFieldUpdateOperationsInput | string
+    shortTitleAR?: StringFieldUpdateOperationsInput | string
+    longTitleEN?: StringFieldUpdateOperationsInput | string
+    longTitleFR?: StringFieldUpdateOperationsInput | string
+    longTitleAR?: StringFieldUpdateOperationsInput | string
+    shortDescriptionEN?: StringFieldUpdateOperationsInput | string
+    shortDescriptionFR?: StringFieldUpdateOperationsInput | string
+    shortDescriptionAR?: StringFieldUpdateOperationsInput | string
+    longDescriptionEN?: StringFieldUpdateOperationsInput | string
+    longDescriptionFR?: StringFieldUpdateOperationsInput | string
+    longDescriptionAR?: StringFieldUpdateOperationsInput | string
     thumbnailUrl?: StringFieldUpdateOperationsInput | string
-    screenShots?: ProjectUpdatescreenShotsInput | string[]
     githubLink?: NullableStringFieldUpdateOperationsInput | string | null
     demoLink?: NullableStringFieldUpdateOperationsInput | string | null
     technologies?: ProjectUpdatetechnologiesInput | string[]
+    duration?: IntFieldUpdateOperationsInput | number
+    images?: ProjectUpdateimagesInput | string[]
+    category?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -7998,45 +8294,110 @@ export namespace Prisma {
     isEmpty?: boolean
   }
 
+  export type IntFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[] | ListIntFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntFilter<$PrismaModel> | number
+  }
+
   export type ProjectCountOrderByAggregateInput = {
     id?: SortOrder
-    shortTitle?: SortOrder
-    longTitle?: SortOrder
-    shortDescription?: SortOrder
-    longDescription?: SortOrder
+    shortTitleEN?: SortOrder
+    shortTitleFR?: SortOrder
+    shortTitleAR?: SortOrder
+    longTitleEN?: SortOrder
+    longTitleFR?: SortOrder
+    longTitleAR?: SortOrder
+    shortDescriptionEN?: SortOrder
+    shortDescriptionFR?: SortOrder
+    shortDescriptionAR?: SortOrder
+    longDescriptionEN?: SortOrder
+    longDescriptionFR?: SortOrder
+    longDescriptionAR?: SortOrder
     thumbnailUrl?: SortOrder
-    screenShots?: SortOrder
     githubLink?: SortOrder
     demoLink?: SortOrder
     technologies?: SortOrder
+    duration?: SortOrder
+    images?: SortOrder
+    category?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
 
+  export type ProjectAvgOrderByAggregateInput = {
+    duration?: SortOrder
+  }
+
   export type ProjectMaxOrderByAggregateInput = {
     id?: SortOrder
-    shortTitle?: SortOrder
-    longTitle?: SortOrder
-    shortDescription?: SortOrder
-    longDescription?: SortOrder
+    shortTitleEN?: SortOrder
+    shortTitleFR?: SortOrder
+    shortTitleAR?: SortOrder
+    longTitleEN?: SortOrder
+    longTitleFR?: SortOrder
+    longTitleAR?: SortOrder
+    shortDescriptionEN?: SortOrder
+    shortDescriptionFR?: SortOrder
+    shortDescriptionAR?: SortOrder
+    longDescriptionEN?: SortOrder
+    longDescriptionFR?: SortOrder
+    longDescriptionAR?: SortOrder
     thumbnailUrl?: SortOrder
     githubLink?: SortOrder
     demoLink?: SortOrder
+    duration?: SortOrder
+    category?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
 
   export type ProjectMinOrderByAggregateInput = {
     id?: SortOrder
-    shortTitle?: SortOrder
-    longTitle?: SortOrder
-    shortDescription?: SortOrder
-    longDescription?: SortOrder
+    shortTitleEN?: SortOrder
+    shortTitleFR?: SortOrder
+    shortTitleAR?: SortOrder
+    longTitleEN?: SortOrder
+    longTitleFR?: SortOrder
+    longTitleAR?: SortOrder
+    shortDescriptionEN?: SortOrder
+    shortDescriptionFR?: SortOrder
+    shortDescriptionAR?: SortOrder
+    longDescriptionEN?: SortOrder
+    longDescriptionFR?: SortOrder
+    longDescriptionAR?: SortOrder
     thumbnailUrl?: SortOrder
     githubLink?: SortOrder
     demoLink?: SortOrder
+    duration?: SortOrder
+    category?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+  }
+
+  export type ProjectSumOrderByAggregateInput = {
+    duration?: SortOrder
+  }
+
+  export type IntWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[] | ListIntFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntWithAggregatesFilter<$PrismaModel> | number
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedFloatFilter<$PrismaModel>
+    _sum?: NestedIntFilter<$PrismaModel>
+    _min?: NestedIntFilter<$PrismaModel>
+    _max?: NestedIntFilter<$PrismaModel>
   }
 
   export type AccountCreateNestedManyWithoutUserInput = {
@@ -8179,20 +8540,28 @@ export namespace Prisma {
     update?: XOR<XOR<UserUpdateToOneWithWhereWithoutSessionsInput, UserUpdateWithoutSessionsInput>, UserUncheckedUpdateWithoutSessionsInput>
   }
 
-  export type ProjectCreatescreenShotsInput = {
-    set: string[]
-  }
-
   export type ProjectCreatetechnologiesInput = {
     set: string[]
   }
 
-  export type ProjectUpdatescreenShotsInput = {
+  export type ProjectCreateimagesInput = {
+    set: string[]
+  }
+
+  export type ProjectUpdatetechnologiesInput = {
     set?: string[]
     push?: string | string[]
   }
 
-  export type ProjectUpdatetechnologiesInput = {
+  export type IntFieldUpdateOperationsInput = {
+    set?: number
+    increment?: number
+    decrement?: number
+    multiply?: number
+    divide?: number
+  }
+
+  export type ProjectUpdateimagesInput = {
     set?: string[]
     push?: string | string[]
   }
@@ -8373,6 +8742,33 @@ export namespace Prisma {
     gt?: number | FloatFieldRefInput<$PrismaModel>
     gte?: number | FloatFieldRefInput<$PrismaModel>
     not?: NestedFloatNullableFilter<$PrismaModel> | number | null
+  }
+
+  export type NestedIntWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[] | ListIntFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntWithAggregatesFilter<$PrismaModel> | number
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedFloatFilter<$PrismaModel>
+    _sum?: NestedIntFilter<$PrismaModel>
+    _min?: NestedIntFilter<$PrismaModel>
+    _max?: NestedIntFilter<$PrismaModel>
+  }
+
+  export type NestedFloatFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel>
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatFilter<$PrismaModel> | number
   }
 
   export type AccountCreateWithoutUserInput = {

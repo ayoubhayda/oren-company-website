@@ -27,6 +27,7 @@ const DescriptionEditor = ({ field }: DescriptionEditorProps) => {
       attributes: {
         class:
           "prose prose-sm sm:prose lg:prose-lg xl:prose-xl focus:outline-none min-h-[300px] p-4 max-w-none dark:prose-invert",
+        dir: "auto",
       },
     },
     onUpdate: ({ editor }) => {
@@ -45,7 +46,7 @@ const DescriptionEditor = ({ field }: DescriptionEditorProps) => {
 
   return (
     <div className="w-full">
-      <div className="border rounded-lg overflow-hidden bg-card">
+      <div className="border rounded-lg overflow-hidden bg-transparent dark:bg-input/30">
         <MenuBar editor={editor} />
         <EditorContent editor={editor} />
       </div>
