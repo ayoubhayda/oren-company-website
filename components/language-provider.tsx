@@ -527,6 +527,9 @@ const translations: Record<Language, Record<string, string>> = {
     "portfolio.liveDemo": "Live Demo",
     "portfolio.noProjects": "No projects found in this category.",
     "portfolio.filter.all": "All Projects",
+    "portfolio.filter.webdev": "Web Development",
+    "portfolio.filter.ecommerce": "E-commerce",
+    "portfolio.filter.saas": "SaaS",
     "portfolio.notfound.title": "Project Not Found",
     "portfolio.notfound.description": "The project you're looking for doesn't exist or has been removed.",
     "portfolio.notfound.button": "View All Projects",
@@ -535,6 +538,44 @@ const translations: Record<Language, Record<string, string>> = {
       "Let's create something amazing together. Get in touch to discuss your project requirements and bring your vision to life.",
     "portfolio.cta.button.primary": "Get Started",
     "portfolio.cta.button.secondary": "View Services",
+
+    // Project Details
+    "project.backToPortfolio": "Back to Portfolio",
+    "project.overview": "Project Overview",
+    "project.keyFeatures": "Key Features",
+    "project.userExperience": "User Experience",
+    "project.performance": "Performance",
+    "project.reliability": "Reliability",
+    "project.scalability": "Scalability",
+    "project.technologiesUsed": "Technologies Used",
+    "project.quickActions": "Quick Actions",
+    "project.shareProject": "Share Project",
+    "project.viewLiveDemo": "View Live Demo",
+    "project.sourceCode": "Source Code",
+    "project.projectDetails": "Project Details",
+    "project.techStack": "Tech Stack",
+    "project.technologies": "technologies",
+    "project.client": "Client",
+    "project.duration": "Duration",
+    "project.duration.3months": "3 months",
+    "project.duration.4months": "4 months",
+    "project.duration.5months": "5 months",
+    "project.duration.6months": "6 months",
+    "project.duration.7months": "7 months",
+    "project.projectRating": "Project Rating",
+    "project.functionality": "Functionality",
+    "project.design": "Design",
+    "project.live": "Live",
+    "project.more": "more",
+    "project.rating": "4.8",
+    "project.reviews": "127 reviews",
+    "project.userExperienceDesc": "Intuitive design with seamless navigation and responsive layout across all devices",
+    "project.performanceDesc": "Optimized for speed with efficient database queries and caching strategies",
+    "project.reliabilityDesc": "Robust architecture with 99.9% uptime and comprehensive error handling",
+    "project.scalabilityDesc": "Built to grow with your business, handling increased traffic and data seamlessly",
+    "project.testimonialQuote": "Oren transformed our online business. The new platform is fast, beautiful, and our sales have more than doubled since launch.",
+    "project.testimonialAuthor": "Sarah Johnson",
+    "project.testimonialRole": "CEO, Fashion Retailer",
 
     // Testimonials
     "testimonials.title": "What Our Clients Say",
@@ -604,6 +645,13 @@ const translations: Record<Language, Record<string, string>> = {
     "contact.info.emailLabel": "Email",
     "contact.info.phoneLabel": "Phone",
     "contact.info.officeLabel": "Office",
+    "contact.info.locationLabel": "Location",
+    "contact.info.locationDescription": "Remote-first — based in Morocco, collaborating worldwide.",
+    "contact.info.availabilityLabel": "Availability",
+    "contact.info.availabilityDescription": "Flexible hours across time zones. Reach us anytime via email or WhatsApp.",
+    "contact.info.responseTime": "We typically respond within a few hours.",
+    "contact.social.linkedin": "LinkedIn",
+    "contact.social.instagram": "Instagram",
     "contact.hours.title": "Business Hours",
     "contact.hours.mondayFriday": "Monday - Friday",
     "contact.hours.saturday": "Saturday",
@@ -615,18 +663,18 @@ const translations: Record<Language, Record<string, string>> = {
     "contact.form.services.platforms": "Custom Platforms",
     "contact.form.services.ecommerce": "E-commerce",
     "contact.form.services.marketing": "Digital Marketing",
-    "contact.form.services.social": "Social Media",
-    "contact.form.services.design": "Design",
     "contact.form.services.other": "Other",
-    "contact.form.budgets.5k10k": "$5,000 - $10,000",
-    "contact.form.budgets.10k25k": "$10,000 - $25,000",
-    "contact.form.budgets.25k50k": "$25,000 - $50,000",
-    "contact.form.budgets.50k": "$50,000+",
+    "contact.form.budgets.under500": "Under $500",
+    "contact.form.budgets.5002k": "$500 - $2,000",
+    "contact.form.budgets.2k8k": "$2,000 - $8,000",
+    "contact.form.budgets.8k15k": "$8,000 - $15,000",
+    "contact.form.budgets.15k": "$15,000+",
     "contact.form.budgets.unsure": "Not sure yet",
     "contact.form.sending": "Sending Message...",
     "contact.form.sent": "Message Sent!",
     "contact.form.send": "Send Message",
     "contact.form.success": "Thank you! We'll get back to you within 24 hours.",
+    "contact.form.responseTime": "We typically respond within a few hours.",
 
     // Blog
     "blog.title": "Latest Insights",
@@ -644,6 +692,7 @@ const translations: Record<Language, Record<string, string>> = {
     "blog.category.design": "Design",
     "blog.category.marketing": "Marketing",
     "blog.category.technology": "Technology",
+    "blog.minRead": "min read",
     "blog.empty.title": "No articles found matching your criteria.",
     "blog.empty.search": "No articles found for",
     "blog.readTime": "min read",
@@ -656,6 +705,345 @@ const translations: Record<Language, Record<string, string>> = {
     "blog.notfound.title": "Article Not Found",
     "blog.notfound.description": "The article you're looking for doesn't exist or has been removed.",
     "blog.notfound.button": "View All Articles",
+
+    // Blog Post: Modern Web Development Trends in 2025
+    "blog.post.trends2025.title": "Modern Web Development Trends in 2025",
+    "blog.post.trends2025.excerpt": "Explore the latest trends shaping web development, from AI integration to progressive web apps and beyond.",
+
+    // Blog Post: Next.js Performance Optimization
+    "blog.post.nextjsPerformance.title": "Next.js Performance Optimization Tips",
+    "blog.post.nextjsPerformance.excerpt": "Learn essential strategies to boost your website's speed and user engagement with these Next.js optimization techniques.",
+    "blog.post.nextjsPerformance.content": `
+      <div class="lead">
+        <p>Next.js is already optimized for performance out of the box, but there are many techniques you can use to make your applications even faster. This guide covers practical optimization strategies that can significantly improve your Next.js app's performance.</p>
+      </div>
+
+      <h2>Image Optimization</h2>
+      <p>Next.js's Image component automatically optimizes images, but you need to use it correctly. Always specify width and height to prevent layout shifts, use the priority prop for above-the-fold images, and choose the right format (WebP for modern browsers).</p>
+
+      <p>Consider using blur placeholders for a better perceived performance. The Image component supports both static imports and dynamic URLs, with automatic optimization for both.</p>
+
+      <h2>Code Splitting and Dynamic Imports</h2>
+      <p>Next.js automatically code-splits at the page level, but you can further optimize by dynamically importing heavy components. Use next/dynamic for components that aren't needed immediately or are only used in certain conditions.</p>
+
+      <p>For example, dynamically import modals, charts, or rich text editors that aren't visible on initial page load. This reduces the initial JavaScript bundle size significantly.</p>
+
+      <h2>Server Components and Streaming</h2>
+      <p>Next.js 13+ introduces React Server Components, which run on the server and send only the rendered HTML to the client. This dramatically reduces the JavaScript bundle size and improves initial page load.</p>
+
+      <p>Use streaming with Suspense boundaries to show content progressively as it becomes available. This improves perceived performance by showing users something quickly rather than waiting for everything to load.</p>
+
+      <h2>Font Optimization</h2>
+      <p>Use next/font to automatically optimize and self-host fonts. This eliminates external network requests and prevents layout shifts caused by font loading. The font files are cached efficiently and loaded with optimal strategies.</p>
+
+      <p>Preload critical fonts and use font-display: swap to ensure text remains visible during font loading. Consider using system fonts for body text to eliminate font loading entirely.</p>
+
+      <h2>API Route Optimization</h2>
+      <p>Implement caching strategies for API routes using Cache-Control headers. Use ISR (Incremental Static Regeneration) for pages that need to be updated periodically but don't require real-time data.</p>
+
+      <p>Consider using edge functions for API routes that need low latency globally. Edge functions run closer to users, reducing response times significantly.</p>
+
+      <h2>Database Query Optimization</h2>
+      <p>Optimize database queries by selecting only needed fields, using proper indexes, and implementing connection pooling. Consider using a caching layer like Redis for frequently accessed data.</p>
+
+      <p>Use parallel data fetching where possible to reduce waterfall requests. Next.js Server Components make it easy to fetch data in parallel at the component level.</p>
+
+      <h2>Bundle Analysis</h2>
+      <p>Regularly analyze your bundle size using @next/bundle-analyzer. Identify large dependencies and consider alternatives or lazy loading. Remove unused dependencies and tree-shake libraries properly.</p>
+
+      <p>Pay special attention to third-party scripts. Use next/script with the appropriate loading strategy (afterInteractive, lazyOnload) to prevent blocking the main thread.</p>
+
+      <h2>Monitoring and Metrics</h2>
+      <p>Use Vercel Analytics or similar tools to monitor real-world performance metrics. Track Core Web Vitals, Time to First Byte (TTFB), and other key metrics to identify performance regressions.</p>
+
+      <p>Set up performance budgets and automated alerts to catch performance issues before they reach production.</p>
+
+      <h2>Conclusion</h2>
+      <p>Performance optimization is an ongoing process. Start with the biggest wins—image optimization, code splitting, and proper caching—then progressively enhance. Always measure the impact of your optimizations with real-world data.</p>
+    `,
+
+    // Blog Post: SEO Strategies
+    "blog.post.seoStrategies.title": "SEO Strategies That Actually Work in 2025",
+    "blog.post.seoStrategies.excerpt": "Discover proven SEO techniques to improve your website's visibility and drive organic traffic.",
+    "blog.post.seoStrategies.content": `
+      <div class="lead">
+        <p>Search Engine Optimization continues to evolve, with Google's algorithms becoming increasingly sophisticated. In 2025, successful SEO requires a holistic approach that combines technical excellence, quality content, and user experience optimization.</p>
+      </div>
+
+      <h2>Core Web Vitals and Page Experience</h2>
+      <p>Google's Core Web Vitals—Largest Contentful Paint (LCP), First Input Delay (FID), and Cumulative Layout Shift (CLS)—remain critical ranking factors. These metrics measure loading performance, interactivity, and visual stability.</p>
+
+      <p>To optimize Core Web Vitals, focus on image optimization, efficient JavaScript loading, proper font loading strategies, and eliminating layout shifts. Tools like PageSpeed Insights and Lighthouse can help identify and fix issues.</p>
+
+      <h2>Content Quality and E-E-A-T</h2>
+      <p>Google's E-E-A-T framework (Experience, Expertise, Authoritativeness, and Trustworthiness) is more important than ever. Create content that demonstrates real expertise and provides genuine value to users.</p>
+
+      <p>Include author bios with credentials, cite authoritative sources, keep content updated, and ensure factual accuracy. For YMYL (Your Money or Your Life) topics like health and finance, E-E-A-T is especially critical.</p>
+
+      <h2>Semantic Search and Intent Optimization</h2>
+      <p>Modern SEO goes beyond keywords to understanding user intent. Google's algorithms now understand context, synonyms, and related concepts through natural language processing.</p>
+
+      <p>Structure your content to answer specific questions and solve user problems. Use schema markup to help search engines understand your content's context and meaning. Focus on topic clusters rather than individual keywords.</p>
+
+      <h2>Technical SEO Fundamentals</h2>
+      <p>Ensure your site has a clean URL structure, proper XML sitemaps, and robots.txt configuration. Implement structured data markup for rich snippets. Fix broken links, duplicate content, and crawl errors.</p>
+
+      <p>Mobile-first indexing means your mobile site is what Google primarily uses for ranking. Ensure your mobile experience is excellent, with fast loading times and easy navigation.</p>
+
+      <h2>Link Building in 2025</h2>
+      <p>Quality over quantity remains the golden rule for backlinks. Focus on earning links from authoritative, relevant sites through great content, digital PR, and relationship building.</p>
+
+      <p>Guest posting, broken link building, and creating linkable assets like original research or comprehensive guides are effective strategies. Avoid link schemes and low-quality directories.</p>
+
+      <h2>Local SEO</h2>
+      <p>For businesses with physical locations, local SEO is crucial. Optimize your Google Business Profile, ensure NAP (Name, Address, Phone) consistency across the web, and encourage customer reviews.</p>
+
+      <p>Create location-specific content and build local citations. Local link building from community organizations and local news sites can significantly boost local rankings.</p>
+
+      <h2>Measuring Success</h2>
+      <p>Track organic traffic, keyword rankings, conversion rates, and engagement metrics. Use Google Search Console to monitor performance and identify opportunities. Set up goal tracking in Google Analytics to measure SEO's impact on business objectives.</p>
+
+      <h2>Conclusion</h2>
+      <p>SEO in 2025 requires a comprehensive approach that balances technical optimization, quality content creation, and user experience. Stay updated with algorithm changes, focus on providing value to users, and be patient—SEO is a long-term investment that pays dividends over time.</p>
+    `,
+
+    // Blog Post: Next.js Performance Optimization
+    "blog.post.nextjsPerformance.title": "Next.js Performance Optimization Tips",
+    "blog.post.nextjsPerformance.excerpt": "Learn essential strategies to boost your website's speed and user engagement with these Next.js optimization techniques.",
+
+    // Blog Post: AI in Web Development
+    "blog.post.aiInWebDev.title": "How AI is Transforming Web Development",
+    "blog.post.aiInWebDev.excerpt": "Discover how artificial intelligence is revolutionizing web development processes, from code generation to personalized user experiences.",
+    "blog.post.aiInWebDev.content": `
+      <div class="lead">
+        <p>Artificial Intelligence is fundamentally changing how we approach web development. From code generation to automated testing and intelligent user experiences, AI is making developers more productive while enabling entirely new types of applications.</p>
+      </div>
+
+      <h2>AI-Assisted Coding</h2>
+      <p>Tools like GitHub Copilot, ChatGPT, and specialized coding assistants are transforming the development workflow. These tools can generate boilerplate code, suggest completions, explain complex code, and even help debug issues.</p>
+
+      <p>The key is learning to work effectively with AI assistants. They're best used for routine tasks, generating test cases, writing documentation, and exploring different approaches to problems. Developers still need to understand the code, make architectural decisions, and ensure quality.</p>
+
+      <h2>Automated Testing and QA</h2>
+      <p>AI-powered testing tools can automatically generate test cases, identify edge cases, and even predict where bugs are likely to occur. Visual regression testing tools use AI to detect unintended UI changes.</p>
+
+      <p>Machine learning models can analyze code changes and predict their impact, helping teams prioritize testing efforts. This leads to better test coverage and faster release cycles.</p>
+
+      <h2>Intelligent User Experiences</h2>
+      <p>AI enables personalized user experiences at scale. Recommendation engines, chatbots, and adaptive interfaces can tailor content and functionality to individual users based on their behavior and preferences.</p>
+
+      <p>Natural language processing allows users to interact with applications conversationally. Computer vision enables features like image recognition, document scanning, and augmented reality experiences directly in the browser.</p>
+
+      <h2>Code Review and Quality Assurance</h2>
+      <p>AI tools can review code for potential bugs, security vulnerabilities, and performance issues. They can suggest improvements, identify code smells, and ensure adherence to coding standards.</p>
+
+      <p>These tools learn from millions of code repositories, identifying patterns that human reviewers might miss. They complement human code review by catching routine issues, allowing reviewers to focus on architecture and business logic.</p>
+
+      <h2>Performance Optimization</h2>
+      <p>AI can analyze application performance and suggest optimizations. It can identify slow database queries, inefficient algorithms, and resource bottlenecks. Some tools can even automatically apply optimizations.</p>
+
+      <p>Predictive analytics can forecast traffic patterns and automatically scale resources, ensuring optimal performance while minimizing costs.</p>
+
+      <h2>Accessibility Improvements</h2>
+      <p>AI-powered tools can automatically generate alt text for images, suggest ARIA labels, and identify accessibility issues. Some tools can even automatically fix common accessibility problems.</p>
+
+      <p>Voice interfaces powered by AI make applications more accessible to users with disabilities, while real-time translation breaks down language barriers.</p>
+
+      <h2>Content Generation and Management</h2>
+      <p>AI can generate content, from product descriptions to blog posts. While human oversight is still necessary, AI can significantly speed up content creation and help maintain consistency.</p>
+
+      <p>Intelligent content management systems can automatically tag and categorize content, suggest related articles, and optimize content for search engines.</p>
+
+      <h2>The Future of AI in Web Development</h2>
+      <p>We're just scratching the surface of what's possible. Future developments might include AI that can design entire applications from natural language descriptions, automatically refactor legacy code, or predict and prevent production issues before they occur.</p>
+
+      <p>The role of developers is evolving from writing every line of code to orchestrating AI tools, making high-level decisions, and ensuring quality and ethics in AI-generated solutions.</p>
+
+      <h2>Conclusion</h2>
+      <p>AI is not replacing developers—it's augmenting their capabilities. By embracing AI tools and learning to work effectively with them, developers can be more productive, creative, and focused on solving complex problems. The future of web development is a collaboration between human creativity and artificial intelligence.</p>
+    `,
+
+    // Blog Post: UI Design Principles
+    "blog.post.uiDesignPrinciples.title": "Essential UI Design Principles for 2025",
+    "blog.post.uiDesignPrinciples.excerpt": "Master the fundamental principles of user interface design to create beautiful, functional interfaces.",
+    "blog.post.uiDesignPrinciples.content": `
+      <div class="lead">
+        <p>Great user interface design is both an art and a science. While trends come and go, certain fundamental principles remain constant. Understanding and applying these principles will help you create interfaces that are not only beautiful but also functional and user-friendly.</p>
+      </div>
+
+      <h2>Visual Hierarchy</h2>
+      <p>Visual hierarchy guides users through your interface by establishing the order of importance. Use size, color, contrast, and spacing to direct attention to the most important elements first.</p>
+
+      <p>Primary actions should be the most prominent, secondary actions less so, and tertiary actions subtle. Headlines should be larger than body text, and important information should stand out through contrast or positioning.</p>
+
+      <h2>Consistency and Standards</h2>
+      <p>Consistency creates familiarity and reduces cognitive load. Use consistent colors, typography, spacing, and interaction patterns throughout your interface. Follow platform conventions so users can apply their existing knowledge.</p>
+
+      <p>Create and maintain a design system with reusable components, defined spacing scales, and clear guidelines. This ensures consistency across your product and speeds up the design and development process.</p>
+
+      <h2>White Space and Breathing Room</h2>
+      <p>White space (or negative space) is not wasted space—it's a crucial design element. Proper spacing improves readability, creates visual hierarchy, and makes interfaces feel less cluttered and more premium.</p>
+
+      <p>Don't be afraid of empty space. Give your content room to breathe. Use generous padding and margins, especially around important elements. Group related items together and separate unrelated ones.</p>
+
+      <h2>Typography and Readability</h2>
+      <p>Typography is fundamental to UI design. Choose fonts that are readable at various sizes and weights. Maintain a clear hierarchy with distinct heading levels and body text.</p>
+
+      <p>Use a line height of 1.5-1.6 for body text, limit line length to 50-75 characters for optimal readability, and ensure sufficient contrast between text and background. Consider using system fonts for better performance and familiarity.</p>
+
+      <h2>Color Theory and Accessibility</h2>
+      <p>Color communicates meaning, creates mood, and guides attention. Use a limited color palette—typically one primary color, one or two accent colors, and a range of neutrals.</p>
+
+      <p>Ensure sufficient contrast for accessibility (4.5:1 for normal text, 3:1 for large text). Don't rely on color alone to convey information—use icons, labels, or patterns as well. Test your designs in grayscale to verify hierarchy works without color.</p>
+
+      <h2>Feedback and Affordances</h2>
+      <p>Provide clear feedback for user actions. Buttons should have hover, active, and disabled states. Show loading indicators for async operations. Display success or error messages clearly.</p>
+
+      <p>Use affordances—visual cues that suggest how an element should be used. Buttons should look clickable, links should be distinguishable, and interactive elements should respond to user input.</p>
+
+      <h2>Mobile-First and Responsive Design</h2>
+      <p>Design for mobile first, then enhance for larger screens. This ensures your core experience works on the most constrained devices. Use responsive layouts that adapt gracefully to different screen sizes.</p>
+
+      <p>Consider touch targets—make interactive elements at least 44x44 pixels for easy tapping. Ensure important actions are reachable with one hand on mobile devices.</p>
+
+      <h2>Progressive Disclosure</h2>
+      <p>Don't overwhelm users with too much information at once. Use progressive disclosure to show only what's necessary initially, revealing additional options or information as needed.</p>
+
+      <p>This can be achieved through expandable sections, multi-step forms, tooltips, or modal dialogs. The goal is to reduce cognitive load while keeping advanced features accessible.</p>
+
+      <h2>Conclusion</h2>
+      <p>These principles form the foundation of good UI design. While trends and tools change, these fundamentals remain relevant. Practice applying them consistently, and you'll create interfaces that are both beautiful and highly functional.</p>
+    `,
+
+    // Blog Post: Designing for Accessibility
+    "blog.post.accessibility.title": "Designing for Accessibility: A Complete Guide",
+    "blog.post.accessibility.excerpt": "Learn how to create inclusive digital experiences that work for everyone, regardless of their abilities.",
+    "blog.post.accessibility.content": `
+      <div class="lead">
+        <p>Accessibility in web design isn't just a legal requirement—it's a moral imperative and good business practice. Creating accessible websites ensures that everyone, regardless of their abilities, can access and interact with your content.</p>
+      </div>
+
+      <h2>Understanding Web Accessibility</h2>
+      <p>Web accessibility means designing and developing websites, tools, and technologies so that people with disabilities can use them. This includes people with auditory, cognitive, neurological, physical, speech, and visual disabilities.</p>
+
+      <p>According to the World Health Organization, over 1 billion people worldwide have some form of disability. By making your website accessible, you're not just complying with regulations—you're opening your business to a significant portion of the population.</p>
+
+      <h2>WCAG Guidelines</h2>
+      <p>The Web Content Accessibility Guidelines (WCAG) provide a comprehensive framework for web accessibility. The guidelines are organized around four principles: Perceivable, Operable, Understandable, and Robust (POUR).</p>
+
+      <p>WCAG 2.1 Level AA is the standard most organizations aim for, as it's often required by law in many countries. This includes requirements like providing text alternatives for images, ensuring keyboard navigation, maintaining sufficient color contrast, and making content readable and understandable.</p>
+
+      <h2>Practical Implementation</h2>
+      <p>Start with semantic HTML—use proper heading hierarchies, lists, and landmarks. Add ARIA labels where necessary, but remember that native HTML elements are often better than ARIA attributes.</p>
+
+      <p>Ensure all interactive elements are keyboard accessible. Test your site by navigating with only a keyboard—if you can't reach or activate something, neither can users who rely on keyboards or assistive technologies.</p>
+
+      <h2>Color and Contrast</h2>
+      <p>Color contrast is crucial for users with visual impairments. WCAG requires a contrast ratio of at least 4.5:1 for normal text and 3:1 for large text. Use tools like the WebAIM Contrast Checker to verify your color choices.</p>
+
+      <p>Never rely on color alone to convey information. Always provide additional visual cues like icons, patterns, or text labels.</p>
+
+      <h2>Testing and Tools</h2>
+      <p>Use automated testing tools like axe DevTools, WAVE, or Lighthouse to catch common accessibility issues. However, automated tools only catch about 30% of accessibility problems—manual testing is essential.</p>
+
+      <p>Test with actual screen readers like NVDA, JAWS, or VoiceOver. Better yet, involve users with disabilities in your testing process to get real-world feedback.</p>
+
+      <h2>Conclusion</h2>
+      <p>Accessibility should be considered from the start of any project, not added as an afterthought. By following these guidelines and making accessibility a priority, you'll create better experiences for all users while expanding your potential audience.</p>
+    `,
+    "blog.post.trends2025.content": `
+      <div class="lead">
+        <p>The web development landscape is evolving faster than ever. In 2025, developers and digital agencies are embracing new tools and technologies that prioritize <strong>speed, user experience, AI-integration, and sustainability</strong>. Whether you're a brand owner, developer, or designer, understanding these trends can help you stay competitive in a digital-first world.</p>
+      </div>
+
+      <section class="trend-section">
+        <h2>AI-Driven Development & Automation</h2>
+        <p>Artificial Intelligence is transforming the way websites are built and maintained. From <strong>AI-powered code generation</strong> tools like GitHub Copilot to <strong>personalized UX based on user behavior</strong>, automation is cutting development time and boosting creativity.</p>
+        <div class="trend-highlight">
+          <p><strong>Key Insight:</strong> AI chatbots and content assistants are now standard for websites, not luxuries.</p>
+        </div>
+      </section>
+
+      <section class="trend-section mt-0">
+        <h2>Performance-First Architecture</h2>
+        <p>Google's focus on <strong>Core Web Vitals</strong> continues in 2025. Fast loading times, smooth interactivity, and visual stability are more important than ever. Developers are using <strong>Next.js 14, Astro, and Vite</strong> to build ultra-fast, performance-driven websites.</p>
+        <div class="trend-highlight mb-0">
+          <p><strong>Pro Tip:</strong> Optimize images, implement lazy loading, and leverage edge caching for global audiences.</p>
+        </div>
+      </section>
+
+      <section class="trend-section">
+        <h2>Serverless & Edge Computing</h2>
+        <p>Serverless architecture and <strong>edge deployment</strong> are redefining scalability. Platforms like <strong>Vercel, Netlify, and Cloudflare Workers</strong> allow developers to deploy code closer to users, improving latency and performance dramatically.</p>
+        <p>This shift also reduces costs and simplifies backend infrastructure management.</p>
+      </section>
+
+      <section class="trend-section">
+        <h2>Progressive Web Apps (PWAs) 2.0</h2>
+        <p>PWAs continue to blur the line between web and native mobile apps. In 2025, they support <strong>push notifications, offline access, and full-screen capabilities</strong> even better.</p>
+        <p>Brands use them to deliver app-like experiences without the cost of native development.</p>
+      </section>
+
+      <section class="trend-section">
+        <h2>Motion UI & Interactive Design</h2>
+        <p>Static designs are out. Motion UI, <strong>micro-animations</strong>, and <strong>3D scroll effects</strong> are leading the way to immersive experiences. Tools like <strong>Framer Motion</strong> and <strong>GSAP</strong> make it easy to add personality and emotion to interfaces.</p>
+        <div class="trend-highlight warning">
+          <p><strong>Important:</strong> Motion should enhance UX — not overwhelm it.</p>
+        </div>
+      </section>
+
+      <section class="trend-section">
+        <h2>Sustainable Web Design</h2>
+        <p>Eco-friendly design is not just a buzzword. Websites are now optimized to <strong>consume less energy</strong>, using <strong>dark themes, minimal resources, and efficient code</strong>. Developers and agencies are prioritizing green hosting solutions to reduce carbon footprints.</p>
+      </section>
+
+      <section class="trend-section">
+        <h2>Security & Privacy by Design</h2>
+        <p>As users become more privacy-aware, <strong>secure authentication systems</strong>, <strong>zero-trust architecture</strong>, and <strong>encrypted APIs</strong> are now standard. Compliance with GDPR, CCPA, and global data policies remains a top priority for developers and brands.</p>
+      </section>
+
+      <section class="trend-section">
+        <h2>Low-Code Revolution</h2>
+        <p>Businesses want to move fast. Low-code and no-code tools like <strong>Webflow, Bubble, and Builder.io</strong> empower non-developers to create functional prototypes — while developers focus on integrations, performance, and custom logic.</p>
+      </section>
+
+      <section class="trend-section">
+        <h2>Headless & Composable Architecture</h2>
+        <p>Headless CMSs such as <strong>Strapi, Sanity, and Contentful</strong> dominate 2025, offering flexibility across devices and platforms. Paired with <strong>JAMstack</strong> and <strong>GraphQL</strong>, they enable faster content delivery and a seamless multi-channel experience.</p>
+      </section>
+
+      <section class="trend-section">
+        <h2>Web3 & Blockchain Integration</h2>
+        <p>Web3 adoption is rising with <strong>decentralized authentication, smart contracts</strong>, and <strong>digital ownership</strong> features. While still early for mainstream brands, more startups are exploring blockchain-based user identity and NFT-linked memberships.</p>
+      </section>
+
+      <section class="key-takeaways">
+        <h2>Key Takeaways</h2>
+        <div class="takeaways-grid">
+          <div class="takeaway-item">
+            <strong>AI Integration:</strong> Automation tools are becoming essential for faster development
+          </div>
+          <div class="takeaway-item">
+            <strong>Performance First:</strong> Core Web Vitals and optimization are non-negotiable
+          </div>
+          <div class="takeaway-item">
+            <strong>Sustainability:</strong> Green hosting and energy-efficient design matter
+          </div>
+          <div class="takeaway-item">
+            <strong>Flexibility:</strong> Headless and composable architectures offer better scalability
+          </div>
+        </div>
+      </section>
+
+      <section class="conclusion">
+        <h2>Looking Ahead</h2>
+        <p>Web development in 2025 is defined by <strong>AI, automation, and agility</strong>. The key is balancing <strong>performance, creativity, and sustainability</strong>. At Oren, we're already adopting these modern technologies to build faster, smarter, and future-proof websites for our clients.</p>
+
+        <div class="cta-box">
+          <p><strong>Ready to embrace these trends?</strong> <a href="/contact">Contact us</a> to discuss how we can help transform your web presence with cutting-edge technology.</p>
+        </div>
+      </section>
+    `,
 
     // About
     "about.title": "About Oren",
@@ -1219,6 +1607,9 @@ const translations: Record<Language, Record<string, string>> = {
     "portfolio.liveDemo": "عرض مباشر",
     "portfolio.noProjects": "لا توجد مشاريع في هذه الفئة.",
     "portfolio.filter.all": "جميع المشاريع",
+    "portfolio.filter.webdev": "تطوير المواقع",
+    "portfolio.filter.ecommerce": "التجارة الإلكترونية",
+    "portfolio.filter.saas": "البرمجيات كخدمة",
     "portfolio.notfound.title": "المشروع غير موجود",
     "portfolio.notfound.description": "المشروع الذي تبحث عنه غير موجود أو تم حذفه.",
     "portfolio.notfound.button": "عرض جميع المشاريع",
@@ -1226,6 +1617,44 @@ const translations: Record<Language, Record<string, string>> = {
     "portfolio.cta.subtitle": "دعنا نخلق شيئاً مذهلاً معاً. تواصل معنا لمناقشة متطلبات مشروعك وإحياء رؤيتك.",
     "portfolio.cta.button.primary": "ابدأ الآن",
     "portfolio.cta.button.secondary": "عرض الخدمات",
+
+    // Project Details
+    "project.backToPortfolio": "العودة إلى المعرض",
+    "project.overview": "نظرة عامة على المشروع",
+    "project.keyFeatures": "الميزات الرئيسية",
+    "project.userExperience": "تجربة المستخدم",
+    "project.performance": "الأداء",
+    "project.reliability": "الموثوقية",
+    "project.scalability": "القابلية للتطوير",
+    "project.technologiesUsed": "التقنيات المستخدمة",
+    "project.quickActions": "الإجراءات السريعة",
+    "project.shareProject": "مشاركة المشروع",
+    "project.viewLiveDemo": "عرض تجريبي مباشر",
+    "project.sourceCode": "كود المصدر",
+    "project.projectDetails": "تفاصيل المشروع",
+    "project.techStack": "مجموعة التقنيات",
+    "project.technologies": "تقنيات",
+    "project.client": "العميل",
+    "project.duration": "المدة",
+    "project.duration.3months": "3 أشهر",
+    "project.duration.4months": "4 أشهر",
+    "project.duration.5months": "5 أشهر",
+    "project.duration.6months": "6 أشهر",
+    "project.duration.7months": "7 أشهر",
+    "project.projectRating": "تقييم المشروع",
+    "project.functionality": "الوظائف",
+    "project.design": "التصميم",
+    "project.live": "مباشر",
+    "project.more": "المزيد",
+    "project.rating": "4.8",
+    "project.reviews": "127 تقييم",
+    "project.userExperienceDesc": "تصميم بديهي مع تنقل سلس وتخطيط متجاوب عبر جميع الأجهزة",
+    "project.performanceDesc": "محسن للسرعة مع استعلامات قاعدة بيانات فعالة واستراتيجيات التخزين المؤقت",
+    "project.reliabilityDesc": "هيكل قوي مع وقت تشغيل 99.9% ومعالجة شاملة للأخطاء",
+    "project.scalabilityDesc": "مبني للنمو مع أعمالك، يتعامل مع زيادة حركة المرور والبيانات بسلاسة",
+    "project.testimonialQuote": "حولت أورن أعمالنا عبر الإنترنت. المنصة الجديدة سريعة وجميلة، وازدادت مبيعاتنا أكثر من الضعف منذ الإطلاق.",
+    "project.testimonialAuthor": "سارة جونسون",
+    "project.testimonialRole": "المدير التنفيذي، متجر الأزياء",
 
     // Testimonials
     "testimonials.title": "ماذا يقول عملاؤنا",
@@ -1294,6 +1723,13 @@ const translations: Record<Language, Record<string, string>> = {
     "contact.info.emailLabel": "البريد الإلكتروني",
     "contact.info.phoneLabel": "الهاتف",
     "contact.info.officeLabel": "المكتب",
+    "contact.info.locationLabel": "الموقع",
+    "contact.info.locationDescription": "عمل عن بعد أولاً — مقرنا في المغرب، نتعاون عالمياً.",
+    "contact.info.availabilityLabel": "التوفر",
+    "contact.info.availabilityDescription": "ساعات مرنة عبر المناطق الزمنية. تواصل معنا في أي وقت عبر البريد الإلكتروني أو واتساب.",
+    "contact.info.responseTime": "عادةً ما نرد خلال ساعات قليلة.",
+    "contact.social.linkedin": "لينكد إن",
+    "contact.social.instagram": "إنستغرام",
     "contact.hours.title": "ساعات العمل",
     "contact.hours.mondayFriday": "الاثنين - الجمعة",
     "contact.hours.saturday": "السبت",
@@ -1305,18 +1741,18 @@ const translations: Record<Language, Record<string, string>> = {
     "contact.form.services.platforms": "المنصات المخصصة",
     "contact.form.services.ecommerce": "التجارة الإلكترونية",
     "contact.form.services.marketing": "التسويق الرقمي",
-    "contact.form.services.social": "وسائل التواصل الاجتماعي",
-    "contact.form.services.design": "التصميم",
     "contact.form.services.other": "أخرى",
-    "contact.form.budgets.5k10k": "5,000 دولار - 10,000 دولار",
-    "contact.form.budgets.10k25k": "10,000 دولار - 25,000 دولار",
-    "contact.form.budgets.25k50k": "25,000 دولار - 50,000 دولار",
-    "contact.form.budgets.50k": "50,000 دولار+",
+    "contact.form.budgets.under500": "أقل من 500 دولار",
+    "contact.form.budgets.5002k": "500 دولار - 2,000 دولار",
+    "contact.form.budgets.2k8k": "2,000 دولار - 8,000 دولار",
+    "contact.form.budgets.8k15k": "8,000 دولار - 15,000 دولار",
+    "contact.form.budgets.15k": "15,000 دولار+",
     "contact.form.budgets.unsure": "غير متأكد بعد",
     "contact.form.sending": "جارٍ إرسال الرسالة...",
     "contact.form.sent": "تم إرسال الرسالة!",
     "contact.form.send": "إرسال الرسالة",
     "contact.form.success": "شكراً لك! سنتواصل معك خلال 24 ساعة.",
+    "contact.form.responseTime": "عادةً ما نرد خلال ساعات قليلة.",
 
     // Blog
     "blog.title": "أحدث الأفكار",
@@ -1334,6 +1770,7 @@ const translations: Record<Language, Record<string, string>> = {
     "blog.category.design": "التصميم",
     "blog.category.marketing": "التسويق",
     "blog.category.technology": "التكنولوجيا",
+    "blog.minRead": "دقيقة قراءة",
     "blog.empty.title": "لم يتم العثور على مقالات تطابق معاييرك.",
     "blog.empty.search": "لم يتم العثور على مقالات لـ",
     "blog.readTime": "دقيقة قراءة",
@@ -1346,6 +1783,345 @@ const translations: Record<Language, Record<string, string>> = {
     "blog.notfound.title": "المقال غير موجود",
     "blog.notfound.description": "المقال الذي تبحث عنه غير موجود أو تم حذفه.",
     "blog.notfound.button": "عرض جميع المقالات",
+
+    // Blog Post: Modern Web Development Trends in 2025 (Arabic)
+    "blog.post.trends2025.title": "توجهات تطوير الويب الحديثة في عام 2025",
+    "blog.post.trends2025.excerpt": "استكشف أحدث التوجهات التي تشكل تطوير الويب، من تكامل الذكاء الاصطناعي إلى تطبيقات الويب التقدمية وما بعدها.",
+
+    // Blog Post: Next.js Performance Optimization (Arabic)
+    "blog.post.nextjsPerformance.title": "نصائح تحسين أداء Next.js",
+    "blog.post.nextjsPerformance.excerpt": "تعلم الاستراتيجيات الأساسية لتعزيز سرعة موقعك وتفاعل المستخدمين مع تقنيات تحسين Next.js هذه.",
+    "blog.post.nextjsPerformance.content": `
+      <div class="lead">
+        <p>Next.js مُحسَّن بالفعل للأداء خارج الصندوق، لكن هناك العديد من التقنيات التي يمكنك استخدامها لجعل تطبيقاتك أسرع. يغطي هذا الدليل استراتيجيات التحسين العملية التي يمكن أن تحسن أداء تطبيق Next.js بشكل كبير.</p>
+      </div>
+
+      <h2>تحسين الصور</h2>
+      <p>يقوم مكون Image في Next.js بتحسين الصور تلقائيًا، لكنك بحاجة إلى استخدامه بشكل صحيح. حدد دائمًا العرض والارتفاع لمنع تغييرات التخطيط، استخدم خاصية priority للصور فوق الطية، واختر التنسيق المناسب (WebP للمتصفحات الحديثة).</p>
+
+      <p>فكر في استخدام عناصر نائبة ضبابية للحصول على أداء محسوس أفضل. يدعم مكون Image كلاً من الاستيراد الثابت وعناوين URL الديناميكية، مع التحسين التلقائي لكليهما.</p>
+
+      <h2>تقسيم الكود والاستيراد الديناميكي</h2>
+      <p>يقوم Next.js بتقسيم الكود تلقائيًا على مستوى الصفحة، لكن يمكنك التحسين بشكل أكبر عن طريق الاستيراد الديناميكي للمكونات الثقيلة. استخدم next/dynamic للمكونات التي لا تحتاج إليها فورًا أو التي تستخدم فقط في ظروف معينة.</p>
+
+      <p>على سبيل المثال، قم باستيراد النوافذ المنبثقة والمخططات ومحررات النصوص المنسقة ديناميكيًا والتي لا تكون مرئية في التحميل الأولي للصفحة. هذا يقلل من حجم حزمة JavaScript الأولية بشكل كبير.</p>
+
+      <h2>مكونات الخادم والبث</h2>
+      <p>يقدم Next.js 13+ مكونات React الخادم، والتي تعمل على الخادم وترسل فقط HTML المعروض إلى العميل. هذا يقلل بشكل كبير من حجم حزمة JavaScript ويحسن التحميل الأولي للصفحة.</p>
+
+      <p>استخدم البث مع حدود Suspense لعرض المحتوى تدريجيًا عندما يصبح متاحًا. هذا يحسن الأداء المحسوس من خلال إظهار شيء ما للمستخدمين بسرعة بدلاً من انتظار تحميل كل شيء.</p>
+
+      <h2>تحسين الخطوط</h2>
+      <p>استخدم next/font لتحسين الخطوط تلقائيًا واستضافتها ذاتيًا. هذا يلغي طلبات الشبكة الخارجية ويمنع تغييرات التخطيط الناتجة عن تحميل الخطوط. يتم تخزين ملفات الخطوط مؤقتًا بكفاءة وتحميلها باستراتيجيات مثالية.</p>
+
+      <p>قم بتحميل الخطوط الحرجة مسبقًا واستخدم font-display: swap لضمان بقاء النص مرئيًا أثناء تحميل الخطوط. فكر في استخدام خطوط النظام لنص النص للقضاء على تحميل الخطوط تمامًا.</p>
+
+      <h2>تحسين مسارات API</h2>
+      <p>قم بتنفيذ استراتيجيات التخزين المؤقت لمسارات API باستخدام رؤوس Cache-Control. استخدم ISR (التجديد الثابت التزايدي) للصفحات التي تحتاج إلى تحديث دوريًا لكنها لا تتطلب بيانات في الوقت الفعلي.</p>
+
+      <p>فكر في استخدام وظائف الحافة لمسارات API التي تحتاج إلى زمن انتقال منخفض عالميًا. تعمل وظائف الحافة أقرب إلى المستخدمين، مما يقلل أوقات الاستجابة بشكل كبير.</p>
+
+      <h2>تحسين استعلامات قاعدة البيانات</h2>
+      <p>قم بتحسين استعلامات قاعدة البيانات عن طريق تحديد الحقول المطلوبة فقط، واستخدام فهارس مناسبة، وتنفيذ تجمع الاتصالات. فكر في استخدام طبقة تخزين مؤقت مثل Redis لبيانات الوصول المتكرر.</p>
+
+      <p>استخدم جلب البيانات المتوازي حيثما أمكن لتقليل طلبات الشلال. تجعل مكونات الخادم في Next.js من السهل جلب البيانات بالتوازي على مستوى المكون.</p>
+
+      <h2>تحليل الحزمة</h2>
+      <p>قم بتحليل حجم الحزمة بانتظام باستخدام @next/bundle-analyzer. حدد التبعيات الكبيرة وفكر في البدائل أو التحميل الكسول. أزل التبعيات غير المستخدمة واهتز المكتبات بشكل صحيح.</p>
+
+      <p>انتبه بشكل خاص للنصوص البرمجية للجهات الخارجية. استخدم next/script مع استراتيجية التحميل المناسبة (afterInteractive، lazyOnload) لمنع حظر الخيط الرئيسي.</p>
+
+      <h2>المراقبة والمقاييس</h2>
+      <p>استخدم Vercel Analytics أو أدوات مشابهة لمراقبة مقاييس الأداء في العالم الحقيقي. تتبع Core Web Vitals، وTime to First Byte (TTFB)، ومقاييس أخرى رئيسية لتحديد تراجعات الأداء.</p>
+
+      <p>قم بإعداد ميزانيات الأداء وتنبيهات آلية للقبض على مشكلات الأداء قبل الوصول إلى الإنتاج.</p>
+
+      <h2>الخاتمة</h2>
+      <p>تحسين الأداء عملية مستمرة. ابدأ بالمكاسب الأكبر - تحسين الصور، وتقسيم الكود، والتخزين المؤقت المناسب - ثم قم بالتحسين التدريجي. قيس دائمًا تأثير تحسيناتك ببيانات العالم الحقيقي.</p>
+    `,
+
+    // Blog Post: SEO Strategies (Arabic)
+    "blog.post.seoStrategies.title": "استراتيجيات الـ SEO التي تعمل فعليًا في عام 2025",
+    "blog.post.seoStrategies.excerpt": "اكتشف تقنيات الـ SEO المثبتة لتحسين رؤية موقعك وزيادة حركة المرور العضوية.",
+    "blog.post.seoStrategies.content": `
+      <div class="lead">
+        <p>يستمر تحسين محركات البحث في التطور، حيث أصبحت خوارزميات جوجل أكثر تطورًا. في عام 2025، يتطلب نجاح الـ SEO نهجًا شاملاً يجمع بين التميز التقني وإنشاء المحتوى عالي الجودة وتحسين تجربة المستخدم.</p>
+      </div>
+
+      <h2>Core Web Vitals وتجربة الصفحة</h2>
+      <p>تظل Core Web Vitals من جوجل - Largest Contentful Paint (LCP)، وFirst Input Delay (FID)، وCumulative Layout Shift (CLS) - عوامل تصنيف حاسمة. تقيس هذه المقاييس أداء التحميل والتفاعل والاستقرار البصري.</p>
+
+      <p>لتحسين Core Web Vitals، ركز على تحسين الصور، وتحميل JavaScript بكفاءة، واستراتيجيات تحميل الخطوط المناسبة، والقضاء على تغييرات التخطيط. يمكن لأدوات مثل PageSpeed Insights وLighthouse مساعدتك في تحديد المشكلات وإصلاحها.</p>
+
+      <h2>جودة المحتوى وE-E-A-T</h2>
+      <p>إطار عمل E-E-A-T من جوجل (الخبرة والخبرة والمصداقية والثقة) أصبح أكثر أهمية من أي وقت مضى. أنشئ محتوى يظهر خبرة حقيقية ويوفر قيمة حقيقية للمستخدمين.</p>
+
+      <p>أدرج سير ذاتية للمؤلفين مع بيانات الاعتماد، واستشهد بمصادر موثوقة، وحافظ على تحديث المحتوى، وضمان الدقة الواقعية. بالنسبة لمواضيع YMYL (المال أو الحياة) مثل الصحة والمالية، يكون E-E-A-T حاسمًا بشكل خاص.</p>
+
+      <h2>البحث الدلالي وتحسين النية</h2>
+      <p>يتجاوز الـ SEO الحديث الكلمات المفتاحية لفهم نية المستخدم. تفهم خوارزميات جوجل الآن السياق والمرادفات والمفاهيم ذات الصلة من خلال معالجة اللغة الطبيعية.</p>
+
+      <p>هيكل محتواك للإجابة على أسئلة محددة وحل مشكلات المستخدمين. استخدم ترميز البيانات المنظمة لمساعدة محركات البحث على فهم سياق محتواك ومعناه. ركز على مجموعات المواضيع بدلاً من الكلمات المفتاحية الفردية.</p>
+
+      <h2>أساسيات الـ SEO التقنية</h2>
+      <p>تأكد من أن موقعك يحتوي على هيكل URL نظيف، وخرائط موقع XML مناسبة، وتكوين robots.txt. قم بتطبيق ترميز البيانات المنظمة للحصول على مقتطفات منسقة. أصلح الروابط المكسورة والمحتوى المكرر وأخطاء الزحف.</p>
+
+      <p>يعني الفهرسة المتنقلة أولاً أن موقعك المتنقل هو ما تستخدمه جوجل بشكل أساسي للتصنيف. تأكد من أن تجربة الهاتف المحمول ممتازة، مع أوقات تحميل سريعة وتنقل سهل.</p>
+
+      <h2>بناء الروابط في عام 2025</h2>
+      <p>لا تزال الجودة على الكمية هي القاعدة الذهبية للروابط الخلفية. ركز على كسب روابط من مواقع موثوقة ذات صلة من خلال المحتوى الرائع والعلاقات العامة الرقمية وبناء العلاقات.</p>
+
+      <p>النشر كضيف، وبناء الروابط المكسورة، وإنشاء أصول قابلة للربط مثل البحث الأصلي أو الأدلة الشاملة هي استراتيجيات فعالة. تجنب مخططات الروابط والدلائل ذات الجودة المنخفضة.</p>
+
+      <h2>الـ SEO المحلي</h2>
+      <p>بالنسبة للشركات ذات المواقع الفعلية، يكون الـ SEO المحلي حاسمًا. قم بتحسين ملفك التجاري على جوجل، وتأكد من اتساق NAP (الاسم والعنوان ورقم الهاتف) عبر الويب، وشجع تقييمات العملاء.</p>
+
+      <p>أنشئ محتوى خاص بالموقع وبناء اقتباسات محلية. يمكن أن يعزز بناء الروابط المحلية من المنظمات المجتمعية ومواقع الأخبار المحلية التصنيفات المحلية بشكل كبير.</p>
+
+      <h2>قياس النجاح</h2>
+      <p>تتبع حركة المرور العضوية وتصنيفات الكلمات المفتاحية ومعدلات التحويل ومقاييس المشاركة. استخدم Google Search Console لمراقبة الأداء وتحديد الفرص. قم بإعداد تتبع الأهداف في Google Analytics لقياس تأثير الـ SEO على أهداف العمل.</p>
+
+      <h2>الخاتمة</h2>
+      <p>يتطلب الـ SEO في عام 2025 نهجًا شاملاً يوازن بين التحسين التقني وإنشاء المحتوى عالي الجودة وتجربة المستخدم. ابق على اطلاع بتغييرات الخوارزمية، وركز على تقديم القيمة للمستخدمين، وكن صبورًا - الـ SEO هو استثمار طويل الأمد يؤتي ثماره بمرور الوقت.</p>
+    `,
+
+    // Blog Post: Next.js Performance Optimization (Arabic)
+    "blog.post.nextjsPerformance.title": "نصائح تحسين أداء Next.js",
+    "blog.post.nextjsPerformance.excerpt": "تعلم الاستراتيجيات الأساسية لتعزيز سرعة موقعك وتفاعل المستخدمين مع تقنيات تحسين Next.js هذه.",
+
+    // Blog Post: AI in Web Development (Arabic)
+    "blog.post.aiInWebDev.title": "كيف يحول الذكاء الاصطناعي تطوير الويب",
+    "blog.post.aiInWebDev.excerpt": "اكتشف كيف يحدث الذكاء الاصطناعي ثورة في عمليات تطوير الويب، من توليد الكود إلى تجارب المستخدمين المخصصة.",
+    "blog.post.aiInWebDev.content": `
+      <div class="lead">
+        <p>يغير الذكاء الاصطناعي جذريًا كيفية تعاملنا مع تطوير الويب. من توليد الكود إلى الاختبار الآلي وتجارب المستخدمين الذكية، يجعل الذكاء الاصطناعي المطورين أكثر إنتاجية مع تمكين أنواع جديدة تمامًا من التطبيقات.</p>
+      </div>
+
+      <h2>الكود المدعوم بالذكاء الاصطناعي</h2>
+      <p>أدوات مثل GitHub Copilot وChatGPT ومساعدي الكود المتخصصين تحول سير عمل التطوير. يمكن لهذه الأدوات توليد الكود النموذجي واقتراح الإكمال وشرح الكود المعقد وحتى مساعدة في تصحيح الأخطاء.</p>
+
+      <p>المفتاح هو تعلم العمل بشكل فعال مع مساعدي الذكاء الاصطناعي. يُستخدمون بشكل أفضل للمهام الروتينية وتوليد حالات الاختبار وكتابة الوثائق واستكشاف الطرق المختلفة لحل المشكلات. لا يزال المطورون بحاجة إلى فهم الكود واتخاذ قرارات معمارية وضمان الجودة.</p>
+
+      <h2>الاختبار والجودة الآلي</h2>
+      <p>يمكن لأدوات الاختبار المدعومة بالذكاء الاصطناعي توليد حالات اختبار تلقائيًا وتحديد الحالات الحدية وحتى التنبؤ بمكان حدوث الأخطاء. تستخدم أدوات اختبار التراجع البصري الذكاء الاصطناعي للكشف عن تغييرات واجهة المستخدم غير المقصودة.</p>
+
+      <p>يمكن لنماذج التعلم الآلي تحليل تغييرات الكود والتنبؤ بتأثيرها، مما يساعد الفرق على ترتيب أولويات جهود الاختبار. هذا يؤدي إلى تغطية اختبار أفضل ودورات إصدار أسرع.</p>
+
+      <h2>تجارب المستخدمين الذكية</h2>
+      <p>يمكن للذكاء الاصطناعي تمكين تجارب المستخدمين المخصصة على نطاق واسع. يمكن لمحركات التوصية والدردشة الآلية والواجهات التكيفية تخصيص المحتوى والوظائف للمستخدمين الفرديين بناءً على سلوكهم وتفضيلاتهم.</p>
+
+      <p>تسمح معالجة اللغة الطبيعية للمستخدمين بالتفاعل مع التطبيقات بشكل محادثي. تمكن رؤية الحاسوب ميزات مثل التعرف على الصور ومسح المستندات وتجارب الواقع المعزز مباشرة في المتصفح.</p>
+
+      <h2>مراجعة الكود وضمان الجودة</h2>
+      <p>يمكن لأدوات الذكاء الاصطناعي مراجعة الكود بحثًا عن الأخطاء المحتملة والثغرات الأمنية ومشكلات الأداء. يمكنهم اقتراح التحسينات وتحديد روائح الكود وضمان الالتزام بمعايير الكود.</p>
+
+      <p>تتعلم هذه الأدوات من ملايين مستودعات الكود، وتحدد الأنماط التي قد يفوتها المراجعون البشر. يكملون مراجعة الكود البشرية من خلال التقاط المشكلات الروتينية، مما يسمح للمراجعين بالتركيز على الهيكل والمنطق التجاري.</p>
+
+      <h2>تحسين الأداء</h2>
+      <p>يمكن للذكاء الاصطناعي تحليل أداء التطبيق واقتراح التحسينات. يمكنه تحديد استعلامات قاعدة البيانات البطيئة والخوارزميات غير الفعالة والاختناقات الموارد. بعض الأدوات يمكنها حتى تطبيق التحسينات تلقائيًا.</p>
+
+      <p>يمكن للتحليلات التنبؤية التنبؤ بأنماط الحركة وتوسيع الموارد تلقائيًا، مما يضمن الأداء الأمثل مع تقليل التكاليف.</p>
+
+      <h2>تحسينات الوصولية</h2>
+      <p>يمكن لأدوات الذكاء الاصطناعي توليد نص بديل للصور تلقائيًا واقتراح تسميات ARIA وتحديد مشكلات الوصولية. بعض الأدوات يمكنها حتى إصلاح مشكلات الوصولية الشائعة تلقائيًا.</p>
+
+      <p>تجعل واجهات الصوت المدعومة بالذكاء الاصطناعي التطبيقات أكثر إمكانية للوصول للمستخدمين ذوي الإعاقة، بينما تكسر الترجمة في الوقت الفعلي حواجز اللغة.</p>
+
+      <h2>توليد المحتوى وإدارته</h2>
+      <p>يمكن للذكاء الاصطناعي توليد المحتوى، من أوصاف المنتجات إلى منشورات المدونة. بينما لا يزال الإشراف البشري ضروريًا، يمكن للذكاء الاصطناعي تسريع إنشاء المحتوى بشكل كبير ومساعدة في الحفاظ على الاتساق.</p>
+
+      <p>يمكن لأنظمة إدارة المحتوى الذكية تصنيف المحتوى وتصنيفه تلقائيًا واقتراح مقالات ذات صلة وتحسين المحتوى لمحركات البحث.</p>
+
+      <h2>مستقبل الذكاء الاصطناعي في تطوير الويب</h2>
+      <p>نحن فقط نخدش سطح ما هو ممكن. قد تشمل التطورات المستقبلية ذكاء اصطناعي يمكنه تصميم تطبيقات كاملة من أوصاف اللغة الطبيعية، أو إعادة هيكلة الكود القديم تلقائيًا، أو التنبؤ بمشكلات الإنتاج ومنعها قبل حدوثها.</p>
+
+      <p>يتطور دور المطورين من كتابة كل سطر من الكود إلى تنسيق أدوات الذكاء الاصطناعي، واتخاذ قرارات عالية المستوى، وضمان الجودة والأخلاقيات في الحلول المولدة بالذكاء الاصطناعي.</p>
+
+      <h2>الخاتمة</h2>
+      <p>الذكاء الاصطناعي لا يحل محل المطورين - بل يعزز قدراتهم. من خلال تبني أدوات الذكاء الاصطناعي وتعلم العمل معها بشكل فعال، يمكن للمطورين أن يكونوا أكثر إنتاجية وإبداعًا وركيزة على حل المشكلات المعقدة. مستقبل تطوير الويب هو تعاون بين الإبداع البشري والذكاء الاصطناعي.</p>
+    `,
+
+    // Blog Post: UI Design Principles (Arabic)
+    "blog.post.uiDesignPrinciples.title": "مبادئ تصميم واجهة المستخدم الأساسية لعام 2025",
+    "blog.post.uiDesignPrinciples.excerpt": "إتقان المبادئ الأساسية لتصميم واجهة المستخدم لإنشاء واجهات جميلة وعملية.",
+    "blog.post.uiDesignPrinciples.content": `
+      <div class="lead">
+        <p>تصميم واجهة المستخدم الرائع هو مزيج من الفن والعلم. بينما تأتي الاتجاهات وتذهب، إلا أن بعض المبادئ الأساسية تبقى ثابتة. فهم وتطبيق هذه المبادئ سيساعدك على إنشاء واجهات ليست جميلة فحسب، بل عملية وسهلة الاستخدام أيضًا.</p>
+      </div>
+
+      <h2>التسلسل البصري</h2>
+      <p>يوجه التسلسل البصري المستخدمين عبر واجهتك من خلال تحديد ترتيب الأهمية. استخدم الحجم واللون والتباين والتباعد لتوجيه الانتباه إلى العناصر الأكثر أهمية أولاً.</p>
+
+      <p>يجب أن تكون الإجراءات الأساسية هي الأكثر بروزًا، والإجراءات الثانوية أقل بروزًا، والإجراءات الثالثية خفية. يجب أن تكون العناوين أكبر من نص النص، ويجب أن تبرز المعلومات المهمة من خلال التباين أو التموضع.</p>
+
+      <h2>الاتساق والمعايير</h2>
+      <p>يخلق الاتساق الإلمام ويقلل من الحمل المعرفي. استخدم ألوانًا وخطوطًا وتباعدًا وأنماط تفاعل متسقة في جميع أنحاء واجهتك. اتبع اتفاقيات النظام الأساسي حتى يتمكن المستخدمون من تطبيق معرفتهم الحالية.</p>
+
+      <p>أنشئ وصيانة نظام تصميم يحتوي على مكونات قابلة لإعادة الاستخدام، ومقاييس تباعد محددة، وإرشادات واضحة. يضمن ذلك الاتساق عبر منتجك ويسرع عملية التصميم والتطوير.</p>
+
+      <h2>المساحة البيضاء والتنفس</h2>
+      <p>المساحة البيضاء (أو المساحة السلبية) ليست مساحة مهدورة - إنها عنصر تصميم حاسم. يحسن التباعد المناسب من القابلية للقراءة، ويخلق تسلسلاً بصريًا، ويجعل الواجهات تبدو أقل ازدحامًا وأكثر تميزًا.</p>
+
+      <p>لا تخف من المساحة الفارغة. أعطِ محتواك مساحة للتنفس. استخدم حشوة وهوامش سخية، خاصة حول العناصر المهمة. جمّع العناصر ذات الصلة معًا وفصل العناصر غير ذات الصلة.</p>
+
+      <h2>الطباعة وقابلية القراءة</h2>
+      <p>الطباعة أساسية في تصميم واجهة المستخدم. اختر خطوطًا قابلة للقراءة بأحجام وأوزان مختلفة. حافظ على تسلسل واضح مع مستويات عناوين مميزة ونص نصي.</p>
+
+      <p>استخدم ارتفاع سطر 1.5-1.6 لنص النص، حد طول السطر إلى 50-75 حرفًا للحصول على قابلية قراءة مثالية، وتأكد من تباين كافٍ بين النص والخلفية. فكر في استخدام خطوط النظام للحصول على أداء أفضل وإلمام.</p>
+
+      <h2>نظرية اللون والوصولية</h2>
+      <p>اللون ينقل المعنى ويخلق المزاج ويوجه الانتباه. استخدم لوحة ألوان محدودة - عادةً لون أساسي واحد، ولون أو اثنان مميزين، ومجموعة من الألوان المحايدة.</p>
+
+      <p>تأكد من تباين كافٍ للوصولية (4.5:1 للنص العادي، 3:1 للنص الكبير). لا تعتمد على اللون وحده لنقل المعلومات - استخدم الرموز والتسميات أو الأنماط أيضًا. اختبر تصاميمك بالأبيض والأسود للتحقق من أن التسلسل يعمل بدون لون.</p>
+
+      <h2>التعليقات والإمكانيات</h2>
+      <p>قدم تعليقات واضحة لإجراءات المستخدم. يجب أن تحتوي الأزرار على حالات التمرير والنشاط والتعطيل. أظهر مؤشرات التحميل للعمليات غير المتزامنة. عرض رسائل النجاح أو الخطأ بوضوح.</p>
+
+      <p>استخدم الإمكانيات - الإشارات البصرية التي تشير إلى كيفية استخدام العنصر. يجب أن تبدو الأزرار قابلة للنقر، ويجب أن تكون الروابط مميزة، ويجب أن تستجيب العناصر التفاعلية لإدخال المستخدم.</p>
+
+      <h2>التصميم المتجاوب أولاً للهواتف المحمولة</h2>
+      <p>صمم للهواتف المحمولة أولاً، ثم عزز للشاشات الأكبر. يضمن ذلك أن تجربة جوهرك تعمل على الأجهزة الأكثر تقييدًا. استخدم تخطيطات متجاوبة تتكيف بسلاسة مع أحجام الشاشة المختلفة.</p>
+
+      <p>فكر في أهداف اللمس - اجعل العناصر التفاعلية على الأقل 44x44 بكسل للنقر السهل. تأكد من أن الإجراءات المهمة في متناول اليد الواحدة على الأجهزة المحمولة.</p>
+
+      <h2>الكشف التدريجي</h2>
+      <p>لا تطغِ على المستخدمين بكمية كبيرة من المعلومات مرة واحدة. استخدم الكشف التدريجي لإظهار ما هو ضروري فقط في البداية، وكشف الخيارات أو المعلومات الإضافية حسب الحاجة.</p>
+
+      <p>يمكن تحقيق ذلك من خلال الأقسام القابلة للتوسيع، والنماذج متعددة الخطوات، والتلميحات، أو مربعات الحوار الوسيطة. الهدف هو تقليل الحمل المعرفي مع الحفاظ على إمكانية الوصول إلى الميزات المتقدمة.</p>
+
+      <h2>الخاتمة</h2>
+      <p>تشكل هذه المبادئ أساس تصميم واجهة المستخدم الجيد. بينما تتغير الاتجاهات والأدوات، تظل هذه الأساسيات ذات صلة. مارس تطبيقها باستمرار، وستنشئ واجهات جميلة وعملية للغاية.</p>
+    `,
+
+    // Blog Post: Designing for Accessibility (Arabic)
+    "blog.post.accessibility.title": "تصميم الوصولية: دليل شامل",
+    "blog.post.accessibility.excerpt": "تعلم كيفية إنشاء تجارب رقمية شاملة تعمل للجميع، بغض النظر عن قدراتهم.",
+    "blog.post.accessibility.content": `
+      <div class="lead">
+        <p>الوصولية في تصميم الويب ليست مجرد متطلب قانوني - إنها ضرورة أخلاقية وممارسة أعمال جيدة. إن إنشاء مواقع ويب يمكن الوصول إليها يضمن أن يتمكن الجميع، بغض النظر عن قدراتهم، من الوصول إلى المحتوى والتفاعل معه.</p>
+      </div>
+
+      <h2>فهم الوصولية على الويب</h2>
+      <p>تعني الوصولية على الويب تصميم وتطوير مواقع الويب والأدوات والتقنيات بحيث يمكن للأشخاص ذوي الإعاقة استخدامها. ويشمل ذلك الأشخاص ذوي الإعاقات السمعية والمعرفية والعصبية والجسدية والكلامية والبصرية.</p>
+
+      <p>وفقًا لمنظمة الصحة العالمية، يعاني أكثر من مليار شخص في جميع أنحاء العالم من شكل من أشكال الإعاقة. من خلال جعل موقعك متاحًا، فإنك لا تتوافق فقط مع اللوائح - بل تفتح أعمالك أمام جزء كبير من السكان.</p>
+
+      <h2>إرشادات WCAG</h2>
+      <p>توفر إرشادات محتوى الويب المتاح (WCAG) إطارًا شاملاً للوصولية على الويب. الإرشادات منظمة حول أربعة مبادئ: قابل للإدراك وقابل للتشغيل وقابل للفهم وقوي (POUR).</p>
+
+      <p>مستوى WCAG 2.1 AA هو المعيار الذي تهدف إليه معظم المنظمات، حيث غالبًا ما يُطلب قانونًا في العديد من البلدان. ويشمل ذلك متطلبات مثل توفير بدائل نصية للصور، وضمان التنقل بالكيبورد، والحفاظ على تباين كافٍ في الألوان، وجعل المحتوى قابلاً للقراءة والفهم.</p>
+
+      <h2>التنفيذ العملي</h2>
+      <p>ابدأ بـ HTML الدلالي - استخدم تسلسلات عناوين مناسبة وقوائم وعلامات. أضف تسميات ARIA عند الضرورة، لكن تذكر أن عناصر HTML الأصلية غالبًا ما تكون أفضل من سمات ARIA.</p>
+
+      <p>تأكد من أن جميع العناصر التفاعلية يمكن الوصول إليها بالكيبورد. اختبر موقعك بالتنقل باستخدام لوحة المفاتيح فقط - إذا لم تتمكن من الوصول إلى شيء ما أو تنشيطه، فلا يمكن للمستخدمين الذين يعتمدون على لوحات المفاتيح أو التقنيات المساعدة ذلك أيضًا.</p>
+
+      <h2>اللون والتباين</h2>
+      <p>تباين الألوان أمر حاسم للمستخدمين ذوي الإعاقات البصرية. يتطلب WCAG نسبة تباين لا تقل عن 4.5:1 للنص العادي و3:1 للنص الكبير. استخدم أدوات مثل WebAIM Contrast Checker للتحقق من اختيارات الألوان الخاصة بك.</p>
+
+      <p>لا تعتمد أبدًا على اللون وحده لنقل المعلومات. قدم دائمًا إشارات بصرية إضافية مثل الرموز أو الأنماط أو تسميات النصوص.</p>
+
+      <h2>الاختبار والأدوات</h2>
+      <p>استخدم أدوات الاختبار الآلي مثل axe DevTools وWAVE وLighthouse للقبض على مشكلات الوصولية الشائعة. ومع ذلك، تلتقط الأدوات الآلية حوالي 30% فقط من مشكلات الوصولية - الاختبار اليدوي ضروري.</p>
+
+      <p>اختبر باستخدام قارئات الشاشة الفعلية مثل NVDA وJAWS وVoiceOver. الأفضل من ذلك، أشرك المستخدمين ذوي الإعاقة في عملية الاختبار الخاصة بك للحصول على تعليقات حقيقية.</p>
+
+      <h2>الخاتمة</h2>
+      <p>يجب النظر في الوصولية من بداية أي مشروع، وليس إضافتها كفكرة لاحقة. من خلال اتباع هذه الإرشادات وجعل الوصولية أولوية، ستخلق تجارب أفضل لجميع المستخدمين مع توسيع جمهورك المحتمل.</p>
+    `,
+    "blog.post.trends2025.content": `
+      <div class="lead">
+        <p>مشهد تطوير الويب يتطور بسرعة أكبر من أي وقت مضى. في عام 2025، يتبنى المطورون والوكالات الرقمية أدوات وتقنيات جديدة تركز على <strong>السرعة وتجربة المستخدم وتكامل الذكاء الاصطناعي والاستدامة</strong>. سواء كنت صاحب علامة تجارية أو مطور أو مصمم، فإن فهم هذه التوجهات يمكن أن يساعدك على البقاء تنافسيًا في عالم رقمي أولاً.</p>
+      </div>
+
+      <section class="trend-section">
+        <h2>التطوير المعتمد على الذكاء الاصطناعي والأتمتة</h2>
+        <p>الذكاء الاصطناعي يحول طريقة بناء وصيانة المواقع. من أدوات <strong>توليد الكود بالذكاء الاصطناعي</strong> مثل GitHub Copilot إلى <strong>تجربة المستخدم المخصصة بناءً على سلوك المستخدم</strong>، الأتمتة تقطع وقت التطوير وتعزز الإبداع.</p>
+        <div class="trend-highlight">
+          <p><strong>الرؤية الرئيسية:</strong> روبوتات الدردشة بالذكاء الاصطناعي ومساعدي المحتوى أصبحت الآن معيارًا للمواقع، وليست رفاهية.</p>
+        </div>
+      </section>
+
+      <section class="trend-section">
+        <h2>الهيكلية الأولى بالأداء</h2>
+        <p>تركيز جوجل على <strong>Core Web Vitals</strong> يستمر في عام 2025. أوقات التحميل السريعة والتفاعل السلس والاستقرار البصري أصبحت أكثر أهمية من أي وقت مضى. يستخدم المطورون <strong>Next.js 14 وAstro وVite</strong> لبناء مواقع فائقة السرعة تعتمد على الأداء.</p>
+        <div class="trend-highlight">
+          <p><strong>نصيحة احترافية:</strong> قم بتحسين الصور وتطبيق التحميل الكسول والاستفادة من التخزين المؤقت للجمهور العالمي.</p>
+        </div>
+      </section>
+
+      <section class="trend-section">
+        <h2>الحوسبة بدون خادم والحافة</h2>
+        <p>هيكلية بدون خادم و<strong>نشر الحافة</strong> تعيد تعريف قابلية التطوير. منصات مثل <strong>Vercel وNetlify وCloudflare Workers</strong> تسمح للمطورين بنشر الكود قريبًا من المستخدمين، مما يحسن الكمون والأداء بشكل كبير.</p>
+        <p>يقلل هذا التحول أيضًا التكاليف ويبسط إدارة البنية التحتية الخلفية.</p>
+      </section>
+
+      <section class="trend-section">
+        <h2>تطبيقات الويب التقدمية (PWAs) 2.0</h2>
+        <p>تستمر PWAs في طمس الحدود بين الويب والتطبيقات الأصلية للهواتف المحمولة. في عام 2025، تدعم <strong>إشعارات الدفع والوصول دون اتصال والقدرات كاملة الشاشة</strong> بشكل أفضل.</p>
+        <p>تستخدم العلامات التجارية PWAs لتقديم تجارب تشبه التطبيقات دون تكلفة التطوير الأصلي.</p>
+      </section>
+
+      <section class="trend-section">
+        <h2>واجهة المستخدم بالحركة والتصميم التفاعلي</h2>
+        <p>التصاميم الثابتة انتهت. واجهة المستخدم بالحركة و<strong>الرسوم المتحركة الدقيقة</strong> و<strong>تأثيرات التمرير ثلاثية الأبعاد</strong> تقود الطريق نحو تجارب غامرة. أدوات مثل <strong>Framer Motion</strong> و<strong>GSAP</strong> تجعل من السهل إضافة الشخصية والعاطفة إلى الواجهات.</p>
+        <div class="trend-highlight warning">
+          <p><strong>مهم:</strong> يجب أن تعزز الحركة تجربة المستخدم - وليس إغراقها.</p>
+        </div>
+      </section>
+
+      <section class="trend-section">
+        <h2>تصميم الويب المستدام</h2>
+        <p>التصميم الصديق للبيئة ليس مجرد كلمة طنانة. المواقع الآن محسنة ل<strong>استهلاك طاقة أقل</strong>، باستخدام <strong>السمات الداكنة والموارد البسيطة والكود الفعال</strong>. يركز المطورون والوكالات على حلول الاستضافة الخضراء لتقليل البصمة الكربونية.</p>
+      </section>
+
+      <section class="trend-section">
+        <h2>الأمان والخصوصية بالتصميم</h2>
+        <p>مع تزايد وعي المستخدمين بالخصوصية، أصبحت <strong>أنظمة المصادقة الآمنة</strong> و<strong>هيكلية عدم الثقة</strong> و<strong>واجهات برمجة التطبيقات المشفرة</strong> معيارًا. يظل الامتثال لـ GDPR وCCPA وسياسات البيانات العالمية أولوية قصوى للمطورين والعلامات التجارية.</p>
+      </section>
+
+      <section class="trend-section">
+        <h2>ثورة الكود المنخفض</h2>
+        <p>تريد الشركات التحرك بسرعة. أدوات الكود المنخفض والكود الخالي مثل <strong>Webflow وBubble وBuilder.io</strong> تمكن غير المطورين من إنشاء نماذج أولية وظيفية - بينما يركز المطورون على التكاملات والأداء والمنطق المخصص.</p>
+      </section>
+
+      <section class="trend-section">
+        <h2>الهيكلية بدون رأس والقابلة للتجميع</h2>
+        <p>تهيمن أنظمة إدارة المحتوى بدون رأس مثل <strong>Strapi وSanity وContentful</strong> على عام 2025، وتوفر المرونة عبر الأجهزة والمنصات. مقترنة بـ <strong>JAMstack</strong> و<strong>GraphQL</strong>، تمكن تسليم المحتوى بشكل أسرع وتجربة متعددة القنوات سلسة.</p>
+      </section>
+
+      <section class="trend-section">
+        <h2>تكامل Web3 والبلوكشين</h2>
+        <p>يزداد تبني Web3 مع ميزات <strong>المصادقة اللامركزية والعقود الذكية</strong> و<strong>الملكية الرقمية</strong>. على الرغم من أنه لا يزال مبكرًا للعلامات التجارية السائدة، إلا أن المزيد من الشركات الناشئة تستكشف هوية المستخدم القائمة على البلوكشين والعضويات المرتبطة بالـ NFT.</p>
+      </section>
+
+      <section class="key-takeaways">
+        <h2>النقاط الرئيسية</h2>
+        <div class="takeaways-grid">
+          <div class="takeaway-item">
+            <strong>تكامل الذكاء الاصطناعي:</strong> أدوات الأتمتة أصبحت ضرورية للتطوير الأسرع
+          </div>
+          <div class="takeaway-item">
+            <strong>الأداء أولاً:</strong> Core Web Vitals والتحسين غير قابل للتفاوض
+          </div>
+          <div class="takeaway-item">
+            <strong>الاستدامة:</strong> الاستضافة الخضراء والتصميم الموفر للطاقة مهم
+          </div>
+          <div class="takeaway-item">
+            <strong>المرونة:</strong> الهيكليات بدون رأس والقابلة للتجميع توفر قابلية تطوير أفضل
+          </div>
+        </div>
+      </section>
+
+      <section class="conclusion">
+        <h2>النظر إلى الأمام</h2>
+        <p>تطوير الويب في عام 2025 يُعرف بـ <strong>الذكاء الاصطناعي والأتمتة والمرونة</strong>. المفتاح هو التوازن بين <strong>الأداء والإبداع والاستدامة</strong>. في MarketMedia.ma، نحن نتبنى بالفعل هذه التقنيات الحديثة لبناء مواقع أسرع وأذكى ومستقبلية لعملائنا.</p>
+
+        <div class="cta-box">
+          <p><strong>هل أنت مستعد لتبني هذه التوجهات؟</strong> <a href="/contact">تواصل معنا</a> لمناقشة كيف يمكننا مساعدتك في تحويل حضورك على الويب باستخدام التكنولوجيا المتطورة.</p>
+        </div>
+      </section>
+    `,
 
     // About
     "about.title": "عن أورين",
@@ -1915,6 +2691,9 @@ const translations: Record<Language, Record<string, string>> = {
     "portfolio.liveDemo": "Démo en Direct",
     "portfolio.noProjects": "Aucun projet trouvé dans cette catégorie.",
     "portfolio.filter.all": "Tous les projets",
+    "portfolio.filter.webdev": "Développement Web",
+    "portfolio.filter.ecommerce": "E-commerce",
+    "portfolio.filter.saas": "SaaS",
     "portfolio.notfound.title": "Projet introuvable",
     "portfolio.notfound.description": "Le projet que vous recherchez n'existe pas ou a été supprimé.",
     "portfolio.notfound.button": "Voir tous les projets",
@@ -1923,6 +2702,44 @@ const translations: Record<Language, Record<string, string>> = {
       "Créons quelque chose d'incroyable ensemble. Contactez-nous pour discuter de vos exigences de projet et donner vie à votre vision.",
     "portfolio.cta.button.primary": "Commencer",
     "portfolio.cta.button.secondary": "Voir les Services",
+
+    // Project Details
+    "project.backToPortfolio": "Retour au Portfolio",
+    "project.overview": "Aperçu du Projet",
+    "project.keyFeatures": "Fonctionnalités Clés",
+    "project.userExperience": "Expérience Utilisateur",
+    "project.performance": "Performance",
+    "project.reliability": "Fiabilité",
+    "project.scalability": "Évolutivité",
+    "project.technologiesUsed": "Technologies Utilisées",
+    "project.quickActions": "Actions Rapides",
+    "project.shareProject": "Partager le Projet",
+    "project.viewLiveDemo": "Voir la Démo en Direct",
+    "project.sourceCode": "Code Source",
+    "project.projectDetails": "Détails du Projet",
+    "project.techStack": "Pile Technologique",
+    "project.technologies": "technologies",
+    "project.client": "Client",
+    "project.duration": "Durée",
+    "project.duration.3months": "3 mois",
+    "project.duration.4months": "4 mois",
+    "project.duration.5months": "5 mois",
+    "project.duration.6months": "6 mois",
+    "project.duration.7months": "7 mois",
+    "project.projectRating": "Évaluation du Projet",
+    "project.functionality": "Fonctionnalité",
+    "project.design": "Design",
+    "project.live": "En Direct",
+    "project.more": "plus",
+    "project.rating": "4.8",
+    "project.reviews": "127 avis",
+    "project.userExperienceDesc": "Design intuitif avec navigation fluide et mise en page réactive sur tous les appareils",
+    "project.performanceDesc": "Optimisé pour la vitesse avec des requêtes de base de données efficaces et des stratégies de mise en cache",
+    "project.reliabilityDesc": "Architecture robuste avec 99,9% de disponibilité et gestion complète des erreurs",
+    "project.scalabilityDesc": "Construit pour croître avec votre entreprise, gérant l'augmentation du trafic et des données de manière transparente",
+    "project.testimonialQuote": "Oren a transformé notre entreprise en ligne. La nouvelle plateforme est rapide, belle, et nos ventes ont plus que doublé depuis le lancement.",
+    "project.testimonialAuthor": "Sarah Johnson",
+    "project.testimonialRole": "PDG, Détaillant de Mode",
 
     // Testimonials
     "testimonials.title": "Ce Que Disent Nos Clients",
@@ -1993,6 +2810,13 @@ const translations: Record<Language, Record<string, string>> = {
     "contact.info.emailLabel": "Email",
     "contact.info.phoneLabel": "Téléphone",
     "contact.info.officeLabel": "Bureau",
+    "contact.info.locationLabel": "Emplacement",
+    "contact.info.locationDescription": "Travail à distance d'abord — basé au Maroc, collaborant mondialement.",
+    "contact.info.availabilityLabel": "Disponibilité",
+    "contact.info.availabilityDescription": "Horaires flexibles à travers les fuseaux horaires. Contactez-nous à tout moment par email ou WhatsApp.",
+    "contact.info.responseTime": "Nous répondons généralement sous quelques heures.",
+    "contact.social.linkedin": "LinkedIn",
+    "contact.social.instagram": "Instagram",
     "contact.hours.title": "Heures d'Ouverture",
     "contact.hours.mondayFriday": "Lundi - Vendredi",
     "contact.hours.saturday": "Samedi",
@@ -2004,18 +2828,18 @@ const translations: Record<Language, Record<string, string>> = {
     "contact.form.services.platforms": "Plateformes Personnalisées",
     "contact.form.services.ecommerce": "E-commerce",
     "contact.form.services.marketing": "Marketing Numérique",
-    "contact.form.services.social": "Réseaux Sociaux",
-    "contact.form.services.design": "Design",
     "contact.form.services.other": "Autre",
-    "contact.form.budgets.5k10k": "5 000 € - 10 000 €",
-    "contact.form.budgets.10k25k": "10 000 € - 25 000 €",
-    "contact.form.budgets.25k50k": "25 000 € - 50 000 €",
-    "contact.form.budgets.50k": "50 000 €+",
+    "contact.form.budgets.under500": "Moins de 500 €",
+    "contact.form.budgets.5002k": "500 € - 2 000 €",
+    "contact.form.budgets.2k8k": "2 000 € - 8 000 €",
+    "contact.form.budgets.8k15k": "8 000 € - 15 000 €",
+    "contact.form.budgets.15k": "15 000 €+",
     "contact.form.budgets.unsure": "Pas encore sûr",
     "contact.form.sending": "Envoi du Message...",
     "contact.form.sent": "Message Envoyé !",
     "contact.form.send": "Envoyer le Message",
     "contact.form.success": "Merci ! Nous vous répondrons sous 24 heures.",
+    "contact.form.responseTime": "Nous répondons généralement sous quelques heures.",
 
     // Blog
     "blog.title": "Dernières Perspectives",
@@ -2033,6 +2857,7 @@ const translations: Record<Language, Record<string, string>> = {
     "blog.category.design": "Design",
     "blog.category.marketing": "Marketing",
     "blog.category.technology": "Technologie",
+    "blog.minRead": "min de lecture",
     "blog.empty.title": "Aucun article trouvé correspondant à vos critères.",
     "blog.empty.search": "Aucun article trouvé pour",
     "blog.readTime": "min de lecture",
@@ -2045,6 +2870,345 @@ const translations: Record<Language, Record<string, string>> = {
     "blog.notfound.title": "Article introuvable",
     "blog.notfound.description": "L'article que vous recherchez n'existe pas ou a été supprimé.",
     "blog.notfound.button": "Voir tous les articles",
+
+    // Blog Post: Modern Web Development Trends in 2025 (French)
+    "blog.post.trends2025.title": "Tendances du Développement Web Moderne en 2025",
+    "blog.post.trends2025.excerpt": "Explorez les dernières tendances qui façonnent le développement web, de l'intégration de l'IA aux applications web progressives et au-delà.",
+
+    // Blog Post: Next.js Performance Optimization (French)
+    "blog.post.nextjsPerformance.title": "Conseils d'Optimisation des Performances Next.js",
+    "blog.post.nextjsPerformance.excerpt": "Apprenez les stratégies essentielles pour améliorer la vitesse de votre site web et l'engagement des utilisateurs avec ces techniques d'optimisation Next.js.",
+    "blog.post.nextjsPerformance.content": `
+      <div class="lead">
+        <p>Next.js est déjà optimisé pour les performances dès la sortie de boîte, mais il existe de nombreuses techniques que vous pouvez utiliser pour rendre vos applications encore plus rapides. Ce guide couvre des stratégies d'optimisation pratiques qui peuvent améliorer considérablement les performances de votre application Next.js.</p>
+      </div>
+
+      <h2>Optimisation des Images</h2>
+      <p>Le composant Image de Next.js optimise automatiquement les images, mais vous devez l'utiliser correctement. Spécifiez toujours la largeur et la hauteur pour éviter les décalages de mise en page, utilisez la propriété priority pour les images au-dessus de la ligne de flottaison, et choisissez le bon format (WebP pour les navigateurs modernes).</p>
+
+      <p>Envisagez d'utiliser des espaces réservés flous pour de meilleures performances perçues. Le composant Image prend en charge à la fois les importations statiques et les URL dynamiques, avec une optimisation automatique pour les deux.</p>
+
+      <h2>Découpage du Code et Imports Dynamiques</h2>
+      <p>Next.js divise automatiquement le code au niveau de la page, mais vous pouvez optimiser davantage en important dynamiquement les composants lourds. Utilisez next/dynamic pour les composants qui ne sont pas nécessaires immédiatement ou qui ne sont utilisés que dans certaines conditions.</p>
+
+      <p>Par exemple, importez dynamiquement les modales, graphiques ou éditeurs de texte enrichi qui ne sont pas visibles lors du chargement initial de la page. Cela réduit considérablement la taille du bundle JavaScript initial.</p>
+
+      <h2>Composants Serveur et Streaming</h2>
+      <p>Next.js 13+ introduit les Composants React Serveur, qui s'exécutent sur le serveur et envoient uniquement le HTML rendu au client. Cela réduit considérablement la taille du bundle JavaScript et améliore le chargement initial de la page.</p>
+
+      <p>Utilisez le streaming avec des limites Suspense pour afficher le contenu progressivement au fur et à mesure de sa disponibilité. Cela améliore les performances perçues en montrant quelque chose rapidement aux utilisateurs plutôt que d'attendre que tout se charge.</p>
+
+      <h2>Optimisation des Polices</h2>
+      <p>Utilisez next/font pour optimiser et auto-héberger automatiquement les polices. Cela élimine les requêtes réseau externes et empêche les décalages de mise en page causés par le chargement des polices. Les fichiers de polices sont mis en cache efficacement et chargés avec des stratégies optimales.</p>
+
+      <p>Préchargez les polices critiques et utilisez font-display: swap pour garantir que le texte reste visible pendant le chargement des polices. Envisagez d'utiliser les polices système pour le texte du corps pour éliminer complètement le chargement des polices.</p>
+
+      <h2>Optimisation des Routes API</h2>
+      <p>Mettez en œuvre des stratégies de mise en cache pour les routes API en utilisant les en-têtes Cache-Control. Utilisez ISR (Régénération Statique Incrémentielle) pour les pages qui doivent être mises à jour périodiquement mais qui n'exigent pas de données en temps réel.</p>
+
+      <p>Envisagez d'utiliser des fonctions edge pour les routes API qui nécessitent une faible latence mondiale. Les fonctions edge s'exécutent plus près des utilisateurs, réduisant considérablement les temps de réponse.</p>
+
+      <h2>Optimisation des Requêtes de Base de Données</h2>
+      <p>Optimisez les requêtes de base de données en sélectionnant uniquement les champs nécessaires, en utilisant des index appropriés et en implémentant le pooling de connexions. Envisagez d'utiliser une couche de mise en cache comme Redis pour les données fréquemment consultées.</p>
+
+      <p>Utilisez la récupération de données parallèles lorsque possible pour réduire les requêtes en cascade. Les Composants Serveur Next.js facilitent la récupération de données en parallèle au niveau du composant.</p>
+
+      <h2>Analyse du Bundle</h2>
+      <p>Analysez régulièrement la taille de votre bundle en utilisant @next/bundle-analyzer. Identifiez les dépendances volumineuses et envisagez des alternatives ou le chargement différé. Supprimez les dépendances inutilisées et secouez correctement les bibliothèques.</p>
+
+      <p>Portez une attention particulière aux scripts tiers. Utilisez next/script avec la stratégie de chargement appropriée (afterInteractive, lazyOnload) pour éviter de bloquer le thread principal.</p>
+
+      <h2>Surveillance et Métriques</h2>
+      <p>Utilisez Vercel Analytics ou des outils similaires pour surveiller les métriques de performance du monde réel. Suivez les Core Web Vitals, Time to First Byte (TTFB) et autres métriques clés pour identifier les régressions de performance.</p>
+
+      <p>Configurez des budgets de performance et des alertes automatisées pour détecter les problèmes de performance avant qu'ils n'atteignent la production.</p>
+
+      <h2>Conclusion</h2>
+      <p>L'optimisation des performances est un processus continu. Commencez par les plus gros gains - optimisation des images, découpage du code et mise en cache appropriée - puis améliorez progressivement. Mesurez toujours l'impact de vos optimisations avec des données du monde réel.</p>
+    `,
+
+    // Blog Post: SEO Strategies (French)
+    "blog.post.seoStrategies.title": "Stratégies SEO Qui Fonctionnent Réellement en 2025",
+    "blog.post.seoStrategies.excerpt": "Découvrez des techniques SEO éprouvées pour améliorer la visibilité de votre site web et générer du trafic organique.",
+    "blog.post.seoStrategies.content": `
+      <div class="lead">
+        <p>L'optimisation pour les moteurs de recherche continue d'évoluer, les algorithmes de Google devenant de plus en plus sophistiqués. En 2025, le SEO réussi nécessite une approche holistique qui combine excellence technique, contenu de qualité et optimisation de l'expérience utilisateur.</p>
+      </div>
+
+      <h2>Core Web Vitals et Expérience de Page</h2>
+      <p>Les Core Web Vitals de Google - Largest Contentful Paint (LCP), First Input Delay (FID) et Cumulative Layout Shift (CLS) - restent des facteurs de classement critiques. Ces métriques mesurent les performances de chargement, l'interactivité et la stabilité visuelle.</p>
+
+      <p>Pour optimiser les Core Web Vitals, concentrez-vous sur l'optimisation des images, le chargement efficace du JavaScript, les stratégies de chargement de polices appropriées et l'élimination des décalages de mise en page. Des outils comme PageSpeed Insights et Lighthouse peuvent aider à identifier et corriger les problèmes.</p>
+
+      <h2>Qualité du Contenu et E-E-A-T</h2>
+      <p>Le cadre E-E-A-T de Google (Expérience, Expertise, Autorité et Fiabilité) est plus important que jamais. Créez du contenu qui démontre une réelle expertise et fournit une valeur authentique aux utilisateurs.</p>
+
+      <p>Incluez des biographies d'auteurs avec des références, citez des sources faisant autorité, maintenez le contenu à jour et assurez l'exactitude factuelle. Pour les sujets YMYL (Your Money or Your Life) comme la santé et la finance, l'E-E-A-T est particulièrement critique.</p>
+
+      <h2>Recherche Sémantique et Optimisation de l'Intention</h2>
+      <p>Le SEO moderne va au-delà des mots-clés pour comprendre l'intention de l'utilisateur. Les algorithmes de Google comprennent maintenant le contexte, les synonymes et les concepts connexes grâce au traitement du langage naturel.</p>
+
+      <p>Structurez votre contenu pour répondre à des questions spécifiques et résoudre les problèmes des utilisateurs. Utilisez le balisage de données structurées pour aider les moteurs de recherche à comprendre le contexte et la signification de votre contenu. Concentrez-vous sur les grappes de sujets plutôt que sur les mots-clés individuels.</p>
+
+      <h2>Fondamentaux du SEO Technique</h2>
+      <p>Assurez-vous que votre site a une structure d'URL propre, des sitemaps XML appropriés et une configuration robots.txt. Implémentez le balisage de données structurées pour les extraits enrichis. Corrigez les liens brisés, le contenu dupliqué et les erreurs d'exploration.</p>
+
+      <p>L'indexation mobile-first signifie que votre site mobile est ce que Google utilise principalement pour le classement. Assurez-vous que votre expérience mobile est excellente, avec des temps de chargement rapides et une navigation facile.</p>
+
+      <h2>Construction de Liens en 2025</h2>
+      <p>La qualité plutôt que la quantité reste la règle d'or pour les backlinks. Concentrez-vous sur l'obtention de liens de sites faisant autorité et pertinents grâce à un excellent contenu, des relations publiques numériques et la construction de relations.</p>
+
+      <p>La publication en tant qu'invité, la construction de liens brisés et la création d'actifs liables comme la recherche originale ou des guides complets sont des stratégies efficaces. Évitez les schémas de liens et les répertoires de faible qualité.</p>
+
+      <h2>SEO Local</h2>
+      <p>Pour les entreprises avec des emplacements physiques, le SEO local est crucial. Optimisez votre profil d'entreprise Google, assurez la cohérence NAP (Nom, Adresse, Téléphone) sur le web et encouragez les avis clients.</p>
+
+      <p>Créez du contenu spécifique à l'emplacement et construisez des citations locales. La construction de liens locaux provenant d'organisations communautaires et de sites d'actualités locaux peut considérablement améliorer les classements locaux.</p>
+
+      <h2>Mesure du Succès</h2>
+      <p>Suivez le trafic organique, les classements de mots-clés, les taux de conversion et les métriques d'engagement. Utilisez Google Search Console pour surveiller les performances et identifier les opportunités. Configurez le suivi des objectifs dans Google Analytics pour mesurer l'impact du SEO sur les objectifs commerciaux.</p>
+
+      <h2>Conclusion</h2>
+      <p>Le SEO en 2025 nécessite une approche complète qui équilibre l'optimisation technique, la création de contenu de qualité et l'expérience utilisateur. Restez à jour avec les changements d'algorithme, concentrez-vous sur la fourniture de valeur aux utilisateurs et soyez patient - le SEO est un investissement à long terme qui rapporte des dividendes au fil du temps.</p>
+    `,
+
+    // Blog Post: Next.js Performance Optimization (French)
+    "blog.post.nextjsPerformance.title": "Conseils d'Optimisation des Performances Next.js",
+    "blog.post.nextjsPerformance.excerpt": "Apprenez les stratégies essentielles pour améliorer la vitesse de votre site web et l'engagement des utilisateurs avec ces techniques d'optimisation Next.js.",
+
+    // Blog Post: AI in Web Development (French)
+    "blog.post.aiInWebDev.title": "Comment l'IA Transforme le Développement Web",
+    "blog.post.aiInWebDev.excerpt": "Découvrez comment l'intelligence artificielle révolutionne les processus de développement web, de la génération de code aux expériences utilisateur personnalisées.",
+    "blog.post.aiInWebDev.content": `
+      <div class="lead">
+        <p>L'intelligence artificielle transforme fondamentalement notre approche du développement web. De la génération de code aux tests automatisés et aux expériences utilisateur intelligentes, l'IA rend les développeurs plus productifs tout en permettant des types d'applications entièrement nouveaux.</p>
+      </div>
+
+      <h2>Codage Assisté par IA</h2>
+      <p>Des outils comme GitHub Copilot, ChatGPT et les assistants de codage spécialisés transforment le flux de travail de développement. Ces outils peuvent générer du code boilerplate, suggérer des complétions, expliquer du code complexe et même aider au débogage.</p>
+
+      <p>La clé est d'apprendre à travailler efficacement avec les assistants IA. Ils sont mieux utilisés pour les tâches de routine, la génération de cas de test, la rédaction de documentation et l'exploration de différentes approches pour résoudre les problèmes. Les développeurs doivent encore comprendre le code, prendre des décisions architecturales et assurer la qualité.</p>
+
+      <h2>Tests et Assurance Qualité Automatisés</h2>
+      <p>Les outils de test alimentés par l'IA peuvent générer automatiquement des cas de test, identifier les cas limites et même prédire où les bogues sont susceptibles de se produire. Les outils de test de régression visuelle utilisent l'IA pour détecter les changements d'interface utilisateur involontaires.</p>
+
+      <p>Les modèles de machine learning peuvent analyser les changements de code et prédire leur impact, aidant les équipes à prioriser les efforts de test. Cela conduit à une meilleure couverture de test et à des cycles de publication plus rapides.</p>
+
+      <h2>Expériences Utilisateur Intelligentes</h2>
+      <p>L'IA permet des expériences utilisateur personnalisées à grande échelle. Les moteurs de recommandation, les chatbots et les interfaces adaptatives peuvent adapter le contenu et les fonctionnalités aux utilisateurs individuels en fonction de leur comportement et de leurs préférences.</p>
+
+      <p>Le traitement du langage naturel permet aux utilisateurs d'interagir avec les applications de manière conversationnelle. La vision par ordinateur permet des fonctionnalités comme la reconnaissance d'images, la numérisation de documents et les expériences de réalité augmentée directement dans le navigateur.</p>
+
+      <h2>Revue de Code et Assurance Qualité</h2>
+      <p>Les outils IA peuvent examiner le code pour détecter les bogues potentiels, les vulnérabilités de sécurité et les problèmes de performance. Ils peuvent suggérer des améliorations, identifier les odeurs de code et assurer le respect des normes de codage.</p>
+
+      <p>Ces outils apprennent de millions de dépôts de code, identifiant des modèles que les réviseurs humains pourraient manquer. Ils complètent la revue de code humaine en détectant les problèmes de routine, permettant aux réviseurs de se concentrer sur l'architecture et la logique métier.</p>
+
+      <h2>Optimisation des Performances</h2>
+      <p>L'IA peut analyser les performances des applications et suggérer des optimisations. Elle peut identifier les requêtes de base de données lentes, les algorithmes inefficaces et les goulots d'étranglement des ressources. Certains outils peuvent même appliquer des optimisations automatiquement.</p>
+
+      <p>L'analytique prédictive peut prévoir les modèles de trafic et dimensionner automatiquement les ressources, garantissant des performances optimales tout en minimisant les coûts.</p>
+
+      <h2>Améliorations de l'Accessibilité</h2>
+      <p>Les outils alimentés par l'IA peuvent générer automatiquement du texte alternatif pour les images, suggérer des étiquettes ARIA et identifier les problèmes d'accessibilité. Certains outils peuvent même corriger automatiquement les problèmes d'accessibilité courants.</p>
+
+      <p>Les interfaces vocales alimentées par l'IA rendent les applications plus accessibles aux utilisateurs handicapés, tandis que la traduction en temps réel brise les barrières linguistiques.</p>
+
+      <h2>Génération et Gestion de Contenu</h2>
+      <p>L'IA peut générer du contenu, des descriptions de produits aux articles de blog. Bien que la supervision humaine reste nécessaire, l'IA peut considérablement accélérer la création de contenu et aider à maintenir la cohérence.</p>
+
+      <p>Les systèmes de gestion de contenu intelligents peuvent automatiquement taguer et catégoriser le contenu, suggérer des articles connexes et optimiser le contenu pour les moteurs de recherche.</p>
+
+      <h2>L'Avenir de l'IA dans le Développement Web</h2>
+      <p>Nous ne faisons qu'effleurer la surface de ce qui est possible. Les développements futurs pourraient inclure une IA capable de concevoir des applications entières à partir de descriptions en langage naturel, de refactoriser automatiquement le code legacy ou de prédire et prévenir les problèmes de production avant qu'ils ne se produisent.</p>
+
+      <p>Le rôle des développeurs évolue de l'écriture de chaque ligne de code à l'orchestration d'outils IA, à la prise de décisions de haut niveau et à la garantie de la qualité et de l'éthique dans les solutions générées par l'IA.</p>
+
+      <h2>Conclusion</h2>
+      <p>L'IA ne remplace pas les développeurs - elle augmente leurs capacités. En adoptant les outils IA et en apprenant à travailler efficacement avec eux, les développeurs peuvent être plus productifs, créatifs et concentrés sur la résolution de problèmes complexes. L'avenir du développement web est une collaboration entre la créativité humaine et l'intelligence artificielle.</p>
+    `,
+
+    // Blog Post: UI Design Principles (French)
+    "blog.post.uiDesignPrinciples.title": "Principes Essentiels de Conception d'Interface Utilisateur pour 2025",
+    "blog.post.uiDesignPrinciples.excerpt": "Maîtrisez les principes fondamentaux de la conception d'interface utilisateur pour créer des interfaces belles et fonctionnelles.",
+    "blog.post.uiDesignPrinciples.content": `
+      <div class="lead">
+        <p>La conception d'interface utilisateur exceptionnelle est à la fois un art et une science. Bien que les tendances aillent et viennent, certains principes fondamentaux restent constants. Comprendre et appliquer ces principes vous aidera à créer des interfaces qui sont non seulement belles, mais aussi fonctionnelles et conviviales.</p>
+      </div>
+
+      <h2>Hiérarchie Visuelle</h2>
+      <p>La hiérarchie visuelle guide les utilisateurs à travers votre interface en établissant l'ordre d'importance. Utilisez la taille, la couleur, le contraste et l'espacement pour diriger l'attention vers les éléments les plus importants en premier.</p>
+
+      <p>Les actions principales doivent être les plus proéminentes, les actions secondaires moins, et les actions tertiaires subtiles. Les titres doivent être plus grands que le texte du corps, et les informations importantes doivent se démarquer par le contraste ou le positionnement.</p>
+
+      <h2>Consistance et Standards</h2>
+      <p>La consistance crée de la familiarité et réduit la charge cognitive. Utilisez des couleurs, une typographie, un espacement et des modèles d'interaction cohérents dans toute votre interface. Suivez les conventions de plateforme afin que les utilisateurs puissent appliquer leurs connaissances existantes.</p>
+
+      <p>Créez et maintenez un système de conception avec des composants réutilisables, des échelles d'espacement définies et des directives claires. Cela garantit la cohérence dans votre produit et accélère le processus de conception et de développement.</p>
+
+      <h2>Espace Blanc et Respiration</h2>
+      <p>L'espace blanc (ou espace négatif) n'est pas un espace gaspillé - c'est un élément de conception crucial. Un espacement approprié améliore la lisibilité, crée une hiérarchie visuelle et rend les interfaces moins encombrées et plus premium.</p>
+
+      <p>N'ayez pas peur de l'espace vide. Donnez de la place à votre contenu pour respirer. Utilisez un rembourrage et des marges généreux, surtout autour des éléments importants. Regroupez les éléments liés ensemble et séparez ceux qui ne le sont pas.</p>
+
+      <h2>Typographie et Lisibilité</h2>
+      <p>La typographie est fondamentale dans la conception d'interface utilisateur. Choisissez des polices lisibles à différentes tailles et poids. Maintenez une hiérarchie claire avec des niveaux de titre distincts et du texte du corps.</p>
+
+      <p>Utilisez une hauteur de ligne de 1.5-1.6 pour le texte du corps, limitez la longueur de ligne à 50-75 caractères pour une lisibilité optimale, et assurez un contraste suffisant entre le texte et l'arrière-plan. Envisagez d'utiliser des polices système pour de meilleures performances et familiarité.</p>
+
+      <h2>Théorie de la Couleur et Accessibilité</h2>
+      <p>La couleur communique le sens, crée l'ambiance et guide l'attention. Utilisez une palette de couleurs limitée - généralement une couleur primaire, une ou deux couleurs d'accent, et une gamme de neutres.</p>
+
+      <p>Assurez un contraste suffisant pour l'accessibilité (4.5:1 pour le texte normal, 3:1 pour le texte large). Ne comptez pas sur la couleur seule pour transmettre des informations - utilisez des icônes, des étiquettes ou des motifs aussi. Testez vos conceptions en niveaux de gris pour vérifier que la hiérarchie fonctionne sans couleur.</p>
+
+      <h2>Retour d'Information et Affordances</h2>
+      <p>Fournissez des retours clairs pour les actions des utilisateurs. Les boutons doivent avoir des états de survol, actif et désactivé. Montrez des indicateurs de chargement pour les opérations asynchrones. Affichez clairement les messages de succès ou d'erreur.</p>
+
+      <p>Utilisez des affordances - des indices visuels qui suggèrent comment un élément doit être utilisé. Les boutons doivent avoir l'air cliquables, les liens doivent être distinguables, et les éléments interactifs doivent répondre à l'entrée de l'utilisateur.</p>
+
+      <h2>Mobile-First et Conception Réactive</h2>
+      <p>Concevez d'abord pour mobile, puis améliorez pour les écrans plus grands. Cela garantit que votre expérience de base fonctionne sur les appareils les plus contraints. Utilisez des mises en page réactives qui s'adaptent gracieusement aux différentes tailles d'écran.</p>
+
+      <p>Considérez les cibles tactiles - rendez les éléments interactifs d'au moins 44x44 pixels pour un tapotement facile. Assurez-vous que les actions importantes sont atteignables d'une seule main sur les appareils mobiles.</p>
+
+      <h2>Divulgation Progressive</h2>
+      <p>Ne submergez pas les utilisateurs avec trop d'informations à la fois. Utilisez la divulgation progressive pour montrer seulement ce qui est nécessaire initialement, révélant des options ou informations supplémentaires selon les besoins.</p>
+
+      <p>Cela peut être réalisé à travers des sections extensibles, des formulaires multi-étapes, des infobulles ou des boîtes de dialogue modales. L'objectif est de réduire la charge cognitive tout en gardant les fonctionnalités avancées accessibles.</p>
+
+      <h2>Conclusion</h2>
+      <p>Ces principes forment la base d'une bonne conception d'interface utilisateur. Bien que les tendances et les outils changent, ces fondamentaux restent pertinents. Pratiquez leur application cohérente, et vous créerez des interfaces qui sont à la fois belles et hautement fonctionnelles.</p>
+    `,
+
+    // Blog Post: Designing for Accessibility (French)
+    "blog.post.accessibility.title": "Conception pour l'Accessibilité : Guide Complet",
+    "blog.post.accessibility.excerpt": "Apprenez à créer des expériences numériques inclusives qui fonctionnent pour tous, quelles que soient leurs capacités.",
+    "blog.post.accessibility.content": `
+      <div class="lead">
+        <p>L'accessibilité dans la conception web n'est pas seulement une exigence légale - c'est une nécessité morale et une bonne pratique commerciale. Créer des sites web accessibles garantit que tout le monde, quelles que soient ses capacités, peut accéder au contenu et interagir avec lui.</p>
+      </div>
+
+      <h2>Comprendre l'Accessibilité Web</h2>
+      <p>L'accessibilité web signifie concevoir et développer des sites web, des outils et des technologies de manière à ce que les personnes handicapées puissent les utiliser. Cela inclut les personnes ayant des déficiences auditives, cognitives, neurologiques, physiques, linguistiques et visuelles.</p>
+
+      <p>Selon l'Organisation mondiale de la santé, plus d'un milliard de personnes dans le monde souffrent d'une forme de handicap. En rendant votre site web accessible, vous ne vous conformez pas seulement aux réglementations - vous ouvrez votre entreprise à une partie importante de la population.</p>
+
+      <h2>Lignes Directrices WCAG</h2>
+      <p>Les Directives pour l'Accessibilité du Contenu Web (WCAG) fournissent un cadre complet pour l'accessibilité web. Les directives sont organisées autour de quatre principes : Perceptible, Utilisable, Compréhensible et Robuste (POUR).</p>
+
+      <p>Le niveau WCAG 2.1 AA est la norme visée par la plupart des organisations, car il est souvent exigé par la loi dans de nombreux pays. Cela inclut des exigences comme fournir des alternatives textuelles aux images, assurer la navigation au clavier, maintenir un contraste de couleur suffisant et rendre le contenu lisible et compréhensible.</p>
+
+      <h2>Mise en Œuvre Pratique</h2>
+      <p>Commencez par le HTML sémantique - utilisez des hiérarchies de titres appropriées, des listes et des points de repère. Ajoutez des étiquettes ARIA lorsque nécessaire, mais souvenez-vous que les éléments HTML natifs sont souvent meilleurs que les attributs ARIA.</p>
+
+      <p>Assurez-vous que tous les éléments interactifs sont accessibles au clavier. Testez votre site en naviguant uniquement avec un clavier - si vous ne pouvez pas atteindre ou activer quelque chose, les utilisateurs qui dépendent des claviers ou des technologies d'assistance ne le peuvent pas non plus.</p>
+
+      <h2>Couleur et Contraste</h2>
+      <p>Le contraste des couleurs est crucial pour les utilisateurs ayant des déficiences visuelles. WCAG exige un rapport de contraste d'au moins 4,5:1 pour le texte normal et 3:1 pour le texte large. Utilisez des outils comme le WebAIM Contrast Checker pour vérifier vos choix de couleurs.</p>
+
+      <p>Ne comptez jamais sur la couleur seule pour transmettre des informations. Fournissez toujours des indices visuels supplémentaires comme des icônes, des motifs ou des étiquettes de texte.</p>
+
+      <h2>Tests et Outils</h2>
+      <p>Utilisez des outils de test automatisés comme axe DevTools, WAVE ou Lighthouse pour détecter les problèmes d'accessibilité courants. Cependant, les outils automatisés ne détectent qu'environ 30 % des problèmes d'accessibilité - les tests manuels sont essentiels.</p>
+
+      <p>Testez avec des lecteurs d'écran réels comme NVDA, JAWS ou VoiceOver. Mieux encore, impliquez les utilisateurs handicapés dans votre processus de test pour obtenir des commentaires du monde réel.</p>
+
+      <h2>Conclusion</h2>
+      <p>L'accessibilité devrait être considérée dès le début de tout projet, et non ajoutée comme une réflexion après coup. En suivant ces directives et en faisant de l'accessibilité une priorité, vous créerez de meilleures expériences pour tous les utilisateurs tout en élargissant votre audience potentielle.</p>
+    `,
+    "blog.post.trends2025.content": `
+      <div class="lead">
+        <p>Le paysage du développement web évolue plus rapidement que jamais. En 2025, les développeurs et les agences numériques adoptent de nouveaux outils et technologies qui priorisent <strong>la vitesse, l'expérience utilisateur, l'intégration de l'IA et la durabilité</strong>. Que vous soyez propriétaire d'une marque, développeur ou designer, comprendre ces tendances peut vous aider à rester compétitif dans un monde numérique d'abord.</p>
+      </div>
+
+      <section class="trend-section">
+        <h2>Développement piloté par l'IA et automatisation</h2>
+        <p>L'intelligence artificielle transforme la façon dont les sites web sont construits et maintenus. Des outils de <strong>génération de code alimentés par l'IA</strong> comme GitHub Copilot à <strong>l'UX personnalisée basée sur le comportement des utilisateurs</strong>, l'automatisation réduit le temps de développement et stimule la créativité.</p>
+        <div class="trend-highlight">
+          <p><strong>Insight clé :</strong> Les chatbots IA et les assistants de contenu sont désormais standard pour les sites web, pas des luxes.</p>
+        </div>
+      </section>
+
+      <section class="trend-section">
+        <h2>Architecture axée sur les performances</h2>
+        <p>L'accent mis par Google sur les <strong>Core Web Vitals</strong> se poursuit en 2025. Les temps de chargement rapides, l'interactivité fluide et la stabilité visuelle sont plus importants que jamais. Les développeurs utilisent <strong>Next.js 14, Astro et Vite</strong> pour construire des sites ultra-rapides et axés sur les performances.</p>
+        <div class="trend-highlight">
+          <p><strong>Conseil pro :</strong> Optimisez les images, implémentez le chargement paresseux et tirez parti de la mise en cache périphérique pour les audiences mondiales.</p>
+        </div>
+      </section>
+
+      <section class="trend-section">
+        <h2>Serveurless et informatique de périphérie</h2>
+        <p>L'architecture serveurless et le <strong>déploiement périphérique</strong> redéfinissent l'évolutivité. Des plateformes comme <strong>Vercel, Netlify et Cloudflare Workers</strong> permettent aux développeurs de déployer du code plus près des utilisateurs, améliorant considérablement la latence et les performances.</p>
+        <p>Cette évolution réduit également les coûts et simplifie la gestion de l'infrastructure backend.</p>
+      </section>
+
+      <section class="trend-section">
+        <h2>Applications Web Progressives (PWA) 2.0</h2>
+        <p>Les PWA continuent de brouiller la frontière entre le web et les applications mobiles natives. En 2025, elles supportent <strong>les notifications push, l'accès hors ligne et les capacités plein écran</strong> encore mieux.</p>
+        <p>Les marques les utilisent pour offrir des expériences semblables à des applications sans le coût du développement natif.</p>
+      </section>
+
+      <section class="trend-section">
+        <h2>UI Motion et design interactif</h2>
+        <p>Les designs statiques sont terminés. L'UI Motion, les <strong>micro-animations</strong> et les <strong>effets de défilement 3D</strong> mènent la voie vers des expériences immersives. Des outils comme <strong>Framer Motion</strong> et <strong>GSAP</strong> facilitent l'ajout de personnalité et d'émotion aux interfaces.</p>
+        <div class="trend-highlight warning">
+          <p><strong>Important :</strong> Le mouvement devrait améliorer l'UX - pas l'écraser.</p>
+        </div>
+      </section>
+
+      <section class="trend-section">
+        <h2>Design web durable</h2>
+        <p>Le design écologique n'est pas qu'un mot à la mode. Les sites web sont maintenant optimisés pour <strong>consommer moins d'énergie</strong>, en utilisant <strong>des thèmes sombres, des ressources minimales et du code efficace</strong>. Les développeurs et agences priorisent les solutions d'hébergement vertes pour réduire l'empreinte carbone.</p>
+      </section>
+
+      <section class="trend-section">
+        <h2>Sécurité et confidentialité par conception</h2>
+        <p>Alors que les utilisateurs deviennent plus conscients de la confidentialité, les <strong>systèmes d'authentification sécurisés</strong>, l'<strong>architecture zéro confiance</strong> et les <strong>APIs chiffrées</strong> sont désormais standard. La conformité avec le RGPD, le CCPA et les politiques de données mondiales reste une priorité absolue pour les développeurs et les marques.</p>
+      </section>
+
+      <section class="trend-section">
+        <h2>Révolution du low-code</h2>
+        <p>Les entreprises veulent avancer vite. Les outils low-code et no-code comme <strong>Webflow, Bubble et Builder.io</strong> permettent aux non-développeurs de créer des prototypes fonctionnels - tandis que les développeurs se concentrent sur les intégrations, les performances et la logique personnalisée.</p>
+      </section>
+
+      <section class="trend-section">
+        <h2>Architecture headless et composable</h2>
+        <p>Les CMS headless comme <strong>Strapi, Sanity et Contentful</strong> dominent 2025, offrant de la flexibilité sur tous les appareils et plateformes. Associés au <strong>JAMstack</strong> et <strong>GraphQL</strong>, ils permettent une livraison de contenu plus rapide et une expérience multi-canal transparente.</p>
+      </section>
+
+      <section class="trend-section">
+        <h2>Intégration Web3 et blockchain</h2>
+        <p>L'adoption de Web3 augmente avec des fonctionnalités d'<strong>authentification décentralisée, contrats intelligents</strong> et de <strong>propriété numérique</strong>. Bien que toujours précoce pour les marques grand public, de plus en plus de startups explorent l'identité utilisateur basée sur la blockchain et les adhésions liées aux NFT.</p>
+      </section>
+
+      <section class="key-takeaways">
+        <h2>Points clés à retenir</h2>
+        <div class="takeaways-grid">
+          <div class="takeaway-item">
+            <strong>Intégration IA :</strong> Les outils d'automatisation deviennent essentiels pour un développement plus rapide
+          </div>
+          <div class="takeaway-item">
+            <strong>Performance d'abord :</strong> Les Core Web Vitals et l'optimisation sont non négociables
+          </div>
+          <div class="takeaway-item">
+            <strong>Durabilité :</strong> L'hébergement vert et le design économe en énergie comptent
+          </div>
+          <div class="takeaway-item">
+            <strong>Flexibilité :</strong> Les architectures headless et composables offrent une meilleure évolutivité
+          </div>
+        </div>
+      </section>
+
+      <section class="conclusion">
+        <h2>Regard vers l'avenir</h2>
+        <p>Le développement web en 2025 est défini par <strong>l'IA, l'automatisation et l'agilité</strong>. La clé est d'équilibrer <strong>les performances, la créativité et la durabilité</strong>. Chez Oren, nous adoptons déjà ces technologies modernes pour construire des sites web plus rapides, plus intelligents et prêts pour l'avenir pour nos clients.</p>
+
+        <div class="cta-box">
+          <p><strong>Prêt à adopter ces tendances ?</strong> <a href="/contact">Contactez-nous</a> pour discuter de la façon dont nous pouvons aider à transformer votre présence web avec une technologie de pointe.</p>
+        </div>
+      </section>
+    `,
 
     // About
     "about.title": "À propos d'Oren",

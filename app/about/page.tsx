@@ -290,38 +290,48 @@ export default function AboutPage() {
 
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-5xl mx-auto">
               <AnimatedSection delay={0.1}>
-                <Card className="bg-card/50 backdrop-blur-sm border-border/50 hover:bg-card/80 transition-all duration-300 group">
-                  <CardContent className="p-8">
-                    <div className="flex items-start gap-6 mb-6">
-                      <div className="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center flex-shrink-0 group-hover:bg-primary/20 transition-colors">
-                        <Target className="h-8 w-8 text-primary" />
+                <Card className="group transition-all duration-300 border-border flex flex-col justify-between h-full hover:border-primary/30 hover:-translate-y-1">
+                  {/* Gradient overlay on hover */}
+                  <div className="absolute inset-0 bg-gradient-to-br from-primary/0 via-primary/0 to-primary/5 transition-opacity duration-500 opacity-0 group-hover:opacity-100 pointer-events-none" />
+
+                  <div className="relative flex flex-col gap-5">
+                    <CardContent className="p-6 relative z-10">
+                      <div className="flex items-start gap-6 mb-2">
+                        <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
+                          <Target className="h-6 w-6 text-primary" />
+                        </div>
+                        <div className="flex-1">
+                          <h3 className="text-2xl font-bold text-foreground mb-4">{t("about.mission.title")}</h3>
+                          <p className="text-muted-foreground leading-relaxed">
+                            {t("about.mission.description")}
+                          </p>
+                        </div>
                       </div>
-                      <div className="flex-1">
-                        <h3 className="text-2xl font-bold text-foreground mb-4">{t("about.mission.title")}</h3>
-                        <p className="text-muted-foreground leading-relaxed">
-                          {t("about.mission.description")}
-                        </p>
-                      </div>
-                    </div>
-                  </CardContent>
+                    </CardContent>
+                  </div>
                 </Card>
               </AnimatedSection>
 
               <AnimatedSection delay={0.2}>
-                <Card className="bg-card/50 backdrop-blur-sm border-border/50 hover:bg-card/80 transition-all duration-300 group">
-                  <CardContent className="p-8">
-                    <div className="flex items-start gap-6 mb-6">
-                      <div className="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center flex-shrink-0 group-hover:bg-primary/20 transition-colors">
-                        <Zap className="h-8 w-8 text-primary" />
+                <Card className="group transition-all duration-300 border-border flex flex-col justify-between h-full hover:border-primary/30 hover:-translate-y-1">
+                  {/* Gradient overlay on hover */}
+                  <div className="absolute inset-0 bg-gradient-to-br from-primary/0 via-primary/0 to-primary/5 transition-opacity duration-500 opacity-0 group-hover:opacity-100 pointer-events-none" />
+
+                  <div className="relative flex flex-col gap-5">
+                    <CardContent className="p-6 relative z-10">
+                      <div className="flex items-start gap-6 mb-2">
+                        <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
+                          <Zap className="h-6 w-6 text-primary" />
+                        </div>
+                        <div className="flex-1">
+                          <h3 className="text-2xl font-bold text-foreground mb-4">{t("about.vision.title")}</h3>
+                          <p className="text-muted-foreground leading-relaxed">
+                            {t("about.vision.description")}
+                          </p>
+                        </div>
                       </div>
-                      <div className="flex-1">
-                        <h3 className="text-2xl font-bold text-foreground mb-4">{t("about.vision.title")}</h3>
-                        <p className="text-muted-foreground leading-relaxed">
-                          {t("about.vision.description")}
-                        </p>
-                      </div>
-                    </div>
-                  </CardContent>
+                    </CardContent>
+                  </div>
                 </Card>
               </AnimatedSection>
             </div>
@@ -358,14 +368,19 @@ export default function AboutPage() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
               {values.map((value, index) => (
                 <AnimatedSection key={index} delay={index * 0.1}>
-                  <Card className="bg-card/50 backdrop-blur-sm border-gray-200 hover:bg-card/80 transition-all duration-300 group h-full dark:bg-card dark:backdrop-blur-sm dark:border-border dark:hover:-translate-y-0.5 dark:hover:border-primary/30">
-                    <CardContent className="p-8 dark:p-4 dark:lg:p-5">
-                      <div className="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center mx-auto mb-6 group-hover:bg-primary/20 group-hover:scale-110 transition-all duration-300 dark:w-8 dark:h-8 dark:lg:w-10 dark:lg:h-10 dark:rounded-lg dark:bg-primary/10 dark:group-hover:bg-primary/20">
-                        <value.icon className="h-8 w-8 text-primary dark:w-4 dark:h-4 dark:lg:w-5 dark:lg:h-5" />
-                      </div>
-                      <h3 className="text-xl font-bold text-foreground mb-4 text-center dark:text-sm dark:lg:text-base dark:font-semibold dark:mb-2 dark:group-hover:text-primary dark:transition-colors">{t(`about.values.${value.key}.title`)}</h3>
-                      <p className="text-muted-foreground leading-relaxed text-center dark:text-xs dark:lg:text-sm dark:leading-relaxed">{t(`about.values.${value.key}.description`)}</p>
-                    </CardContent>
+                  <Card className="group transition-all duration-300 border-border flex flex-col justify-between h-full hover:border-primary/30 hover:-translate-y-1">
+                    {/* Gradient overlay on hover */}
+                    <div className="absolute inset-0 bg-gradient-to-br from-primary/0 via-primary/0 to-primary/5 transition-opacity duration-500 opacity-0 group-hover:opacity-100 pointer-events-none" />
+
+                    <div className="relative flex flex-col gap-5">
+                      <CardContent className="p-8">
+                        <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mx-auto mb-6 group-hover:bg-primary/20 transition-colors">
+                          <value.icon className="h-6 w-6 text-primary" />
+                        </div>
+                        <h3 className="text-xl font-bold text-foreground mb-4 text-center">{t(`about.values.${value.key}.title`)}</h3>
+                        <p className="text-muted-foreground leading-relaxed text-center">{t(`about.values.${value.key}.description`)}</p>
+                      </CardContent>
+                    </div>
                   </Card>
                 </AnimatedSection>
               ))}
@@ -406,49 +421,44 @@ export default function AboutPage() {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
               {team.map((member, index) => (
                 <AnimatedSection key={index} delay={index * 0.1}>
-                  <Card className="bg-card/50 backdrop-blur-sm border-gray-200 overflow-hidden group hover:bg-card/80 transition-all duration-300 dark:bg-card dark:backdrop-blur-sm dark:border-border dark:hover:-translate-y-0.5 dark:hover:border-primary/30">
-                    <div className="relative aspect-[4/5] overflow-hidden bg-muted">
-                      <Image
-                        src={member.image || "/placeholder.svg"}
-                        alt={member.name}
-                        fill
-                        className="object-cover transition-transform duration-500 group-hover:scale-110"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  <Card className="group transition-all duration-300 border-border flex flex-col justify-between h-full hover:border-primary/30 hover:-translate-y-1">
+                    <div className="relative flex flex-col gap-5">
+                      <CardContent className="p-8 text-center">
+                        {/* Avatar placeholder */}
+                        <div className="w-20 h-20 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-6 group-hover:bg-primary/20 transition-colors duration-300">
+                          <UsersIcon className="h-10 w-10 text-primary" />
+                        </div>
 
-                      {/* Social Links Overlay */}
-                      <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                        <div className="flex gap-3">
+                        <h3 className="text-xl font-bold text-foreground mb-1">{member.name}</h3>
+                        <p className="text-sm text-primary font-medium mb-3">{t(`about.team.${member.key}.role`)}</p>
+                        <p className="text-sm text-muted-foreground leading-relaxed">{t(`about.team.${member.key}.bio`)}</p>
+
+                        {/* Social Links */}
+                        <div className="flex justify-center gap-3 mt-6">
                           {member.social.linkedin && (
-                            <Button size="icon" variant="secondary" asChild className="h-10 w-10 rounded-full bg-background/80 backdrop-blur-sm hover:bg-background">
+                            <Button size="icon" variant="outline" asChild className="h-10 w-10 rounded-full hover:bg-primary hover:border-primary hover:text-white transition-all duration-300">
                               <a href={member.social.linkedin} target="_blank" rel="noopener noreferrer">
-                                <Linkedin className="h-5 w-5" />
+                                <Linkedin className="h-4 w-4" />
                               </a>
                             </Button>
                           )}
                           {member.social.twitter && (
-                            <Button size="icon" variant="secondary" asChild className="h-10 w-10 rounded-full bg-background/80 backdrop-blur-sm hover:bg-background">
+                            <Button size="icon" variant="outline" asChild className="h-10 w-10 rounded-full hover:bg-primary hover:border-primary hover:text-white transition-all duration-300">
                               <a href={member.social.twitter} target="_blank" rel="noopener noreferrer">
-                                <Twitter className="h-5 w-5" />
+                                <Twitter className="h-4 w-4" />
                               </a>
                             </Button>
                           )}
                           {member.social.github && (
-                            <Button size="icon" variant="secondary" asChild className="h-10 w-10 rounded-full bg-background/80 backdrop-blur-sm hover:bg-background">
+                            <Button size="icon" variant="outline" asChild className="h-10 w-10 rounded-full hover:bg-primary hover:border-primary hover:text-white transition-all duration-300">
                               <a href={member.social.github} target="_blank" rel="noopener noreferrer">
-                                <Github className="h-5 w-5" />
+                                <Github className="h-4 w-4" />
                               </a>
                             </Button>
                           )}
                         </div>
-                      </div>
+                      </CardContent>
                     </div>
-
-                    <CardContent className="p-6 text-center">
-                      <h3 className="text-xl font-bold text-foreground mb-1">{member.name}</h3>
-                      <p className="text-sm text-primary font-medium mb-3">{t(`about.team.${member.key}.role`)}</p>
-                      <p className="text-sm text-muted-foreground leading-relaxed">{t(`about.team.${member.key}.bio`)}</p>
-                    </CardContent>
                   </Card>
                 </AnimatedSection>
               ))}
@@ -468,10 +478,7 @@ export default function AboutPage() {
         <SectionSeparator />
 
         {/* CTA */}
-        <section className="relative py-20 lg:py-32 bg-gradient-to-br from-primary/5 via-background to-primary/10 overflow-hidden">
-          {/* Animated Background Elements */}
-          <div className="absolute top-1/4 left-1/4 w-72 h-72 bg-primary/5 rounded-full blur-3xl animate-pulse" />
-          <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-primary/3 rounded-full blur-3xl animate-pulse delay-1000" />
+        <section className="py-20 bg-background">
 
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
             <AnimatedSection>

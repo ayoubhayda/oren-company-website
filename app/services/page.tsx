@@ -71,12 +71,12 @@ export default function ServicesPage() {
         {/* Hero Section - Enhanced */}
         <section className="relative h-screen flex items-center overflow-hidden">
           {/* Subtle gradient background */}
-          <div className="absolute inset-0 bg-gradient-to-b from-primary/5 via-background to-background" />
+          <div className="absolute inset-0 bg-gradient-to-b from-primary/5 via-background to-background pointer-events-none" />
 
-          <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 z-10">
             <div className="max-w-4xl mx-auto text-center space-y-8">
               <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 text-primary text-sm font-medium">
-                <Zap className="w-4 h-4" />
+                <div className="w-2 h-2 rounded-full bg-primary"></div>
                 <span>{t("services.hero.badge")}</span>
               </div>
 
@@ -195,7 +195,7 @@ export default function ServicesPage() {
                         Coming Soon
                       </Button>
                     ) : (
-                      <Button variant="outline" asChild className="w-full hover:bg-primary/5">
+                      <Button variant="outline" asChild className="w-full hover:bg-primary hover:text-white transition-colors">
                         <Link href={service.href}>{t("common.learnMore")}</Link>
                       </Button>
                     )}

@@ -17,6 +17,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { useLanguage } from "@/components/language-provider";
 import Link from "next/link";
@@ -50,18 +51,21 @@ const services = [
     titleKey: "services.marketing",
     descKey: "services.marketing.desc",
     href: "/services/digital-marketing",
+    comingSoon: true,
   },
   {
     icon: Share2,
     titleKey: "services.social",
     descKey: "services.social.desc",
     href: "/services/social-media",
+    comingSoon: true,
   },
   {
     icon: Palette,
     titleKey: "services.design",
     descKey: "services.design.desc",
     href: "/services/design",
+    comingSoon: true,
   },
 ];
 
@@ -92,31 +96,65 @@ export function ServicesSection() {
         <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
           {services.map((service, index) => (
             <StaggerItem key={index}>
-              <Card className="group hover:border-primary/30 transition-all duration-300 hover:-translate-y-1 border-border h-full">
-                <CardHeader>
-                  <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-colors">
-                    <service.icon className="h-6 w-6 text-primary" />
-                  </div>
-                  <CardTitle className="text-xl">
-                    {t(service.titleKey)}
-                  </CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <CardDescription className="text-muted-foreground mb-4 leading-relaxed">
-                    {t(service.descKey)}
-                  </CardDescription>
-                  <Button
-                    variant="link"
-                    asChild
-                    className="!p-0 h-auto font-semibold group/link hover:text-black dark:hover:text-white hover:no-underline"
-                  >
-                    <Link href={service.href}>
-                      {t("common.learnMore")}
+              <Card className={`group transition-all duration-300 border-border flex flex-col justify-between h-full ${
+                service.comingSoon
+                  ? "opacity-75 hover:border-muted-foreground/30 hover:-translate-y-0"
+                  : "hover:border-primary/30 hover:-translate-y-1"
+              }`}>
+                {/* Gradient overlay on hover */}
+                <div className={`absolute inset-0 bg-gradient-to-br from-primary/0 via-primary/0 to-primary/5 transition-opacity duration-500 ${
+                  service.comingSoon ? "opacity-0" : "opacity-0 group-hover:opacity-100"
+                }`} />
 
-                      <ArrowRight className="ms-0.5 transform rtl:rotate-180" />
-                    </Link>
-                  </Button>
-                </CardContent>
+                <div className="relative flex flex-col gap-5">
+                  <CardHeader className="space-y-4">
+                    <div className="flex items-start justify-between">
+                      <div className={`w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center transition-colors ${
+                        service.comingSoon
+                          ? "bg-muted-foreground/10"
+                          : "group-hover:bg-primary/20"
+                      }`}>
+                        <service.icon className={`h-6 w-6 transition-colors ${
+                          service.comingSoon ? "text-muted-foreground" : "text-primary"
+                        }`} />
+                      </div>
+                      {service.comingSoon && (
+                        <Badge variant="outline" className="text-xs text-muted-foreground border-muted-foreground/30">
+                          Coming Soon
+                        </Badge>
+                      )}
+                    </div>
+                    <CardTitle className={`text-xl ${service.comingSoon ? "text-muted-foreground" : ""}`}>
+                      {t(service.titleKey)}
+                    </CardTitle>
+                  </CardHeader>
+
+                  <CardContent className="space-y-5">
+                    <CardDescription className={`leading-relaxed text-base ${service.comingSoon ? "text-muted-foreground/80" : "text-muted-foreground"}`}>
+                      {t(service.descKey)}
+                    </CardDescription>
+                  </CardContent>
+                </div>
+
+                <div className="mt-auto p-6 pt-0">
+                  {service.comingSoon ? (
+                    <Button variant="outline" disabled className="w-full opacity-50 cursor-not-allowed">
+                      Coming Soon
+                    </Button>
+                  ) : (
+                    <Button
+                      variant="link"
+                      asChild
+                      className="!p-0 h-auto font-semibold group/link hover:text-black dark:hover:text-white hover:no-underline"
+                    >
+                      <Link href={service.href}>
+                        {t("common.learnMore")}
+
+                        <ArrowRight className="ms-0.5 transform rtl:rotate-180" />
+                      </Link>
+                    </Button>
+                  )}
+                </div>
               </Card>
             </StaggerItem>
           ))}

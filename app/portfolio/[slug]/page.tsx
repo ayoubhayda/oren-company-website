@@ -7,10 +7,11 @@ import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Separator } from "@/components/ui/separator"
-import { ArrowLeft, ArrowRight, Calendar, Users, Building, Clock, Target, Zap, Quote, Image as ImageIcon, Layers, Star, Share2, ChevronLeft, ChevronRight } from "lucide-react"
+import { ArrowLeft, ArrowRight, Calendar, Users, Building, Clock, Target, Zap, Quote, Image as ImageIcon, Layers, Star, Share2, ChevronLeft, ChevronRight, Github } from "lucide-react"
 import Link from "next/link"
 import Image from "next/image"
 import { notFound } from "next/navigation"
+import { useLanguage } from "@/components/language-provider"
 
 // Mock data - in a real app, this would come from a CMS or database
 const projects: Record<
@@ -41,7 +42,7 @@ const projects: Record<
     category: "E-commerce",
     tags: ["React", "Node.js", "Stripe", "PostgreSQL"],
     client: "Fashion Retailer",
-    duration: "4 months",
+    duration: "project.duration.4months",
     team: "5 developers",
     challenge:
       "The client needed a modern e-commerce platform to replace their outdated system. The main challenges were handling high traffic during sales events, providing advanced product filtering, and creating a seamless checkout experience that would reduce cart abandonment.",
@@ -87,7 +88,7 @@ const projects: Record<
     category: "SaaS",
     tags: ["Next.js", "TypeScript", "PostgreSQL", "WebSocket"],
     client: "Analytics Startup",
-    duration: "6 months",
+    duration: "project.duration.6months",
     team: "6 developers",
     challenge:
       "Building a real-time analytics dashboard that could handle millions of data points while providing instant insights. The platform needed to support multiple data sources, custom dashboards, and team collaboration features.",
@@ -133,7 +134,7 @@ const projects: Record<
     category: "Corporate",
     tags: ["Next.js", "Sanity CMS", "i18n"],
     client: "International Corporation",
-    duration: "3 months",
+    duration: "project.duration.3months",
     team: "4 developers",
     challenge:
       "Creating a corporate website that serves 12 different markets with localized content, maintains brand consistency, and provides easy content management for regional teams.",
@@ -171,7 +172,7 @@ const projects: Record<
     category: "Web Development",
     tags: ["React", "Node.js", "MongoDB"],
     client: "Boutique Hotel Chain",
-    duration: "5 months",
+    duration: "project.duration.5months",
     team: "6 developers",
     challenge:
       "The hotel chain needed a modern booking platform that could handle real-time room availability across multiple properties, integrate with their existing property management system, and provide a seamless booking experience for guests. The system also needed to support dynamic pricing, special offers, and loyalty programs.",
@@ -215,7 +216,7 @@ const projects: Record<
     category: "SaaS",
     tags: ["React Native", "Firebase", "Stripe"],
     client: "Fitness Startup",
-    duration: "7 months",
+    duration: "project.duration.7months",
     team: "5 developers",
     challenge:
       "Creating a comprehensive fitness tracking application that works seamlessly across iOS and Android, integrates with popular fitness wearables, provides personalized workout recommendations, and includes social features to keep users motivated. The app needed to handle offline functionality and sync data when connectivity is restored.",
@@ -267,7 +268,7 @@ const projects: Record<
     category: "E-commerce",
     tags: ["Next.js", "Tailwind", "Stripe"],
     client: "Regional Restaurant Chain",
-    duration: "4 months",
+    duration: "project.duration.4months",
     team: "4 developers",
     challenge:
       "The restaurant chain needed a unified web presence for their 15 locations with individual menus, online ordering, table reservations, and loyalty program integration. Each location needed to manage their own content while maintaining brand consistency. The system had to handle high traffic during peak hours and integrate with their existing POS system.",
@@ -310,6 +311,7 @@ export default function ProjectPage({ params }: { params: Promise<{ slug: string
   const { slug } = use(params)
   const project = projects[slug]
   const [currentImageIndex, setCurrentImageIndex] = useState(0)
+  const { t, language } = useLanguage()
 
   if (!project) {
     notFound()
@@ -336,8 +338,12 @@ export default function ProjectPage({ params }: { params: Promise<{ slug: string
             <div className="mb-8">
             <Button variant="ghost" asChild className="group">
               <Link href="/portfolio" className="flex items-center gap-2 hover:gap-3 transition-all">
-                <ArrowLeft className="h-4 w-4 group-hover:-translate-x-1 transition-transform" />
-                  Back to Portfolio
+                {language === "ar" ? (
+                  <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                ) : (
+                  <ArrowLeft className="h-4 w-4 group-hover:-translate-x-1 transition-transform" />
+                )}
+                  {t("project.backToPortfolio")}
                 </Link>
               </Button>
             </div>
@@ -356,7 +362,7 @@ export default function ProjectPage({ params }: { params: Promise<{ slug: string
                       {[...Array(5)].map((_, i) => (
                         <Star key={i} className="h-4 w-4 fill-yellow-400 text-yellow-400 dark:fill-yellow-500 dark:text-yellow-500" />
                       ))}
-                      <span className="text-sm text-muted-foreground ml-2">4.8 (127 reviews)</span>
+                      <span className="text-sm text-muted-foreground ml-2">{t("project.rating")} ({t("project.reviews")})</span>
                     </div>
                   </div>
 
@@ -497,7 +503,7 @@ export default function ProjectPage({ params }: { params: Promise<{ slug: string
                 <div className="space-y-8">
                   <div className="flex items-center gap-3">
                     <Target className="h-5 w-5 text-primary" />
-                    <h2 className="text-2xl font-bold text-foreground">Project Overview</h2>
+                    <h2 className="text-2xl font-bold text-foreground">{t("project.overview")}</h2>
                   </div>
 
                   <div className="prose prose-xl max-w-none">
@@ -510,67 +516,71 @@ export default function ProjectPage({ params }: { params: Promise<{ slug: string
 
                 {/* Key Features */}
                 <div className="space-y-6">
-                  <h2 className="text-2xl font-bold text-foreground">Key Features</h2>
+                  <h2 className="text-2xl font-bold text-foreground">{t("project.keyFeatures")}</h2>
 
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <Card className="border-border/50">
-                      <CardContent className="p-6">
+                    <Card className="border-border/50 py-0 group transition-all duration-300 flex flex-col justify-between h-full hover:border-primary/30 hover:-translate-y-1">
+                      <div className="absolute inset-0 bg-gradient-to-br from-primary/0 via-primary/0 to-primary/5 transition-opacity duration-500 opacity-0 group-hover:opacity-100 pointer-events-none" />
+                      <CardContent className="p-4 relative z-10">
                         <div className="flex items-start gap-4">
                           <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
                             <Users className="h-5 w-5 text-primary" />
                           </div>
                           <div>
-                            <h3 className="font-semibold text-foreground mb-3">User Experience</h3>
+                            <h3 className="font-semibold text-foreground mb-3">{t("project.userExperience")}</h3>
                             <p className="text-base text-muted-foreground">
-                              Intuitive design with seamless navigation and responsive layout across all devices
+                              {t("project.userExperienceDesc")}
                             </p>
                           </div>
                         </div>
                       </CardContent>
                     </Card>
 
-                    <Card className="border-border/50">
-                      <CardContent className="p-6">
+                    <Card className="border-border/50 py-0 group transition-all duration-300 flex flex-col justify-between h-full hover:border-primary/30 hover:-translate-y-1">
+                      <CardContent className="p-4 relative z-10">
+                      <div className="absolute inset-0 bg-gradient-to-br from-primary/0 via-primary/0 to-primary/5 transition-opacity duration-500 opacity-0 group-hover:opacity-100 pointer-events-none" />
                         <div className="flex items-start gap-4">
                           <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
                             <Zap className="h-5 w-5 text-primary" />
                           </div>
                           <div>
-                            <h3 className="font-semibold text-foreground mb-3">Performance</h3>
+                            <h3 className="font-semibold text-foreground mb-3">{t("project.performance")}</h3>
                             <p className="text-base text-muted-foreground">
-                              Optimized for speed with efficient database queries and caching strategies
+                              {t("project.performanceDesc")}
                             </p>
                           </div>
                         </div>
                       </CardContent>
                     </Card>
 
-                    <Card className="border-border/50">
-                      <CardContent className="p-6">
+                    <Card className="border-border/50 py-0 group transition-all duration-300 flex flex-col justify-between h-full hover:border-primary/30 hover:-translate-y-1">
+                      <div className="absolute inset-0 bg-gradient-to-br from-primary/0 via-primary/0 to-primary/5 transition-opacity duration-500 opacity-0 group-hover:opacity-100 pointer-events-none" />
+                      <CardContent className="p-4 relative z-10">
                         <div className="flex items-start gap-4">
                           <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
                             <Target className="h-5 w-5 text-primary" />
                           </div>
                           <div>
-                            <h3 className="font-semibold text-foreground mb-3">Reliability</h3>
+                            <h3 className="font-semibold text-foreground mb-3">{t("project.reliability")}</h3>
                             <p className="text-base text-muted-foreground">
-                              Robust architecture with 99.9% uptime and comprehensive error handling
+                              {t("project.reliabilityDesc")}
                             </p>
                           </div>
                         </div>
                       </CardContent>
                     </Card>
 
-                    <Card className="border-border/50">
-                      <CardContent className="p-6">
+                    <Card className="border-border/50 py-0 group transition-all duration-300 flex flex-col justify-between h-full hover:border-primary/30 hover:-translate-y-1">
+                      <div className="absolute inset-0 bg-gradient-to-br from-primary/0 via-primary/0 to-primary/5 transition-opacity duration-500 opacity-0 group-hover:opacity-100 pointer-events-none" />
+                      <CardContent className="p-4 relative z-10">
                         <div className="flex items-start gap-4">
                           <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
                             <Layers className="h-5 w-5 text-primary" />
                           </div>
                           <div>
-                            <h3 className="font-semibold text-foreground mb-3">Scalability</h3>
+                            <h3 className="font-semibold text-foreground mb-3">{t("project.scalability")}</h3>
                             <p className="text-base text-muted-foreground">
-                              Built to grow with your business, handling increased traffic and data seamlessly
+                              {t("project.scalabilityDesc")}
                             </p>
                           </div>
                         </div>
@@ -588,12 +598,35 @@ export default function ProjectPage({ params }: { params: Promise<{ slug: string
                 {/* Quick Actions */}
                 <Card>
                   <CardHeader>
-                    <CardTitle className="text-lg">Quick Actions</CardTitle>
+                    <CardTitle className="text-lg">{t("project.quickActions")}</CardTitle>
                   </CardHeader>
                   <CardContent className="space-y-4">
+                    <Button
+                      variant="outline"
+                      className="w-full justify-start gap-3 bg-primary/10 border-primary/20 hover:bg-primary/20 text-primary"
+                      size="lg"
+                      asChild
+                    >
+                      <a
+                        href={project.demoLink}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                          <ImageIcon className="h-4 w-4" />
+                          {t("project.viewLiveDemo")}
+                        </a>
+                    </Button>
+                    <Button
+                      variant="outline"
+                      className="w-full justify-start gap-3"
+                      size="lg"
+                    >
+                      <Github className="h-4 w-4" />
+                      {t("project.sourceCode")}
+                    </Button>
                     <Button variant="outline" className="w-full justify-start gap-3" size="lg">
                       <Share2 className="h-4 w-4" />
-                      Share Project
+                      {t("project.shareProject")}
                     </Button>
                   </CardContent>
                 </Card>
@@ -601,27 +634,27 @@ export default function ProjectPage({ params }: { params: Promise<{ slug: string
                 {/* Project Details */}
                 <Card>
                   <CardHeader>
-                    <CardTitle className="text-lg">Project Details</CardTitle>
+                    <CardTitle className="text-lg">{t("project.projectDetails")}</CardTitle>
                   </CardHeader>
                   <CardContent className="space-y-4">
                     <div className="flex items-center gap-3">
                       <Calendar className="h-4 w-4 text-muted-foreground" />
                       <div>
-                        <p className="text-sm text-muted-foreground">Duration</p>
-                        <p className="font-semibold">{project.duration}</p>
+                        <p className="text-sm text-muted-foreground">{t("project.duration")}</p>
+                        <p className="font-semibold">{t(project.duration)}</p>
                       </div>
                     </div>
                     <div className="flex items-center gap-3">
-                      <Users className="h-4 w-4 text-muted-foreground" />
+                      <Layers className="h-4 w-4 text-muted-foreground" />
                       <div>
-                        <p className="text-sm text-muted-foreground">Team Size</p>
-                        <p className="font-semibold">{project.team}</p>
+                        <p className="text-sm text-muted-foreground">{t("project.techStack")}</p>
+                        <p className="font-semibold">{project.technologies.length} {t("project.technologies")}</p>
                       </div>
                     </div>
                     <div className="flex items-center gap-3">
                       <Building className="h-4 w-4 text-muted-foreground" />
                       <div>
-                        <p className="text-sm text-muted-foreground">Client</p>
+                        <p className="text-sm text-muted-foreground">{t("project.client")}</p>
                         <p className="font-semibold">{project.client}</p>
             </div>
           </div>
@@ -631,7 +664,7 @@ export default function ProjectPage({ params }: { params: Promise<{ slug: string
                 {/* Project Rating */}
                 <Card>
                   <CardHeader>
-                    <CardTitle className="text-lg">Project Rating</CardTitle>
+                    <CardTitle className="text-lg">{t("project.projectRating")}</CardTitle>
                   </CardHeader>
                   <CardContent>
                     <div className="space-y-4">
@@ -643,14 +676,14 @@ export default function ProjectPage({ params }: { params: Promise<{ slug: string
                       </div>
                       <div className="space-y-2">
                         <div className="flex items-center justify-between text-sm">
-                          <span>Functionality</span>
+                          <span>{t("project.functionality")}</span>
                           <span>95%</span>
                         </div>
                         <div className="w-full bg-muted rounded-full h-2">
                           <div className="bg-primary h-2 rounded-full" style={{ width: '95%' }}></div>
                         </div>
                         <div className="flex items-center justify-between text-sm">
-                          <span>Design</span>
+                          <span>{t("project.design")}</span>
                           <span>90%</span>
                         </div>
                         <div className="w-full bg-muted rounded-full h-2">
@@ -672,7 +705,7 @@ export default function ProjectPage({ params }: { params: Promise<{ slug: string
                 <div className="space-y-6">
                   <div className="flex items-center gap-3">
                     <Layers className="h-5 w-5 text-primary" />
-                    <h2 className="text-2xl font-bold text-foreground">Technologies Used</h2>
+                    <h2 className="text-2xl font-bold text-foreground">{t("project.technologiesUsed")}</h2>
                   </div>
 
                   <div className="flex flex-wrap gap-3">
@@ -693,11 +726,11 @@ export default function ProjectPage({ params }: { params: Promise<{ slug: string
                   <Card className="bg-primary/5 border-primary/20">
                     <CardContent className="p-6">
                       <Quote className="h-8 w-8 text-primary mb-4" />
-                      <p className="text-foreground mb-4 italic">"{project.testimonial.quote}"</p>
+                      <p className="text-foreground mb-4 italic">"{t("project.testimonialQuote")}"</p>
               <div>
-                        <p className="font-semibold text-foreground">{project.testimonial.author}</p>
-                        <p className="text-sm text-muted-foreground">{project.testimonial.role}</p>
-                      </div>
+                <p className="font-semibold text-foreground">{t("project.testimonialAuthor")}</p>
+                <p className="text-sm text-muted-foreground">{t("project.testimonialRole")}</p>
+              </div>
                     </CardContent>
                   </Card>
                 )}
@@ -711,13 +744,13 @@ export default function ProjectPage({ params }: { params: Promise<{ slug: string
         <section className="py-20 lg:py-32">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto bg-primary text-primary-foreground rounded-2xl p-12 text-center space-y-6">
-              <h2 className="text-3xl sm:text-4xl font-bold">Ready to Start Your Project?</h2>
+              <h2 className="text-3xl sm:text-4xl font-bold">{t("portfolio.cta.title")}</h2>
               <p className="text-lg text-primary-foreground/90 max-w-2xl mx-auto">
-                Let's discuss how we can help you achieve similar results with a custom solution.
+                {t("portfolio.cta.subtitle")}
               </p>
               <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
                 <Button size="lg" variant="secondary" asChild className="dark:bg-white dark:text-black dark:hover:bg-white/85">
-                  <Link href="/contact">Get Started</Link>
+                  <Link href="/contact">{t("portfolio.cta.button.primary")}</Link>
                 </Button>
                 <Button
                   size="lg"
@@ -725,7 +758,7 @@ export default function ProjectPage({ params }: { params: Promise<{ slug: string
                   asChild
                   className="bg-transparent border-white/20 text-white hover:bg-white/10 hover:border-white/40 hover:text-white dark:border-white/20 dark:hover:bg-white/10 dark:hover:border-white/40"
                 >
-                  <Link href="/portfolio">View More Work</Link>
+                  <Link href="/portfolio">{t("portfolio.cta.button.secondary")}</Link>
                 </Button>
               </div>
             </div>
