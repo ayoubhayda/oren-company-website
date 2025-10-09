@@ -12,7 +12,6 @@ import { AnimatedSection, StaggerContainer, StaggerItem } from "@/components/ani
 import { useLanguage } from "@/components/language-provider"
 import SectionSeparator from "@/components/general/SectionSeparator"
 import MinimalSectionSeparator from "@/components/general/MinimalSectionSeparator"
-import { HeroSectionBackground } from "@/components/animations/HeroSectionBackground"
 
 const team = [
   {
@@ -74,43 +73,8 @@ export default function AboutPage() {
     <div className="min-h-screen">
       <Header />
       <main>
-        {/* Hero Section - Interactive Digital Experience */}
-        <section className="relative overflow-hidden py-18 lg:py-22 bg-gradient-to-b from-background via-background to-primary/10" id="hero-section">
-          {/* Hero Section Background Component */}
-          <HeroSectionBackground />
-
-          {/* ===== CONTENT ===== */}
-          <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <div className="text-center">
-              {/* digital crumbs */}
-              <div className="mx-auto mb-8 flex w-full max-w-[320px] items-center justify-center gap-3">
-                <div className="h-px flex-1 bg-gradient-to-r from-transparent to-[#0069FF]/60" />
-                <div className="h-2 w-2 rounded-full bg-[#0069FF]" />
-                <div className="h-px flex-1 bg-gradient-to-l from-transparent to-[#00BFFF]/60" />
-              </div>
-
-              <h1 className="mx-auto max-w-5xl text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-foreground leading-tight">
-                Discover Our Story &
-                <span className="relative mt-2 block text-transparent bg-clip-text bg-gradient-to-r from-[#0069FF] to-[#00BFFF]">
-                  Values
-                </span>
-              </h1>
-
-              <div className="mt-6 inline-flex items-center gap-2 text-sm text-muted-foreground">
-                <span className="h-1 w-1 rounded-full bg-[#0069FF]/70" />
-                Learn more about us below
-                <span className="h-1 w-1 rounded-full bg-[#0069FF]/70" />
-              </div>
-            </div>
-          </div>
-        </section>
-
         {/* Mission & Vision */}
-        <section className="relative py-20">
-          {/* Minimal Section Separator - positioned at intersection */}
-          <div className="absolute -top-12 left-0 right-0 z-10">
-            <MinimalSectionSeparator />
-          </div>
+        <section className="relative py-20 pt-28 sm:pt-32">
 
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
             {/* Section Header */}
@@ -192,7 +156,7 @@ export default function AboutPage() {
         <SectionSeparator />
 
         {/* Values */}
-        <section className="py-20 lg:py-32">
+        <section className="py-20">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             {/* Section Header */}
             <div className="max-w-3xl mx-auto text-center mb-16">

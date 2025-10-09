@@ -32,7 +32,7 @@ export async function createJobMutation(data: ProjectFormData) {
     },
   });
 
-  return redirect("/dashboard");
+  return redirect("/dashboard/projects");
 }
 
 // update existing project
@@ -64,7 +64,7 @@ export async function updateProjectMutation(id: string, data: ProjectFormData) {
     },
   });
 
-  return redirect("/dashboard");
+  return redirect("/dashboard/projects");
 }
 
 // delete existing project

@@ -101,12 +101,8 @@ export function ServicesSection() {
                   ? "opacity-75 hover:border-muted-foreground/30 hover:-translate-y-0"
                   : "hover:border-primary/30 hover:-translate-y-1"
               }`}>
-                {/* Gradient overlay on hover */}
-                <div className={`absolute inset-0 bg-gradient-to-br from-primary/0 via-primary/0 to-primary/5 transition-opacity duration-500 ${
-                  service.comingSoon ? "opacity-0" : "opacity-0 group-hover:opacity-100"
-                }`} />
 
-                <div className="relative flex flex-col gap-5">
+                <div className="relative flex flex-col gap-4">
                   <CardHeader className="space-y-4">
                     <div className="flex items-start justify-between">
                       <div className={`w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center transition-colors ${
@@ -129,29 +125,25 @@ export function ServicesSection() {
                     </CardTitle>
                   </CardHeader>
 
-                  <CardContent className="space-y-5">
-                    <CardDescription className={`leading-relaxed text-base ${service.comingSoon ? "text-muted-foreground/80" : "text-muted-foreground"}`}>
+                  <CardContent className="space-y-4">
+                    <CardDescription className={`leading-relaxed ${service.comingSoon ? "text-muted-foreground/80" : "text-muted-foreground"}`}>
                       {t(service.descKey)}
                     </CardDescription>
                   </CardContent>
                 </div>
 
-                <div className="mt-auto p-6 pt-0">
+                <div className="mt-auto px-6 pt-0">
                   {service.comingSoon ? (
                     <Button variant="outline" disabled className="w-full opacity-50 cursor-not-allowed">
                       Coming Soon
                     </Button>
                   ) : (
                     <Button
-                      variant="link"
+                      variant="outline"
                       asChild
-                      className="!p-0 h-auto font-semibold group/link hover:text-black dark:hover:text-white hover:no-underline"
+                      className="w-full hover:bg-primary/20 hover:border-primary/30 transition-colors"
                     >
-                      <Link href={service.href}>
-                        {t("common.learnMore")}
-
-                        <ArrowRight className="ms-0.5 transform rtl:rotate-180" />
-                      </Link>
+                      <Link href={service.href}>{t("common.learnMore")}</Link>
                     </Button>
                   )}
                 </div>

@@ -11,7 +11,6 @@ import { ArrowRight, Filter, Grid3X3, Eye, Github, Star } from "lucide-react"
 import { useLanguage } from "@/components/language-provider"
 import SectionSeparator from "@/components/general/SectionSeparator"
 import MinimalSectionSeparator from "@/components/general/MinimalSectionSeparator"
-import { HeroSectionBackground } from "@/components/animations/HeroSectionBackground"
 
 const categories = [
   { key: "portfolio.filter.all", value: "All" },
@@ -101,43 +100,9 @@ export default function PortfolioPage() {
     <div className="min-h-screen">
       <Header />
       <main>
-        {/* Hero Section - Interactive Digital Experience */}
-        <section className="relative overflow-hidden py-18 lg:py-22 bg-gradient-to-b from-background via-background to-primary/10" id="hero-section">
-          {/* Hero Section Background Component */}
-          <HeroSectionBackground />
-
-          {/* ===== CONTENT ===== */}
-          <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <div className="text-center">
-              {/* digital crumbs */}
-              <div className="mx-auto mb-8 flex w-full max-w-[320px] items-center justify-center gap-3">
-                <div className="h-px flex-1 bg-gradient-to-r from-transparent to-[#0069FF]/60" />
-                <div className="h-2 w-2 rounded-full bg-[#0069FF]" />
-                <div className="h-px flex-1 bg-gradient-to-l from-transparent to-[#00BFFF]/60" />
-              </div>
-
-              <h1 className="mx-auto max-w-5xl text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-foreground leading-tight">
-                Showcase Your Digital
-                <span className="relative mt-2 block text-transparent bg-clip-text bg-gradient-to-r from-[#0069FF] to-[#00BFFF]">
-                  Success Stories
-                </span>
-              </h1>
-
-              <div className="mt-6 inline-flex items-center gap-2 text-sm text-muted-foreground">
-                <span className="h-1 w-1 rounded-full bg-[#0069FF]/70" />
-                Explore our portfolio below
-                <span className="h-1 w-1 rounded-full bg-[#0069FF]/70" />
-              </div>
-            </div>
-          </div>
-        </section>
 
         {/* Filter & Projects */}
-        <section id="projects" className="relative py-20 lg:py-32">
-          {/* Minimal Section Separator - positioned at intersection */}
-          <div className="absolute -top-12 left-0 right-0 z-10">
-            <MinimalSectionSeparator />
-          </div>
+        <section id="projects" className="relative py-20 pt-28 sm:pt-32">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             {/* Section Header */}
             <div className="max-w-3xl mx-auto text-center mb-16">
@@ -336,7 +301,7 @@ export default function PortfolioPage() {
         <SectionSeparator />
 
         {/* CTA */}
-        <section className="py-20 lg:py-32">
+        <section className="py-20">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto bg-primary text-primary-foreground rounded-2xl p-12 text-center space-y-6">
               <h2 className="text-3xl sm:text-4xl font-bold">{t("portfolio.cta.title")}</h2>

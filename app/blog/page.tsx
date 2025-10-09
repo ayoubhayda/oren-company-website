@@ -1,34 +1,41 @@
-"use client"
+"use client";
 
-import { Header } from "@/components/header"
-import { Footer } from "@/components/footer"
-import { useState } from "react"
-import Image from "next/image"
-import Link from "next/link"
-import { Card, CardContent } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Calendar, Clock, Search, Zap, ArrowRight, ArrowLeft } from "lucide-react"
-import { useLanguage } from "@/components/language-provider"
-import SectionSeparator from "@/components/general/SectionSeparator"
-import MinimalSectionSeparator from "@/components/general/MinimalSectionSeparator"
-import { HeroSectionBackground } from "@/components/animations/HeroSectionBackground"
+import { Header } from "@/components/header";
+import { Footer } from "@/components/footer";
+import { useState } from "react";
+import Image from "next/image";
+import Link from "next/link";
+import { Card, CardContent } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import {
+  Calendar,
+  Clock,
+  Search,
+  Zap,
+  ArrowRight,
+  ArrowLeft,
+} from "lucide-react";
+import { useLanguage } from "@/components/language-provider";
+import SectionSeparator from "@/components/general/SectionSeparator";
+import MinimalSectionSeparator from "@/components/general/MinimalSectionSeparator";
 
 const categories = [
   { key: "all", labelKey: "blog.category.all" },
   { key: "webdev", labelKey: "blog.category.webdev" },
   { key: "design", labelKey: "blog.category.design" },
   { key: "marketing", labelKey: "blog.category.marketing" },
-  { key: "technology", labelKey: "blog.category.technology" }
-]
+  { key: "technology", labelKey: "blog.category.technology" },
+];
 
 const posts = [
   {
     id: "modern-web-development-trends-2025",
     titleKey: "blog.post.trends2025.title",
     excerptKey: "blog.post.trends2025.excerpt",
-    image: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
+    image:
+      "https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
     categoryKey: "blog.category.webdev",
     author: "Sarah Johnson",
     date: "2025-01-15",
@@ -38,7 +45,8 @@ const posts = [
     id: "designing-for-accessibility",
     titleKey: "blog.post.accessibility.title",
     excerptKey: "blog.post.accessibility.excerpt",
-    image: "https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
+    image:
+      "https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
     categoryKey: "blog.category.design",
     author: "Emma Williams",
     date: "2025-01-10",
@@ -48,7 +56,8 @@ const posts = [
     id: "seo-strategies-2025",
     titleKey: "blog.post.seoStrategies.title",
     excerptKey: "blog.post.seoStrategies.excerpt",
-    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2015&q=80",
+    image:
+      "https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2015&q=80",
     categoryKey: "blog.category.marketing",
     author: "Michael Chen",
     date: "2025-01-05",
@@ -58,7 +67,8 @@ const posts = [
     id: "nextjs-performance-optimization",
     titleKey: "blog.post.nextjsPerformance.title",
     excerptKey: "blog.post.nextjsPerformance.excerpt",
-    image: "https://images.unsplash.com/photo-1555949963-aa79dcee981c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
+    image:
+      "https://images.unsplash.com/photo-1555949963-aa79dcee981c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
     categoryKey: "blog.category.webdev",
     author: "Sarah Johnson",
     date: "2024-12-28",
@@ -68,7 +78,8 @@ const posts = [
     id: "ui-design-principles",
     titleKey: "blog.post.uiDesignPrinciples.title",
     excerptKey: "blog.post.uiDesignPrinciples.excerpt",
-    image: "https://images.unsplash.com/photo-1561070791-2526d30994b5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
+    image:
+      "https://images.unsplash.com/photo-1561070791-2526d30994b5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
     categoryKey: "blog.category.design",
     author: "Emma Williams",
     date: "2024-12-20",
@@ -78,58 +89,57 @@ const posts = [
     id: "ai-in-web-development",
     titleKey: "blog.post.aiInWebDev.title",
     excerptKey: "blog.post.aiInWebDev.excerpt",
-    image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
+    image:
+      "https://images.unsplash.com/photo-1677442136019-21780ecad995?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
     categoryKey: "blog.category.technology",
     author: "Michael Chen",
     date: "2024-12-15",
     readTime: "6 min read",
   },
-]
+];
 
 export default function BlogPage() {
-  const [selectedCategory, setSelectedCategory] = useState("all")
-  const [searchQuery, setSearchQuery] = useState("")
-  const { t, language } = useLanguage()
+  const [selectedCategory, setSelectedCategory] = useState("all");
+  const [searchQuery, setSearchQuery] = useState("");
+  const { t, language } = useLanguage();
 
   const filteredPosts = posts.filter((post) => {
-    const postCategory = t(post.categoryKey)
-    const matchesCategory = selectedCategory === "all" || postCategory.toLowerCase() === t(`blog.category.${selectedCategory}`)
+    const postCategory = t(post.categoryKey);
+    const matchesCategory =
+      selectedCategory === "all" ||
+      postCategory.toLowerCase() === t(`blog.category.${selectedCategory}`);
     const matchesSearch =
       searchQuery === "" ||
       t(post.titleKey).toLowerCase().includes(searchQuery.toLowerCase()) ||
-      t(post.excerptKey).toLowerCase().includes(searchQuery.toLowerCase())
-    return matchesCategory && matchesSearch
-  })
+      t(post.excerptKey).toLowerCase().includes(searchQuery.toLowerCase());
+    return matchesCategory && matchesSearch;
+  });
 
   return (
     <div className="min-h-screen">
       <Header />
       <main>
-        {/* Hero Section - Interactive Digital Experience */}
-        <section className="relative overflow-hidden py-18 lg:py-22 bg-gradient-to-b from-background via-background to-primary/10" id="hero-section">
-          {/* Hero Section Background Component */}
-          <HeroSectionBackground />
-
-          {/* ===== CONTENT ===== */}
-          <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        {/* Hero Section */}
+        <section className="relative overflow-hidden pt-28 sm:pt-32 ">
+          <div className=" relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div className="text-center">
-              {/* digital crumbs */}
-              <div className="mx-auto mb-8 flex w-full max-w-[320px] items-center justify-center gap-3">
-                <div className="h-px flex-1 bg-gradient-to-r from-transparent to-[#0069FF]/60" />
-                <div className="h-2 w-2 rounded-full bg-[#0069FF]" />
-                <div className="h-px flex-1 bg-gradient-to-l from-transparent to-[#00BFFF]/60" />
+              {/* Hero budge */}
+              <div className="inline-flex items-center gap-2 px-4 py-2 mb-8 rounded-full bg-primary/10 border border-primary/20 text-sm font-medium text-primary">
+                <div className="w-2 h-2 rounded-full bg-primary"></div>
+                {t("blog.hero.badge")}
               </div>
 
-              <h1 className="mx-auto max-w-5xl text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-foreground leading-tight">
-                Insights & Stories from
+              {/* Hero title */}
+              <h1 className="mx-auto text-4xl sm:text-5xl lg:text-6xl font-extrabold text-foreground leading-tight">
+                {t("blog.hero.title")}
                 <span className="relative mt-2 block text-transparent bg-clip-text bg-gradient-to-r from-[#0069FF] to-[#00BFFF]">
-                  Our Experts
+                  {t("blog.hero.titleHighlight")}
                 </span>
               </h1>
-
+              {/* Hero bio */}
               <div className="mt-6 inline-flex items-center gap-2 text-sm text-muted-foreground">
                 <span className="h-1 w-1 rounded-full bg-[#0069FF]/70" />
-                Explore our latest articles below
+                {t("blog.hero.subtitle")}
                 <span className="h-1 w-1 rounded-full bg-[#0069FF]/70" />
               </div>
             </div>
@@ -137,11 +147,7 @@ export default function BlogPage() {
         </section>
 
         {/* Search & Filter + Blog Posts */}
-        <section className="relative py-20 lg:py-32">
-          {/* Minimal Section Separator - positioned at intersection */}
-          <div className="absolute -top-12 left-0 right-0 z-10">
-            <MinimalSectionSeparator />
-          </div>
+        <section className="relative py-16 sm:py-20">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             {/* Search & Filter */}
             <div className="max-w-4xl mx-auto mb-12 space-y-6">
@@ -162,7 +168,9 @@ export default function BlogPage() {
                 {categories.map((category) => (
                   <Button
                     key={category.key}
-                    variant={selectedCategory === category.key ? "default" : "outline"}
+                    variant={
+                      selectedCategory === category.key ? "default" : "outline"
+                    }
                     onClick={() => setSelectedCategory(category.key)}
                     className="rounded-full"
                   >
@@ -173,7 +181,10 @@ export default function BlogPage() {
             </div>
 
             {/* Blog Posts */}
-            <div id="blog-posts" className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div
+              id="blog-posts"
+              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+            >
               {filteredPosts.map((post) => (
                 <Link key={post.id} href={`/blog/${post.id}`} className="group">
                   <Card className="group transition-all duration-300 border-border flex flex-col justify-between h-full hover:border-primary/30 hover:-translate-y-1 overflow-hidden py-0">
@@ -195,7 +206,9 @@ export default function BlogPage() {
                       <h3 className="text-xl font-semibold text-foreground mb-2 group-hover:text-primary transition-colors line-clamp-2">
                         {t(post.titleKey)}
                       </h3>
-                      <p className="text-muted-foreground text-sm leading-relaxed mb-4 line-clamp-2">{t(post.excerptKey)}</p>
+                      <p className="text-muted-foreground text-sm leading-relaxed mb-4 line-clamp-2">
+                        {t(post.excerptKey)}
+                      </p>
 
                       {/* Meta */}
                       <div className="flex items-center gap-4 text-xs text-muted-foreground pt-4 border-t border-border">
@@ -203,7 +216,11 @@ export default function BlogPage() {
                           <Calendar className="h-3 w-3" />
                           <span>
                             {new Date(post.date).toLocaleDateString(
-                              language === "ar" ? "ar-SA" : language === "fr" ? "fr-FR" : "en-US",
+                              language === "ar"
+                                ? "ar-SA"
+                                : language === "fr"
+                                ? "fr-FR"
+                                : "en-US",
                               {
                                 month: "short",
                                 day: "numeric",
@@ -214,7 +231,12 @@ export default function BlogPage() {
                         </div>
                         <div className="flex items-center gap-1">
                           <Clock className="h-3 w-3" />
-                          <span>{post.readTime.replace("min read", t("blog.readTime"))}</span>
+                          <span>
+                            {post.readTime.replace(
+                              "min read",
+                              t("blog.readTime")
+                            )}
+                          </span>
                         </div>
                       </div>
                     </CardContent>
@@ -229,8 +251,7 @@ export default function BlogPage() {
                 <p className="text-muted-foreground">
                   {searchQuery
                     ? `${t("blog.empty.search")} "${searchQuery}"`
-                    : t("blog.empty.title")
-                  }
+                    : t("blog.empty.title")}
                 </p>
               </div>
             )}
@@ -243,12 +264,18 @@ export default function BlogPage() {
         <section className="py-20 lg:py-32">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-2xl mx-auto text-center space-y-6">
-              <h2 className="text-3xl sm:text-4xl font-bold text-foreground">{t("blog.newsletter.title")}</h2>
+              <h2 className="text-3xl sm:text-4xl font-bold text-foreground">
+                {t("blog.newsletter.title")}
+              </h2>
               <p className="text-lg text-muted-foreground">
                 {t("blog.newsletter.description")}
               </p>
               <div className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
-                <Input type="email" placeholder={t("footer.emailPlaceholder")} className="flex-1" />
+                <Input
+                  type="email"
+                  placeholder={t("footer.emailPlaceholder")}
+                  className="flex-1"
+                />
                 <Button>{t("footer.subscribe")}</Button>
               </div>
             </div>
@@ -257,5 +284,5 @@ export default function BlogPage() {
       </main>
       <Footer />
     </div>
-  )
+  );
 }
