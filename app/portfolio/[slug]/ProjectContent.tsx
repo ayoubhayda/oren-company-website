@@ -1,12 +1,24 @@
 "use client"
 
-import { useState, use } from "react"
+import { useState } from "react"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Separator } from "@/components/ui/separator"
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from "@/components/ui/alert-dialog"
+import { Input } from "@/components/ui/input"
+import { Copy, Check } from "lucide-react"
 import { ArrowLeft, ArrowRight, Calendar, Users, Building, Clock, Target, Zap, Quote, Image as ImageIcon, Layers, Star, Share2, ChevronLeft, ChevronRight, Github, MessageSquare } from "lucide-react"
 import Link from "next/link"
 import Image from "next/image"
@@ -29,7 +41,7 @@ interface ProjectData {
   category: string
   tags: string[]
   client: string
-  duration: string
+  duration: number | null
   team: string
   challenge: {
     en: any
@@ -49,9 +61,24 @@ interface ProjectData {
   githubLink?: string | null
 }
 
-export default function ProjectContent({ project }: { project: ProjectData }) {
+export default function ProjectContent({ project, slug }: { project: ProjectData; slug?: string }) {
   const [currentImageIndex, setCurrentImageIndex] = useState(0)
+  const [copied, setCopied] = useState(false)
   const { t, language } = useLanguage()
+
+  // Generate share URL
+  const shareUrl = typeof window !== 'undefined' ? `${window.location.origin}/portfolio/${slug}` : ''
+
+  // Copy to clipboard function
+  const handleCopy = async () => {
+    try {
+      await navigator.clipboard.writeText(shareUrl)
+      setCopied(true)
+      setTimeout(() => setCopied(false), 2000)
+    } catch (err) {
+      console.error('Failed to copy: ', err)
+    }
+  }
 
   // Helper function to get content for current language with smart fallback
   const getContentForLanguage = (contentObj: { en: any; fr: any; ar: any } | { en: string; fr: string; ar: string }) => {
@@ -121,9 +148,25 @@ export default function ProjectContent({ project }: { project: ProjectData }) {
                 {/* Project Header */}
                 <div className="space-y-6">
                   <div className="flex items-center gap-3">
-                    <Badge className="bg-primary/10 text-primary border-primary/20 px-3 py-1">
-                      {project.category}
-                    </Badge>
+                      <Badge className="bg-primary/10 text-primary border-primary/20 px-3 py-1">
+                        {(() => {
+                          // Map database category values to translation keys
+                          const categoryMap: Record<string, string> = {
+                            'web-development': 'webdev',
+                            'mobile-app': 'mobileapp',
+                            'ecommerce': 'ecommerce',
+                            'design': 'design',
+                            'digital-marketing': 'digitalmarketing',
+                            'custom-platforms': 'customplatforms',
+                          };
+
+                          const translationKey = categoryMap[project.category] ?
+                            `portfolio.filter.${categoryMap[project.category]}` :
+                            `portfolio.filter.${project.category.toLowerCase().replace(/\s+/g, '').replace('-', '')}`;
+
+                          return t(translationKey) || project.category;
+                        })()}
+                      </Badge>
                     <div className="flex items-center gap-1">
                       {[...Array(5)].map((_, i) => (
                         <Star key={i} className="h-4 w-4 fill-yellow-400 text-yellow-400 dark:fill-yellow-500 dark:text-yellow-500" />
@@ -445,10 +488,56 @@ export default function ProjectContent({ project }: { project: ProjectData }) {
                         </a>
                       </Button>
                     )}
-                    <Button variant="outline" className="w-full justify-start gap-3" size="lg">
-                      <Share2 className="h-4 w-4" />
-                      {t("project.shareProject")}
-                    </Button>
+                    <AlertDialog>
+                      <AlertDialogTrigger asChild>
+                        <Button
+                          variant="outline"
+                          className="w-full justify-start gap-3"
+                          size="lg"
+                          disabled={!slug}
+                        >
+                          <Share2 className="h-4 w-4" />
+                          {t("project.shareProject")}
+                        </Button>
+                      </AlertDialogTrigger>
+                      <AlertDialogContent className="max-w-md">
+                        <AlertDialogHeader className={language === "ar" ? "text-right" : ""}>
+                          <AlertDialogTitle className={language === "ar" ? "text-right" : ""}>{t("project.shareProject")}</AlertDialogTitle>
+                          <AlertDialogDescription className={language === "ar" ? "text-right" : ""}>
+                            {t("project.shareDescription")}
+                          </AlertDialogDescription>
+                        </AlertDialogHeader>
+                        <div className={`space-y-4 ${language === "ar" ? "text-right" : ""}`}>
+                          <div className={`flex items-center ${language === "ar" ? "space-x-reverse" : "space-x-2"}`}>
+                            <Input
+                              value={shareUrl}
+                              readOnly
+                              className={`flex-1 ${language === "ar" ? "text-right" : ""}`}
+                            />
+                            <Button
+                              size="sm"
+                              onClick={handleCopy}
+                              className="shrink-0"
+                            >
+                              {copied ? (
+                                <>
+                                  {language === "ar" ? <Check className="h-4 w-4 ml-2" /> : <Check className="h-4 w-4 mr-2" />}
+                                  {t("project.copied")}
+                                </>
+                              ) : (
+                                <>
+                                  {language === "ar" ? <Copy className="h-4 w-4 ml-2" /> : <Copy className="h-4 w-4 mr-2" />}
+                                  {t("project.copy")}
+                                </>
+                              )}
+                            </Button>
+                          </div>
+                        </div>
+                        <AlertDialogFooter className={language === "ar" ? "flex-row-reverse" : ""}>
+                          <AlertDialogCancel>{t("common.close")}</AlertDialogCancel>
+                        </AlertDialogFooter>
+                      </AlertDialogContent>
+                    </AlertDialog>
                   </CardContent>
                 </Card>
 
@@ -462,7 +551,11 @@ export default function ProjectContent({ project }: { project: ProjectData }) {
                       <Calendar className="h-4 w-4 text-muted-foreground" />
                       <div>
                         <p className="text-sm text-muted-foreground">{t("project.duration")}</p>
-                        <p className="font-semibold">{project.duration}</p>
+                        <p className="font-semibold">
+                          {typeof project.duration === 'number'
+                            ? `${project.duration} ${t("project.duration.days")}`
+                            : project.duration || 'N/A'}
+                        </p>
                       </div>
                     </div>
                     <div className="flex items-center gap-3">
@@ -511,7 +604,7 @@ export default function ProjectContent({ project }: { project: ProjectData }) {
                           <div className="bg-primary h-2 rounded-full" style={{ width: '90%' }}></div>
                         </div>
                         <div className="flex items-center justify-between text-sm">
-                          <span>Performance</span>
+                          <span>{t("project.performance")}</span>
                           <span>88%</span>
                         </div>
                         <div className="w-full bg-muted rounded-full h-2">

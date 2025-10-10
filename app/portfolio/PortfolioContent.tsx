@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect, useState } from "react"
+import { useEffect, useState, useMemo, useCallback } from "react"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import Image from "next/image"
@@ -55,61 +55,39 @@ export default function PortfolioContent({ projects }: { projects: Project[] }) 
   const [selectedCategory, setSelectedCategory] = useState("All")
   const [mounted, setMounted] = useState(false)
 
-  // Helper function to get content for current language
-  const getContentForLanguage = <T extends { en: any; fr: any; ar: any }>(contentObj: T): T[keyof T] | null => {
-    return contentObj[language] || contentObj.en || null;
-  };
-
-  // Helper function to get description content with fallback logic
-  const getDescriptionContent = (project: TransformedProject): JSONContent | null => {
+  // Helper function to get description content for a project (used during transformation)
+  const getDescriptionContentForProject = useCallback((project: Project): JSONContent | null => {
     // Try short description first for portfolio cards
-    const shortDesc = getContentForLanguage(project.shortDescription);
+    const shortDesc = project.shortDescription[language] || project.shortDescription.en;
     if (shortDesc) {
-      console.log('Using short description for project:', project.slug);
       return shortDesc;
     }
 
     // Fallback to long description if short description is not available
-    const longDesc = getContentForLanguage(project.longDescription);
+    const longDesc = project.longDescription[language] || project.longDescription.en;
     if (longDesc) {
-      console.log('Using long description for project:', project.slug, '(short desc empty)');
       return longDesc;
     }
 
     // Return null if no description is available
-    // The card will show a fallback message
     return null;
-  };
+  }, [language]);
 
   // Helper function to get title for current language
-  const getTitleForLanguage = (project: Project): string => {
-    const title = getContentForLanguage(project.title);
-    return (typeof title === 'string' ? title : null) || project.title.en || "Untitled Project";
-  };
+  const getTitleForLanguage = useCallback((project: Project): string => {
+    const title = project.title[language] || project.title.en || "Untitled Project";
+    return title;
+  }, [language]);
 
   useEffect(() => {
     setMounted(true)
   }, [])
 
-  if (!mounted) return null
-
-  // Transform database projects to match the expected format
-  const transformedProjects = projects.map((project: Project) => ({
-    slug: project.id,
-    title: getTitleForLanguage(project),
-    shortDescription: project.shortDescription,
-    longDescription: project.longDescription,
-    image: project.thumbnailUrl || "/placeholder.svg",
-    demoLink: project.demoLink || "#",
-    githubLink: project.githubLink || "#",
-    technologies: project.technologies || [],
-    category: project.category,
-  } as const))
-
   // Type for transformed projects
   type TransformedProject = {
     readonly slug: string
     readonly title: string
+    readonly description?: JSONContent | null
     readonly shortDescription: {
       en: JSONContent | null
       fr: JSONContent | null
@@ -127,8 +105,34 @@ export default function PortfolioContent({ projects }: { projects: Project[] }) 
     readonly category: string
   }
 
-  const filteredProjects: TransformedProject[] =
-    selectedCategory === "All" ? transformedProjects : transformedProjects.filter((p: TransformedProject) => p.category === selectedCategory)
+  // Transform database projects to match the expected format
+  // This needs to be reactive to language changes
+  const transformedProjects = useMemo(() => {
+    return projects.map((project: Project) => {
+      // Get the description for the current language
+      const description = getDescriptionContentForProject(project);
+
+      return {
+        slug: project.id,
+        title: getTitleForLanguage(project),
+        description: description, // Pre-calculated description for current language
+        shortDescription: project.shortDescription,
+        longDescription: project.longDescription,
+        image: project.thumbnailUrl || "/placeholder.svg",
+        demoLink: project.demoLink || "#",
+        githubLink: project.githubLink || "#",
+        technologies: project.technologies || [],
+        category: project.category,
+      } as const;
+    })
+  }, [projects, getTitleForLanguage, getDescriptionContentForProject])
+
+  const filteredProjects: TransformedProject[] = useMemo(() =>
+    selectedCategory === "All" ? transformedProjects : transformedProjects.filter((p: TransformedProject) => p.category === selectedCategory),
+    [transformedProjects, selectedCategory]
+  )
+
+  if (!mounted) return null
 
   return (
     <div className="min-h-screen">
@@ -172,7 +176,7 @@ export default function PortfolioContent({ projects }: { projects: Project[] }) 
             {/* Projects Grid */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {filteredProjects.map((project, index) => (
-                <div key={index} className="group relative">
+                <div key={`${project.slug}-${index}`} className="group relative">
                   <div className="relative bg-card border border-border rounded-lg overflow-hidden transition-all duration-300 hover:border-primary/50">
                     {/* Project Image */}
                     <div className="relative aspect-video overflow-hidden bg-muted">
@@ -225,78 +229,18 @@ export default function PortfolioContent({ projects }: { projects: Project[] }) 
                     {/* Project Details */}
                     <div className="p-6">
                       <Link
-                        className="text-xl font-bold mb-3 group-hover:text-primary transition-colors duration-200 line-clamp-1"
+                        className="text-xl font-bold mb-3 group-hover:text-primary transition-colors duration-200"
                         href={`/portfolio/${project.slug}`}
                       >
                         {project.title}
                       </Link>
 
-                      <div className="text-muted-foreground text-sm leading-relaxed mb-4 line-clamp-3">
-                        {(() => {
-                          const description = getDescriptionContent(project);
-
-                          // Handle null/undefined or invalid content
-                          if (description == null) {
-                            return <p>No description available</p>;
-                          }
-
-
-                          // Handle valid TipTap document structure
-                          if (description &&
-                              typeof description === 'object' &&
-                              description.type === 'doc' &&
-                              Array.isArray(description.content)) {
-                            try {
-                              return <JsonToHtml json={description} />;
-                            } catch (error) {
-                              console.error('Error rendering JsonToHtml in PortfolioContent:', error);
-                              return <p>Error rendering content</p>;
-                            }
-                          }
-
-                          // Handle individual TipTap nodes (paragraphs, etc.)
-                          if (description &&
-                              typeof description === 'object' &&
-                              description.type &&
-                              Array.isArray(description.content)) {
-                            try {
-                              // Wrap in a document structure for JsonToHtml
-                              const wrappedContent = {
-                                type: 'doc',
-                                content: [description]
-                              };
-                              return <JsonToHtml json={wrappedContent} />;
-                            } catch (error) {
-                              console.error('Error rendering wrapped content in PortfolioContent:', error);
-                              return <p>Error rendering content</p>;
-                            }
-                          }
-
-                          // Handle arrays of TipTap nodes
-                          if (description &&
-                              Array.isArray(description) &&
-                              description.length > 0 &&
-                              description[0] &&
-                              description[0].type &&
-                              Array.isArray(description[0].content)) {
-                            try {
-                              // Wrap in a document structure for JsonToHtml
-                              const wrappedContent = {
-                                type: 'doc',
-                                content: description
-                              };
-                              return <JsonToHtml json={wrappedContent} />;
-                            } catch (error) {
-                              console.error('Error rendering array content in PortfolioContent:', error);
-                              return <p>Error rendering content</p>;
-                            }
-                          }
-
-                          // Final fallback - ensure we never render objects directly
-                          console.warn('Unexpected description content type in PortfolioContent:', typeof description, description);
-                          const safeContent = typeof description === 'object' ? JSON.stringify(description) : String(description || '');
-                          return <p>{safeContent}</p>;
-                        })()}
+                      <div className="text-muted-foreground text-sm leading-relaxed mb-4 mt-3 line-clamp-3">
+                        {project.description ? (
+                          <JsonToHtml key={JSON.stringify(project.description)} json={project.description} />
+                        ) : (
+                          <p>No description available</p>
+                        )}
                       </div>
 
                       {/* Tech Stack */}

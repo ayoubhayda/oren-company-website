@@ -343,7 +343,7 @@ export default function BlogPostPage({ params }: { params: Promise<{ slug: strin
                             className="object-cover transition-transform duration-300 group-hover:scale-105"
                           />
                         </div>
-                        <CardContent className="p-6 relative z-10">
+                        <CardContent className="pt-2 pb-6 px-6 relative z-10">
                           <Badge variant="secondary" className="mb-3">
                             {t("blog.category.webdev")}
                           </Badge>

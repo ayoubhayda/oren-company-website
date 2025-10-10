@@ -591,6 +591,10 @@ const translations: Record<Language, Record<string, string>> = {
     "portfolio.filter.webdev": "Web Development",
     "portfolio.filter.ecommerce": "E-commerce",
     "portfolio.filter.saas": "SaaS",
+    "portfolio.filter.mobileapp": "Mobile App",
+    "portfolio.filter.design": "Design",
+    "portfolio.filter.digitalmarketing": "Digital Marketing",
+    "portfolio.filter.customplatforms": "Custom Platforms",
     "portfolio.notfound.title": "Project Not Found",
     "portfolio.notfound.description": "The project you're looking for doesn't exist or has been removed.",
     "portfolio.notfound.button": "View All Projects",
@@ -611,6 +615,10 @@ const translations: Record<Language, Record<string, string>> = {
     "project.technologiesUsed": "Technologies Used",
     "project.quickActions": "Quick Actions",
     "project.shareProject": "Share Project",
+    "project.shareDescription": "Share this project with others by copying the link below.",
+    "project.copy": "Copy",
+    "project.copied": "Copied!",
+    "project.linkCopied": "Link Copied!",
     "project.viewLiveDemo": "View Live Demo",
     "project.sourceCode": "Source Code",
     "project.projectDetails": "Project Details",
@@ -618,6 +626,7 @@ const translations: Record<Language, Record<string, string>> = {
     "project.technologies": "technologies",
     "project.client": "Client",
     "project.duration": "Duration",
+    "project.duration.days": "days",
     "project.duration.3months": "3 months",
     "project.duration.4months": "4 months",
     "project.duration.5months": "5 months",
@@ -1913,15 +1922,15 @@ describe('User Authentication', () =&gt; {
         <h4>Effective Color Palette:</h4>
         <div class="color-examples">
           <div class="color-example">
-            <span class="color-swatch primary"></span>
+            <span style="background-color: #2563eb; width: 20px; height: 20px; display: inline-block; margin-right: 8px;"></span>
             <span class="color-info">Primary: #2563eb</span>
           </div>
           <div class="color-example">
-            <span class="color-swatch secondary"></span>
+            <span style="background-color: #64748b; width: 20px; height: 20px; display: inline-block; margin-right: 8px;"></span>
             <span class="color-info">Secondary: #64748b</span>
           </div>
           <div class="color-example">
-            <span class="color-swatch accent"></span>
+            <span style="background-color: #f59e0b; width: 20px; height: 20px; display: inline-block; margin-right: 8px;"></span>
             <span class="color-info">Accent: #f59e0b</span>
           </div>
         </div>
@@ -2154,12 +2163,12 @@ describe('User Authentication', () =&gt; {
         <h4>High Contrast Color Palettes:</h4>
         <div class="color-palette">
           <div class="color-item">
-            <span class="color-swatch" style="background: #1a1a1a;"></span>
+            <span style="background-color: #1a1a1a; width: 20px; height: 20px; display: inline-block; margin-right: 8px;"></span>
             <span class="color-code">#1a1a1a</span>
             <span class="contrast-ratio">Contrast: 15.8:1</span>
           </div>
           <div class="color-item">
-            <span class="color-swatch" style="background: #ffffff;"></span>
+            <span style="background-color: #ffffff; width: 20px; height: 20px; display: inline-block; margin-right: 8px;"></span>
             <span class="color-code">#ffffff</span>
             <span class="contrast-ratio">Perfect contrast</span>
           </div>
@@ -2644,6 +2653,135 @@ export default {
       </div>
     `,
 
+    // Privacy Policy
+    "privacy.hero.badge": "Privacy & Data Protection",
+    "privacy.hero.title": "Privacy Policy",
+    "privacy.hero.subtitle": "We are committed to protecting your privacy and ensuring the security of your personal information.",
+    "privacy.hero.lastUpdated": "Last updated: January 2025",
+
+    "privacy.collection.title": "Information We Collect",
+    "privacy.collection.content": "We collect information that you provide directly to us, including:",
+    "privacy.collection.name": "Name and contact information",
+    "privacy.collection.company": "Company information",
+    "privacy.collection.project": "Project details and requirements",
+    "privacy.collection.preferences": "Communication preferences",
+    "privacy.collection.payment": "Payment information (processed securely through third-party providers)",
+
+    "privacy.usage.title": "How We Use Your Information",
+    "privacy.usage.content": "We use the information we collect to:",
+    "privacy.usage.services": "Provide, maintain, and improve our services",
+    "privacy.usage.process": "Process your requests and transactions",
+    "privacy.usage.notices": "Send you technical notices and support messages",
+    "privacy.usage.respond": "Respond to your comments and questions",
+    "privacy.usage.marketing": "Send you marketing communications (with your consent)",
+
+    "privacy.sharing.title": "Information Sharing",
+    "privacy.sharing.content": "We do not sell, trade, or rent your personal information to third parties. We may share your information with:",
+    "privacy.sharing.providers": "Service providers who assist in our operations",
+    "privacy.sharing.advisors": "Professional advisors such as lawyers and accountants",
+    "privacy.sharing.law": "Law enforcement when required by law",
+
+    "privacy.security.title": "Data Security",
+    "privacy.security.content": "We implement appropriate technical and organizational measures to protect your personal information against unauthorized access, alteration, disclosure, or destruction.",
+
+    "privacy.rights.title": "Your Rights",
+    "privacy.rights.content": "You have the right to:",
+    "privacy.rights.access": "Access your personal information",
+    "privacy.rights.correct": "Correct inaccurate information",
+    "privacy.rights.delete": "Request deletion of your information",
+    "privacy.rights.object": "Object to processing of your information",
+    "privacy.rights.withdraw": "Withdraw consent at any time",
+
+    "privacy.contact.badge": "Get In Touch",
+    "privacy.contact.title": "Questions About Your Privacy?",
+    "privacy.contact.subtitle": "If you have any questions about this Privacy Policy or how we handle your personal information, our privacy team is here to help.",
+    "privacy.contact.primary": "Contact Privacy Team",
+    "privacy.contact.secondary": "General Contact",
+    "privacy.trust.gdpr": "GDPR Compliant",
+    "privacy.trust.ssl": "SSL Encrypted",
+    "privacy.trust.design": "Privacy by Design",
+
+    // Terms of Service
+    "terms.hero.badge": "Legal & Compliance",
+    "terms.hero.title": "Terms of Service",
+    "terms.hero.subtitle": "Clear terms and conditions that govern our professional relationship and service delivery.",
+    "terms.hero.lastUpdated": "Last updated: January 2025",
+
+    "terms.agreement.title": "Agreement to Terms",
+    "terms.agreement.content": "By accessing or using Oren's services, you agree to be bound by these Terms of Service. If you disagree with any part of these terms, you may not access our services.",
+
+    "terms.services.title": "Services",
+    "terms.services.content": "Oren provides web development, custom platform development, e-commerce solutions, digital marketing, and related services. The specific scope of services will be defined in individual project agreements.",
+
+    "terms.ip.title": "Intellectual Property",
+    "terms.ip.content": "Upon full payment, clients receive ownership of the final deliverables as specified in the project agreement. Oren retains the right to use project work in portfolios and marketing materials unless otherwise agreed.",
+
+    "terms.payment.title": "Payment Terms",
+    "terms.payment.content": "Payment terms will be specified in individual project agreements. Typical terms include:",
+    "terms.payment.deposit": "Initial deposit required to begin work",
+    "terms.payment.milestone": "Milestone payments for larger projects",
+    "terms.payment.final": "Final payment due upon project completion",
+    "terms.payment.late": "Late payments may incur additional fees",
+
+    "terms.timeline.title": "Project Timeline",
+    "terms.timeline.content": "Project timelines are estimates and may be adjusted based on project complexity, client feedback, and scope changes. We will communicate any timeline adjustments promptly.",
+
+    "terms.warranties.title": "Warranties and Disclaimers",
+    "terms.warranties.content": "We warrant that services will be performed in a professional manner. However, we do not guarantee specific results or outcomes. Services are provided \"as is\" without warranties of any kind.",
+
+    "terms.liability.title": "Limitation of Liability",
+    "terms.liability.content": "Oren's liability is limited to the amount paid for services. We are not liable for indirect, incidental, or consequential damages arising from the use of our services.",
+
+    "terms.termination.title": "Termination",
+    "terms.termination.content": "Either party may terminate services with written notice. Upon termination, client is responsible for payment of work completed to date.",
+
+    "terms.contact.title": "Questions About These Terms?",
+    "terms.contact.subtitle": "If you have any questions about these Terms of Service or need clarification on any aspect of our agreement, our legal team is here to help.",
+    "terms.contact.primary": "Contact Legal Team",
+    "terms.contact.secondary": "General Contact",
+    "terms.contact.badge": "Legal Support",
+    "terms.trust.professional": "Professional Services",
+    "terms.trust.reliable": "Reliable Delivery",
+    "terms.trust.transparent": "Transparent Terms",
+
+    // Accessibility Statement
+    "accessibility.hero.badge": "Accessibility & Inclusion",
+    "accessibility.hero.title": "Accessibility Statement",
+    "accessibility.hero.subtitle": "We are committed to ensuring digital accessibility for people with disabilities and continually improving user experience for everyone.",
+    "accessibility.hero.lastUpdated": "Last updated: January 2025",
+
+    "accessibility.commitment.title": "Our Commitment",
+    "accessibility.commitment.content": "Oren is committed to ensuring digital accessibility for people with disabilities. We are continually improving the user experience for everyone and applying the relevant accessibility standards.",
+
+    "accessibility.conformance.title": "Conformance Status",
+    "accessibility.conformance.content": "We aim to conform to the Web Content Accessibility Guidelines (WCAG) 2.1 Level AA standards. These guidelines explain how to make web content more accessible for people with disabilities.",
+
+    "accessibility.features.title": "Accessibility Features",
+    "accessibility.features.content": "Our website includes the following accessibility features:",
+    "accessibility.features.semantic": "Semantic HTML structure for screen reader compatibility",
+    "accessibility.features.keyboard": "Keyboard navigation support throughout the site",
+    "accessibility.features.contrast": "Sufficient color contrast ratios for text readability",
+    "accessibility.features.alt": "Alternative text for images and visual content",
+    "accessibility.features.responsive": "Responsive design that works across devices",
+    "accessibility.features.focus": "Clear focus indicators for interactive elements",
+    "accessibility.features.aria": "ARIA labels and landmarks for better navigation",
+
+    "accessibility.limitations.title": "Known Limitations",
+    "accessibility.limitations.content": "Despite our best efforts, some content may not yet be fully accessible. We are actively working to address these issues and improve accessibility across our entire website.",
+
+    "accessibility.feedback.title": "Feedback",
+    "accessibility.feedback.content": "We welcome your feedback on the accessibility of our website. If you encounter any accessibility barriers, please contact us at",
+
+    "accessibility.contact.title": "Questions About Accessibility?",
+    "accessibility.contact.subtitle": "If you have any questions about our accessibility features or need assistance accessing our content, our accessibility team is here to help.",
+    "accessibility.contact.primary": "Contact Accessibility Team",
+    "accessibility.contact.secondary": "General Contact",
+    "accessibility.contact.badge": "Accessibility Support",
+    "accessibility.technical.title": "Technical Specifications",
+    "accessibility.trust.inclusive": "Inclusive Design",
+    "accessibility.trust.accessible": "WCAG 2.1 AA",
+    "accessibility.trust.compliant": "Accessibility Compliant",
+
     // About
     "about.title": "About Oren",
     "about.hero.badge": "Get to know our story",
@@ -2722,6 +2860,7 @@ export default {
     "common.sourceCode": "Source Code",
     "common.viewDetails": "View Details",
     "common.more": "more",
+    "common.close": "Close",
   },
   ar: {
     // Navigation
@@ -3240,6 +3379,10 @@ export default {
     "portfolio.filter.webdev": "تطوير المواقع",
     "portfolio.filter.ecommerce": "التجارة الإلكترونية",
     "portfolio.filter.saas": "البرمجيات كخدمة",
+    "portfolio.filter.mobileapp": "تطبيقات الهواتف",
+    "portfolio.filter.design": "التصميم",
+    "portfolio.filter.digitalmarketing": "التسويق الرقمي",
+    "portfolio.filter.customplatforms": "منصات مخصصة",
     "portfolio.notfound.title": "المشروع غير موجود",
     "portfolio.notfound.description": "المشروع الذي تبحث عنه غير موجود أو تم حذفه.",
     "portfolio.notfound.button": "عرض جميع المشاريع",
@@ -3259,6 +3402,10 @@ export default {
     "project.technologiesUsed": "التقنيات المستخدمة",
     "project.quickActions": "الإجراءات السريعة",
     "project.shareProject": "مشاركة المشروع",
+    "project.shareDescription": "شارك هذا المشروع مع الآخرين بنسخ الرابط أدناه.",
+    "project.copy": "نسخ",
+    "project.copied": "تم النسخ!",
+    "project.linkCopied": "تم نسخ الرابط!",
     "project.viewLiveDemo": "عرض تجريبي مباشر",
     "project.sourceCode": "كود المصدر",
     "project.projectDetails": "تفاصيل المشروع",
@@ -3266,6 +3413,7 @@ export default {
     "project.technologies": "تقنيات",
     "project.client": "العميل",
     "project.duration": "المدة",
+    "project.duration.days": "أيام",
     "project.duration.3months": "3 أشهر",
     "project.duration.4months": "4 أشهر",
     "project.duration.5months": "5 أشهر",
@@ -3427,7 +3575,7 @@ export default {
     "blog.post.nextjsPerformance.excerpt": "تعلم الاستراتيجيات الأساسية لتعزيز سرعة موقعك وتفاعل المستخدمين مع تقنيات تحسين Next.js هذه.",
     "blog.post.nextjsPerformance.content": `
       <div class="lead">
-        <p>Next.js مُحسَّن بالفعل للأداء خارج الصندوق، لكن هناك العديد من التقنيات التي يمكنك استخدامها لجعل تطبيقاتك أسرع. يغطي هذا الدليل استراتيجيات التحسين العملية التي يمكن أن تحسن أداء تطبيق Next.js بشكل كبير.</p>
+        <p class="mt-0">Next.js مُحسَّن بالفعل للأداء خارج الصندوق، لكن هناك العديد من التقنيات التي يمكنك استخدامها لجعل تطبيقاتك أسرع. يغطي هذا الدليل استراتيجيات التحسين العملية التي يمكن أن تحسن أداء تطبيق Next.js بشكل كبير.</p>
 
         <p>وفقًا لمعايير حديثة، <strong>تحمل تطبيقات Next.js بنسبة 40% أسرع</strong> من تطبيقات React التقليدية في المتوسط. تحقق تطبيقات Next.js المحسنة جيدًا <strong>أوقات تحميل أقل من 3 ثوانٍ</strong> و<strong>درجات Core Web Vitals أعلى من 90</strong>، مما يؤدي إلى تفاعل مستخدم أفضل ومعدلات تحويل أعلى.</p>
       </div>
@@ -3788,7 +3936,7 @@ export default function Layout({ children }) {
     "blog.post.seoStrategies.excerpt": "اكتشف تقنيات الـ SEO المثبتة لتحسين رؤية موقعك وزيادة حركة المرور العضوية.",
     "blog.post.seoStrategies.content": `
       <div class="lead">
-        <p>يستمر تحسين محركات البحث في التطور، حيث أصبحت خوارزميات جوجل أكثر تطورًا. في عام 2025، يتطلب نجاح الـ SEO نهجًا شاملاً يجمع بين التميز التقني وإنشاء المحتوى عالي الجودة وتحسين تجربة المستخدم.</p>
+        <p class="mt-0">يستمر تحسين محركات البحث في التطور، حيث أصبحت خوارزميات جوجل أكثر تطورًا. في عام 2025، يتطلب نجاح الـ SEO نهجًا شاملاً يجمع بين التميز التقني وإنشاء المحتوى عالي الجودة وتحسين تجربة المستخدم.</p>
 
         <p>وفقًا لبيانات حديثة، <strong>يولد البحث العضوي 53% من إجمالي حركة المرور على الموقع</strong>، مما يجعل الـ SEO أكثر قنوات التسويق فعالية من حيث التكلفة. تحقق الشركات التي تستثمر في الـ SEO متوسط <strong>معدل تحويل بنسبة 14.6%</strong> من البحث العضوي، مقارنة بـ <strong>1.7% فقط للتسويق الخارجي</strong>.</p>
       </div>
@@ -4055,7 +4203,7 @@ export default function HeroSection() {
     "blog.post.aiInWebDev.excerpt": "اكتشف كيف يحدث الذكاء الاصطناعي ثورة في عمليات تطوير الويب، من توليد الكود إلى تجارب المستخدمين المخصصة.",
     "blog.post.aiInWebDev.content": `
       <div class="lead">
-        <p>يغير الذكاء الاصطناعي جذريًا كيفية تعاملنا مع تطوير الويب. من توليد الكود إلى الاختبار الآلي وتجارب المستخدمين الذكية، يجعل الذكاء الاصطناعي المطورين أكثر إنتاجية مع تمكين أنواع جديدة تمامًا من التطبيقات.</p>
+        <p class="mt-0">يغير الذكاء الاصطناعي جذريًا كيفية تعاملنا مع تطوير الويب. من توليد الكود إلى الاختبار الآلي وتجارب المستخدمين الذكية، يجعل الذكاء الاصطناعي المطورين أكثر إنتاجية مع تمكين أنواع جديدة تمامًا من التطبيقات.</p>
       </div>
 
       <h2>الكود المدعوم بالذكاء الاصطناعي</h2>
@@ -4236,109 +4384,203 @@ export default function HeroSection() {
     "blog.post.uiDesignPrinciples.excerpt": "إتقان المبادئ الأساسية لتصميم واجهة المستخدم لإنشاء واجهات جميلة وعملية.",
     "blog.post.uiDesignPrinciples.content": `
       <div class="lead">
-        <p>تصميم واجهة المستخدم الرائع هو مزيج من الفن والعلم. بينما تأتي الاتجاهات وتذهب، إلا أن بعض المبادئ الأساسية تبقى ثابتة. فهم وتطبيق هذه المبادئ سيساعدك على إنشاء واجهات ليست جميلة فحسب، بل عملية وسهلة الاستخدام أيضًا.</p>
+        <p class="mt-0">تصميم واجهة المستخدم الرائع هو مزيج من الفن والعلم. بينما تأتي الاتجاهات وتذهب، إلا أن بعض المبادئ الأساسية تبقى ثابتة. فهم وتطبيق هذه المبادئ سيساعدك على إنشاء واجهات ليست جميلة فحسب، بل عملية وسهلة الاستخدام أيضًا.</p>
+
+        <p>وفقًا لبحوث تجربة المستخدم الحديثة، <strong>يمكن للواجهات المصممة جيدًا تحسين رضا المستخدم بنسبة 40%</strong> و<strong>زيادة معدلات التحويل بنسبة 200%</strong>. أما التصميم السيئ، فيسبب <strong>هجر 70% من المستخدمين للمواقع</strong> في الثواني الأولى.</p>
       </div>
 
-      <h2>التسلسل البصري</h2>
+      <h2>التسلسل البصري: توجيه انتباه المستخدم</h2>
       <p>يوجه التسلسل البصري المستخدمين عبر واجهتك من خلال تحديد ترتيب الأهمية. استخدم الحجم واللون والتباين والتباعد لتوجيه الانتباه إلى العناصر الأكثر أهمية أولاً.</p>
 
       <p>يجب أن تكون الإجراءات الأساسية هي الأكثر بروزًا، والإجراءات الثانوية أقل بروزًا، والإجراءات الثالثية خفية. يجب أن تكون العناوين أكبر من نص النص، ويجب أن تبرز المعلومات المهمة من خلال التباين أو التموضع.</p>
 
-      <h2>الاتساق والمعايير</h2>
+      <h3>تقنيات التسلسل البصري:</h3>
+      <ul>
+        <li><strong>الحجم والمقياس:</strong> العناصر الأكبر حجمًا تجذب الانتباه أكثر من العناصر الأصغر</li>
+        <li><strong>اللون والتباين:</strong> العناصر ذات التباين العالي تبرز عن الخلفية</li>
+        <li><strong>التموضع:</strong> العناصر في الأعلى أو الوسط تحصل عادةً على انتباه أكبر</li>
+        <li><strong>التباعد:</strong> المساحة السخية حول العناصر المهمة تخلق التركيز</li>
+        <li><strong>الطباعة:</strong> الخطوط الجريئة والأكبر حجمًا تأمر بانتباه أكبر من النص العادي</li>
+      </ul>
+
+      <div>
+        <p><strong>التأثير:</strong> يمكن للتسلسل البصري المناسب <strong>زيادة مشاركة المستخدم بنسبة 30%</strong> و<strong>تحسين معدلات إتمام المهام بنسبة 25%</strong>.</p>
+      </div>
+
+      <div>
+        <h4>مثال: التسلسل البصري في العمل</h4>
+        <pre dir="ltr"><code>&lt;!-- زر الدعوة الأساسي - الأكبر، الأكثر بروزًا --&gt;
+&lt;button className="bg-blue-600 text-white px-8 py-4 text-xl font-bold rounded-lg"&gt;
+  ابدأ الآن
+&lt;/button&gt;
+
+&lt;!-- الإجراء الثانوي - بروز متوسط --&gt;
+&lt;button className="bg-gray-100 text-gray-800 px-6 py-3 text-base font-medium rounded"&gt;
+  تعرف على المزيد
+&lt;/button&gt;
+
+&lt;!-- الإجراء الثالثي - خفي، أقل بروزًا --&gt;
+&lt;a href="/help" className="text-sm text-gray-600 hover:text-gray-800"&gt;
+  بحاجة لمساعدة؟
+&lt;/a&gt;</code></pre>
+      </div>
+
+      <h2>الاتساق والمعايير: بناء الثقة مع المستخدم</h2>
       <p>يخلق الاتساق الإلمام ويقلل من الحمل المعرفي. استخدم ألوانًا وخطوطًا وتباعدًا وأنماط تفاعل متسقة في جميع أنحاء واجهتك. اتبع اتفاقيات النظام الأساسي حتى يتمكن المستخدمون من تطبيق معرفتهم الحالية.</p>
 
       <p>أنشئ وصيانة نظام تصميم يحتوي على مكونات قابلة لإعادة الاستخدام، ومقاييس تباعد محددة، وإرشادات واضحة. يضمن ذلك الاتساق عبر منتجك ويسرع عملية التصميم والتطوير.</p>
 
-      <h2>المساحة البيضاء والتنفس</h2>
+      <h3>فوائد نظام التصميم:</h3>
+      <ul>
+        <li><strong>تطوير أسرع:</strong> المكونات القابلة لإعادة الاستخدام تقلل وقت التطوير بنسبة 40%</li>
+        <li><strong>تجربة متسقة:</strong> يتعلم المستخدمون الأنماط بشكل أسرع عبر الواجهة</li>
+        <li><strong>صيانة أسهل:</strong> يمكن إجراء التغييرات عالميًا من خلال نظام التصميم</li>
+        <li><strong>تماسك العلامة التجارية:</strong> اللغة البصرية المتسقة تعزز هوية العلامة التجارية</li>
+        <li><strong>القابلية للتطوير:</strong> تتكامل الميزات الجديدة بسلاسة مع الأنماط الموجودة</li>
+      </ul>
+
+      <div>
+        <h4>مكونات نظام التصميم:</h4>
+        <div>
+          <div>
+            <span>الزر الأساسي</span>
+            <span>كبير، أزرق، مستدير</span>
+          </div>
+          <div>
+            <span>الزر الثانوي</span>
+            <span>متوسط، نمط الحدود</span>
+          </div>
+          <div>
+            <span>حقل النموذج</span>
+            <span>الحشو القياسي، حالات التركيز</span>
+          </div>
+        </div>
+      </div>
+
+      <h2>المساحة البيضاء والتنفس: قوة الفراغ</h2>
       <p>المساحة البيضاء (أو المساحة السلبية) ليست مساحة مهدورة - إنها عنصر تصميم حاسم. يحسن التباعد المناسب من القابلية للقراءة، ويخلق تسلسلاً بصريًا، ويجعل الواجهات تبدو أقل ازدحامًا وأكثر تميزًا.</p>
 
       <p>لا تخف من المساحة الفارغة. أعطِ محتواك مساحة للتنفس. استخدم حشوة وهوامش سخية، خاصة حول العناصر المهمة. جمّع العناصر ذات الصلة معًا وفصل العناصر غير ذات الصلة.</p>
 
-      <h2>الطباعة وقابلية القراءة</h2>
+      <h3>أفضل ممارسات المساحة البيضاء:</h3>
+      <ul>
+        <li><strong>تنفس المحتوى:</strong> 1.5-2x ارتفاع السطر بين كتل النص</li>
+        <li><strong>فصل العناصر:</strong> فصل بصري واضح بين المحتوى ذي الصلة وغير ذي الصلة</li>
+        <li><strong>تعزيز التركيز:</strong> المزيد من المساحة حول العناصر المهمة يخلق التأكيد</li>
+        <li><strong>تدفق القراءة:</strong> التباعد المناسب يوجه العين عبر المحتوى بشكل طبيعي</li>
+        <li><strong>تحسين الهاتف المحمول:</strong> قم بتعديل التباعد للشاشات الأصغر للحفاظ على القابلية للقراءة</li>
+      </ul>
+
+      <div>
+        <h4>أمثلة مقياس التباعد:</h4>
+        <ul>
+          <li><strong>XS (4px):</strong> الأيقونات الصغيرة، مجموعات الأزرار الضيقة</li>
+          <li><strong>SM (8px):</strong> تباعد الأيقونات، الحشو الصغير</li>
+          <li><strong>MD (16px):</strong> حشو المكونات القياسي</li>
+          <li><strong>LG (24px):</strong> تباعد الأقسام، هوامش البطاقات</li>
+          <li><strong>XL (32px):</strong> فواصل الأقسام الرئيسية، تباعد البطل</li>
+        </ul>
+      </div>
+
+      <h2>الطباعة وقابلية القراءة: أساس التواصل</h2>
       <p>الطباعة أساسية في تصميم واجهة المستخدم. اختر خطوطًا قابلة للقراءة بأحجام وأوزان مختلفة. حافظ على تسلسل واضح مع مستويات عناوين مميزة ونص نصي.</p>
 
       <p>استخدم ارتفاع سطر 1.5-1.6 لنص النص، حد طول السطر إلى 50-75 حرفًا للحصول على قابلية قراءة مثالية، وتأكد من تباين كافٍ بين النص والخلفية. فكر في استخدام خطوط النظام للحصول على أداء أفضل وإلمام.</p>
 
-      <h2>نظرية اللون والوصولية</h2>
+      <h3>إرشادات الطباعة:</h3>
+      <ul>
+        <li><strong>اختيار الخط:</strong> Sans-serif للواجهات الرقمية، serif للمحتوى الشبيه بالطباعة</li>
+        <li><strong>التسلسل:</strong> تمييز واضح بين h1-h6 ونص النص</li>
+        <li><strong>طول السطر:</strong> 50-75 حرفًا لكل سطر للقراءة المثالية</li>
+        <li><strong>ارتفاع السطر:</strong> 1.4-1.6 لنص النص، أكثر إحكامًا للعناوين</li>
+        <li><strong>تباعد الحروف:</strong> زيادة طفيفة للعناوين، طبيعي لنص النص</li>
+      </ul>
+
+      <div>
+        <h4>مثال مقياس الطباعة:</h4>
+        <div>
+          <div>
+            <span>H1 - 32px</span>
+            <span>جريء</span>
+          </div>
+          <div>
+            <span>H2 - 24px</span>
+            <span>شبه جريء</span>
+          </div>
+          <div>
+            <span>النص - 16px</span>
+            <span>عادي</span>
+          </div>
+          <div>
+            <span>التسمية التوضيحية - 14px</span>
+            <span>عادي</span>
+          </div>
+        </div>
+      </div>
+
+      <h2>نظرية اللون والوصولية: التصميم العاطفي والوظيفي</h2>
       <p>اللون ينقل المعنى ويخلق المزاج ويوجه الانتباه. استخدم لوحة ألوان محدودة - عادةً لون أساسي واحد، ولون أو اثنان مميزين، ومجموعة من الألوان المحايدة.</p>
 
       <p>تأكد من تباين كافٍ للوصولية (4.5:1 للنص العادي، 3:1 للنص الكبير). لا تعتمد على اللون وحده لنقل المعلومات - استخدم الرموز والتسميات أو الأنماط أيضًا. اختبر تصاميمك بالأبيض والأسود للتحقق من أن التسلسل يعمل بدون لون.</p>
 
-      <h2>التعليقات والإمكانيات</h2>
+      <h3>علم نفس اللون واستخدامه:</h3>
+      <ul>
+        <li><strong>الألوان الأساسية:</strong> هوية العلامة التجارية والإجراءات الرئيسية</li>
+        <li><strong>الألوان الثانوية:</strong> الإجراءات الداعمة والمعلومات الثانوية</li>
+        <li><strong>الألوان المحايدة:</strong> الخلفيات والنص والعناصر الدقيقة</li>
+        <li><strong>ألوان التمييز:</strong> الإبرازات والإشعارات والحالات الخاصة</li>
+        <li><strong>ألوان الخطأ/النجاح:</strong> ردود فعل واضحة لإجراءات المستخدم</li>
+      </ul>
+
+      <div>
+        <h4>لوحة ألوان فعالة:</h4>
+        <div>
+          <div>
+            <span style="background-color: #2563eb; width: 20px; height: 20px; display: inline-block; margin-right: 8px;"></span>
+            <span>الأساسي: <span dir="ltr">#2563eb</span></span>
+          </div>
+          <div>
+            <span style="background-color: #64748b; width: 20px; height: 20px; display: inline-block; margin-right: 8px;"></span>
+            <span>الثانوي: <span dir="ltr">#64748b</span></span>
+          </div>
+          <div>
+            <span style="background-color: #f59e0b; width: 20px; height: 20px; display: inline-block; margin-right: 8px;"></span>
+            <span>التمييز: <span dir="ltr">#f59e0b</span></span>
+          </div>
+        </div>
+      </div>
+
+      <h2>التعليقات والإمكانيات: التصميم التفاعلي</h2>
       <p>قدم تعليقات واضحة لإجراءات المستخدم. يجب أن تحتوي الأزرار على حالات التمرير والنشاط والتعطيل. أظهر مؤشرات التحميل للعمليات غير المتزامنة. عرض رسائل النجاح أو الخطأ بوضوح.</p>
 
       <p>استخدم الإمكانيات - الإشارات البصرية التي تشير إلى كيفية استخدام العنصر. يجب أن تبدو الأزرار قابلة للنقر، ويجب أن تكون الروابط مميزة، ويجب أن تستجيب العناصر التفاعلية لإدخال المستخدم.</p>
 
-      <h2>التصميم المتجاوب أولاً للهواتف المحمولة</h2>
-      <p>صمم للهواتف المحمولة أولاً، ثم عزز للشاشات الأكبر. يضمن ذلك أن تجربة جوهرك تعمل على الأجهزة الأكثر تقييدًا. استخدم تخطيطات متجاوبة تتكيف بسلاسة مع أحجام الشاشة المختلفة.</p>
-
-      <p>فكر في أهداف اللمس - اجعل العناصر التفاعلية على الأقل 44x44 بكسل للنقر السهل. تأكد من أن الإجراءات المهمة في متناول اليد الواحدة على الأجهزة المحمولة.</p>
-
-      <h2>الكشف التدريجي</h2>
-      <p>لا تطغِ على المستخدمين بكمية كبيرة من المعلومات مرة واحدة. استخدم الكشف التدريجي لإظهار ما هو ضروري فقط في البداية، وكشف الخيارات أو المعلومات الإضافية حسب الحاجة.</p>
-
-      <p>يمكن تحقيق ذلك من خلال الأقسام القابلة للتوسيع، والنماذج متعددة الخطوات، والتلميحات، أو مربعات الحوار الوسيطة. الهدف هو تقليل الحمل المعرفي مع الحفاظ على إمكانية الوصول إلى الميزات المتقدمة.</p>
-
-      <h2>دمج الوصولية: التصميم الشامل</h2>
-      <p>يأخذ تصميم واجهة المستخدم الرائع الوصولية في الاعتبار بشكل طبيعي. ضمن تباين ألوان كافٍ، والتنقل بالكيبورد، وتوافق قارئات الشاشة، ومؤشرات التركيز الواضحة.</p>
-
-      <h3>اعتبارات الوصولية:</h3>
+      <h3>آليات التعليقات:</h3>
       <ul>
-        <li><strong>تباين الألوان:</strong> الامتثال لـ WCAG AA (4.5:1 للنص العادي)</li>
-        <li><strong>التنقل بالكيبورد:</strong> جميع الوظائف متاحة عبر الكيبورد</li>
-        <li><strong>دعم قارئات الشاشة:</strong> ترميز دلالي مناسب وتسميات ARIA</li>
-        <li><strong>إدارة التركيز:</strong> مؤشرات تركيز واضحة وترتيب تبويبات منطقي</li>
-        <li><strong>النص البديل:</strong> وصفات مفيدة للصور والأيقونات</li>
+        <li><strong>التعليقات البصرية:</strong> حالات التمرير، مؤشرات التركيز، وتغييرات الحالة</li>
+        <li><strong>التعليقات السمعية:</strong> أصوات النقر، نغمات الإشعار (حسب الاقتضاء)</li>
+        <li><strong>التعليقات اللمسية:</strong> الاهتزاز على الأجهزة المحمولة للتأكيد اللمسي</li>
+        <li><strong>مؤشرات الحالة:</strong> دوامات التحميل، أشرطة التقدم، رسائل النجاح/الخطأ</li>
+        <li><strong>التفاعلات الدقيقة:</strong> الرسوم المتحركة الدقيقة التي توفر السياق والمتعة</li>
       </ul>
 
-      <h2>الأداء وحالات التحميل: السرعة المحسوسة</h2>
-      <p>حسّن للأداء المحسوس. استخدم شاشات الهيكل العظمي، وتحميل الصور التدريجي، وتحديثات واجهة المستخدم المتفائلة لجعل الواجهات تبدو أسرع مما هي عليه فعليًا.</p>
-
-      <h3>استراتيجيات تحسين الأداء:</h3>
-      <ul>
-        <li><strong>شاشات الهيكل العظمي:</strong> أظهر هيكل التخطيط أثناء تحميل المحتوى</li>
-        <li><strong>التعزيز التدريجي:</strong> تعمل الوظائف الأساسية بدون JavaScript</li>
-        <li><strong>التحديثات المتفائلة:</strong> قم بتحديث واجهة المستخدم فورًا، ثم قم بالمزامنة مع الخادم</li>
-        <li><strong>التحميل الكسول:</strong> قم بتحميل الموارد غير الحرجة فقط عند الحاجة</li>
-        <li><strong>تحسين المسار الحرج:</strong> أولوية المحتوى فوق الطية</li>
-      </ul>
-
-      <h2>قياس نجاح التصميم: التحليلات والاختبار</h2>
-      <p>قيس فعالية قرارات التصميم الخاصة بك باختبار المستخدمين، والتحليلات، ومقاييس الأداء.</p>
-
-      <h3>مقاييس قياس التصميم:</h3>
-      <ul>
-        <li><strong>اختبار المستخدمين:</strong> معدلات إتمام المهام، والوقت المستغرق في المهمة، ومعدلات الأخطاء</li>
-        <li><strong>التحليلات:</strong> معدلات الارتداد، ومدة الجلسة، وقمع التحويل</li>
-        <li><strong>خرائط الحرارة:</strong> أنماط النقر، وسلوك التمرير، ومناطق الانتباه</li>
-        <li><strong>اختبار A/B:</strong> قارن الاختلافات في التصميم للأداء</li>
-        <li><strong>اختبار الوصولية:</strong> التدقيقات الآلية والاختبار اليدوي</li>
-      </ul>
-
-      <h2>أدوات وموارد تصميم واجهة المستخدم</h2>
-      <p>استفد من هذه الأدوات الأساسية لتنفيذ وصيانة استراتيجية التصميم الخاصة بك بفعالية.</p>
-
-      <h3>أدوات تصميم واجهة المستخدم الأساسية:</h3>
-      <ul>
-        <li><strong>أنظمة التصميم:</strong> <a href="https://www.figma.com/" target="_blank">Figma</a>، <a href="https://www.sketch.com/" target="_blank">Sketch</a>، <a href="https://www.adobe.com/products/xd.html" target="_blank">Adobe XD</a></li>
-        <li><strong>النماذج الأولية:</strong> <a href="https://www.framer.com/" target="_blank">Framer</a>، <a href="https://www.invisionapp.com/" target="_blank">InVision</a>، <a href="https://www.principleformac.com/" target="_blank">Principle</a></li>
-        <li><strong>أدوات الألوان:</strong> <a href="https://coolors.co/" target="_blank">Coolors</a>، <a href="https://color.adobe.com/" target="_blank">Adobe Color</a>، <a href="https://www.happyhues.co/" target="_blank">Happy Hues</a></li>
-        <li><strong>الطباعة:</strong> <a href="https://fonts.google.com/" target="_blank">Google Fonts</a>، <a href="https://www.typewolf.com/" target="_blank">Typewolf</a>، <a href="https://fontjoy.com/" target="_blank">Fontjoy</a></li>
-      </ul>
-
-      <h2>قياس العائد على الاستثمار والتأثير التجاري</h2>
-      <p>تحسنات التصميم تؤثر مباشرة على مقاييس الأعمال. تتبع معدلات التحويل ومعدلات الارتداد والمشاركة لقياس قيمة تحسيناتك.</p>
-
-      <h3>ارتباط التصميم بالأعمال:</h3>
-      <ul>
-        <li><strong>رضا المستخدمين:</strong> يمكن للواجهات المصممة جيدًا تحسين رضا المستخدمين بنسبة 40%</li>
-        <li><strong>معدلات التحويل:</strong> تحسينات التصميم تزيد من التحويلات بنسبة تصل إلى 200%</li>
-        <li><strong>تقليل الارتداد:</strong> التصميم السيئ يسبب 70% من المستخدمين في مغادرة المواقع في الثواني الأولى</li>
-        <li><strong>الولاء:</strong> تجارب المستخدم الممتازة تزيد من الاحتفاظ بالعملاء</li>
-      </ul>
-
-      <div class="cta-section">
-        <p><strong>هل أنت مستعد لإنشاء واجهات مستخدم استثنائية؟</strong> <a href="/contact">تواصل معنا</a> لمناقشة كيف يمكننا مساعدتك في تنفيذ مبادئ تصميم واجهة المستخدم هذه لإنشاء واجهات جميلة وعملية وسهلة الاستخدام تدفع النتائج.</p>
+      <div>
+        <h4>مثال: حالات الزر والتعليقات</h4>
+        <pre dir="ltr"><code>&lt;button
+  className="bg-blue-600 hover:bg-blue-700 active:bg-blue-800 disabled:bg-gray-400 text-white px-4 py-2 rounded transition-colors duration-200"
+  disabled={isLoading}
+&gt;
+  {isLoading ? (
+    &lt;&gt;
+      &lt;svg className="animate-spin h-4 w-4 mr-2" viewBox="0 0 24 24"&gt;
+        &lt;circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none"/&gt;
+      &lt;/svg&gt;
+      جاري المعالجة...
+    &lt;/&gt;
+  ) : (
+    'إرسال النموذج'
+  )}
+&lt;/button&gt;</code></pre>
       </div>
     `,
 
@@ -4347,7 +4589,7 @@ export default function HeroSection() {
     "blog.post.accessibility.excerpt": "تعلم كيفية إنشاء تجارب رقمية شاملة تعمل للجميع، بغض النظر عن قدراتهم.",
     "blog.post.accessibility.content": `
       <div class="lead">
-        <p>الوصولية في تصميم الويب ليست مجرد متطلب قانوني - إنها ضرورة أخلاقية وممارسة أعمال جيدة. إن إنشاء مواقع ويب يمكن الوصول إليها يضمن أن يتمكن الجميع، بغض النظر عن قدراتهم، من الوصول إلى المحتوى والتفاعل معه.</p>
+        <p class="mt-0">الوصولية في تصميم الويب ليست مجرد متطلب قانوني - إنها ضرورة أخلاقية وممارسة أعمال جيدة. إن إنشاء مواقع ويب يمكن الوصول إليها يضمن أن يتمكن الجميع، بغض النظر عن قدراتهم، من الوصول إلى المحتوى والتفاعل معه.</p>
 
         <p>وفقًا لدراسات حديثة، يعيش <strong>15% من سكان العالم</strong> مع شكل من أشكال الإعاقة، مما يمثل <strong>فرصة سوقية بقيمة 1.2 تريليون دولار</strong>. بالإضافة إلى الامتثال، يحسن التصميم المتاح سهولة الاستخدام لجميع المستخدمين ويمكن أن يعزز معدلات التحويل بنسبة تصل إلى <strong>25%</strong>.</p>
       </div>
@@ -4430,12 +4672,12 @@ export default function HeroSection() {
         <div class="color-palette">
           <div class="color-item">
             <span class="color-swatch" style="background: #1a1a1a;"></span>
-            <span class="color-code">#1a1a1a</span>
+            <span class="color-code"><span dir="ltr">#1a1a1a</span></span>
             <span class="contrast-ratio">التباين: 15.8:1</span>
           </div>
           <div class="color-item">
             <span class="color-swatch" style="background: #ffffff;"></span>
-            <span class="color-code">#ffffff</span>
+            <span class="color-code"><span dir="ltr">#ffffff</span></span>
             <span class="contrast-ratio">تباين مثالي</span>
           </div>
         </div>
@@ -4654,7 +4896,7 @@ const Modal = ({ isOpen, onClose, children }) => {
     `,
     "blog.post.trends2025.content": `
       <div class="lead">
-        <p>مشهد تطوير الويب يتطور بسرعة أكبر من أي وقت مضى. في عام 2025، يتبنى المطورون والوكالات الرقمية أدوات وتقنيات جديدة تركز على <strong>السرعة وتجربة المستخدم وتكامل الذكاء الاصطناعي والاستدامة</strong>. سواء كنت صاحب علامة تجارية أو مطور أو مصمم، فإن فهم هذه التوجهات يمكن أن يساعدك على البقاء تنافسيًا في عالم رقمي أولاً.</p>
+        <p class="mt-0">مشهد تطوير الويب يتطور بسرعة أكبر من أي وقت مضى. في عام 2025، يتبنى المطورون والوكالات الرقمية أدوات وتقنيات جديدة تركز على <strong>السرعة وتجربة المستخدم وتكامل الذكاء الاصطناعي والاستدامة</strong>. سواء كنت صاحب علامة تجارية أو مطور أو مصمم، فإن فهم هذه التوجهات يمكن أن يساعدك على البقاء تنافسيًا في عالم رقمي أولاً.</p>
 
         <p>وفقًا لتقارير الصناعة الحديثة، تحمل المواقع المبنية بأطر عمل حديثة <strong>بنسبة 40% أسرع</strong> وتحول <strong>بنسبة 25% أفضل</strong> من الطرق التقليدية. دعونا نستعرض بعمق أبرز التوجهات التي تشكل مستقبل تطوير الويب.</p>
       </div>
@@ -4919,6 +5161,135 @@ export default {
         </div>
     `,
 
+    // Privacy Policy
+    "privacy.hero.badge": "الخصوصية وحماية البيانات",
+    "privacy.hero.title": "سياسة الخصوصية",
+    "privacy.hero.subtitle": "نحن ملتزمون بحماية خصوصيتك وضمان أمان معلوماتك الشخصية.",
+    "privacy.hero.lastUpdated": "آخر تحديث: يناير 2025",
+
+    "privacy.collection.title": "المعلومات التي نجمعها",
+    "privacy.collection.content": "نحن نجمع المعلومات التي تقدمها مباشرة لنا، بما في ذلك:",
+    "privacy.collection.name": "الاسم ومعلومات الاتصال",
+    "privacy.collection.company": "معلومات الشركة",
+    "privacy.collection.project": "تفاصيل المشروع والمتطلبات",
+    "privacy.collection.preferences": "تفضيلات التواصل",
+    "privacy.collection.payment": "معلومات الدفع (تتم معالجتها بشكل آمن من خلال مزودي خدمات خارجيين)",
+
+    "privacy.usage.title": "كيف نستخدم معلوماتك",
+    "privacy.usage.content": "نحن نستخدم المعلومات التي نجمعها لـ:",
+    "privacy.usage.services": "تقديم وصيانة وتحسين خدماتنا",
+    "privacy.usage.process": "معالجة طلباتك ومعاملاتك",
+    "privacy.usage.notices": "إرسال إشعارات فنية ورسائل دعم لك",
+    "privacy.usage.respond": "الرد على تعليقاتك وأسئلتك",
+    "privacy.usage.marketing": "إرسال رسائل تسويقية لك (بموافقتك)",
+
+    "privacy.sharing.title": "مشاركة المعلومات",
+    "privacy.sharing.content": "نحن لا نبيع أو نتاجر أو نؤجر معلوماتك الشخصية لأطراف ثالثة. قد نشارك معلوماتك مع:",
+    "privacy.sharing.providers": "مقدمي الخدمات الذين يساعدون في عملياتنا",
+    "privacy.sharing.advisors": "المستشارين المهنيين مثل المحامين والمحاسبين",
+    "privacy.sharing.law": "جهات إنفاذ القانون عند الحاجة إلى ذلك",
+
+    "privacy.security.title": "أمان البيانات",
+    "privacy.security.content": "نحن نطبق تدابير فنية وتنظيمية مناسبة لحماية معلوماتك الشخصية من الوصول غير المصرح به أو التعديل أو الكشف أو التدمير.",
+
+    "privacy.rights.title": "حقوقك",
+    "privacy.rights.content": "لديك الحق في:",
+    "privacy.rights.access": "الوصول إلى معلوماتك الشخصية",
+    "privacy.rights.correct": "تصحيح المعلومات غير الدقيقة",
+    "privacy.rights.delete": "طلب حذف معلوماتك",
+    "privacy.rights.object": "الاعتراض على معالجة معلوماتك",
+    "privacy.rights.withdraw": "سحب الموافقة في أي وقت",
+
+    "privacy.contact.badge": "تواصل معنا",
+    "privacy.contact.title": "أسئلة حول خصوصيتك؟",
+    "privacy.contact.subtitle": "إذا كان لديك أي أسئلة حول سياسة الخصوصية هذه أو كيفية تعاملنا مع معلوماتك الشخصية، فريق الخصوصية لدينا هنا لمساعدتك.",
+    "privacy.contact.primary": "تواصل مع فريق الخصوصية",
+    "privacy.contact.secondary": "تواصل عام",
+    "privacy.trust.gdpr": "متوافق مع GDPR",
+    "privacy.trust.ssl": "مشفر بـ SSL",
+    "privacy.trust.design": "خصوصية بالتصميم",
+
+    // Terms of Service
+    "terms.hero.badge": "القانون والامتثال",
+    "terms.hero.title": "شروط الخدمة",
+    "terms.hero.subtitle": "شروط وأحكام واضحة تحكم علاقتنا المهنية وتقديم الخدمات.",
+    "terms.hero.lastUpdated": "آخر تحديث: يناير 2025",
+
+    "terms.agreement.title": "الموافقة على الشروط",
+    "terms.agreement.content": "بالوصول إلى خدمات أورين أو استخدامها، فإنك توافق على الالتزام بشروط الخدمة هذه. إذا كنت لا توافق على أي جزء من هذه الشروط، فقد لا تتمكن من الوصول إلى خدماتنا.",
+
+    "terms.services.title": "الخدمات",
+    "terms.services.content": "تقدم أورين خدمات تطوير الويب وتطوير المنصات المخصصة وحلول التجارة الإلكترونية والتسويق الرقمي والخدمات ذات الصلة. سيتم تحديد نطاق الخدمات المحدد في اتفاقيات المشروع الفردية.",
+
+    "terms.ip.title": "الملكية الفكرية",
+    "terms.ip.content": "عند الدفع الكامل، يحصل العملاء على ملكية المخرجات النهائية كما هو محدد في اتفاقية المشروع. تحتفظ أورين بالحق في استخدام أعمال المشروع في المحافظ والمواد التسويقية إلا إذا تم الاتفاق على خلاف ذلك.",
+
+    "terms.payment.title": "شروط الدفع",
+    "terms.payment.content": "سيتم تحديد شروط الدفع في اتفاقيات المشروع الفردية. تشمل الشروط النموذجية:",
+    "terms.payment.deposit": "وديعة أولية مطلوبة لبدء العمل",
+    "terms.payment.milestone": "مدفوعات مرحلية للمشاريع الأكبر",
+    "terms.payment.final": "الدفع النهائي مستحق عند اكتمال المشروع",
+    "terms.payment.late": "قد تترتب رسوم إضافية على المدفوعات المتأخرة",
+
+    "terms.timeline.title": "جدول المشروع الزمني",
+    "terms.timeline.content": "جداول المشاريع تقديرية وقد تُعدل بناءً على تعقيد المشروع وتعليقات العميل وتغييرات النطاق. سنقوم بتوصيل أي تعديلات في الجدول الزمني فورًا.",
+
+    "terms.warranties.title": "الضمانات والإخلاء من المسؤولية",
+    "terms.warranties.content": "نحن نضمن أن الخدمات ستُؤدى بطريقة مهنية. ومع ذلك، نحن لا نضمن نتائج أو مخرجات محددة. الخدمات مقدمة \"كما هي\" بدون ضمانات من أي نوع.",
+
+    "terms.liability.title": "حدود المسؤولية",
+    "terms.liability.content": "مسؤولية أورين محدودة بالمبلغ المدفوع مقابل الخدمات. نحن غير مسؤولين عن الأضرار غير المباشرة أو العرضية أو التبعية الناتجة عن استخدام خدماتنا.",
+
+    "terms.termination.title": "الإنهاء",
+    "terms.termination.content": "يجوز لأي من الطرفين إنهاء الخدمات بإشعار كتابي. عند الإنهاء، يكون العميل مسؤولاً عن دفع العمل المكتمل حتى تاريخه.",
+
+    "terms.contact.title": "أسئلة حول هذه الشروط؟",
+    "terms.contact.subtitle": "إذا كان لديك أي أسئلة حول شروط الخدمة هذه أو تحتاج إلى توضيح لأي جانب من جوانب اتفاقيتنا، فإن فريقنا القانوني هنا لمساعدتك.",
+    "terms.contact.primary": "تواصل مع الفريق القانوني",
+    "terms.contact.secondary": "تواصل عام",
+    "terms.contact.badge": "دعم قانوني",
+    "terms.trust.professional": "خدمات مهنية",
+    "terms.trust.reliable": "تسليم موثوق",
+    "terms.trust.transparent": "شروط شفافة",
+
+    // Accessibility Statement
+    "accessibility.hero.badge": "الوصولية والشمولية",
+    "accessibility.hero.title": "بيان الوصولية",
+    "accessibility.hero.subtitle": "نحن ملتزمون بضمان الوصولية الرقمية للأشخاص ذوي الإعاقة وتحسين تجربة المستخدم بشكل مستمر للجميع.",
+    "accessibility.hero.lastUpdated": "آخر تحديث: يناير 2025",
+
+    "accessibility.commitment.title": "التزامنا",
+    "accessibility.commitment.content": "تلتزم أورين بضمان الوصولية الرقمية للأشخاص ذوي الإعاقة. نحن نحسن تجربة المستخدم بشكل مستمر للجميع ونطبق معايير الوصولية ذات الصلة.",
+
+    "accessibility.conformance.title": "حالة الامتثال",
+    "accessibility.conformance.content": "نهدف إلى الامتثال لإرشادات إمكانية الوصول إلى محتوى الويب (WCAG) 2.1 مستوى AA. تشرح هذه الإرشادات كيفية جعل محتوى الويب أكثر إمكانية للأشخاص ذوي الإعاقة.",
+
+    "accessibility.features.title": "ميزات الوصولية",
+    "accessibility.features.content": "يشمل موقعنا الإلكتروني ميزات الوصولية التالية:",
+    "accessibility.features.semantic": "هيكل HTML دلالي للتوافق مع قارئات الشاشة",
+    "accessibility.features.keyboard": "دعم التنقل بالكيبورد في جميع أنحاء الموقع",
+    "accessibility.features.contrast": "نسب تباين ألوان كافية لقراءة النص",
+    "accessibility.features.alt": "نص بديل للصور والمحتوى المرئي",
+    "accessibility.features.responsive": "تصميم متجاوب يعمل عبر الأجهزة",
+    "accessibility.features.focus": "مؤشرات تركيز واضحة للعناصر التفاعلية",
+    "accessibility.features.aria": "تسميات ARIA وعلامات للتنقل الأفضل",
+
+    "accessibility.limitations.title": "القيود المعروفة",
+    "accessibility.limitations.content": "رغم جهودنا المثلى، قد لا يكون بعض المحتوى متاحًا بالكامل بعد. نحن نعمل بنشاط لحل هذه المشكلات وتحسين الوصولية في جميع أنحاء موقعنا الإلكتروني.",
+
+    "accessibility.feedback.title": "التعليقات",
+    "accessibility.feedback.content": "نرحب بتعليقاتكم حول وصولية موقعنا الإلكتروني. إذا واجهتم أي حواجز في الوصولية، يرجى الاتصال بنا على",
+
+    "accessibility.contact.title": "أسئلة حول الوصولية؟",
+    "accessibility.contact.subtitle": "إذا كان لديك أي أسئلة حول ميزات الوصولية لدينا أو تحتاج إلى مساعدة في الوصول إلى المحتوى، فإن فريق الوصولية لدينا هنا لمساعدتك.",
+    "accessibility.contact.primary": "تواصل مع فريق الوصولية",
+    "accessibility.contact.secondary": "تواصل عام",
+    "accessibility.contact.badge": "دعم الوصولية",
+    "accessibility.technical.title": "المواصفات الفنية",
+    "accessibility.trust.inclusive": "تصميم شامل",
+    "accessibility.trust.accessible": "WCAG 2.1 AA",
+    "accessibility.trust.compliant": "متوافق مع الوصولية",
+
     // About
     "about.title": "عن أورين",
     "about.hero.badge": "تعرف على قصتنا",
@@ -4997,6 +5368,7 @@ export default {
     "common.sourceCode": "الكود المصدري",
     "common.viewDetails": "عرض التفاصيل",
     "common.more": "أخرى",
+    "common.close": "إغلاق",
   },
   fr: {
     // Navigation
@@ -5521,6 +5893,10 @@ export default {
     "portfolio.filter.webdev": "Développement Web",
     "portfolio.filter.ecommerce": "E-commerce",
     "portfolio.filter.saas": "SaaS",
+    "portfolio.filter.mobileapp": "Application Mobile",
+    "portfolio.filter.design": "Design",
+    "portfolio.filter.digitalmarketing": "Marketing Digital",
+    "portfolio.filter.customplatforms": "Plateformes Personnalisées",
     "portfolio.notfound.title": "Projet introuvable",
     "portfolio.notfound.description": "Le projet que vous recherchez n'existe pas ou a été supprimé.",
     "portfolio.notfound.button": "Voir tous les projets",
@@ -5541,6 +5917,10 @@ export default {
     "project.technologiesUsed": "Technologies Utilisées",
     "project.quickActions": "Actions Rapides",
     "project.shareProject": "Partager le Projet",
+    "project.shareDescription": "Partagez ce projet avec d'autres en copiant le lien ci-dessous.",
+    "project.copy": "Copier",
+    "project.copied": "Copié!",
+    "project.linkCopied": "Lien Copié!",
     "project.viewLiveDemo": "Voir la Démo en Direct",
     "project.sourceCode": "Code Source",
     "project.projectDetails": "Détails du Projet",
@@ -5548,6 +5928,7 @@ export default {
     "project.technologies": "technologies",
     "project.client": "Client",
     "project.duration": "Durée",
+    "project.duration.days": "jours",
     "project.duration.3months": "3 mois",
     "project.duration.4months": "4 mois",
     "project.duration.5months": "5 mois",
@@ -5711,7 +6092,7 @@ export default {
     "blog.post.nextjsPerformance.excerpt": "Apprenez les stratégies essentielles pour améliorer la vitesse de votre site web et l'engagement des utilisateurs avec ces techniques d'optimisation Next.js.",
     "blog.post.nextjsPerformance.content": `
       <div class="lead">
-        <p>Next.js est déjà optimisé pour les performances dès la sortie de boîte, mais il existe de nombreuses techniques que vous pouvez utiliser pour rendre vos applications encore plus rapides. Ce guide couvre des stratégies d'optimisation pratiques qui peuvent améliorer considérablement les performances de votre application Next.js.</p>
+        <p class="mt-0">Next.js est déjà optimisé pour les performances dès la sortie de boîte, mais il existe de nombreuses techniques que vous pouvez utiliser pour rendre vos applications encore plus rapides. Ce guide couvre des stratégies d'optimisation pratiques qui peuvent améliorer considérablement les performances de votre application Next.js.</p>
 
         <p>Selon des benchmarks récents, <strong>les applications Next.js se chargent 40% plus rapidement</strong> que les applications React traditionnelles en moyenne. Les applications Next.js bien optimisées atteignent <strong>des temps de chargement inférieurs à 3 secondes</strong> et <strong>des scores Core Web Vitals supérieurs à 90</strong>, ce qui entraîne un meilleur engagement utilisateur et des taux de conversion plus élevés.</p>
       </div>
@@ -6072,7 +6453,7 @@ export default function Layout({ children }) {
     "blog.post.seoStrategies.excerpt": "Découvrez des techniques SEO éprouvées pour améliorer la visibilité de votre site web et générer du trafic organique.",
     "blog.post.seoStrategies.content": `
       <div class="lead">
-        <p>L'optimisation pour les moteurs de recherche continue d'évoluer, les algorithmes de Google devenant de plus en plus sophistiqués. En 2025, le SEO réussi nécessite une approche holistique qui combine excellence technique, contenu de qualité et optimisation de l'expérience utilisateur.</p>
+        <p class="mt-0">L'optimisation pour les moteurs de recherche continue d'évoluer, les algorithmes de Google devenant de plus en plus sophistiqués. En 2025, le SEO réussi nécessite une approche holistique qui combine excellence technique, contenu de qualité et optimisation de l'expérience utilisateur.</p>
 
         <p>Selon des données récentes, <strong>le search organique génère 53% de tout le trafic web</strong>, faisant du SEO le canal marketing le plus rentable. Les entreprises qui investissent dans le SEO voient un taux de conversion moyen de <strong>14,6%</strong> du search organique, comparé à seulement <strong>1,7% pour le marketing sortant</strong>.</p>
       </div>
@@ -6339,7 +6720,7 @@ export default function HeroSection() {
     "blog.post.aiInWebDev.excerpt": "Découvrez comment l'intelligence artificielle révolutionne les processus de développement web, de la génération de code aux expériences utilisateur personnalisées.",
     "blog.post.aiInWebDev.content": `
       <div class="lead">
-        <p>L'intelligence artificielle transforme fondamentalement notre approche du développement web. De la génération de code aux tests automatisés et aux expériences utilisateur intelligentes, l'IA rend les développeurs plus productifs tout en permettant des types d'applications entièrement nouveaux.</p>
+        <p class="mt-0">L'intelligence artificielle transforme fondamentalement notre approche du développement web. De la génération de code aux tests automatisés et aux expériences utilisateur intelligentes, l'IA rend les développeurs plus productifs tout en permettant des types d'applications entièrement nouveaux.</p>
       </div>
 
       <h2>Codage Assisté par IA</h2>
@@ -6520,51 +6901,204 @@ export default function HeroSection() {
     "blog.post.uiDesignPrinciples.excerpt": "Maîtrisez les principes fondamentaux de la conception d'interface utilisateur pour créer des interfaces belles et fonctionnelles.",
     "blog.post.uiDesignPrinciples.content": `
       <div class="lead">
-        <p>La conception d'interface utilisateur exceptionnelle est à la fois un art et une science. Bien que les tendances aillent et viennent, certains principes fondamentaux restent constants. Comprendre et appliquer ces principes vous aidera à créer des interfaces qui sont non seulement belles, mais aussi fonctionnelles et conviviales.</p>
+        <p class="mt-0">La conception d'interface utilisateur exceptionnelle est à la fois un art et une science. Bien que les tendances aillent et viennent, certains principes fondamentaux restent constants. Comprendre et appliquer ces principes vous aidera à créer des interfaces qui sont non seulement belles, mais aussi fonctionnelles et conviviales.</p>
+
+        <p>Selon des recherches UX récentes, <strong>les interfaces bien conçues peuvent améliorer la satisfaction utilisateur de 40%</strong> et <strong>augmenter les taux de conversion de 200%</strong>. Un mauvais design, en revanche, fait que <strong>70% des utilisateurs abandonnent les sites web</strong> dans les premières secondes.</p>
       </div>
 
-      <h2>Hiérarchie Visuelle</h2>
+      <h2>Hiérarchie Visuelle : Guide l'Attention Utilisateur</h2>
       <p>La hiérarchie visuelle guide les utilisateurs à travers votre interface en établissant l'ordre d'importance. Utilisez la taille, la couleur, le contraste et l'espacement pour diriger l'attention vers les éléments les plus importants en premier.</p>
 
       <p>Les actions principales doivent être les plus proéminentes, les actions secondaires moins, et les actions tertiaires subtiles. Les titres doivent être plus grands que le texte du corps, et les informations importantes doivent se démarquer par le contraste ou le positionnement.</p>
 
-      <h2>Consistance et Standards</h2>
+      <h3>Techniques de Hiérarchie Visuelle :</h3>
+      <ul>
+        <li><strong>Taille et Échelle :</strong> Les éléments plus grands attirent plus l'attention que les plus petits</li>
+        <li><strong>Couleur et Contraste :</strong> Les éléments à contraste élevé se démarquent de l'arrière-plan</li>
+        <li><strong>Positionnement :</strong> Les éléments en haut ou au centre attirent généralement plus l'attention</li>
+        <li><strong>Espacement :</strong> Un espace généreux autour des éléments importants crée la focalisation</li>
+        <li><strong>Typographie :</strong> Les polices grasses et plus grandes commandent plus l'attention que le texte régulier</li>
+      </ul>
+
+      <div>
+        <p><strong>Impact :</strong> Une hiérarchie visuelle appropriée peut <strong>augmenter l'engagement utilisateur de 30%</strong> et <strong>améliorer les taux d'achèvement des tâches de 25%</strong>.</p>
+      </div>
+
+      <div>
+        <h4>Exemple : Hiérarchie Visuelle en Action</h4>
+        <pre dir="ltr"><code>&lt;!-- CTA principal - le plus grand, le plus proéminent --&gt;
+&lt;button className="bg-blue-600 text-white px-8 py-4 text-xl font-bold rounded-lg"&gt;
+  Commencer Maintenant
+&lt;/button&gt;
+
+&lt;!-- Action secondaire - proéminence moyenne --&gt;
+&lt;button className="bg-gray-100 text-gray-800 px-6 py-3 text-base font-medium rounded"&gt;
+  En Savoir Plus
+&lt;/button&gt;
+
+&lt;!-- Action tertiaire - subtile, moins proéminente --&gt;
+&lt;a href="/help" className="text-sm text-gray-600 hover:text-gray-800"&gt;
+  Besoin d'aide ?
+&lt;/a&gt;</code></pre>
+      </div>
+
+      <h2>Consistance et Standards : Construire la Confiance Utilisateur</h2>
       <p>La consistance crée de la familiarité et réduit la charge cognitive. Utilisez des couleurs, une typographie, un espacement et des modèles d'interaction cohérents dans toute votre interface. Suivez les conventions de plateforme afin que les utilisateurs puissent appliquer leurs connaissances existantes.</p>
 
       <p>Créez et maintenez un système de conception avec des composants réutilisables, des échelles d'espacement définies et des directives claires. Cela garantit la cohérence dans votre produit et accélère le processus de conception et de développement.</p>
 
-      <h2>Espace Blanc et Respiration</h2>
+      <h3>Avantages du Système de Conception :</h3>
+      <ul>
+        <li><strong>Développement Plus Rapide :</strong> Les composants réutilisables réduisent le temps de développement de 40%</li>
+        <li><strong>Expérience Cohérente :</strong> Les utilisateurs apprennent les modèles plus rapidement à travers l'interface</li>
+        <li><strong>Maintenance Plus Facile :</strong> Les changements peuvent être faits globalement à travers le système de conception</li>
+        <li><strong>Cohésion de Marque :</strong> Un langage visuel cohérent renforce l'identité de marque</li>
+        <li><strong>Évolutivité :</strong> Les nouvelles fonctionnalités s'intègrent parfaitement avec les modèles existants</li>
+      </ul>
+
+      <div>
+        <h4>Composants du Système de Conception :</h4>
+        <div>
+          <div>
+            <span>Bouton Principal</span>
+            <span>Grand, bleu, arrondi</span>
+          </div>
+          <div>
+            <span>Bouton Secondaire</span>
+            <span>Moyen, style contour</span>
+          </div>
+          <div>
+            <span>Champ de Formulaire</span>
+            <span>Rembourrage standard, états de focus</span>
+          </div>
+        </div>
+      </div>
+
+      <h2>Espace Blanc et Respiration : Le Pouvoir du Néant</h2>
       <p>L'espace blanc (ou espace négatif) n'est pas un espace gaspillé - c'est un élément de conception crucial. Un espacement approprié améliore la lisibilité, crée une hiérarchie visuelle et rend les interfaces moins encombrées et plus premium.</p>
 
       <p>N'ayez pas peur de l'espace vide. Donnez de la place à votre contenu pour respirer. Utilisez un rembourrage et des marges généreux, surtout autour des éléments importants. Regroupez les éléments liés ensemble et séparez ceux qui ne le sont pas.</p>
 
-      <h2>Typographie et Lisibilité</h2>
+      <h3>Meilleures Pratiques d'Espace Blanc :</h3>
+      <ul>
+        <li><strong>Respiration du Contenu :</strong> 1.5-2x hauteur de ligne entre les blocs de texte</li>
+        <li><strong>Séparation des Éléments :</strong> Séparation visuelle claire entre le contenu lié et non lié</li>
+        <li><strong>Amélioration du Focus :</strong> Plus d'espace autour des éléments importants crée l'emphase</li>
+        <li><strong>Flux de Lecture :</strong> Un espacement approprié guide l'œil à travers le contenu naturellement</li>
+        <li><strong>Optimisation Mobile :</strong> Ajustez l'espacement pour les écrans plus petits pour maintenir la lisibilité</li>
+      </ul>
+
+      <div>
+        <h4>Exemples d'Échelle d'Espacement :</h4>
+        <ul>
+          <li><strong>XS (4px) :</strong> Petites icônes, groupes de boutons serrés</li>
+          <li><strong>SM (8px) :</strong> Espacement d'icônes, petit rembourrage</li>
+          <li><strong>MD (16px) :</strong> Rembourrage de composants standard</li>
+          <li><strong>LG (24px) :</strong> Espacement de sections, marges de cartes</li>
+          <li><strong>XL (32px) :</strong> Ruptures de sections majeures, espacement héros</li>
+        </ul>
+      </div>
+
+      <h2>Typographie et Lisibilité : La Fondation de la Communication</h2>
       <p>La typographie est fondamentale dans la conception d'interface utilisateur. Choisissez des polices lisibles à différentes tailles et poids. Maintenez une hiérarchie claire avec des niveaux de titre distincts et du texte du corps.</p>
 
       <p>Utilisez une hauteur de ligne de 1.5-1.6 pour le texte du corps, limitez la longueur de ligne à 50-75 caractères pour une lisibilité optimale, et assurez un contraste suffisant entre le texte et l'arrière-plan. Envisagez d'utiliser des polices système pour de meilleures performances et familiarité.</p>
 
-      <h2>Théorie de la Couleur et Accessibilité</h2>
+      <h3>Directives de Typographie :</h3>
+      <ul>
+        <li><strong>Sélection de Police :</strong> Sans-serif pour les interfaces numériques, serif pour le contenu print-like</li>
+        <li><strong>Hiérarchie :</strong> Distinction claire entre h1-h6 et texte du corps</li>
+        <li><strong>Longueur de Ligne :</strong> 50-75 caractères par ligne pour une lecture optimale</li>
+        <li><strong>Hauteur de Ligne :</strong> 1.4-1.6 pour le texte du corps, plus serré pour les titres</li>
+        <li><strong>Espacement des Lettres :</strong> Légèrement augmenté pour les titres, normal pour le texte du corps</li>
+      </ul>
+
+      <div>
+        <h4>Exemple d'Échelle Typographique :</h4>
+        <div>
+          <div>
+            <span>H1 - 32px</span>
+            <span>Gras</span>
+          </div>
+          <div>
+            <span>H2 - 24px</span>
+            <span>Semi-gras</span>
+          </div>
+          <div>
+            <span>Corps - 16px</span>
+            <span>Régulier</span>
+          </div>
+          <div>
+            <span>Légende - 14px</span>
+            <span>Régulier</span>
+          </div>
+        </div>
+      </div>
+
+      <h2>Théorie de la Couleur et Accessibilité : Design Émotionnel et Fonctionnel</h2>
       <p>La couleur communique le sens, crée l'ambiance et guide l'attention. Utilisez une palette de couleurs limitée - généralement une couleur primaire, une ou deux couleurs d'accent, et une gamme de neutres.</p>
 
       <p>Assurez un contraste suffisant pour l'accessibilité (4.5:1 pour le texte normal, 3:1 pour le texte large). Ne comptez pas sur la couleur seule pour transmettre des informations - utilisez des icônes, des étiquettes ou des motifs aussi. Testez vos conceptions en niveaux de gris pour vérifier que la hiérarchie fonctionne sans couleur.</p>
 
-      <h2>Retour d'Information et Affordances</h2>
+      <h3>Psychologie et Utilisation de la Couleur :</h3>
+      <ul>
+        <li><strong>Couleurs Primaires :</strong> Identité de marque et actions principales</li>
+        <li><strong>Couleurs Secondaires :</strong> Actions de support et informations secondaires</li>
+        <li><strong>Couleurs Neutres :</strong> Arrière-plans, texte et éléments subtils</li>
+        <li><strong>Couleurs d'Accompagnement :</strong> Mises en surbrillance, notifications et états spéciaux</li>
+        <li><strong>Couleurs Erreur/Succès :</strong> Retour clair pour les actions utilisateur</li>
+      </ul>
+
+      <div>
+        <h4>Palette de Couleurs Efficace :</h4>
+        <div>
+          <div>
+            <span style="background-color: #2563eb; width: 20px; height: 20px; display: inline-block; margin-right: 8px;"></span>
+            <span>Primaire : #2563eb</span>
+          </div>
+          <div>
+            <span style="background-color: #64748b; width: 20px; height: 20px; display: inline-block; margin-right: 8px;"></span>
+            <span>Secondaire : #64748b</span>
+          </div>
+          <div>
+            <span style="background-color: #f59e0b; width: 20px; height: 20px; display: inline-block; margin-right: 8px;"></span>
+            <span>Accent : #f59e0b</span>
+          </div>
+        </div>
+      </div>
+
+      <h2>Retour d'Information et Affordances : Design Interactif</h2>
       <p>Fournissez des retours clairs pour les actions des utilisateurs. Les boutons doivent avoir des états de survol, actif et désactivé. Montrez des indicateurs de chargement pour les opérations asynchrones. Affichez clairement les messages de succès ou d'erreur.</p>
 
       <p>Utilisez des affordances - des indices visuels qui suggèrent comment un élément doit être utilisé. Les boutons doivent avoir l'air cliquables, les liens doivent être distinguables, et les éléments interactifs doivent répondre à l'entrée de l'utilisateur.</p>
 
-      <h2>Mobile-First et Conception Réactive</h2>
-      <p>Concevez d'abord pour mobile, puis améliorez pour les écrans plus grands. Cela garantit que votre expérience de base fonctionne sur les appareils les plus contraints. Utilisez des mises en page réactives qui s'adaptent gracieusement aux différentes tailles d'écran.</p>
+      <h3>Mécanismes de Retour d'Information :</h3>
+      <ul>
+        <li><strong>Retour Visuel :</strong> États de survol, indicateurs de focus et changements d'état</li>
+        <li><strong>Retour Auditif :</strong> Sons de clic, tonalités de notification (le cas échéant)</li>
+        <li><strong>Retour Haptique :</strong> Vibration sur les appareils mobiles pour confirmation tactile</li>
+        <li><strong>Indicateurs de Statut :</strong> Spinners de chargement, barres de progression, messages de succès/erreur</li>
+        <li><strong>Micro-interactions :</strong> Animations subtiles qui fournissent contexte et plaisir</li>
+      </ul>
 
-      <p>Considérez les cibles tactiles - rendez les éléments interactifs d'au moins 44x44 pixels pour un tapotement facile. Assurez-vous que les actions importantes sont atteignables d'une seule main sur les appareils mobiles.</p>
-
-      <h2>Divulgation Progressive</h2>
-      <p>Ne submergez pas les utilisateurs avec trop d'informations à la fois. Utilisez la divulgation progressive pour montrer seulement ce qui est nécessaire initialement, révélant des options ou informations supplémentaires selon les besoins.</p>
-
-      <p>Cela peut être réalisé à travers des sections extensibles, des formulaires multi-étapes, des infobulles ou des boîtes de dialogue modales. L'objectif est de réduire la charge cognitive tout en gardant les fonctionnalités avancées accessibles.</p>
-
-      <h2>Conclusion</h2>
-      <p>Ces principes forment la base d'une bonne conception d'interface utilisateur. Bien que les tendances et les outils changent, ces fondamentaux restent pertinents. Pratiquez leur application cohérente, et vous créerez des interfaces qui sont à la fois belles et hautement fonctionnelles.</p>
+      <div>
+        <h4>Exemple : États de Bouton et Retour d'Information</h4>
+        <pre dir="ltr"><code>&lt;button
+  className="bg-blue-600 hover:bg-blue-700 active:bg-blue-800 disabled:bg-gray-400 text-white px-4 py-2 rounded transition-colors duration-200"
+  disabled={isLoading}
+&gt;
+  {isLoading ? (
+    &lt;&gt;
+      &lt;svg className="animate-spin h-4 w-4 mr-2" viewBox="0 0 24 24"&gt;
+        &lt;circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none"/&gt;
+      &lt;/svg&gt;
+      Traitement...
+    &lt;/&gt;
+  ) : (
+    'Soumettre le Formulaire'
+  )}
+&lt;/button&gt;</code></pre>
+      </div>
     `,
 
     // Blog Post: Designing for Accessibility (French)
@@ -6572,7 +7106,7 @@ export default function HeroSection() {
     "blog.post.accessibility.excerpt": "Apprenez à créer des expériences numériques inclusives qui fonctionnent pour tous, quelles que soient leurs capacités.",
     "blog.post.accessibility.content": `
       <div class="lead">
-        <p>L'accessibilité dans la conception web n'est pas seulement une exigence légale - c'est une nécessité morale et une bonne pratique commerciale. Créer des sites web accessibles garantit que tout le monde, quelles que soient ses capacités, peut accéder au contenu et interagir avec lui.</p>
+        <p class="mt-0">L'accessibilité dans la conception web n'est pas seulement une exigence légale - c'est une nécessité morale et une bonne pratique commerciale. Créer des sites web accessibles garantit que tout le monde, quelles que soient ses capacités, peut accéder au contenu et interagir avec lui.</p>
 
         <p>Selon des études récentes, <strong>15% de la population mondiale</strong> vit avec une forme de handicap, représentant une <strong>opportunité de marché de 1,2 billion de dollars</strong>. Au-delà de la conformité, la conception accessible améliore l'utilisabilité pour tous les utilisateurs et peut augmenter les taux de conversion jusqu'à <strong>25%</strong>.</p>
       </div>
@@ -6879,99 +7413,437 @@ const Modal = ({ isOpen, onClose, children }) => {
     `,
     "blog.post.trends2025.content": `
       <div class="lead">
-        <p>Le paysage du développement web évolue plus rapidement que jamais. En 2025, les développeurs et les agences numériques adoptent de nouveaux outils et technologies qui priorisent <strong>la vitesse, l'expérience utilisateur, l'intégration de l'IA et la durabilité</strong>. Que vous soyez propriétaire d'une marque, développeur ou designer, comprendre ces tendances peut vous aider à rester compétitif dans un monde numérique d'abord.</p>
+        <p class="mt-0">Le paysage du développement web évolue plus rapidement que jamais. En 2025, les développeurs et les agences numériques adoptent de nouveaux outils et technologies qui priorisent <strong>la vitesse, l'expérience utilisateur, l'intégration de l'IA et la durabilité</strong>. Que vous soyez propriétaire d'une marque, développeur ou designer, comprendre ces tendances peut vous aider à rester compétitif dans un monde numérique d'abord.</p>
 
         <p>Selon des rapports d'industrie récents, les sites web construits avec des frameworks modernes se chargent <strong>40% plus rapidement</strong> et convertissent <strong>25% mieux</strong> que les approches traditionnelles. Plongeons en profondeur dans les tendances les plus impactantes qui façonnent l'avenir du développement web.</p>
       </div>
 
-      <section class="trend-section">
+      <section>
         <h2>Développement piloté par l'IA et automatisation</h2>
         <p>L'intelligence artificielle transforme la façon dont les sites web sont construits et maintenus. Des outils de <strong>génération de code alimentés par l'IA</strong> comme GitHub Copilot à <strong>l'UX personnalisée basée sur le comportement des utilisateurs</strong>, l'automatisation réduit le temps de développement et stimule la créativité.</p>
-        <div class="trend-highlight">
-          <p><strong>Insight clé :</strong> Les chatbots IA et les assistants de contenu sont désormais standard pour les sites web, pas des luxes.</p>
+
+        <p>Les chatbots IA et les assistants de contenu sont désormais standard pour les sites web, pas des luxes. Cette technologie permet des expériences utilisateur plus dynamiques et réactives tout en réduisant la charge de travail manuelle des équipes de développement.</p>
+
+        <h3>Outils et technologies IA clés :</h3>
+        <ul>
+          <li><strong>GitHub Copilot & CodeWhisperer :</strong> Programmation en binôme IA qui suggère des complétions de code et des fonctions entières</li>
+          <li><strong>Intégration ChatGPT :</strong> Génération de contenu dynamique et automatisation du support client</li>
+          <li><strong>Adobe Sensei & Figma AI :</strong> Automatisation du système de conception et génération d'actifs intelligents</li>
+          <li><strong>Moteurs de personnalisation :</strong> Algorithmes de machine learning qui adaptent l'UX en temps réel</li>
+        </ul>
+
+        <div>
+          <h4>Exemple : Génération de code alimentée par l'IA</h4>
+          <pre dir="ltr"><code>// GitHub Copilot peut générer ce composant React basé sur un commentaire simple
+// "Créer un composant de carte produit réactif"
+
+const ProductCard = ({ product, onAddToCart }) => {
+  return (
+    &lt;div className="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow"&gt;
+      &lt;img src=&#123;product.image&#125; alt=&#123;product.name&#125; className="w-full h-48 object-cover rounded" /&gt;
+      &lt;h3 className="text-lg font-semibold mt-4"&gt;&#123;product.name&#125;&lt;/h3&gt;
+      &lt;p className="text-gray-600 mt-2"&gt;&#123;product.description&#125;&lt;/p&gt;
+      &lt;div className="flex justify-between items-center mt-4"&gt;
+        &lt;span className="text-xl font-bold"&gt;$&#123;product.price&#125;&lt;/span&gt;
+        &lt;button
+          onClick=&#123;() =&gt; onAddToCart(product)&#125;
+          className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
+        &gt;
+          Ajouter au panier
+        &lt;/button&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  );
+};</code></pre>
         </div>
       </section>
 
-      <section class="trend-section">
+      <section>
         <h2>Architecture axée sur les performances</h2>
         <p>L'accent mis par Google sur les <strong>Core Web Vitals</strong> se poursuit en 2025. Les temps de chargement rapides, l'interactivité fluide et la stabilité visuelle sont plus importants que jamais. Les développeurs utilisent <strong>Next.js 14, Astro et Vite</strong> pour construire des sites ultra-rapides et axés sur les performances.</p>
-        <div class="trend-highlight">
-          <p><strong>Conseil pro :</strong> Optimisez les images, implémentez le chargement paresseux et tirez parti de la mise en cache périphérique pour les audiences mondiales.</p>
+
+        <p>Optimisez les images, implémentez le chargement paresseux et tirez parti de la mise en cache périphérique pour les audiences mondiales. Ces techniques garantissent que les sites web se chargent rapidement indépendamment de l'emplacement de l'utilisateur ou des capacités de son appareil.</p>
+
+        <h3>Stratégies d'optimisation des performances :</h3>
+        <ul>
+          <li><strong>Optimisation des images :</strong> Format WebP, images réactives et chargement paresseux réduisent les temps de chargement de 60%</li>
+          <li><strong>Découpage du code :</strong> Importations dynamiques et découpage basé sur les routes pour des chargements de page initiaux plus rapides</li>
+          <li><strong>CDN et informatique de périphérie :</strong> Distribution de contenu mondiale avec mise en cache périphérique pour des temps de réponse inférieurs à 100ms</li>
+          <li><strong>Optimisation du bundle :</strong> Tree shaking, compression et bundlers modernes comme Vite et esbuild</li>
+        </ul>
+
+        <div>
+          <p><strong>Impact sur les performances :</strong> Selon Google, les sites qui obtiennent les meilleurs scores aux Core Web Vitals sont <strong>24% plus susceptibles de se classer plus haut</strong> dans les résultats de recherche.</p>
         </div>
       </section>
 
-      <section class="trend-section">
+      <section>
         <h2>Serveurless et informatique de périphérie</h2>
         <p>L'architecture serveurless et le <strong>déploiement périphérique</strong> redéfinissent l'évolutivité. Des plateformes comme <strong>Vercel, Netlify et Cloudflare Workers</strong> permettent aux développeurs de déployer du code plus près des utilisateurs, améliorant considérablement la latence et les performances.</p>
-        <p>Cette évolution réduit également les coûts et simplifie la gestion de l'infrastructure backend.</p>
-      </section>
 
-      <section class="trend-section">
-        <h2>Applications Web Progressives (PWA) 2.0</h2>
-        <p>Les PWA continuent de brouiller la frontière entre le web et les applications mobiles natives. En 2025, elles supportent <strong>les notifications push, l'accès hors ligne et les capacités plein écran</strong> encore mieux.</p>
-        <p>Les marques les utilisent pour offrir des expériences semblables à des applications sans le coût du développement natif.</p>
-      </section>
+        <p>Cette évolution réduit également les coûts et simplifie la gestion de l'infrastructure backend. Les équipes peuvent se concentrer davantage sur la création de fonctionnalités plutôt que sur la maintenance des serveurs.</p>
 
-      <section class="trend-section">
-        <h2>UI Motion et design interactif</h2>
-        <p>Les designs statiques sont terminés. L'UI Motion, les <strong>micro-animations</strong> et les <strong>effets de défilement 3D</strong> mènent la voie vers des expériences immersives. Des outils comme <strong>Framer Motion</strong> et <strong>GSAP</strong> facilitent l'ajout de personnalité et d'émotion aux interfaces.</p>
-        <div class="trend-highlight warning">
-          <p><strong>Important :</strong> Le mouvement devrait améliorer l'UX - pas l'écraser.</p>
+        <h3>Avantages et cas d'utilisation du serverless :</h3>
+        <ul>
+          <li><strong>Mise à l'échelle automatique :</strong> Gérez des millions de requêtes sans provisionnement de serveurs</li>
+          <li><strong>Efficacité coût :</strong> Payez uniquement pour le temps de calcul réel (économisez jusqu'à 90% sur l'infrastructure)</li>
+          <li><strong>Portée mondiale :</strong> Déployez sur 200+ emplacements périphériques dans le monde pour des performances optimales</li>
+          <li><strong>Expérience développeur :</strong> Concentrez-vous sur le code, pas sur la gestion des serveurs</li>
+        </ul>
+
+        <div>
+          <h4>Exemple : Fonction périphérique avec Cloudflare Workers</h4>
+          <pre dir="ltr"><code>// Déployez cela sur 200+ emplacements mondiaux instantanément
+export default {
+  async fetch(request, env) {
+    const url = new URL(request.url);
+
+    // Gérez les routes API à la périphérie
+    if (url.pathname.startsWith('/api/')) {
+      const response = await fetch(\`https://api.example.com$&#123;url.pathname&#125;\`);
+      return response;
+    }
+
+    // Servez le contenu statique avec mise en cache périphérique
+    return env.ASSETS.fetch(request);
+  }
+};</code></pre>
         </div>
       </section>
 
-      <section class="trend-section">
+      <section>
+        <h2>Applications Web Progressives (PWA) 2.0</h2>
+        <p>Les PWA continuent de brouiller la frontière entre le web et les applications mobiles natives. En 2025, elles supportent <strong>les notifications push, l'accès hors ligne et les capacités plein écran</strong> encore mieux.</p>
+
+        <p>Les marques les utilisent pour offrir des expériences semblables à des applications sans le coût du développement natif. Les utilisateurs bénéficient de la commodité d'une application sans avoir besoin de télécharger quoi que ce soit depuis un magasin d'applications.</p>
+
+        <h3>Histoires de succès PWA :</h3>
+        <ul>
+          <li><strong>Starbucks PWA :</strong> Augmentation de 2x des utilisateurs actifs quotidiens après l'implémentation de la commande hors ligne</li>
+          <li><strong>Twitter Lite :</strong> Amélioration de 75% de l'engagement avec les notifications push</li>
+          <li><strong>Alibaba :</strong> Taux de conversion 76% plus élevés comparés aux applications natives</li>
+          <li><strong>Forbes :</strong> Temps de chargement 6x plus rapides et engagement utilisateur 43% meilleur</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>UI Motion et design interactif</h2>
+        <p>Les designs statiques sont terminés. L'UI Motion, les <strong>micro-animations</strong> et les <strong>effets de défilement 3D</strong> mènent la voie vers des expériences immersives. Des outils comme <strong>Framer Motion</strong> et <strong>GSAP</strong> facilitent l'ajout de personnalité et d'émotion aux interfaces.</p>
+
+        <p>Le mouvement devrait améliorer l'UX — pas l'écraser. La clé est d'utiliser des animations qui guident les utilisateurs et fournissent des retours sans être distrayantes.</p>
+
+        <h3>Meilleures pratiques d'animation :</h3>
+        <ul>
+          <li><strong>Mouvement intentionnel :</strong> Chaque animation devrait servir un objectif fonctionnel</li>
+          <li><strong>Performance d'abord :</strong> Utilisez les animations CSS plutôt que JavaScript pour de meilleures performances</li>
+          <li><strong>Accessibilité :</strong> Respectez les paramètres prefers-reduced-motion et fournissez des alternatives</li>
+          <li><strong>Optimisation mobile :</strong> Animations plus légères sur les appareils mobiles pour préserver la batterie</li>
+        </ul>
+      </section>
+
+      <section>
         <h2>Design web durable</h2>
         <p>Le design écologique n'est pas qu'un mot à la mode. Les sites web sont maintenant optimisés pour <strong>consommer moins d'énergie</strong>, en utilisant <strong>des thèmes sombres, des ressources minimales et du code efficace</strong>. Les développeurs et agences priorisent les solutions d'hébergement vertes pour réduire l'empreinte carbone.</p>
+
+        <p>Cette approche profite non seulement à l'environnement mais améliore également les performances et l'expérience utilisateur. Les sites web plus légers se chargent plus rapidement et consomment moins de batterie sur les appareils mobiles.</p>
+
+        <h3>Métriques de durabilité :</h3>
+        <ul>
+          <li><strong>Empreinte carbone :</strong> Le site web moyen produit 1,76g de CO2 par page vue</li>
+          <li><strong>Consommation d'énergie :</strong> Le mode sombre peut économiser jusqu'à 60% de batterie sur les appareils mobiles</li>
+          <li><strong>Impact sur les performances :</strong> Les sites durables se chargent généralement 30% plus rapidement</li>
+          <li><strong>Avantages SEO :</strong> Les algorithmes de Google favorisent les sites web économes en énergie</li>
+        </ul>
       </section>
 
-      <section class="trend-section">
+      <section>
         <h2>Sécurité et confidentialité par conception</h2>
         <p>Alors que les utilisateurs deviennent plus conscients de la confidentialité, les <strong>systèmes d'authentification sécurisés</strong>, l'<strong>architecture zéro confiance</strong> et les <strong>APIs chiffrées</strong> sont désormais standard. La conformité avec le RGPD, le CCPA et les politiques de données mondiales reste une priorité absolue pour les développeurs et les marques.</p>
+
+        <p>Construire la sécurité dans le processus de conception dès le début prévient les vulnérabilités et renforce la confiance des utilisateurs. Des audits de sécurité réguliers et des mises à jour sont essentiels pour maintenir une présence web sûre.</p>
+
+        <h3>Liste de contrôle d'implémentation de la sécurité :</h3>
+        <ul>
+          <li>✅ HTTPS partout avec gestion automatique des certificats</li>
+          <li>✅ En-têtes Content Security Policy (CSP)</li>
+          <li>✅ Authentification sécurisée avec OAuth 2.0 + JWT</li>
+          <li>✅ Validation et assainissement des entrées</li>
+          <li>✅ Audits de sécurité réguliers et tests de pénétration</li>
+          <li>✅ Analytics respectueux de la vie privée (conforme RGPD/CCPA)</li>
+        </ul>
       </section>
 
-      <section class="trend-section">
+      <section>
         <h2>Révolution du low-code</h2>
         <p>Les entreprises veulent avancer vite. Les outils low-code et no-code comme <strong>Webflow, Bubble et Builder.io</strong> permettent aux non-développeurs de créer des prototypes fonctionnels - tandis que les développeurs se concentrent sur les intégrations, les performances et la logique personnalisée.</p>
+
+        <p>Cette démocratisation du développement web crée de nouvelles opportunités pour le prototypage rapide et un temps de mise sur le marché plus rapide pour les produits et services numériques.</p>
+
+        <h3>Comparaison des plateformes low-code :</h3>
+        <div>
+          <table>
+            <thead>
+              <tr>
+                <th>Plateforme</th>
+                <th>Idéal pour</th>
+                <th>Courbe d'apprentissage</th>
+                <th>Personnalisation</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Webflow</strong></td>
+                <td>Sites marketing, portfolios</td>
+                <td>Moyen</td>
+                <td>Élevé</td>
+              </tr>
+              <tr>
+                <td><strong>Bubble</strong></td>
+                <td>Applications web, marketplaces</td>
+                <td>Faible</td>
+                <td>Moyen</td>
+              </tr>
+              <tr>
+                <td><strong>Builder.io</strong></td>
+                <td>Entreprise, intégration CMS</td>
+                <td>Faible</td>
+                <td>Très élevé</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </section>
 
-      <section class="trend-section">
+      <section>
         <h2>Architecture headless et composable</h2>
         <p>Les CMS headless comme <strong>Strapi, Sanity et Contentful</strong> dominent 2025, offrant de la flexibilité sur tous les appareils et plateformes. Associés au <strong>JAMstack</strong> et <strong>GraphQL</strong>, ils permettent une livraison de contenu plus rapide et une expérience multi-canal transparente.</p>
+
+        <p>Les créateurs de contenu peuvent travailler indépendamment des développeurs, tandis que l'équipe technique se concentre sur la création d'APIs robustes et d'intégrations. Cette séparation des préoccupations conduit à des flux de travail plus efficaces et une meilleure gestion de contenu.</p>
+
+        <h3>Avantages de l'architecture JAMstack :</h3>
+        <ul>
+          <li><strong>Performances plus rapides :</strong> Génération statique avec distribution CDN</li>
+          <li><strong>Meilleure sécurité :</strong> Surface d'attaque réduite comparée aux CMS traditionnels</li>
+          <li><strong>Expérience développeur :</strong> Flux de travail basés sur Git et outils modernes</li>
+          <li><strong>Évolutivité :</strong> Gérez des millions de requêtes sans infrastructure complexe</li>
+        </ul>
       </section>
 
-      <section class="trend-section">
+      <section>
         <h2>Intégration Web3 et blockchain</h2>
         <p>L'adoption de Web3 augmente avec des fonctionnalités d'<strong>authentification décentralisée, contrats intelligents</strong> et de <strong>propriété numérique</strong>. Bien que toujours précoce pour les marques grand public, de plus en plus de startups explorent l'identité utilisateur basée sur la blockchain et les adhésions liées aux NFT.</p>
+
+        <p>Ces technologies offrent de nouvelles possibilités d'engagement utilisateur et de propriété, bien qu'elles nécessitent une considération attentive de l'évolutivité et des implications sur l'expérience utilisateur.</p>
+
+        <h3>Cas d'utilisation Web3 :</h3>
+        <ul>
+          <li><strong>Identité décentralisée :</strong> Identité auto-souveraine sans fournisseurs tiers</li>
+          <li><strong>Adhésions NFT :</strong> Contenu exclusif et accès communautaire via blockchain</li>
+          <li><strong>Contrats intelligents :</strong> Transactions et accords automatisés</li>
+          <li><strong>Stockage décentralisé :</strong> IPFS pour un contenu permanent et résistant à la censure</li>
+        </ul>
       </section>
 
-      <section class="key-takeaways">
+      <section>
         <h2>Points clés à retenir</h2>
-        <div class="takeaways-grid">
-          <div class="takeaway-item">
+        <div>
+          <div>
             <strong>Intégration IA :</strong> Les outils d'automatisation deviennent essentiels pour un développement plus rapide
           </div>
-          <div class="takeaway-item">
+          <div>
             <strong>Performance d'abord :</strong> Les Core Web Vitals et l'optimisation sont non négociables
           </div>
-          <div class="takeaway-item">
+          <div>
             <strong>Durabilité :</strong> L'hébergement vert et le design économe en énergie comptent
           </div>
-          <div class="takeaway-item">
+          <div>
             <strong>Flexibilité :</strong> Les architectures headless et composables offrent une meilleure évolutivité
           </div>
         </div>
       </section>
 
-      <section class="conclusion">
+      <section>
+        <h2>Guide d'implémentation et matrice de priorité</h2>
+        <p>Rester en avance dans le développement web signifie adopter ces tendances tout en maintenant l'accent sur l'expérience utilisateur et les performances. L'avenir appartient aux développeurs et agences qui peuvent équilibrer l'innovation avec la fiabilité.</p>
+
+        <h3>Matrice de priorité d'implémentation :</h3>
+        <div>
+          <div>
+            <h4>🚀 Haute priorité (Implémenter maintenant)</h4>
+            <ul>
+              <li>Optimisation des Core Web Vitals</li>
+              <li>Design réactif mobile-first</li>
+              <li>HTTPS et mesures de sécurité de base</li>
+              <li>Configuration de la surveillance des performances</li>
+            </ul>
+          </div>
+          <div>
+            <h4>⚡ Priorité moyenne (Planifier pour T2)</h4>
+            <ul>
+              <li>Fonctionnalités d'application web progressive</li>
+              <li>Personnalisation alimentée par l'IA</li>
+              <li>Migration vers les fonctions serverless</li>
+              <li>Pratiques de design durable</li>
+            </ul>
+          </div>
+          <div>
+            <h4>🔮 Faible priorité (Évaluer pour 2026)</h4>
+            <ul>
+              <li>Intégration Web3</li>
+              <li>Fonctionnalités blockchain avancées</li>
+              <li>Expériences web AR/VR</li>
+              <li>Préparation pour l'informatique quantique</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section>
         <h2>Regard vers l'avenir</h2>
         <p>Le développement web en 2025 est défini par <strong>l'IA, l'automatisation et l'agilité</strong>. La clé est d'équilibrer <strong>les performances, la créativité et la durabilité</strong>. Chez Oren, nous adoptons déjà ces technologies modernes pour construire des sites web plus rapides, plus intelligents et prêts pour l'avenir pour nos clients.</p>
 
-        <div class="cta-box">
+        <h3>Ressources et outils essentiels :</h3>
+        <ul>
+          <li><strong>Performances :</strong> <a href="https://web.dev/measure/" target="_blank">Web Vitals</a>, <a href="https://pagespeed.web.dev/" target="_blank">PageSpeed Insights</a></li>
+          <li><strong>Outils IA :</strong> <a href="https://copilot.github.com/" target="_blank">GitHub Copilot</a>, <a href="https://openai.com/chatgpt" target="_blank">ChatGPT</a></li>
+          <li><strong>Serverless :</strong> <a href="https://vercel.com/" target="_blank">Vercel</a>, <a href="https://netlify.com/" target="_blank">Netlify</a></li>
+          <li><strong>PWA :</strong> <a href="https://developers.google.com/web/progressive-web-apps" target="_blank">Guide PWA</a></li>
+        </ul>
+
+        <div>
           <p><strong>Prêt à adopter ces tendances ?</strong> <a href="/contact">Contactez-nous</a> pour discuter de la façon dont nous pouvons aider à transformer votre présence web avec une technologie de pointe.</p>
         </div>
       </section>
     `,
+
+    // Privacy Policy
+    "privacy.hero.badge": "Confidentialité et Protection des Données",
+    "privacy.hero.title": "Politique de Confidentialité",
+    "privacy.hero.subtitle": "Nous nous engageons à protéger votre vie privée et à assurer la sécurité de vos informations personnelles.",
+    "privacy.hero.lastUpdated": "Dernière mise à jour : janvier 2025",
+
+    "privacy.collection.title": "Informations que nous collectons",
+    "privacy.collection.content": "Nous collectons les informations que vous nous fournissez directement, y compris :",
+    "privacy.collection.name": "Nom et informations de contact",
+    "privacy.collection.company": "Informations sur l'entreprise",
+    "privacy.collection.project": "Détails du projet et exigences",
+    "privacy.collection.preferences": "Préférences de communication",
+    "privacy.collection.payment": "Informations de paiement (traitées en toute sécurité par des fournisseurs tiers)",
+
+    "privacy.usage.title": "Comment nous utilisons vos informations",
+    "privacy.usage.content": "Nous utilisons les informations que nous collectons pour :",
+    "privacy.usage.services": "Fournir, maintenir et améliorer nos services",
+    "privacy.usage.process": "Traiter vos demandes et transactions",
+    "privacy.usage.notices": "Vous envoyer des avis techniques et des messages de support",
+    "privacy.usage.respond": "Répondre à vos commentaires et questions",
+    "privacy.usage.marketing": "Vous envoyer des communications marketing (avec votre consentement)",
+
+    "privacy.sharing.title": "Partage d'informations",
+    "privacy.sharing.content": "Nous ne vendons, n'échangeons ni ne louons vos informations personnelles à des tiers. Nous pouvons partager vos informations avec :",
+    "privacy.sharing.providers": "Les fournisseurs de services qui assistent dans nos opérations",
+    "privacy.sharing.advisors": "Les conseillers professionnels tels que les avocats et les comptables",
+    "privacy.sharing.law": "Les forces de l'ordre lorsque la loi l'exige",
+
+    "privacy.security.title": "Sécurité des données",
+    "privacy.security.content": "Nous mettons en œuvre des mesures techniques et organisationnelles appropriées pour protéger vos informations personnelles contre l'accès non autorisé, la modification, la divulgation ou la destruction.",
+
+    "privacy.rights.title": "Vos droits",
+    "privacy.rights.content": "Vous avez le droit de :",
+    "privacy.rights.access": "Accéder à vos informations personnelles",
+    "privacy.rights.correct": "Corriger les informations inexactes",
+    "privacy.rights.delete": "Demander la suppression de vos informations",
+    "privacy.rights.object": "Vous opposer au traitement de vos informations",
+    "privacy.rights.withdraw": "Retirer votre consentement à tout moment",
+
+    "privacy.contact.badge": "Entrer en contact",
+    "privacy.contact.title": "Questions sur votre confidentialité ?",
+    "privacy.contact.subtitle": "Si vous avez des questions concernant cette politique de confidentialité ou la façon dont nous traitons vos informations personnelles, notre équipe de confidentialité est là pour vous aider.",
+    "privacy.contact.primary": "Contacter l'équipe de confidentialité",
+    "privacy.contact.secondary": "Contact général",
+    "privacy.trust.gdpr": "Conforme au RGPD",
+    "privacy.trust.ssl": "Chiffré SSL",
+    "privacy.trust.design": "Confidentialité par conception",
+
+    // Terms of Service
+    "terms.hero.badge": "Légal et Conformité",
+    "terms.hero.title": "Conditions de Service",
+    "terms.hero.subtitle": "Conditions et modalités claires qui régissent notre relation professionnelle et la prestation de services.",
+    "terms.hero.lastUpdated": "Dernière mise à jour : janvier 2025",
+
+    "terms.agreement.title": "Accord sur les Conditions",
+    "terms.agreement.content": "En accédant aux services d'Oren ou en les utilisant, vous acceptez d'être lié par ces Conditions de Service. Si vous n'êtes pas d'accord avec une partie de ces conditions, vous ne pouvez pas accéder à nos services.",
+
+    "terms.services.title": "Services",
+    "terms.services.content": "Oren fournit des services de développement web, développement de plateformes personnalisées, solutions e-commerce, marketing numérique et services connexes. La portée spécifique des services sera définie dans les accords de projet individuels.",
+
+    "terms.ip.title": "Propriété Intellectuelle",
+    "terms.ip.content": "Après paiement complet, les clients reçoivent la propriété des livrables finaux comme spécifié dans l'accord de projet. Oren conserve le droit d'utiliser les travaux de projet dans les portfolios et les matériaux marketing sauf accord contraire.",
+
+    "terms.payment.title": "Conditions de Paiement",
+    "terms.payment.content": "Les conditions de paiement seront spécifiées dans les accords de projet individuels. Les conditions typiques incluent :",
+    "terms.payment.deposit": "Acompte initial requis pour commencer les travaux",
+    "terms.payment.milestone": "Paiements d'étapes pour les projets plus importants",
+    "terms.payment.final": "Paiement final dû à l'achèvement du projet",
+    "terms.payment.late": "Les paiements tardifs peuvent entraîner des frais supplémentaires",
+
+    "terms.timeline.title": "Calendrier du Projet",
+    "terms.timeline.content": "Les calendriers de projet sont des estimations et peuvent être ajustés en fonction de la complexité du projet, des commentaires du client et des changements de portée. Nous communiquerons tout ajustement de calendrier rapidement.",
+
+    "terms.warranties.title": "Garanties et Clauses de Non-Responsabilité",
+    "terms.warranties.content": "Nous garantissons que les services seront exécutés de manière professionnelle. Cependant, nous ne garantissons pas de résultats ou d'issues spécifiques. Les services sont fournis \"tels quels\" sans garanties d'aucune sorte.",
+
+    "terms.liability.title": "Limitation de Responsabilité",
+    "terms.liability.content": "La responsabilité d'Oren est limitée au montant payé pour les services. Nous ne sommes pas responsables des dommages indirects, accessoires ou consécutifs découlant de l'utilisation de nos services.",
+
+    "terms.termination.title": "Résiliation",
+    "terms.termination.content": "L'une ou l'autre partie peut résilier les services avec un préavis écrit. En cas de résiliation, le client est responsable du paiement du travail effectué à ce jour.",
+
+    "terms.contact.title": "Questions sur ces Conditions ?",
+    "terms.contact.subtitle": "Si vous avez des questions sur ces Conditions de Service ou avez besoin d'éclaircissements sur un aspect de notre accord, notre équipe juridique est là pour vous aider.",
+    "terms.contact.primary": "Contacter l'Équipe Juridique",
+    "terms.contact.secondary": "Contact Général",
+    "terms.contact.badge": "Support Juridique",
+    "terms.trust.professional": "Services Professionnels",
+    "terms.trust.reliable": "Livraison Fiable",
+    "terms.trust.transparent": "Conditions Transparentes",
+
+    // Accessibility Statement
+    "accessibility.hero.badge": "Accessibilité et Inclusion",
+    "accessibility.hero.title": "Déclaration d'Accessibilité",
+    "accessibility.hero.subtitle": "Nous nous engageons à garantir l'accessibilité numérique aux personnes handicapées et à améliorer continuellement l'expérience utilisateur pour tous.",
+    "accessibility.hero.lastUpdated": "Dernière mise à jour : janvier 2025",
+
+    "accessibility.commitment.title": "Notre Engagement",
+    "accessibility.commitment.content": "Oren s'engage à garantir l'accessibilité numérique aux personnes handicapées. Nous améliorons continuellement l'expérience utilisateur pour tous et appliquons les normes d'accessibilité pertinentes.",
+
+    "accessibility.conformance.title": "Statut de Conformité",
+    "accessibility.conformance.content": "Nous visons à nous conformer aux directives d'accessibilité du contenu Web (WCAG) 2.1 niveau AA. Ces directives expliquent comment rendre le contenu Web plus accessible aux personnes handicapées.",
+
+    "accessibility.features.title": "Fonctionnalités d'Accessibilité",
+    "accessibility.features.content": "Notre site Web inclut les fonctionnalités d'accessibilité suivantes :",
+    "accessibility.features.semantic": "Structure HTML sémantique pour la compatibilité avec les lecteurs d'écran",
+    "accessibility.features.keyboard": "Support de navigation au clavier sur tout le site",
+    "accessibility.features.contrast": "Rapports de contraste de couleurs suffisants pour la lisibilité du texte",
+    "accessibility.features.alt": "Texte alternatif pour les images et le contenu visuel",
+    "accessibility.features.responsive": "Conception réactive qui fonctionne sur tous les appareils",
+    "accessibility.features.focus": "Indicateurs de focus clairs pour les éléments interactifs",
+    "accessibility.features.aria": "Étiquettes ARIA et points de repère pour une meilleure navigation",
+
+    "accessibility.limitations.title": "Limitations Connues",
+    "accessibility.limitations.content": "Malgré nos meilleurs efforts, certains contenus peuvent ne pas encore être entièrement accessibles. Nous travaillons activement à résoudre ces problèmes et à améliorer l'accessibilité sur l'ensemble de notre site Web.",
+
+    "accessibility.feedback.title": "Commentaires",
+    "accessibility.feedback.content": "Nous accueillons vos commentaires sur l'accessibilité de notre site Web. Si vous rencontrez des barrières d'accessibilité, veuillez nous contacter à",
+
+    "accessibility.contact.title": "Questions sur l'Accessibilité ?",
+    "accessibility.contact.subtitle": "Si vous avez des questions sur nos fonctionnalités d'accessibilité ou avez besoin d'aide pour accéder à notre contenu, notre équipe d'accessibilité est là pour vous aider.",
+    "accessibility.contact.primary": "Contacter l'Équipe d'Accessibilité",
+    "accessibility.contact.secondary": "Contact Général",
+    "accessibility.contact.badge": "Support Accessibilité",
+    "accessibility.technical.title": "Spécifications Techniques",
+    "accessibility.trust.inclusive": "Conception Inclusive",
+    "accessibility.trust.accessible": "WCAG 2.1 AA",
+    "accessibility.trust.compliant": "Conforme à l'Accessibilité",
 
     // About
     "about.title": "À propos d'Oren",
@@ -7051,5 +7923,6 @@ const Modal = ({ isOpen, onClose, children }) => {
     "common.sourceCode": "Code source",
     "common.viewDetails": "Voir les détails",
     "common.more": "plus",
+    "common.close": "Fermer",
   },
 }

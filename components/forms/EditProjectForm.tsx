@@ -382,9 +382,7 @@ const EditProjectForm = ({ project }: EditProjectFormProps) => {
                         onClientUploadComplete={(files) => {
                           field.onChange(files[0].ufsUrl);
                         }}
-                        onUploadError={() => {
-                          console.log("Error uploading thumbnail");
-                        }}
+
                         className="ut-button:bg-primary text-sm md:text-base ut-button:h-9 md:ut-button:h-10 ut-button:rounded-sm ut-button:px-4 md:ut-button:px-6 ut-button:py-2 ut-upload-icon:text-muted-foreground  ut-button:text-white ut-button:hover:bg-primary/90 ut-label:text-muted-foreground ut-button:cursor-pointer ut-allowed-content:text-muted-foreground border-primary p-6 md:p-8"
                       />
                     )}
@@ -434,9 +432,6 @@ const EditProjectForm = ({ project }: EditProjectFormProps) => {
                         endpoint={"imageUploader"}
                         onClientUploadComplete={(files) => {
                           addImage(files[0].ufsUrl);
-                        }}
-                        onUploadError={() => {
-                          console.log("Error uploading image");
                         }}
                         className="ut-button:bg-primary text-sm md:text-base ut-button:h-9 md:ut-button:h-10 ut-button:rounded-sm ut-button:px-4 md:ut-button:px-6 ut-button:py-2 ut-upload-icon:text-muted-foreground  ut-button:text-white ut-button:hover:bg-primary/90 ut-label:text-muted-foreground ut-button:cursor-pointer ut-allowed-content:text-muted-foreground border-primary p-6 md:p-8"
                       />
