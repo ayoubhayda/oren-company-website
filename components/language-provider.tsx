@@ -2627,6 +2627,135 @@ export default {
       </div>
     `,
 
+    // Privacy Policy
+    "privacy.hero.badge": "Privacy & Data Protection",
+    "privacy.hero.title": "Privacy Policy",
+    "privacy.hero.subtitle": "We are committed to protecting your privacy and ensuring the security of your personal information.",
+    "privacy.hero.lastUpdated": "Last updated: January 2025",
+
+    "privacy.collection.title": "Information We Collect",
+    "privacy.collection.content": "We collect information that you provide directly to us, including:",
+    "privacy.collection.name": "Name and contact information",
+    "privacy.collection.company": "Company information",
+    "privacy.collection.project": "Project details and requirements",
+    "privacy.collection.preferences": "Communication preferences",
+    "privacy.collection.payment": "Payment information (processed securely through third-party providers)",
+
+    "privacy.usage.title": "How We Use Your Information",
+    "privacy.usage.content": "We use the information we collect to:",
+    "privacy.usage.services": "Provide, maintain, and improve our services",
+    "privacy.usage.process": "Process your requests and transactions",
+    "privacy.usage.notices": "Send you technical notices and support messages",
+    "privacy.usage.respond": "Respond to your comments and questions",
+    "privacy.usage.marketing": "Send you marketing communications (with your consent)",
+
+    "privacy.sharing.title": "Information Sharing",
+    "privacy.sharing.content": "We do not sell, trade, or rent your personal information to third parties. We may share your information with:",
+    "privacy.sharing.providers": "Service providers who assist in our operations",
+    "privacy.sharing.advisors": "Professional advisors such as lawyers and accountants",
+    "privacy.sharing.law": "Law enforcement when required by law",
+
+    "privacy.security.title": "Data Security",
+    "privacy.security.content": "We implement appropriate technical and organizational measures to protect your personal information against unauthorized access, alteration, disclosure, or destruction.",
+
+    "privacy.rights.title": "Your Rights",
+    "privacy.rights.content": "You have the right to:",
+    "privacy.rights.access": "Access your personal information",
+    "privacy.rights.correct": "Correct inaccurate information",
+    "privacy.rights.delete": "Request deletion of your information",
+    "privacy.rights.object": "Object to processing of your information",
+    "privacy.rights.withdraw": "Withdraw consent at any time",
+
+    "privacy.contact.badge": "Get In Touch",
+    "privacy.contact.title": "Questions About Your Privacy?",
+    "privacy.contact.subtitle": "If you have any questions about this Privacy Policy or how we handle your personal information, our privacy team is here to help.",
+    "privacy.contact.primary": "Contact Privacy Team",
+    "privacy.contact.secondary": "General Contact",
+    "privacy.trust.gdpr": "GDPR Compliant",
+    "privacy.trust.ssl": "SSL Encrypted",
+    "privacy.trust.design": "Privacy by Design",
+
+    // Terms of Service
+    "terms.hero.badge": "Legal & Compliance",
+    "terms.hero.title": "Terms of Service",
+    "terms.hero.subtitle": "Clear terms and conditions that govern our professional relationship and service delivery.",
+    "terms.hero.lastUpdated": "Last updated: January 2025",
+
+    "terms.agreement.title": "Agreement to Terms",
+    "terms.agreement.content": "By accessing or using Oren's services, you agree to be bound by these Terms of Service. If you disagree with any part of these terms, you may not access our services.",
+
+    "terms.services.title": "Services",
+    "terms.services.content": "Oren provides web development, custom platform development, e-commerce solutions, digital marketing, and related services. The specific scope of services will be defined in individual project agreements.",
+
+    "terms.ip.title": "Intellectual Property",
+    "terms.ip.content": "Upon full payment, clients receive ownership of the final deliverables as specified in the project agreement. Oren retains the right to use project work in portfolios and marketing materials unless otherwise agreed.",
+
+    "terms.payment.title": "Payment Terms",
+    "terms.payment.content": "Payment terms will be specified in individual project agreements. Typical terms include:",
+    "terms.payment.deposit": "Initial deposit required to begin work",
+    "terms.payment.milestone": "Milestone payments for larger projects",
+    "terms.payment.final": "Final payment due upon project completion",
+    "terms.payment.late": "Late payments may incur additional fees",
+
+    "terms.timeline.title": "Project Timeline",
+    "terms.timeline.content": "Project timelines are estimates and may be adjusted based on project complexity, client feedback, and scope changes. We will communicate any timeline adjustments promptly.",
+
+    "terms.warranties.title": "Warranties and Disclaimers",
+    "terms.warranties.content": "We warrant that services will be performed in a professional manner. However, we do not guarantee specific results or outcomes. Services are provided \"as is\" without warranties of any kind.",
+
+    "terms.liability.title": "Limitation of Liability",
+    "terms.liability.content": "Oren's liability is limited to the amount paid for services. We are not liable for indirect, incidental, or consequential damages arising from the use of our services.",
+
+    "terms.termination.title": "Termination",
+    "terms.termination.content": "Either party may terminate services with written notice. Upon termination, client is responsible for payment of work completed to date.",
+
+    "terms.contact.title": "Questions About These Terms?",
+    "terms.contact.subtitle": "If you have any questions about these Terms of Service or need clarification on any aspect of our agreement, our legal team is here to help.",
+    "terms.contact.primary": "Contact Legal Team",
+    "terms.contact.secondary": "General Contact",
+    "terms.contact.badge": "Legal Support",
+    "terms.trust.professional": "Professional Services",
+    "terms.trust.reliable": "Reliable Delivery",
+    "terms.trust.transparent": "Transparent Terms",
+
+    // Accessibility Statement
+    "accessibility.hero.badge": "Accessibility & Inclusion",
+    "accessibility.hero.title": "Accessibility Statement",
+    "accessibility.hero.subtitle": "We are committed to ensuring digital accessibility for people with disabilities and continually improving user experience for everyone.",
+    "accessibility.hero.lastUpdated": "Last updated: January 2025",
+
+    "accessibility.commitment.title": "Our Commitment",
+    "accessibility.commitment.content": "Oren is committed to ensuring digital accessibility for people with disabilities. We are continually improving the user experience for everyone and applying the relevant accessibility standards.",
+
+    "accessibility.conformance.title": "Conformance Status",
+    "accessibility.conformance.content": "We aim to conform to the Web Content Accessibility Guidelines (WCAG) 2.1 Level AA standards. These guidelines explain how to make web content more accessible for people with disabilities.",
+
+    "accessibility.features.title": "Accessibility Features",
+    "accessibility.features.content": "Our website includes the following accessibility features:",
+    "accessibility.features.semantic": "Semantic HTML structure for screen reader compatibility",
+    "accessibility.features.keyboard": "Keyboard navigation support throughout the site",
+    "accessibility.features.contrast": "Sufficient color contrast ratios for text readability",
+    "accessibility.features.alt": "Alternative text for images and visual content",
+    "accessibility.features.responsive": "Responsive design that works across devices",
+    "accessibility.features.focus": "Clear focus indicators for interactive elements",
+    "accessibility.features.aria": "ARIA labels and landmarks for better navigation",
+
+    "accessibility.limitations.title": "Known Limitations",
+    "accessibility.limitations.content": "Despite our best efforts, some content may not yet be fully accessible. We are actively working to address these issues and improve accessibility across our entire website.",
+
+    "accessibility.feedback.title": "Feedback",
+    "accessibility.feedback.content": "We welcome your feedback on the accessibility of our website. If you encounter any accessibility barriers, please contact us at",
+
+    "accessibility.contact.title": "Questions About Accessibility?",
+    "accessibility.contact.subtitle": "If you have any questions about our accessibility features or need assistance accessing our content, our accessibility team is here to help.",
+    "accessibility.contact.primary": "Contact Accessibility Team",
+    "accessibility.contact.secondary": "General Contact",
+    "accessibility.contact.badge": "Accessibility Support",
+    "accessibility.technical.title": "Technical Specifications",
+    "accessibility.trust.inclusive": "Inclusive Design",
+    "accessibility.trust.accessible": "WCAG 2.1 AA",
+    "accessibility.trust.compliant": "Accessibility Compliant",
+
     // About
     "about.title": "About Oren",
     "about.hero.badge": "Get to know our story",
@@ -4979,6 +5108,135 @@ export default {
         <p><strong>هل أنت مستعد لتبني هذه التوجهات؟</strong> <a href="/contact">تواصل معنا</a> لمناقشة كيف يمكننا مساعدتك في تحويل حضورك على الويب باستخدام التكنولوجيا المتطورة والحلول المستقبلية.</p>
         </div>
     `,
+
+    // Privacy Policy
+    "privacy.hero.badge": "الخصوصية وحماية البيانات",
+    "privacy.hero.title": "سياسة الخصوصية",
+    "privacy.hero.subtitle": "نحن ملتزمون بحماية خصوصيتك وضمان أمان معلوماتك الشخصية.",
+    "privacy.hero.lastUpdated": "آخر تحديث: يناير 2025",
+
+    "privacy.collection.title": "المعلومات التي نجمعها",
+    "privacy.collection.content": "نحن نجمع المعلومات التي تقدمها مباشرة لنا، بما في ذلك:",
+    "privacy.collection.name": "الاسم ومعلومات الاتصال",
+    "privacy.collection.company": "معلومات الشركة",
+    "privacy.collection.project": "تفاصيل المشروع والمتطلبات",
+    "privacy.collection.preferences": "تفضيلات التواصل",
+    "privacy.collection.payment": "معلومات الدفع (تتم معالجتها بشكل آمن من خلال مزودي خدمات خارجيين)",
+
+    "privacy.usage.title": "كيف نستخدم معلوماتك",
+    "privacy.usage.content": "نحن نستخدم المعلومات التي نجمعها لـ:",
+    "privacy.usage.services": "تقديم وصيانة وتحسين خدماتنا",
+    "privacy.usage.process": "معالجة طلباتك ومعاملاتك",
+    "privacy.usage.notices": "إرسال إشعارات فنية ورسائل دعم لك",
+    "privacy.usage.respond": "الرد على تعليقاتك وأسئلتك",
+    "privacy.usage.marketing": "إرسال رسائل تسويقية لك (بموافقتك)",
+
+    "privacy.sharing.title": "مشاركة المعلومات",
+    "privacy.sharing.content": "نحن لا نبيع أو نتاجر أو نؤجر معلوماتك الشخصية لأطراف ثالثة. قد نشارك معلوماتك مع:",
+    "privacy.sharing.providers": "مقدمي الخدمات الذين يساعدون في عملياتنا",
+    "privacy.sharing.advisors": "المستشارين المهنيين مثل المحامين والمحاسبين",
+    "privacy.sharing.law": "جهات إنفاذ القانون عند الحاجة إلى ذلك",
+
+    "privacy.security.title": "أمان البيانات",
+    "privacy.security.content": "نحن نطبق تدابير فنية وتنظيمية مناسبة لحماية معلوماتك الشخصية من الوصول غير المصرح به أو التعديل أو الكشف أو التدمير.",
+
+    "privacy.rights.title": "حقوقك",
+    "privacy.rights.content": "لديك الحق في:",
+    "privacy.rights.access": "الوصول إلى معلوماتك الشخصية",
+    "privacy.rights.correct": "تصحيح المعلومات غير الدقيقة",
+    "privacy.rights.delete": "طلب حذف معلوماتك",
+    "privacy.rights.object": "الاعتراض على معالجة معلوماتك",
+    "privacy.rights.withdraw": "سحب الموافقة في أي وقت",
+
+    "privacy.contact.badge": "تواصل معنا",
+    "privacy.contact.title": "أسئلة حول خصوصيتك؟",
+    "privacy.contact.subtitle": "إذا كان لديك أي أسئلة حول سياسة الخصوصية هذه أو كيفية تعاملنا مع معلوماتك الشخصية، فريق الخصوصية لدينا هنا لمساعدتك.",
+    "privacy.contact.primary": "تواصل مع فريق الخصوصية",
+    "privacy.contact.secondary": "تواصل عام",
+    "privacy.trust.gdpr": "متوافق مع GDPR",
+    "privacy.trust.ssl": "مشفر بـ SSL",
+    "privacy.trust.design": "خصوصية بالتصميم",
+
+    // Terms of Service
+    "terms.hero.badge": "القانون والامتثال",
+    "terms.hero.title": "شروط الخدمة",
+    "terms.hero.subtitle": "شروط وأحكام واضحة تحكم علاقتنا المهنية وتقديم الخدمات.",
+    "terms.hero.lastUpdated": "آخر تحديث: يناير 2025",
+
+    "terms.agreement.title": "الموافقة على الشروط",
+    "terms.agreement.content": "بالوصول إلى خدمات أورين أو استخدامها، فإنك توافق على الالتزام بشروط الخدمة هذه. إذا كنت لا توافق على أي جزء من هذه الشروط، فقد لا تتمكن من الوصول إلى خدماتنا.",
+
+    "terms.services.title": "الخدمات",
+    "terms.services.content": "تقدم أورين خدمات تطوير الويب وتطوير المنصات المخصصة وحلول التجارة الإلكترونية والتسويق الرقمي والخدمات ذات الصلة. سيتم تحديد نطاق الخدمات المحدد في اتفاقيات المشروع الفردية.",
+
+    "terms.ip.title": "الملكية الفكرية",
+    "terms.ip.content": "عند الدفع الكامل، يحصل العملاء على ملكية المخرجات النهائية كما هو محدد في اتفاقية المشروع. تحتفظ أورين بالحق في استخدام أعمال المشروع في المحافظ والمواد التسويقية إلا إذا تم الاتفاق على خلاف ذلك.",
+
+    "terms.payment.title": "شروط الدفع",
+    "terms.payment.content": "سيتم تحديد شروط الدفع في اتفاقيات المشروع الفردية. تشمل الشروط النموذجية:",
+    "terms.payment.deposit": "وديعة أولية مطلوبة لبدء العمل",
+    "terms.payment.milestone": "مدفوعات مرحلية للمشاريع الأكبر",
+    "terms.payment.final": "الدفع النهائي مستحق عند اكتمال المشروع",
+    "terms.payment.late": "قد تترتب رسوم إضافية على المدفوعات المتأخرة",
+
+    "terms.timeline.title": "جدول المشروع الزمني",
+    "terms.timeline.content": "جداول المشاريع تقديرية وقد تُعدل بناءً على تعقيد المشروع وتعليقات العميل وتغييرات النطاق. سنقوم بتوصيل أي تعديلات في الجدول الزمني فورًا.",
+
+    "terms.warranties.title": "الضمانات والإخلاء من المسؤولية",
+    "terms.warranties.content": "نحن نضمن أن الخدمات ستُؤدى بطريقة مهنية. ومع ذلك، نحن لا نضمن نتائج أو مخرجات محددة. الخدمات مقدمة \"كما هي\" بدون ضمانات من أي نوع.",
+
+    "terms.liability.title": "حدود المسؤولية",
+    "terms.liability.content": "مسؤولية أورين محدودة بالمبلغ المدفوع مقابل الخدمات. نحن غير مسؤولين عن الأضرار غير المباشرة أو العرضية أو التبعية الناتجة عن استخدام خدماتنا.",
+
+    "terms.termination.title": "الإنهاء",
+    "terms.termination.content": "يجوز لأي من الطرفين إنهاء الخدمات بإشعار كتابي. عند الإنهاء، يكون العميل مسؤولاً عن دفع العمل المكتمل حتى تاريخه.",
+
+    "terms.contact.title": "أسئلة حول هذه الشروط؟",
+    "terms.contact.subtitle": "إذا كان لديك أي أسئلة حول شروط الخدمة هذه أو تحتاج إلى توضيح لأي جانب من جوانب اتفاقيتنا، فإن فريقنا القانوني هنا لمساعدتك.",
+    "terms.contact.primary": "تواصل مع الفريق القانوني",
+    "terms.contact.secondary": "تواصل عام",
+    "terms.contact.badge": "دعم قانوني",
+    "terms.trust.professional": "خدمات مهنية",
+    "terms.trust.reliable": "تسليم موثوق",
+    "terms.trust.transparent": "شروط شفافة",
+
+    // Accessibility Statement
+    "accessibility.hero.badge": "الوصولية والشمولية",
+    "accessibility.hero.title": "بيان الوصولية",
+    "accessibility.hero.subtitle": "نحن ملتزمون بضمان الوصولية الرقمية للأشخاص ذوي الإعاقة وتحسين تجربة المستخدم بشكل مستمر للجميع.",
+    "accessibility.hero.lastUpdated": "آخر تحديث: يناير 2025",
+
+    "accessibility.commitment.title": "التزامنا",
+    "accessibility.commitment.content": "تلتزم أورين بضمان الوصولية الرقمية للأشخاص ذوي الإعاقة. نحن نحسن تجربة المستخدم بشكل مستمر للجميع ونطبق معايير الوصولية ذات الصلة.",
+
+    "accessibility.conformance.title": "حالة الامتثال",
+    "accessibility.conformance.content": "نهدف إلى الامتثال لإرشادات إمكانية الوصول إلى محتوى الويب (WCAG) 2.1 مستوى AA. تشرح هذه الإرشادات كيفية جعل محتوى الويب أكثر إمكانية للأشخاص ذوي الإعاقة.",
+
+    "accessibility.features.title": "ميزات الوصولية",
+    "accessibility.features.content": "يشمل موقعنا الإلكتروني ميزات الوصولية التالية:",
+    "accessibility.features.semantic": "هيكل HTML دلالي للتوافق مع قارئات الشاشة",
+    "accessibility.features.keyboard": "دعم التنقل بالكيبورد في جميع أنحاء الموقع",
+    "accessibility.features.contrast": "نسب تباين ألوان كافية لقراءة النص",
+    "accessibility.features.alt": "نص بديل للصور والمحتوى المرئي",
+    "accessibility.features.responsive": "تصميم متجاوب يعمل عبر الأجهزة",
+    "accessibility.features.focus": "مؤشرات تركيز واضحة للعناصر التفاعلية",
+    "accessibility.features.aria": "تسميات ARIA وعلامات للتنقل الأفضل",
+
+    "accessibility.limitations.title": "القيود المعروفة",
+    "accessibility.limitations.content": "رغم جهودنا المثلى، قد لا يكون بعض المحتوى متاحًا بالكامل بعد. نحن نعمل بنشاط لحل هذه المشكلات وتحسين الوصولية في جميع أنحاء موقعنا الإلكتروني.",
+
+    "accessibility.feedback.title": "التعليقات",
+    "accessibility.feedback.content": "نرحب بتعليقاتكم حول وصولية موقعنا الإلكتروني. إذا واجهتم أي حواجز في الوصولية، يرجى الاتصال بنا على",
+
+    "accessibility.contact.title": "أسئلة حول الوصولية؟",
+    "accessibility.contact.subtitle": "إذا كان لديك أي أسئلة حول ميزات الوصولية لدينا أو تحتاج إلى مساعدة في الوصول إلى المحتوى، فإن فريق الوصولية لدينا هنا لمساعدتك.",
+    "accessibility.contact.primary": "تواصل مع فريق الوصولية",
+    "accessibility.contact.secondary": "تواصل عام",
+    "accessibility.contact.badge": "دعم الوصولية",
+    "accessibility.technical.title": "المواصفات الفنية",
+    "accessibility.trust.inclusive": "تصميم شامل",
+    "accessibility.trust.accessible": "WCAG 2.1 AA",
+    "accessibility.trust.compliant": "متوافق مع الوصولية",
 
     // About
     "about.title": "عن أورين",
@@ -7379,6 +7637,135 @@ export default {
         </div>
       </section>
     `,
+
+    // Privacy Policy
+    "privacy.hero.badge": "Confidentialité et Protection des Données",
+    "privacy.hero.title": "Politique de Confidentialité",
+    "privacy.hero.subtitle": "Nous nous engageons à protéger votre vie privée et à assurer la sécurité de vos informations personnelles.",
+    "privacy.hero.lastUpdated": "Dernière mise à jour : janvier 2025",
+
+    "privacy.collection.title": "Informations que nous collectons",
+    "privacy.collection.content": "Nous collectons les informations que vous nous fournissez directement, y compris :",
+    "privacy.collection.name": "Nom et informations de contact",
+    "privacy.collection.company": "Informations sur l'entreprise",
+    "privacy.collection.project": "Détails du projet et exigences",
+    "privacy.collection.preferences": "Préférences de communication",
+    "privacy.collection.payment": "Informations de paiement (traitées en toute sécurité par des fournisseurs tiers)",
+
+    "privacy.usage.title": "Comment nous utilisons vos informations",
+    "privacy.usage.content": "Nous utilisons les informations que nous collectons pour :",
+    "privacy.usage.services": "Fournir, maintenir et améliorer nos services",
+    "privacy.usage.process": "Traiter vos demandes et transactions",
+    "privacy.usage.notices": "Vous envoyer des avis techniques et des messages de support",
+    "privacy.usage.respond": "Répondre à vos commentaires et questions",
+    "privacy.usage.marketing": "Vous envoyer des communications marketing (avec votre consentement)",
+
+    "privacy.sharing.title": "Partage d'informations",
+    "privacy.sharing.content": "Nous ne vendons, n'échangeons ni ne louons vos informations personnelles à des tiers. Nous pouvons partager vos informations avec :",
+    "privacy.sharing.providers": "Les fournisseurs de services qui assistent dans nos opérations",
+    "privacy.sharing.advisors": "Les conseillers professionnels tels que les avocats et les comptables",
+    "privacy.sharing.law": "Les forces de l'ordre lorsque la loi l'exige",
+
+    "privacy.security.title": "Sécurité des données",
+    "privacy.security.content": "Nous mettons en œuvre des mesures techniques et organisationnelles appropriées pour protéger vos informations personnelles contre l'accès non autorisé, la modification, la divulgation ou la destruction.",
+
+    "privacy.rights.title": "Vos droits",
+    "privacy.rights.content": "Vous avez le droit de :",
+    "privacy.rights.access": "Accéder à vos informations personnelles",
+    "privacy.rights.correct": "Corriger les informations inexactes",
+    "privacy.rights.delete": "Demander la suppression de vos informations",
+    "privacy.rights.object": "Vous opposer au traitement de vos informations",
+    "privacy.rights.withdraw": "Retirer votre consentement à tout moment",
+
+    "privacy.contact.badge": "Entrer en contact",
+    "privacy.contact.title": "Questions sur votre confidentialité ?",
+    "privacy.contact.subtitle": "Si vous avez des questions concernant cette politique de confidentialité ou la façon dont nous traitons vos informations personnelles, notre équipe de confidentialité est là pour vous aider.",
+    "privacy.contact.primary": "Contacter l'équipe de confidentialité",
+    "privacy.contact.secondary": "Contact général",
+    "privacy.trust.gdpr": "Conforme au RGPD",
+    "privacy.trust.ssl": "Chiffré SSL",
+    "privacy.trust.design": "Confidentialité par conception",
+
+    // Terms of Service
+    "terms.hero.badge": "Légal et Conformité",
+    "terms.hero.title": "Conditions de Service",
+    "terms.hero.subtitle": "Conditions et modalités claires qui régissent notre relation professionnelle et la prestation de services.",
+    "terms.hero.lastUpdated": "Dernière mise à jour : janvier 2025",
+
+    "terms.agreement.title": "Accord sur les Conditions",
+    "terms.agreement.content": "En accédant aux services d'Oren ou en les utilisant, vous acceptez d'être lié par ces Conditions de Service. Si vous n'êtes pas d'accord avec une partie de ces conditions, vous ne pouvez pas accéder à nos services.",
+
+    "terms.services.title": "Services",
+    "terms.services.content": "Oren fournit des services de développement web, développement de plateformes personnalisées, solutions e-commerce, marketing numérique et services connexes. La portée spécifique des services sera définie dans les accords de projet individuels.",
+
+    "terms.ip.title": "Propriété Intellectuelle",
+    "terms.ip.content": "Après paiement complet, les clients reçoivent la propriété des livrables finaux comme spécifié dans l'accord de projet. Oren conserve le droit d'utiliser les travaux de projet dans les portfolios et les matériaux marketing sauf accord contraire.",
+
+    "terms.payment.title": "Conditions de Paiement",
+    "terms.payment.content": "Les conditions de paiement seront spécifiées dans les accords de projet individuels. Les conditions typiques incluent :",
+    "terms.payment.deposit": "Acompte initial requis pour commencer les travaux",
+    "terms.payment.milestone": "Paiements d'étapes pour les projets plus importants",
+    "terms.payment.final": "Paiement final dû à l'achèvement du projet",
+    "terms.payment.late": "Les paiements tardifs peuvent entraîner des frais supplémentaires",
+
+    "terms.timeline.title": "Calendrier du Projet",
+    "terms.timeline.content": "Les calendriers de projet sont des estimations et peuvent être ajustés en fonction de la complexité du projet, des commentaires du client et des changements de portée. Nous communiquerons tout ajustement de calendrier rapidement.",
+
+    "terms.warranties.title": "Garanties et Clauses de Non-Responsabilité",
+    "terms.warranties.content": "Nous garantissons que les services seront exécutés de manière professionnelle. Cependant, nous ne garantissons pas de résultats ou d'issues spécifiques. Les services sont fournis \"tels quels\" sans garanties d'aucune sorte.",
+
+    "terms.liability.title": "Limitation de Responsabilité",
+    "terms.liability.content": "La responsabilité d'Oren est limitée au montant payé pour les services. Nous ne sommes pas responsables des dommages indirects, accessoires ou consécutifs découlant de l'utilisation de nos services.",
+
+    "terms.termination.title": "Résiliation",
+    "terms.termination.content": "L'une ou l'autre partie peut résilier les services avec un préavis écrit. En cas de résiliation, le client est responsable du paiement du travail effectué à ce jour.",
+
+    "terms.contact.title": "Questions sur ces Conditions ?",
+    "terms.contact.subtitle": "Si vous avez des questions sur ces Conditions de Service ou avez besoin d'éclaircissements sur un aspect de notre accord, notre équipe juridique est là pour vous aider.",
+    "terms.contact.primary": "Contacter l'Équipe Juridique",
+    "terms.contact.secondary": "Contact Général",
+    "terms.contact.badge": "Support Juridique",
+    "terms.trust.professional": "Services Professionnels",
+    "terms.trust.reliable": "Livraison Fiable",
+    "terms.trust.transparent": "Conditions Transparentes",
+
+    // Accessibility Statement
+    "accessibility.hero.badge": "Accessibilité et Inclusion",
+    "accessibility.hero.title": "Déclaration d'Accessibilité",
+    "accessibility.hero.subtitle": "Nous nous engageons à garantir l'accessibilité numérique aux personnes handicapées et à améliorer continuellement l'expérience utilisateur pour tous.",
+    "accessibility.hero.lastUpdated": "Dernière mise à jour : janvier 2025",
+
+    "accessibility.commitment.title": "Notre Engagement",
+    "accessibility.commitment.content": "Oren s'engage à garantir l'accessibilité numérique aux personnes handicapées. Nous améliorons continuellement l'expérience utilisateur pour tous et appliquons les normes d'accessibilité pertinentes.",
+
+    "accessibility.conformance.title": "Statut de Conformité",
+    "accessibility.conformance.content": "Nous visons à nous conformer aux directives d'accessibilité du contenu Web (WCAG) 2.1 niveau AA. Ces directives expliquent comment rendre le contenu Web plus accessible aux personnes handicapées.",
+
+    "accessibility.features.title": "Fonctionnalités d'Accessibilité",
+    "accessibility.features.content": "Notre site Web inclut les fonctionnalités d'accessibilité suivantes :",
+    "accessibility.features.semantic": "Structure HTML sémantique pour la compatibilité avec les lecteurs d'écran",
+    "accessibility.features.keyboard": "Support de navigation au clavier sur tout le site",
+    "accessibility.features.contrast": "Rapports de contraste de couleurs suffisants pour la lisibilité du texte",
+    "accessibility.features.alt": "Texte alternatif pour les images et le contenu visuel",
+    "accessibility.features.responsive": "Conception réactive qui fonctionne sur tous les appareils",
+    "accessibility.features.focus": "Indicateurs de focus clairs pour les éléments interactifs",
+    "accessibility.features.aria": "Étiquettes ARIA et points de repère pour une meilleure navigation",
+
+    "accessibility.limitations.title": "Limitations Connues",
+    "accessibility.limitations.content": "Malgré nos meilleurs efforts, certains contenus peuvent ne pas encore être entièrement accessibles. Nous travaillons activement à résoudre ces problèmes et à améliorer l'accessibilité sur l'ensemble de notre site Web.",
+
+    "accessibility.feedback.title": "Commentaires",
+    "accessibility.feedback.content": "Nous accueillons vos commentaires sur l'accessibilité de notre site Web. Si vous rencontrez des barrières d'accessibilité, veuillez nous contacter à",
+
+    "accessibility.contact.title": "Questions sur l'Accessibilité ?",
+    "accessibility.contact.subtitle": "Si vous avez des questions sur nos fonctionnalités d'accessibilité ou avez besoin d'aide pour accéder à notre contenu, notre équipe d'accessibilité est là pour vous aider.",
+    "accessibility.contact.primary": "Contacter l'Équipe d'Accessibilité",
+    "accessibility.contact.secondary": "Contact Général",
+    "accessibility.contact.badge": "Support Accessibilité",
+    "accessibility.technical.title": "Spécifications Techniques",
+    "accessibility.trust.inclusive": "Conception Inclusive",
+    "accessibility.trust.accessible": "WCAG 2.1 AA",
+    "accessibility.trust.compliant": "Conforme à l'Accessibilité",
 
     // About
     "about.title": "À propos d'Oren",
