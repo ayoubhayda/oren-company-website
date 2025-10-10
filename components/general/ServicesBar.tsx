@@ -1,11 +1,40 @@
 "use client";
 import React from "react";
 import { motion } from "framer-motion";
-import { Code, Database, Palette, Zap, Globe, Shield, Rocket, Star } from "lucide-react";
+import {
+  Code,
+  Database,
+  Palette,
+  Zap,
+  Globe,
+  Shield,
+  Rocket,
+  Star,
+  Smartphone,
+  ShoppingCart,
+  TrendingUp,
+  Share2,
+  Settings,
+  Layers,
+  Gauge,
+  Lock,
+  Cloud,
+  Headphones,
+  Lightbulb,
+  BarChart3,
+  Users,
+  Wrench,
+  Monitor,
+  Search,
+  Mail,
+  CreditCard,
+  Building
+} from "lucide-react";
 import { useLanguage } from "../language-provider";
 
 const ServicesBar = () => {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
+  const rtl = language === "ar";
 
   const services = [
     { textKey: "services.complete-web-solutions", icon: Code },
@@ -16,30 +45,43 @@ const ServicesBar = () => {
     { textKey: "services.dynamic-web-applications", icon: Globe },
     { textKey: "services.website-speed-optimization", icon: Star },
     { textKey: "services.seamless-system-integration", icon: Shield },
+    { textKey: "services.ecommerce-solutions", icon: ShoppingCart },
+    { textKey: "services.digital-marketing", icon: TrendingUp },
+    { textKey: "services.social-media-management", icon: Share2 },
+    { textKey: "services.api-development", icon: Layers },
+    { textKey: "services.performance-optimization", icon: Gauge },
+    { textKey: "services.database-management", icon: Database },
+    { textKey: "services.seo-optimization", icon: Search },
+    { textKey: "services.email-marketing", icon: Mail },
+    { textKey: "services.payment-integration", icon: CreditCard },
+    { textKey: "services.cms-development", icon: Monitor },
+    { textKey: "services.analytics-tracking", icon: BarChart3 },
+    { textKey: "services.custom-platforms", icon: Building },
+    { textKey: "services.technical-consulting", icon: Wrench },
   ];
 
-  // Duplicate for seamless loop
-  const duplicatedServices = [...services, ...services];
+  // Create multiple duplicates for seamless infinite loop
+  const duplicatedServices = [...services, ...services, ...services];
 
   return (
     <div className="relative w-full overflow-hidden bg-gradient-to-r from-muted/30 via-primary/4 to-muted/30 border-y border-border py-6">
       {/* Subtle background pattern */}
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_1px_1px,_hsl(var(--primary)/0.08)_1px,_transparent_0)] bg-[size:20px_20px]"></div>
       
-      {/* Gradient overlays for fade effect */}
-      <div className="absolute left-0 top-0 w-32 h-full bg-gradient-to-r from-background to-transparent z-10"></div>
-      <div className="absolute right-0 top-0 w-32 h-full bg-gradient-to-l from-background to-transparent z-10"></div>
+      {/* Gradient overlays for fade effect - RTL aware */}
+      <div className={`absolute ${rtl ? 'right-0' : 'left-0'} top-0 w-32 h-full ${rtl ? 'bg-gradient-to-l' : 'bg-gradient-to-r'} from-background to-transparent z-10`}></div>
+      <div className={`absolute ${rtl ? 'left-0' : 'right-0'} top-0 w-32 h-full ${rtl ? 'bg-gradient-to-r' : 'bg-gradient-to-l'} from-background to-transparent z-10`}></div>
       
       <motion.div
         className="flex items-center gap-9"
         animate={{
-          x: [0, "-50%"],
+          x: rtl ? [0, "100%"] : [0, "-100%"],
         }}
         transition={{
           x: {
             repeat: Infinity,
             repeatType: "loop",
-            duration: 30,
+            duration: rtl ? 45 : 45, // Slightly slower for RTL to match reading speed
             ease: "linear",
           },
         }}
@@ -55,7 +97,7 @@ const ServicesBar = () => {
                 {t(service.textKey)}
               </span>
               {index < duplicatedServices.length - 1 && (
-                <div className="w-2 h-2 rounded-full bg-primary/60 ml-6"></div>
+                <div className={`w-2 h-2 rounded-full bg-primary/60 ms-6`}></div>
               )}
             </div>
           );

@@ -66,7 +66,7 @@ export async function POST(request: NextRequest) {
     // Send email using Resend with professional HTML template
     const { data, error } = await resend.emails.send({
       from: "Oren Company <onboarding@resend.dev>", // Replace with your actual domain
-      to: ["ayoubhayda01@gmail.com", "aya.berrouan@gmail.com"],
+      to: ["ayoubhayda01@gmail.com"],
       subject: `🚀 New Contact Inquiry - ${name}`,
       html: `
         <!DOCTYPE html>
@@ -163,9 +163,9 @@ export async function POST(request: NextRequest) {
             .contact-item {
               display: flex;
               align-items: center;
-              padding: 20px;
+              padding: 14px 20px;
               background: #f9fafb;
-              border-bottom: 1px solid #989595;
+              border-bottom: 0.5px solid #989595;
             }
 
             #budget {
@@ -329,13 +329,6 @@ export async function POST(request: NextRequest) {
 
             <!-- Content -->
             <div class="content">
-              <div class="welcome-section">
-                <h2 class="welcome-title">New Business Inquiry</h2>
-                <p class="welcome-subtitle">
-                  A potential client has expressed interest in your services. Please review their information below.
-                </p>
-              </div>
-
               <!-- Contact Information -->
               <div class="contact-grid">
                 <div class="contact-item">

@@ -13,6 +13,7 @@ import {
   IconFolder,
   IconHelp,
   IconListDetails,
+  IconMail,
   IconReport,
   IconSearch,
   IconSettings,
@@ -87,6 +88,12 @@ export function AppSidebar({ user, ...props }: React.ComponentProps<typeof Sideb
         url: "/dashboard/projects",
         icon: IconFolder,
         isActive: isNavItemActive("/dashboard/projects", pathname),
+      },
+      {
+        title: "Newsletter",
+        url: "/dashboard/newsletter",
+        icon: IconMail,
+        isActive: isNavItemActive("/dashboard/newsletter", pathname),
       },
       {
         title: "Team",

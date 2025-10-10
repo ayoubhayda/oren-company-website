@@ -91,8 +91,15 @@ model Project {
   duration         Int
   images           String[]
   category         String
-  
+
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+}
+
+model NewsletterSubscription {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  subscribedAt DateTime @default(now())
+  isActive  Boolean  @default(true)
 }

@@ -85,3 +85,33 @@ export const getProjectMutation = async (projectId: string) => {
 
   return projectData;
 };
+
+// Newsletter subscription functions
+export const subscribeToNewsletter = async (email: string) => {
+  const response = await fetch('/api/newsletter', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ email }),
+  });
+
+  const data = await response.json();
+
+  if (!response.ok) {
+    throw new Error(data.message || 'Failed to subscribe to newsletter');
+  }
+
+  return data;
+};
+
+export const getNewsletterSubscribers = async () => {
+  const response = await fetch('/api/newsletter');
+
+  if (!response.ok) {
+    throw new Error('Failed to fetch newsletter subscribers');
+  }
+
+  const data = await response.json();
+  return data.subscriptions;
+};

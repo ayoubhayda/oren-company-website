@@ -3,15 +3,93 @@
 
 import Link from "next/link";
 import { useLanguage } from "@/components/language-provider";
-import { Github, Linkedin, Twitter, Mail } from "lucide-react";
+import { Github, Linkedin, Twitter, Mail, MailCheck, MailX } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import {
+  AlertDialog,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogHeader,
+  AlertDialogTitle,
+} from "@/components/ui/alert-dialog";
 import Image from "next/image";
 import darkLogo from "@/assets/logo/oren-blue-logo-dark.png";
 import lightLogo from "@/assets/logo/oren-blue-logo-light.png";
+import { useState } from "react";
+import { subscribeToNewsletter } from "@/lib/Services";
 
 export function Footer() {
   const { t } = useLanguage();
+  const [email, setEmail] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+  const [dialogOpen, setDialogOpen] = useState(false);
+  const [dialogMessage, setDialogMessage] = useState<{ type: "success" | "error"; text: string } | null>(null);
+  const [dialogTimeout, setDialogTimeout] = useState<NodeJS.Timeout | null>(null);
+
+  const handleNewsletterSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+
+    if (!email.trim()) {
+      const errorMessage = { type: "error" as const, text: t("footer.emailRequired") || "Email is required" };
+      setDialogMessage(errorMessage);
+      setDialogOpen(true);
+
+      // Clear any existing timeout
+      if (dialogTimeout) {
+        clearTimeout(dialogTimeout);
+      }
+
+      // Auto-close dialog after 3 seconds
+      const timeout = setTimeout(() => {
+        setDialogOpen(false);
+      }, 3000);
+      setDialogTimeout(timeout);
+
+      return;
+    }
+
+    setIsLoading(true);
+
+    try {
+      await subscribeToNewsletter(email);
+      const successMessage = { type: "success" as const, text: t("footer.subscriptionSuccess") || "Successfully subscribed to our newsletter!" };
+      setDialogMessage(successMessage);
+      setDialogOpen(true);
+      setEmail("");
+
+      // Clear any existing timeout
+      if (dialogTimeout) {
+        clearTimeout(dialogTimeout);
+      }
+
+      // Auto-close dialog after 3 seconds
+      const timeout = setTimeout(() => {
+        setDialogOpen(false);
+      }, 3000);
+      setDialogTimeout(timeout);
+    } catch (error) {
+      const errorMessage = {
+        type: "error" as const,
+        text: error instanceof Error ? error.message : t("footer.subscriptionError") || "Failed to subscribe. Please try again."
+      };
+      setDialogMessage(errorMessage);
+      setDialogOpen(true);
+
+      // Clear any existing timeout
+      if (dialogTimeout) {
+        clearTimeout(dialogTimeout);
+      }
+
+      // Auto-close dialog after 3 seconds
+      const timeout = setTimeout(() => {
+        setDialogOpen(false);
+      }, 3000);
+      setDialogTimeout(timeout);
+    } finally {
+      setIsLoading(false);
+    }
+  };
 
   const footerLinks = {
     services: [
@@ -88,14 +166,19 @@ export function Footer() {
               <p className="text-sm font-medium text-foreground">
                 {t("footer.stayUpdated")}
               </p>
-              <div className="flex gap-2">
+              <form onSubmit={handleNewsletterSubmit} className="flex gap-2">
                 <Input
                   type="email"
                   placeholder={t("footer.emailPlaceholder")}
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
                   className="max-w-xs shadow-none text-sm"
+                  disabled={isLoading}
                 />
-                <Button>{t("footer.subscribe")}</Button>
-              </div>
+                <Button type="submit" disabled={isLoading}>
+                  {isLoading ? t("footer.subscribing") || "Subscribing..." : t("footer.subscribe")}
+                </Button>
+              </form>
             </div>
 
             {/* Social Links */}
@@ -211,6 +294,45 @@ export function Footer() {
           </div>
         </div>
       </div>
+
+      {/* Newsletter Alert Dialog */}
+      <AlertDialog open={dialogOpen} onOpenChange={setDialogOpen}>
+        <AlertDialogContent className="max-w-sm sm:max-w-md border border-border/50 bg-background backdrop-blur-md shadow-xl animate-in fade-in-0 zoom-in-95 duration-200">
+          <AlertDialogHeader className="space-y-0 p-0">
+            <div className="flex items-center gap-3 pb-2">
+              {/* Minimal icon styling */}
+              <div className={`flex-shrink-0 w-12 h-12 rounded-md flex items-center justify-center transition-colors duration-200 ${
+                dialogMessage?.type === "success"
+                  ? "bg-green-500/10 text-green-600 dark:text-green-400"
+                  : "bg-red-500/10 text-red-600 dark:text-red-400"
+              }`}>
+                {dialogMessage?.type === "success" ? (
+                  <MailCheck className="h-5 w-5" />
+                ) : (
+                  <MailX className="h-5 w-5" />
+                )}
+              </div>
+
+              {/* Typography hierarchy */}
+              <div className="flex-1 space-y-1.5 text-start">
+                <AlertDialogTitle className={`text-base font-medium leading-tight transition-colors duration-200 ${
+                  dialogMessage?.type === "success"
+                    ? "text-green-700 dark:text-green-400"
+                    : "text-red-700 dark:text-red-400"
+                }`}>
+                  {dialogMessage?.type === "success"
+                    ? (t("footer.subscriptionSuccess") || "Successfully subscribed!")
+                    : (t("footer.subscriptionError") || "Subscription failed")
+                  }
+                </AlertDialogTitle>
+                <AlertDialogDescription className="text-sm text-muted-foreground leading-relaxed -mt-1">
+                  {dialogMessage?.text}
+                </AlertDialogDescription>
+              </div>
+            </div>
+          </AlertDialogHeader>
+        </AlertDialogContent>
+      </AlertDialog>
     </footer>
   );
 }

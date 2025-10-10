@@ -10,6 +10,13 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import {
+  AlertDialog,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogHeader,
+  AlertDialogTitle,
+} from "@/components/ui/alert-dialog";
+import {
   Calendar,
   Clock,
   Search,
@@ -17,10 +24,15 @@ import {
   ArrowRight,
   ArrowLeft,
   BookOpen,
+  CheckCircle,
+  AlertCircle,
+  MailCheck,
+  MailX,
 } from "lucide-react";
 import { useLanguage } from "@/components/language-provider";
 import SectionSeparator from "@/components/general/SectionSeparator";
 import MinimalSectionSeparator from "@/components/general/MinimalSectionSeparator";
+import { subscribeToNewsletter } from "@/lib/Services";
 
 const categories = [
   { key: "all", labelKey: "blog.category.all" },
@@ -102,6 +114,12 @@ const posts = [
 export default function BlogPage() {
   const [selectedCategory, setSelectedCategory] = useState("all");
   const [searchQuery, setSearchQuery] = useState("");
+  const [newsletterEmail, setNewsletterEmail] = useState("");
+  const [isNewsletterLoading, setIsNewsletterLoading] = useState(false);
+  const [newsletterMessage, setNewsletterMessage] = useState<{ type: "success" | "error"; text: string } | null>(null);
+  const [newsletterDialogOpen, setNewsletterDialogOpen] = useState(false);
+  const [newsletterDialogMessage, setNewsletterDialogMessage] = useState<{ type: "success" | "error"; text: string } | null>(null);
+  const [newsletterDialogTimeout, setNewsletterDialogTimeout] = useState<NodeJS.Timeout | null>(null);
   const { t, language } = useLanguage();
 
   const filteredPosts = posts.filter((post) => {
@@ -115,6 +133,71 @@ export default function BlogPage() {
       t(post.excerptKey).toLowerCase().includes(searchQuery.toLowerCase());
     return matchesCategory && matchesSearch;
   });
+
+  const handleNewsletterSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+
+    if (!newsletterEmail.trim()) {
+      const errorMessage = { type: "error" as const, text: t("footer.emailRequired") || "Email is required" };
+      setNewsletterDialogMessage(errorMessage);
+      setNewsletterDialogOpen(true);
+
+      // Clear any existing timeout
+      if (newsletterDialogTimeout) {
+        clearTimeout(newsletterDialogTimeout);
+      }
+
+      // Auto-close dialog after 3 seconds
+      const timeout = setTimeout(() => {
+        setNewsletterDialogOpen(false);
+      }, 3000);
+      setNewsletterDialogTimeout(timeout);
+
+      return;
+    }
+
+    setIsNewsletterLoading(true);
+    setNewsletterMessage(null);
+
+    try {
+      await subscribeToNewsletter(newsletterEmail);
+      const successMessage = { type: "success" as const, text: t("footer.subscriptionSuccess") || "Successfully subscribed to our newsletter!" };
+      setNewsletterDialogMessage(successMessage);
+      setNewsletterDialogOpen(true);
+      setNewsletterEmail("");
+
+      // Clear any existing timeout
+      if (newsletterDialogTimeout) {
+        clearTimeout(newsletterDialogTimeout);
+      }
+
+      // Auto-close dialog after 3 seconds
+      const timeout = setTimeout(() => {
+        setNewsletterDialogOpen(false);
+      }, 3000);
+      setNewsletterDialogTimeout(timeout);
+    } catch (error) {
+      const errorMessage = {
+        type: "error" as const,
+        text: error instanceof Error ? error.message : t("footer.subscriptionError") || "Failed to subscribe. Please try again."
+      };
+      setNewsletterDialogMessage(errorMessage);
+      setNewsletterDialogOpen(true);
+
+      // Clear any existing timeout
+      if (newsletterDialogTimeout) {
+        clearTimeout(newsletterDialogTimeout);
+      }
+
+      // Auto-close dialog after 3 seconds
+      const timeout = setTimeout(() => {
+        setNewsletterDialogOpen(false);
+      }, 3000);
+      setNewsletterDialogTimeout(timeout);
+    } finally {
+      setIsNewsletterLoading(false);
+    }
+  };
 
   return (
     <div className="min-h-screen">
@@ -266,19 +349,63 @@ export default function BlogPage() {
               <p className="text-lg text-muted-foreground">
                 {t("blog.newsletter.description")}
               </p>
-              <div className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
+              <form onSubmit={handleNewsletterSubmit} className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
                 <Input
                   type="email"
                   placeholder={t("footer.emailPlaceholder")}
+                  value={newsletterEmail}
+                  onChange={(e) => setNewsletterEmail(e.target.value)}
                   className="flex-1"
+                  disabled={isNewsletterLoading}
                 />
-                <Button>{t("footer.subscribe")}</Button>
-              </div>
+                <Button type="submit" disabled={isNewsletterLoading}>
+                  {isNewsletterLoading ? t("footer.subscribing") || "Subscribing..." : t("footer.subscribe")}
+                </Button>
+              </form>
             </div>
           </div>
         </section>
       </main>
       <Footer />
+
+      {/* Newsletter Alert Dialog */}
+      <AlertDialog open={newsletterDialogOpen} onOpenChange={setNewsletterDialogOpen}>
+        <AlertDialogContent className="max-w-sm sm:max-w-md border border-border/50 bg-background backdrop-blur-md shadow-xl animate-in fade-in-0 zoom-in-95 duration-200">
+          <AlertDialogHeader className="space-y-0 p-0">
+            <div className="flex items-center gap-3 pb-2">
+              {/* Minimal icon styling */}
+              <div className={`flex-shrink-0 w-12 h-12 rounded-md flex items-center justify-center transition-colors duration-200 ${
+                newsletterDialogMessage?.type === "success"
+                  ? "bg-green-500/10 text-green-600 dark:text-green-400"
+                  : "bg-red-500/10 text-red-600 dark:text-red-400"
+              }`}>
+                {newsletterDialogMessage?.type === "success" ? (
+                  <MailCheck className="h-5 w-5" />
+                ) : (
+                  <MailX className="h-5 w-5" />
+                )}
+              </div>
+
+              {/* Typography hierarchy */}
+              <div className="flex-1 space-y-1.5 text-start">
+                <AlertDialogTitle className={`text-base font-medium leading-tight transition-colors duration-200 ${
+                  newsletterDialogMessage?.type === "success"
+                    ? "text-green-700 dark:text-green-400"
+                    : "text-red-700 dark:text-red-400"
+                }`}>
+                  {newsletterDialogMessage?.type === "success"
+                    ? (t("footer.subscriptionSuccess") || "Successfully subscribed!")
+                    : (t("footer.subscriptionError") || "Subscription failed")
+                  }
+                </AlertDialogTitle>
+                <AlertDialogDescription className="text-sm text-muted-foreground leading-relaxed -mt-1">
+                  {newsletterDialogMessage?.text}
+                </AlertDialogDescription>
+              </div>
+            </div>
+          </AlertDialogHeader>
+        </AlertDialogContent>
+      </AlertDialog>
     </div>
   );
 }

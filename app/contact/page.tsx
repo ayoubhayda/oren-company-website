@@ -92,8 +92,8 @@ export default function ContactPage() {
               </div>
 
               <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-4">
-                {t("contact.hero.title")}
-                <span className="block">
+                {t("contact.hero.title")}<span className="hidden rtl:inline">{" "}</span>
+                <span className="ltr:block mt-1.5">
                   {t("contact.hero.title.highlight")}
                 </span>
               </h1>
@@ -126,7 +126,7 @@ export default function ContactPage() {
                             <Mail className="h-6 w-6 text-primary" />
                           </div>
                           <div className="flex-1">
-                            <p className="font-semibold text-foreground">{t("contact.info.emailLabel")}</p>
+                            <p className="font-semibold text-foreground mb-0.5">{t("contact.info.emailLabel")}</p>
                             <a
                               href="mailto:hello@auren.agency"
                               className="text-muted-foreground hover:text-primary transition-colors text-sm"
@@ -144,7 +144,7 @@ export default function ContactPage() {
                             <Phone className="h-6 w-6 text-primary" />
                           </div>
                           <div className="flex-1">
-                            <p className="font-semibold text-foreground">{t("contact.info.phoneLabel")}</p>
+                            <p className="font-semibold text-foreground mb-0.5">{t("contact.info.phoneLabel")}</p>
                             <a
                               href="tel:+212666666666"
                               className="text-muted-foreground hover:text-primary transition-colors text-sm"
@@ -162,7 +162,7 @@ export default function ContactPage() {
                             <MapPin className="h-6 w-6 text-primary" />
                           </div>
                           <div className="flex-1">
-                            <p className="font-semibold text-foreground">{t("contact.info.locationLabel")}</p>
+                            <p className="font-semibold text-foreground mb-0.5">{t("contact.info.locationLabel")}</p>
                             <p className="text-muted-foreground text-sm leading-relaxed">
                               {t("contact.info.locationDescription")}
                             </p>
@@ -177,7 +177,7 @@ export default function ContactPage() {
                             <Clock className="h-6 w-6 text-primary" />
                           </div>
                           <div className="flex-1">
-                            <p className="font-semibold text-foreground">{t("contact.info.availabilityLabel")}</p>
+                            <p className="font-semibold text-foreground mb-0.5">{t("contact.info.availabilityLabel")}</p>
                             <p className="text-muted-foreground text-sm">
                               {t("contact.info.availabilityDescription")}
                             </p>
