@@ -36,13 +36,45 @@ export default function ContactPage() {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     setIsSubmitting(true)
-    await new Promise((resolve) => setTimeout(resolve, 1500))
-    setIsSubmitting(false)
-    setIsSubmitted(true)
-    setTimeout(() => {
-      setIsSubmitted(false)
-      ;(e.target as HTMLFormElement).reset()
-    }, 3000)
+
+    try {
+      const formData = new FormData(e.currentTarget)
+      const data = {
+        name: formData.get('name') as string,
+        company: formData.get('company') as string,
+        email: formData.get('email') as string,
+        phone: formData.get('phone') as string,
+        service: formData.get('service') as string,
+        budget: formData.get('budget') as string,
+        message: formData.get('message') as string,
+      }
+
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      })
+
+      const result = await response.json()
+
+      if (response.ok) {
+        setIsSubmitted(true)
+        setTimeout(() => {
+          setIsSubmitted(false)
+          ;(e.target as HTMLFormElement).reset()
+        }, 3000)
+      } else {
+        console.error('Failed to send email:', result.error)
+        // You could add error state handling here
+      }
+    } catch (error) {
+      console.error('Error submitting form:', error)
+      // You could add error state handling here
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   return (
@@ -94,7 +126,7 @@ export default function ContactPage() {
                             <Mail className="h-6 w-6 text-primary" />
                           </div>
                           <div className="flex-1">
-                            <p className="font-semibold text-foreground mb-1">{t("contact.info.emailLabel")}</p>
+                            <p className="font-semibold text-foreground">{t("contact.info.emailLabel")}</p>
                             <a
                               href="mailto:hello@auren.agency"
                               className="text-muted-foreground hover:text-primary transition-colors text-sm"
@@ -112,16 +144,13 @@ export default function ContactPage() {
                             <Phone className="h-6 w-6 text-primary" />
                           </div>
                           <div className="flex-1">
-                            <p className="font-semibold text-foreground mb-1">{t("contact.info.phoneLabel")}</p>
+                            <p className="font-semibold text-foreground">{t("contact.info.phoneLabel")}</p>
                             <a
                               href="tel:+212666666666"
                               className="text-muted-foreground hover:text-primary transition-colors text-sm"
                             >
-                              +212 6 66 66 66 66
+                              +212 666 666 666
                             </a>
-                            <p className="text-xs text-muted-foreground mt-1">
-                              {t("contact.info.responseTime")}
-                            </p>
                           </div>
                         </div>
                       </div>
@@ -133,7 +162,7 @@ export default function ContactPage() {
                             <MapPin className="h-6 w-6 text-primary" />
                           </div>
                           <div className="flex-1">
-                            <p className="font-semibold text-foreground mb-1">{t("contact.info.locationLabel")}</p>
+                            <p className="font-semibold text-foreground">{t("contact.info.locationLabel")}</p>
                             <p className="text-muted-foreground text-sm leading-relaxed">
                               {t("contact.info.locationDescription")}
                             </p>
@@ -148,7 +177,7 @@ export default function ContactPage() {
                             <Clock className="h-6 w-6 text-primary" />
                           </div>
                           <div className="flex-1">
-                            <p className="font-semibold text-foreground mb-1">{t("contact.info.availabilityLabel")}</p>
+                            <p className="font-semibold text-foreground">{t("contact.info.availabilityLabel")}</p>
                             <p className="text-muted-foreground text-sm">
                               {t("contact.info.availabilityDescription")}
                             </p>
@@ -185,7 +214,7 @@ export default function ContactPage() {
               {/* Right: Form */}
               <div className="lg:col-span-2">
                 <AnimatedSection delay={0.3}>
-                  <Card className="bg-card/50 backdrop-blur-sm border-gray-200 h-full dark:bg-card dark:border-border">
+                  <Card className="bg-card/50 backdrop-blur-sm p-0 border-gray-200 h-full dark:bg-card dark:border-border">
                     <CardContent className="p-8 lg:p-10">
                       <div className="mb-8">
                         <div className="flex items-center gap-3 mb-3">
@@ -332,7 +361,7 @@ export default function ContactPage() {
                             <>
                               <Send className="mr-2 h-4 w-4" />
                               {t("contact.form.send")}
-                              <Zap className="ml-2 h-4 w-4 opacity-0 group-hover:opacity-100 transition-opacity" />
+      
                             </>
                           )}
                         </Button>
