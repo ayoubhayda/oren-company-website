@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useCallback } from "react"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import { Button } from "@/components/ui/button"
@@ -16,7 +16,11 @@ import JsonToHtml from "@/components/general/JsonToHtml"
 import { JSONContent } from "@tiptap/react"
 
 interface ProjectData {
-  title: string
+  title: {
+    en: string
+    fr: string
+    ar: string
+  }
   description: {
     en: JSONContent
     fr: JSONContent
@@ -26,7 +30,7 @@ interface ProjectData {
   category: string
   tags: string[]
   client: string
-  duration: string
+  duration: number | null
   team: string
   challenge: {
     en: JSONContent
@@ -51,12 +55,17 @@ export default function ProjectContent({ project }: { project: ProjectData }) {
   const { t, language } = useLanguage()
 
   // Helper function to get content for current language
-  const getContentForLanguage = (contentObj: { en: JSONContent; fr: JSONContent; ar: JSONContent }) => {
+  const getContentForLanguage = useCallback((contentObj: { en: JSONContent; fr: JSONContent; ar: JSONContent }) => {
     return contentObj[language] || contentObj.en || null;
-  };
+  }, [language]);
+
+  // Helper function to get title for current language
+  const getTitleForLanguage = useCallback(() => {
+    return project.title[language] || project.title.en || "Untitled Project";
+  }, [project.title, language]);
 
   // Helper function to get description content with fallback logic
-  const getDescriptionContent = () => {
+  const getDescriptionContent = useCallback(() => {
     const shortDesc = getContentForLanguage(project.description);
     if (shortDesc) return shortDesc;
 
@@ -65,7 +74,7 @@ export default function ProjectContent({ project }: { project: ProjectData }) {
     if (challenge) return challenge;
 
     return null; // No content available
-  };
+  }, [getContentForLanguage, project.description, project.challenge]);
 
   // Get current language content
   const currentChallenge = getContentForLanguage(project.challenge);
@@ -123,7 +132,7 @@ export default function ProjectContent({ project }: { project: ProjectData }) {
                   </div>
 
                   <h1 className="text-4xl sm:text-5xl font-bold text-foreground leading-tight">
-                    {project.title}
+                    {getTitleForLanguage()}
                   </h1>
                 </div>
 
@@ -135,7 +144,7 @@ export default function ProjectContent({ project }: { project: ProjectData }) {
                       <div className="relative aspect-[16/10] rounded-2xl overflow-hidden bg-muted border border-gray-200 dark:border-gray-700">
                         <Image
                           src={project.images[currentImageIndex] || "/placeholder.svg"}
-                          alt={`${project.title} - Image ${currentImageIndex + 1}`}
+                          alt={`${getTitleForLanguage()} - Image ${currentImageIndex + 1}`}
                           fill
                           className="object-cover"
                         />
@@ -279,7 +288,7 @@ export default function ProjectContent({ project }: { project: ProjectData }) {
                           currentChallenge.type === 'doc' &&
                           Array.isArray(currentChallenge.content)) {
                         try {
-                          return <JsonToHtml json={currentChallenge} />;
+                          return <JsonToHtml key={JSON.stringify(currentChallenge)} json={currentChallenge} />;
                         } catch (error) {
                           console.error('Error rendering JsonToHtml:', error);
                           return <p className="text-lg text-muted-foreground leading-relaxed">Error rendering content</p>;
@@ -297,7 +306,7 @@ export default function ProjectContent({ project }: { project: ProjectData }) {
                             type: 'doc',
                             content: [currentChallenge]
                           };
-                          return <JsonToHtml json={wrappedContent} />;
+                          return <JsonToHtml key={JSON.stringify(wrappedContent)} json={wrappedContent} />;
                         } catch (error) {
                           console.error('Error rendering wrapped content:', error);
                           return <p className="text-lg text-muted-foreground leading-relaxed">Error rendering content</p>;
@@ -317,7 +326,7 @@ export default function ProjectContent({ project }: { project: ProjectData }) {
                             type: 'doc',
                             content: currentChallenge
                           };
-                          return <JsonToHtml json={wrappedContent} />;
+                          return <JsonToHtml key={JSON.stringify(wrappedContent)} json={wrappedContent} />;
                         } catch (error) {
                           console.error('Error rendering array content:', error);
                           return <p className="text-lg text-muted-foreground leading-relaxed">Error rendering content</p>;
@@ -471,7 +480,11 @@ export default function ProjectContent({ project }: { project: ProjectData }) {
                       <Calendar className="h-4 w-4 text-muted-foreground" />
                       <div>
                         <p className="text-sm text-muted-foreground">{t("project.duration")}</p>
-                        <p className="font-semibold">{project.duration}</p>
+                        <p className="font-semibold">
+                          {typeof project.duration === 'number'
+                            ? `${project.duration} ${t("project.duration.days")}`
+                            : project.duration || 'N/A'}
+                        </p>
                       </div>
                     </div>
                     <div className="flex items-center gap-3">
@@ -520,7 +533,7 @@ export default function ProjectContent({ project }: { project: ProjectData }) {
                           <div className="bg-primary h-2 rounded-full" style={{ width: '90%' }}></div>
                         </div>
                         <div className="flex items-center justify-between text-sm">
-                          <span>Performance</span>
+                          <span>{t("project.performance")}</span>
                           <span>88%</span>
                         </div>
                         <div className="w-full bg-muted rounded-full h-2">

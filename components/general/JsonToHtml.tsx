@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import TextAlign from "@tiptap/extension-text-align";
 import Typography from "@tiptap/extension-typography";
 import { EditorContent, JSONContent, useEditor } from "@tiptap/react";
@@ -29,6 +29,13 @@ const JsonToHtml = ({ json }: { json: JSONContent | null | undefined }) => {
     editable: false,
     content: validContent,
   });
+
+  // Update editor content when json prop changes
+  useEffect(() => {
+    if (editor && json) {
+      editor.commands.setContent(validContent);
+    }
+  }, [editor, json, validContent]);
 
   if (!editor) {
     return <div>Safe fallback content</div>;

@@ -95,7 +95,7 @@ async function ProjectPage({ params }: { params: Promise<{ slug: string }> }) {
     category: project.category,
     tags: project.technologies || [],
     client: "Client", // Default value since not in database schema
-    duration: `${project.duration} months`,
+    duration: project.duration || null,
     team: "Team", // Default value since not in database schema
     challenge: {
       en: parseJsonContent(project.longDescriptionEN),

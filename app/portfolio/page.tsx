@@ -12,36 +12,28 @@ const categories = [
 const parseJsonContent = (content: any) => {
   // Handle null/undefined or empty strings
   if (content == null || content === '') {
-    console.log('parseJsonContent: content is null or empty');
     return null;
   }
 
   // If it's already a properly structured TipTap document, return as-is
   if (content && typeof content === 'object' && content.type === 'doc' && Array.isArray(content.content)) {
-    console.log('parseJsonContent: already structured object');
     return content;
   }
 
   if (typeof content === 'string') {
-    console.log('parseJsonContent: parsing string, length:', content.length);
-    console.log('parseJsonContent: string preview:', content.substring(0, 100) + '...');
-
     // First, try to parse as JSON
     try {
       const parsed = JSON.parse(content);
-      console.log('parseJsonContent: JSON parsed successfully, type:', parsed?.type);
 
       // Ensure it's a valid structure
       if (parsed && typeof parsed === 'object') {
         // Check if it's already a valid TipTap document
         if (parsed.type === 'doc' && Array.isArray(parsed.content)) {
-          console.log('parseJsonContent: valid TipTap document');
           return parsed;
         }
 
         // Check if it's a valid TipTap node
         if (parsed.type && Array.isArray(parsed.content)) {
-          console.log('parseJsonContent: valid TipTap node, wrapping');
           // Wrap single nodes in a document structure
           return {
             type: 'doc',
@@ -53,7 +45,6 @@ const parseJsonContent = (content: any) => {
         if (Array.isArray(parsed) && parsed.length > 0) {
           const firstItem = parsed[0];
           if (firstItem && firstItem.type && Array.isArray(firstItem.content)) {
-            console.log('parseJsonContent: array of TipTap nodes');
             return {
               type: 'doc',
               content: parsed
@@ -63,7 +54,6 @@ const parseJsonContent = (content: any) => {
 
         // If it's any other object structure, try to handle it as a paragraph node
         if (parsed.type && parsed.content !== undefined) {
-          console.log('parseJsonContent: other object structure');
           return {
             type: 'doc',
             content: [{
@@ -74,15 +64,12 @@ const parseJsonContent = (content: any) => {
         }
       }
 
-      console.log('parseJsonContent: JSON structure not recognized, treating as plain text');
       // If parsing succeeded but structure is not recognized, treat as plain text
     } catch (error) {
-      console.log('parseJsonContent: JSON parse error, treating as plain text:', error.message);
       // If parsing fails, treat as plain text
     }
 
     // Handle as plain text by wrapping in TipTap paragraph structure
-    console.log('parseJsonContent: creating TipTap structure from plain text');
     return {
       type: 'doc',
       content: [{
@@ -95,7 +82,6 @@ const parseJsonContent = (content: any) => {
     };
   }
 
-  console.log('parseJsonContent: unexpected content type');
   return null;
 };
 
@@ -140,25 +126,7 @@ async function PortfolioPage() {
             ar: parseJsonContent(project.longDescriptionAR || ''),
           },
         };
-
-        // Debug logging for description parsing (only for problematic projects)
-        if (!parsedProject.shortDescription.en && !parsedProject.shortDescription.fr && !parsedProject.shortDescription.ar) {
-          console.log(`Project ${project.id}: Raw short descriptions:`, {
-            en: (project.shortDescriptionEN || '').substring(0, 100) + '...',
-            fr: (project.shortDescriptionFR || '').substring(0, 100) + '...',
-            ar: (project.shortDescriptionAR || '').substring(0, 100) + '...'
-          });
-        }
-        console.log(`Project ${project.id}: Short desc parsed:`, {
-          en: !!parsedProject.shortDescription.en,
-          fr: !!parsedProject.shortDescription.fr,
-          ar: !!parsedProject.shortDescription.ar
-        });
-        console.log(`Project ${project.id}: Long desc parsed:`, {
-          en: !!parsedProject.longDescription.en,
-          fr: !!parsedProject.longDescription.fr,
-          ar: !!parsedProject.longDescription.ar
-        });
+        
 
         return parsedProject;
       } catch (error) {
