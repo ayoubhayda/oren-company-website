@@ -66,7 +66,7 @@ export async function POST(request: NextRequest) {
     // Send email using Resend with professional HTML template
     const { data, error } = await resend.emails.send({
       from: "Oren Company <onboarding@resend.dev>", // Replace with your actual domain
-      to: ["ayoubhayda01@gmail.com", "aya.berrouan@gmail.com"],
+      to: ["ayoubhayda01@gmail.com"],
       subject: `🚀 New Contact Inquiry - ${name}`,
       html: `
         <!DOCTYPE html>

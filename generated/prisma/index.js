@@ -196,7 +196,7 @@ const config = {
       "value": "prisma-client-js"
     },
     "output": {
-      "value": "/home/ayoubhayda/Documents/Projects-Library/oren-company-website/generated/prisma",
+      "value": "C:\\Users\\Aya\\Desktop\\Mes projets\\oren-company-website\\generated\\prisma",
       "fromEnvVar": null
     },
     "config": {
@@ -205,12 +205,12 @@ const config = {
     "binaryTargets": [
       {
         "fromEnvVar": null,
-        "value": "rhel-openssl-3.0.x",
+        "value": "windows",
         "native": true
       }
     ],
     "previewFeatures": [],
-    "sourceFilePath": "/home/ayoubhayda/Documents/Projects-Library/oren-company-website/prisma/schema.prisma",
+    "sourceFilePath": "C:\\Users\\Aya\\Desktop\\Mes projets\\oren-company-website\\prisma\\schema.prisma",
     "isCustomOutput": true
   },
   "relativeEnvPaths": {
@@ -273,8 +273,8 @@ exports.PrismaClient = PrismaClient
 Object.assign(exports, Prisma)
 
 // file annotations for bundling tools to include these files
-path.join(__dirname, "libquery_engine-rhel-openssl-3.0.x.so.node");
-path.join(process.cwd(), "generated/prisma/libquery_engine-rhel-openssl-3.0.x.so.node")
+path.join(__dirname, "query_engine-windows.dll.node");
+path.join(process.cwd(), "generated/prisma/query_engine-windows.dll.node")
 // file annotations for bundling tools to include these files
 path.join(__dirname, "schema.prisma");
 path.join(process.cwd(), "generated/prisma/schema.prisma")
