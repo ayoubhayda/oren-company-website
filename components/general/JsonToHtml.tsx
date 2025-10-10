@@ -5,7 +5,12 @@ import Typography from "@tiptap/extension-typography";
 import { EditorContent, JSONContent, useEditor } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
 
-const JsonToHtml = ({ json }: { json: JSONContent }) => {
+const JsonToHtml = ({ json }: { json: JSONContent | null | undefined }) => {
+  // Ensure we have valid content
+  const validContent = json && typeof json === 'object' && json.type === 'doc' && Array.isArray(json.content)
+    ? json
+    : { type: 'doc', content: [] };
+
   const editor = useEditor({
     extensions: [
       StarterKit,
@@ -22,9 +27,12 @@ const JsonToHtml = ({ json }: { json: JSONContent }) => {
       },
     },
     editable: false,
-
-    content: json,
+    content: validContent,
   });
+
+  if (!editor) {
+    return <div>Safe fallback content</div>;
+  }
 
   return <EditorContent editor={editor} />;
 }

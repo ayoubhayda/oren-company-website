@@ -19,7 +19,8 @@ import {
   Zap,
   MapPin,
   Linkedin,
-  Instagram
+  Instagram,
+  MessageSquare
 } from "lucide-react"
 import { useState } from "react"
 import { useLanguage } from "@/components/language-provider"
@@ -54,22 +55,20 @@ export default function ContactPage() {
           <div className=" relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div className="text-center">
               <div className="inline-flex items-center gap-2 px-4 py-2 mb-8 rounded-full bg-primary/10 border border-primary/20 text-sm font-medium text-primary">
-                <div className="w-2 h-2 rounded-full bg-primary"></div>
+                <MessageSquare className="w-4 h-4 text-primary" />
                 {t("contact.hero.badge")}
               </div>
 
-              <h1 className="mx-auto text-4xl sm:text-5xl lg:text-6xl font-extrabold text-foreground leading-tight">
-              {t("contact.hero.title")}<span className="hidden rtl:inline">{" "}</span>
-                <span className="relative ltr:mt-2 ltr:block text-primary">
-                {t("contact.hero.title.highlight")}
+              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-4">
+                {t("contact.hero.title")}
+                <span className="block">
+                  {t("contact.hero.title.highlight")}
                 </span>
               </h1>
 
-              <div className="mt-6 inline-flex items-center gap-2 text-sm text-muted-foreground">
-                <span className="h-1 w-1 rounded-full bg-[#0069FF]/70" />
+              <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
                 {t("contact.hero.subtitle")}
-                <span className="h-1 w-1 rounded-full bg-[#0069FF]/70" />
-              </div>
+              </p>
             </div>
           </div>
         </section>

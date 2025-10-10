@@ -16,6 +16,7 @@ import {
   Zap,
   ArrowRight,
   ArrowLeft,
+  BookOpen,
 } from "lucide-react";
 import { useLanguage } from "@/components/language-provider";
 import SectionSeparator from "@/components/general/SectionSeparator";
@@ -125,23 +126,18 @@ export default function BlogPage() {
             <div className="text-center">
               {/* Hero budge */}
               <div className="inline-flex items-center gap-2 px-4 py-2 mb-8 rounded-full bg-primary/10 border border-primary/20 text-sm font-medium text-primary">
-                <div className="w-2 h-2 rounded-full bg-primary"></div>
+                <BookOpen className="w-4 h-4 text-primary" />
                 {t("blog.hero.badge")}
               </div>
 
               {/* Hero title */}
-              <h1 className="mx-auto text-4xl sm:text-5xl lg:text-6xl font-extrabold text-foreground leading-tight">
+              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-4">
                 {t("blog.hero.title")}
-                <span className="relative mt-2 block text-transparent bg-clip-text bg-gradient-to-r from-[#0069FF] to-[#00BFFF]">
-                  {t("blog.hero.titleHighlight")}
-                </span>
               </h1>
               {/* Hero bio */}
-              <div className="mt-6 inline-flex items-center gap-2 text-sm text-muted-foreground">
-                <span className="h-1 w-1 rounded-full bg-[#0069FF]/70" />
+              <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
                 {t("blog.hero.subtitle")}
-                <span className="h-1 w-1 rounded-full bg-[#0069FF]/70" />
-              </div>
+              </p>
             </div>
           </div>
         </section>
@@ -199,7 +195,7 @@ export default function BlogPage() {
                         className="object-cover transition-transform duration-300 group-hover:scale-105"
                       />
                     </div>
-                    <CardContent className="p-6 relative z-10">
+                    <CardContent className="pt-2 pb-6 px-6 relative z-10">
                       <Badge variant="secondary" className="mb-3">
                         {t(post.categoryKey)}
                       </Badge>

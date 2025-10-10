@@ -48,6 +48,40 @@
 	margin-right: 0;
 }
 
+/* Code Blocks - Always LTR */
+[dir="rtl"] pre,
+[dir="rtl"] code,
+[dir="rtl"] .code-example,
+[dir="rtl"] .code-example pre,
+[dir="rtl"] .code-example code {
+	direction: ltr !important;
+	text-align: left !important;
+}
+
+/* Ensure code content is always LTR */
+pre[dir="ltr"],
+code[dir="ltr"] {
+	direction: ltr !important;
+	text-align: left !important;
+}
+
+/* Code example titles in RTL context */
+[dir="rtl"] .code-example h4,
+[dir="rtl"] .code-example h3 {
+	text-align: right !important;
+}
+
+/* Ensure code titles maintain proper alignment */
+.code-example h4,
+.code-example h3 {
+	text-align: left;
+}
+
+[dir="rtl"] .code-example h4,
+[dir="rtl"] .code-example h3 {
+	text-align: right !important;
+}
+
 [dir="rtl"] .rtl\:mr-auto {
 	margin-right: auto;
 	margin-left: 0;
@@ -79,7 +113,8 @@
 	@apply text-sm font-semibold mb-1 mt-1 leading-tight;
 }
 
-.ProseMirror ul, .ProseMirror ol {
+.ProseMirror ul,
+.ProseMirror ol {
 	@apply mb-1 ml-3;
 }
 

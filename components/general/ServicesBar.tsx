@@ -2,17 +2,20 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { Code, Database, Palette, Zap, Globe, Shield, Rocket, Star } from "lucide-react";
+import { useLanguage } from "../language-provider";
 
 const ServicesBar = () => {
+  const { t } = useLanguage();
+
   const services = [
-    { text: "Full Stack Web Developer", icon: Code },
-    { text: "Next.js & React Expert", icon: Rocket },
-    { text: "Laravel & PHP Backend", icon: Database },
-    { text: "TypeScript Specialist", icon: Zap },
-    { text: "UI/UX Designer", icon: Palette },
-    { text: "MERN Stack Developer", icon: Globe },
-    { text: "Performance Optimizer", icon: Star },
-    { text: "API Integration Expert", icon: Shield },
+    { textKey: "services.complete-web-solutions", icon: Code },
+    { textKey: "services.modern-interactive-websites", icon: Rocket },
+    { textKey: "services.secure-backend-systems", icon: Database },
+    { textKey: "services.reliable-development-solutions", icon: Zap },
+    { textKey: "services.intuitive-user-experiences", icon: Palette },
+    { textKey: "services.dynamic-web-applications", icon: Globe },
+    { textKey: "services.website-speed-optimization", icon: Star },
+    { textKey: "services.seamless-system-integration", icon: Shield },
   ];
 
   // Duplicate for seamless loop
@@ -49,7 +52,7 @@ const ServicesBar = () => {
                 <IconComponent className="w-4 h-4 text-primary" />
               </div>
               <span className="text-foreground font-semibold text-sm md:text-base tracking-wide">
-                {service.text}
+                {t(service.textKey)}
               </span>
               {index < duplicatedServices.length - 1 && (
                 <div className="w-2 h-2 rounded-full bg-primary/60 ml-6"></div>

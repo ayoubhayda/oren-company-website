@@ -1,0 +1,122 @@
+import ProjectContent from "./ProjectContent"
+import { getProjectMutation } from "@/lib/Services"
+import { notFound } from "next/navigation"
+
+// Server component that fetches project data
+async function ProjectPage({ params }: { params: Promise<{ slug: string }> }) {
+  let project = null
+
+  try {
+    const { slug } = await params
+    project = await getProjectMutation(slug)
+  } catch (error) {
+    console.error("Error fetching project:", error)
+  }
+
+  if (!project) {
+    notFound()
+  }
+
+  // Helper function to safely parse JSON content
+  const parseJsonContent = (content: string | null | undefined) => {
+    // Handle null/undefined
+    if (content == null) {
+      return null;
+    }
+
+    // If it's already a properly structured TipTap document, return as-is
+    if (content && typeof content === 'object' && content.type === 'doc' && Array.isArray(content.content)) {
+      return content;
+    }
+
+    if (typeof content === 'string') {
+      try {
+        const parsed = JSON.parse(content);
+
+        // Ensure it's a valid structure
+        if (parsed && typeof parsed === 'object') {
+          // Check if it's already a valid TipTap document
+          if (parsed.type === 'doc' && Array.isArray(parsed.content)) {
+            return parsed;
+          }
+
+          // Check if it's a valid TipTap node
+          if (parsed.type && Array.isArray(parsed.content)) {
+            // Wrap single nodes in a document structure
+            return {
+              type: 'doc',
+              content: [parsed]
+            };
+          }
+
+          // Check if it's an array of valid TipTap nodes
+          if (Array.isArray(parsed) && parsed.length > 0) {
+            const firstItem = parsed[0];
+            if (firstItem && firstItem.type && Array.isArray(firstItem.content)) {
+              return {
+                type: 'doc',
+                content: parsed
+              };
+            }
+          }
+
+          // If it's any other object structure, try to handle it as a paragraph node
+          if (parsed.type && parsed.content !== undefined) {
+            return {
+              type: 'doc',
+              content: [{
+                type: 'paragraph',
+                content: parsed.content ? [parsed] : []
+              }]
+            };
+          }
+        }
+
+        // If parsing succeeded but structure is not recognized, return null
+        return null;
+      } catch {
+        // If parsing fails, return null
+        return null;
+      }
+    }
+
+    return null;
+  };
+
+  // Transform database project to match expected format with all language versions
+  const transformedProject = {
+    title: project.shortTitleEN, // Will be handled by translation system
+    description: {
+      en: parseJsonContent(project.shortDescriptionEN),
+      fr: parseJsonContent(project.shortDescriptionFR),
+      ar: parseJsonContent(project.shortDescriptionAR),
+    },
+    image: project.thumbnailUrl || "/placeholder.svg",
+    category: project.category,
+    tags: project.technologies || [],
+    client: "Client", // Default value since not in database schema
+    duration: `${project.duration} months`,
+    team: "Team", // Default value since not in database schema
+    challenge: {
+      en: parseJsonContent(project.longDescriptionEN),
+      fr: parseJsonContent(project.longDescriptionFR),
+      ar: parseJsonContent(project.longDescriptionAR),
+    },
+    solution: {
+      en: parseJsonContent(project.longDescriptionEN), // Same as challenge for now
+      fr: parseJsonContent(project.longDescriptionFR),
+      ar: parseJsonContent(project.longDescriptionAR),
+    },
+    results: [], // Default empty array since not in database schema
+    technologies: project.technologies || [],
+    testimonial: undefined, // Default undefined since not in database schema
+    images: project.images || [],
+    demoLink: project.demoLink || undefined,
+    githubLink: project.githubLink || undefined,
+  }
+
+
+  return <ProjectContent project={transformedProject} />
+}
+
+export default ProjectPage

@@ -196,6 +196,48 @@ export default function BlogPostPage({ params }: { params: Promise<{ slug: strin
     notFound()
   }
 
+  // Share functionality
+  const handleShare = async () => {
+    const url = window.location.href
+    const title = t(post.title)
+
+    // Check if Web Share API is supported
+    if (navigator.share) {
+      try {
+        await navigator.share({
+          title: title,
+          text: t(post.excerpt),
+          url: url,
+        })
+      } catch (err) {
+        // User cancelled sharing or error occurred
+        if ((err as Error).name !== 'AbortError') {
+          console.error('Error sharing:', err)
+          fallbackShare(url, title)
+        }
+      }
+    } else {
+      // Fallback to clipboard API
+      fallbackShare(url, title)
+    }
+  }
+
+  const fallbackShare = async (url: string, title: string) => {
+    try {
+      await navigator.clipboard.writeText(`${title} - ${url}`)
+    } catch (err) {
+      console.error('Failed to copy to clipboard:', err)
+      // Final fallback - select text method
+      const textArea = document.createElement('textarea')
+      textArea.value = `${title} - ${url}`
+      document.body.appendChild(textArea)
+      textArea.select()
+      document.execCommand('copy')
+      document.body.removeChild(textArea)
+    }
+  }
+
+
   return (
     <div className="min-h-screen">
       <Header />
@@ -240,7 +282,12 @@ export default function BlogPostPage({ params }: { params: Promise<{ slug: strin
                   </div>
                 </div>
                 <div className="flex-1"></div>
-                <Button variant="outline" size="sm" className="bg-transparent">
+                <Button
+                  variant="outline"
+                  size="sm"
+                  className="bg-transparent"
+                  onClick={handleShare}
+                >
                   <Share2 className="h-4 w-4" />
                 </Button>
               </div>
@@ -269,7 +316,7 @@ export default function BlogPostPage({ params }: { params: Promise<{ slug: strin
             <div className="max-w-4xl mx-auto">
               <div
                 className="prose prose-lg dark:prose-invert max-w-none"
-                dangerouslySetInnerHTML={{ __html: t(post.content) }}
+                dangerouslySetInnerHTML={{ __html: String(t(post.content) || '') }}
               />
             </div>
           </div>
