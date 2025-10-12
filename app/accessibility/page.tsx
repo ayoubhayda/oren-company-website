@@ -320,7 +320,7 @@ export default function AccessibilityPage() {
                       </p>
                       <div className="bg-muted/50 p-6 rounded-lg">
                         <div className="space-y-3">
-                          <p><strong>{t("accessibility.feedback.email")}</strong> {t("accessibility.feedback.emailAddress")}</p>
+                          <p><strong>{t("accessibility.feedback.email")}</strong> contact@orenec.co.site</p>
                           <p><strong>{t("accessibility.feedback.response")}</strong> {t("accessibility.feedback.response.time")}</p>
                           <p><strong>{t("accessibility.feedback.escalation")}</strong> {t("accessibility.feedback.escalation.process")}</p>
                         </div>
@@ -372,7 +372,7 @@ export default function AccessibilityPage() {
 
                 <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
                   <Button size="lg" asChild className="group">
-                    <a href={`mailto:${t("accessibility.contact.emailAddress")}`}>
+                    <a href={`mailto:contact@orenec.co.site`}>
                       {t("accessibility.contact.primary")}
                       {language === "ar" ? (
                         <ArrowLeft className="ms-2 h-4 w-4" />

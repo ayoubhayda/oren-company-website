@@ -209,17 +209,17 @@ export default function ContactPage() {
                               {t("contact.info.emailLabel")}
                             </p>
                             <a
-                              href="mailto:hello@auren.agency"
+                              href="mailto:contact@orenec.co.site"
                               className="text-muted-foreground hover:text-primary transition-colors text-sm"
                             >
-                              hello@auren.agency
+                              contact@orenec.co.site
                             </a>
                           </div>
                         </div>
                       </motion.div>
 
                       {/* Phone / WhatsApp */}
-                      <motion.div
+                      {/* <motion.div
                         className="group"
                         initial={{ opacity: 0, y: 30 }}
                         whileInView={{ opacity: 1, y: 0 }}
@@ -254,7 +254,7 @@ export default function ContactPage() {
                             </a>
                           </div>
                         </div>
-                      </motion.div>
+                      </motion.div> */}
 
                       {/* Remote-first Location */}
                       <motion.div

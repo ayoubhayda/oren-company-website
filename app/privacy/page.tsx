@@ -402,8 +402,7 @@ export default function PrivacyPage() {
                           <p>
                             <strong>{t("privacy.contact.company")}</strong>
                           </p>
-                          <p>{t("privacy.contact.label.email")} {t("privacy.contact.email")}</p>
-                          <p>{t("privacy.contact.label.phone")} {t("privacy.contact.phone")}</p>
+                          <p>{t("privacy.contact.label.email")} contact@orenec.co.site</p>
                           <p>{t("privacy.contact.label.address")} {t("privacy.contact.address")}</p>
                         </div>
                       </div>
@@ -443,7 +442,7 @@ export default function PrivacyPage() {
 
                 <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
                   <Button size="lg" asChild className="group">
-                    <a href="mailto:privacy@orenec.com">
+                    <a href="mailto:contact@orenec.co.site">
                       {t("privacy.contact.cta.email")}
                       {language === "ar" ? (
                         <ArrowLeft className="ms-2 h-4 w-4" />
