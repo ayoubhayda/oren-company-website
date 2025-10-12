@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { ArrowRight, Sparkles } from "lucide-react";
 import { useLanguage } from "@/components/language-provider";
+import { motion } from "framer-motion";
 import {
   AnimatedSection,
   StaggerContainer,

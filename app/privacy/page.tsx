@@ -1,162 +1,421 @@
-"use client"
+"use client";
 
-import { useEffect, useState } from "react"
-import { Header } from "@/components/header"
-import { Footer } from "@/components/footer"
-import { Card, CardContent } from "@/components/ui/card"
-import { Button } from "@/components/ui/button"
+import { useEffect, useState } from "react";
+import { Header } from "@/components/header";
+import { Footer } from "@/components/footer";
+import { Button } from "@/components/ui/button";
 import {
   Shield,
-  Database,
-  Lock,
-  Users,
-  Eye,
   Mail,
   ArrowRight,
   ArrowLeft,
-  CheckCircle
-} from "lucide-react"
-import { AnimatedSection, StaggerContainer } from "@/components/animated-section"
-import SectionSeparator from "@/components/general/SectionSeparator"
-import { useLanguage } from "@/components/language-provider"
-
-const privacySections = [
-  {
-    icon: Eye,
-    titleKey: "privacy.collection.title",
-    contentKey: "privacy.collection.content",
-    listKeys: [
-      "privacy.collection.name",
-      "privacy.collection.company",
-      "privacy.collection.project",
-      "privacy.collection.preferences",
-      "privacy.collection.payment"
-    ],
-    key: "collection"
-  },
-  {
-    icon: Database,
-    titleKey: "privacy.usage.title",
-    contentKey: "privacy.usage.content",
-    listKeys: [
-      "privacy.usage.services",
-      "privacy.usage.process",
-      "privacy.usage.notices",
-      "privacy.usage.respond",
-      "privacy.usage.marketing"
-    ],
-    key: "usage"
-  },
-  {
-    icon: Shield,
-    titleKey: "privacy.sharing.title",
-    contentKey: "privacy.sharing.content",
-    listKeys: [
-      "privacy.sharing.providers",
-      "privacy.sharing.advisors",
-      "privacy.sharing.law"
-    ],
-    key: "sharing"
-  },
-  {
-    icon: Lock,
-    titleKey: "privacy.security.title",
-    contentKey: "privacy.security.content",
-    key: "security"
-  },
-  {
-    icon: Users,
-    titleKey: "privacy.rights.title",
-    contentKey: "privacy.rights.content",
-    listKeys: [
-      "privacy.rights.access",
-      "privacy.rights.correct",
-      "privacy.rights.delete",
-      "privacy.rights.object",
-      "privacy.rights.withdraw"
-    ],
-    key: "rights"
-  }
-]
+  Calendar,
+  Scale,
+} from "lucide-react";
+import { AnimatedSection } from "@/components/animated-section";
+import { useLanguage } from "@/components/language-provider";
+import SectionSeparator from "@/components/general/SectionSeparator";
 
 export default function PrivacyPage() {
-  const { t, language } = useLanguage()
-  const [mounted, setMounted] = useState(false)
+  const { language } = useLanguage();
+  const { t } = useLanguage();
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    setMounted(true)
-  }, [])
+    setMounted(true);
+  }, []);
 
-  if (!mounted) return null
+  if (!mounted) return null;
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-background">
       <Header />
       <main>
         {/* Hero Section */}
-        <section className="relative py-0 pt-28 sm:pt-32">
+        <section className="relative sm:py-20 pt-28 sm:pt-32">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
-            {/* Section Header */}
-            <div className="max-w-3xl mx-auto text-center mb-16">
+            <div className="max-w-4xl mx-auto text-center space-y-8">
               {/* Header Badge */}
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 mb-6">
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20">
                 <Shield className="w-4 h-4 text-primary" />
-                <span className="text-primary font-medium text-sm">
-                  {t("privacy.hero.badge")}
+                <span className="text-primary font-medium text-sm tracking-wide">
+                  {t("privacy.hero.badge.alt")}
                 </span>
               </div>
-              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-4">
-                {t("privacy.hero.title")}
-              </h1>
-              <p className="text-lg text-muted-foreground">
-                {t("privacy.hero.subtitle")}
-              </p>
-              <p className="text-sm text-muted-foreground mt-2">
-                {t("privacy.hero.lastUpdated")}
-              </p>
+
+              <div className="space-y-4">
+                <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground leading-tight">
+                  {t("privacy.hero.title")}
+                </h1>
+                <p className="text-lg text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+                  {t("privacy.hero.subtitle")}
+                </p>
+              </div>
+
+              {/* Last Updated */}
+              <div className="flex items-center justify-center gap-4 text-sm text-muted-foreground">
+                <div className="flex items-center gap-2">
+                  <Calendar className="w-4 h-4" />
+                  <span>{t("privacy.hero.lastUpdated.date")}</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <Scale className="w-4 h-4" />
+                  <span>{t("privacy.hero.lastUpdated.version")}</span>
+                </div>
+              </div>
             </div>
           </div>
         </section>
 
-        {/* Privacy Sections */}
+        {/* Legal Content */}
         <section className="py-20">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <StaggerContainer className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
-              {privacySections.map((section, index) => (
-                <AnimatedSection key={section.key} delay={index * 0.1}>
-                  <Card className="group transition-all duration-300 border-border flex flex-col justify-between h-full hover:border-primary/30 hover:-translate-y-1">
-                    {/* Gradient overlay on hover */}
-                    <div className="absolute inset-0 bg-gradient-to-br from-primary/0 via-primary/0 to-primary/5 transition-opacity duration-500 opacity-0 group-hover:opacity-100 pointer-events-none" />
-
-                    <div className="relative flex flex-col gap-5">
-                      <CardContent className="p-6 relative z-10">
-                        <div className="flex items-start gap-4 mb-4">
-                          <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
-                            <section.icon className="h-6 w-6 text-primary" />
-                          </div>
-                          <div className="flex-1">
-                            <h3 className="text-xl font-bold text-foreground mb-3">{t(section.titleKey)}</h3>
-                            <p className="text-muted-foreground leading-relaxed mb-4">
-                              {t(section.contentKey)}
-                            </p>
-                            {section.listKeys && (
-                              <ul className="space-y-2">
-                                {section.listKeys.map((itemKey, itemIndex) => (
-                                  <li key={itemIndex} className="flex items-start gap-2">
-                                    <CheckCircle className="w-4 h-4 text-primary mt-0.5 flex-shrink-0" />
-                                    <span className="text-sm text-muted-foreground">{t(itemKey)}</span>
-                                  </li>
-                                ))}
-                              </ul>
-                            )}
-                          </div>
-                        </div>
-                      </CardContent>
+          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="prose prose-lg dark:prose-invert max-w-none">
+              <AnimatedSection>
+                <div className="space-y-12">
+                  {/* Introduction */}
+                  <div className="space-y-6">
+                    <h2 className="text-3xl font-bold text-foreground border-b border-border pb-4">
+                      {t("privacy.introduction.title")}
+                    </h2>
+                    <div className="space-y-4 text-muted-foreground leading-relaxed">
+                      <p>
+                        {t("privacy.introduction.content")}
+                      </p>
+                      <p>
+                        {t("privacy.introduction.agreement")}
+                      </p>
+                      <p>
+                        {t("privacy.introduction.applicability")}
+                      </p>
                     </div>
-                  </Card>
-                </AnimatedSection>
-              ))}
-            </StaggerContainer>
+                  </div>
+
+                  {/* Information We Collect */}
+                  <div className="space-y-6">
+                    <h2 className="text-3xl font-bold text-foreground border-b border-border pb-4">
+                      {t("privacy.collection.title")}
+                    </h2>
+                    <div className="space-y-6 text-muted-foreground leading-relaxed">
+                      <p>
+                        <strong>{t("privacy.collection.personal")}</strong> {t("privacy.collection.personal.desc")}
+                      </p>
+                      <ul className="list-disc pl-6 space-y-2">
+                        <li>
+                          {t("privacy.collection.personal.name")}
+                        </li>
+                        <li>
+                          {t("privacy.collection.personal.company")}
+                        </li>
+                        <li>{t("privacy.collection.personal.project")}</li>
+                        <li>{t("privacy.collection.personal.preferences")}</li>
+                        <li>{t("privacy.collection.personal.payment")}</li>
+                      </ul>
+
+                      <p>
+                        <strong>{t("privacy.collection.automatic")}</strong>{" "}
+                        {t("privacy.collection.automatic.desc")}
+                      </p>
+                      <ul className="list-disc pl-6 space-y-2">
+                        <li>{t("privacy.collection.automatic.ip")}</li>
+                        <li>{t("privacy.collection.automatic.browser")}</li>
+                        <li>{t("privacy.collection.automatic.os")}</li>
+                        <li>{t("privacy.collection.automatic.referring")}</li>
+                        <li>{t("privacy.collection.automatic.pages")}</li>
+                        <li>{t("privacy.collection.automatic.clicks")}</li>
+                      </ul>
+                    </div>
+                  </div>
+
+                  {/* How We Use Your Information */}
+                  <div className="space-y-6">
+                    <h2 className="text-3xl font-bold text-foreground border-b border-border pb-4">
+                      {t("privacy.usage.title")}
+                    </h2>
+                    <div className="space-y-4 text-muted-foreground leading-relaxed">
+                      <p>
+                        {t("privacy.usage.content")}
+                      </p>
+                      <ul className="list-disc pl-6 space-y-2">
+                        <li>{t("privacy.usage.improve")}</li>
+                        <li>
+                          {t("privacy.usage.process")}
+                        </li>
+                        <li>
+                          {t("privacy.usage.notices")}
+                        </li>
+                        <li>
+                          {t("privacy.usage.respond")}
+                        </li>
+                        <li>
+                          {t("privacy.usage.communicate")}
+                        </li>
+                        <li>
+                          {t("privacy.usage.monitor")}
+                        </li>
+                        <li>
+                          {t("privacy.usage.detect")}
+                        </li>
+                        <li>
+                          {t("privacy.usage.personalize")}
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+
+                  {/* Information Sharing and Disclosure */}
+                  <div className="space-y-6">
+                    <h2 className="text-3xl font-bold text-foreground border-b border-border pb-4">
+                      {t("privacy.sharing.title")}
+                    </h2>
+                    <div className="space-y-4 text-muted-foreground leading-relaxed">
+                      <p>
+                        {t("privacy.sharing.content")}
+                      </p>
+
+                      <div className="space-y-4">
+                        <div>
+                          <strong>{t("privacy.sharing.providers.title")}</strong>
+                          <p className="mt-2">
+                            {t("privacy.sharing.providers.desc")}
+                          </p>
+                        </div>
+
+                        <div>
+                          <strong>{t("privacy.sharing.advisors.title")}</strong>
+                          <p className="mt-2">
+                            {t("privacy.sharing.advisors.desc")}
+                          </p>
+                        </div>
+
+                        <div>
+                          <strong>{t("privacy.sharing.legal.title")}</strong>
+                          <p className="mt-2">
+                            {t("privacy.sharing.legal.desc")}
+                          </p>
+                        </div>
+                      </div>
+
+                      <p>
+                        <strong>
+                          {t("privacy.sharing.no_sell")}
+                        </strong>
+                      </p>
+                    </div>
+                  </div>
+
+                  {/* Data Security */}
+                  <div className="space-y-6">
+                    <h2 className="text-3xl font-bold text-foreground border-b border-border pb-4">
+                      {t("privacy.security.title")}
+                    </h2>
+                    <div className="space-y-4 text-muted-foreground leading-relaxed">
+                      <p>
+                        {t("privacy.security.content")}
+                      </p>
+                      <ul className="list-disc pl-6 space-y-2">
+                        <li>{t("privacy.security.encryption")}</li>
+                        <li>{t("privacy.security.assessments")}</li>
+                        <li>{t("privacy.security.access")}</li>
+                        <li>{t("privacy.security.infrastructure")}</li>
+                        <li>{t("privacy.security.training")}</li>
+                      </ul>
+                      <p>
+                        {t("privacy.security.disclaimer")}
+                      </p>
+                    </div>
+                  </div>
+
+                  {/* Your Rights and Choices */}
+                  <div className="space-y-6">
+                    <h2 className="text-3xl font-bold text-foreground border-b border-border pb-4">
+                      {t("privacy.rights.title")}
+                    </h2>
+                    <div className="space-y-4 text-muted-foreground leading-relaxed">
+                      <p>
+                        {t("privacy.rights.content")}
+                      </p>
+                      <ul className="list-disc pl-6 space-y-2">
+                        <li>
+                          <strong>{t("privacy.rights.access")}</strong>
+                        </li>
+                        <li>
+                          <strong>{t("privacy.rights.correct")}</strong>
+                        </li>
+                        <li>
+                          <strong>{t("privacy.rights.delete")}</strong>
+                        </li>
+                        <li>
+                          <strong>{t("privacy.rights.object")}</strong>
+                        </li>
+                        <li>
+                          <strong>{t("privacy.rights.withdraw")}</strong>
+                        </li>
+                      </ul>
+                      <p>
+                        {t("privacy.rights.exercise")}
+                      </p>
+                    </div>
+                  </div>
+
+                  {/* Cookies and Tracking Technologies */}
+                  <div className="space-y-6">
+                    <h2 className="text-3xl font-bold text-foreground border-b border-border pb-4">
+                      {t("privacy.cookies.title")}
+                    </h2>
+                    <div className="space-y-4 text-muted-foreground leading-relaxed">
+                      <p>
+                        {t("privacy.cookies.content")}
+                      </p>
+                      <ul className="list-disc pl-6 space-y-2">
+                        <li>
+                          <strong>{t("privacy.cookies.essential")}</strong>
+                        </li>
+                        <li>
+                          <strong>{t("privacy.cookies.analytics")}</strong>
+                        </li>
+                        <li>
+                          <strong>{t("privacy.cookies.marketing")}</strong>
+                        </li>
+                        <li>
+                          <strong>{t("privacy.cookies.preference")}</strong>
+                        </li>
+                      </ul>
+                      <p>
+                        {t("privacy.cookies.control")}
+                      </p>
+                    </div>
+                  </div>
+
+                  {/* Third-Party Services */}
+                  <div className="space-y-6">
+                    <h2 className="text-3xl font-bold text-foreground border-b border-border pb-4">
+                      {t("privacy.third_party.title")}
+                    </h2>
+                    <div className="space-y-4 text-muted-foreground leading-relaxed">
+                      <p>
+                        {t("privacy.third_party.content")}
+                      </p>
+                    </div>
+                  </div>
+
+                  {/* Data Retention */}
+                  <div className="space-y-6">
+                    <h2 className="text-3xl font-bold text-foreground border-b border-border pb-4">
+                      {t("privacy.retention.title")}
+                    </h2>
+                    <div className="space-y-4 text-muted-foreground leading-relaxed">
+                      <p>
+                        {t("privacy.retention.content")}
+                      </p>
+                    </div>
+                  </div>
+
+                  {/* International Data Transfers */}
+                  <div className="space-y-6">
+                    <h2 className="text-3xl font-bold text-foreground border-b border-border pb-4">
+                      {t("privacy.international.title")}
+                    </h2>
+                    <div className="space-y-4 text-muted-foreground leading-relaxed">
+                      <p>
+                        {t("privacy.international.content")}
+                      </p>
+                    </div>
+                  </div>
+
+                  {/* GDPR Compliance */}
+                  <div className="space-y-6">
+                    <h2 className="text-3xl font-bold text-foreground border-b border-border pb-4">
+                      {t("privacy.gdpr.title")}
+                    </h2>
+                    <div className="space-y-4 text-muted-foreground leading-relaxed">
+                      <p>
+                        {t("privacy.gdpr.content")}
+                      </p>
+                      <ul className="list-disc pl-6 space-y-2">
+                        <li>{t("privacy.gdpr.rights")}</li>
+                        <li>{t("privacy.gdpr.rights.restriction")}</li>
+                        <li>{t("privacy.gdpr.rights.automated")}</li>
+                        <li>
+                          {t("privacy.gdpr.rights.authority")}
+                        </li>
+                      </ul>
+                      <p>
+                        {t("privacy.gdpr.basis")}
+                      </p>
+                    </div>
+                  </div>
+
+                  {/* CCPA Compliance */}
+                  <div className="space-y-6">
+                    <h2 className="text-3xl font-bold text-foreground border-b border-border pb-4">
+                      {t("privacy.ccpa.title")}
+                    </h2>
+                    <div className="space-y-4 text-muted-foreground leading-relaxed">
+                      <p>
+                        {t("privacy.ccpa.content")}
+                      </p>
+                      <ul className="list-disc pl-6 space-y-2">
+                        <li>
+                          {t("privacy.ccpa.rights.know")}
+                        </li>
+                        <li>
+                          {t("privacy.ccpa.rights.delete")}
+                        </li>
+                        <li>
+                          {t("privacy.ccpa.rights.optout")}
+                        </li>
+                        <li>
+                          {t("privacy.ccpa.rights.discrimination")}
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+
+                  {/* Changes to This Policy */}
+                  <div className="space-y-6">
+                    <h2 className="text-3xl font-bold text-foreground border-b border-border pb-4">
+                      {t("privacy.changes.title")}
+                    </h2>
+                    <div className="space-y-4 text-muted-foreground leading-relaxed">
+                      <p>
+                        {t("privacy.changes.content")}
+                      </p>
+                      <p>
+                        {t("privacy.changes.material")}
+                      </p>
+                    </div>
+                  </div>
+
+                  {/* Contact Information */}
+                  <div className="space-y-6">
+                    <h2 className="text-3xl font-bold text-foreground border-b border-border pb-4">
+                      {t("privacy.contact.title")}
+                    </h2>
+                    <div className="space-y-4 text-muted-foreground leading-relaxed">
+                      <p>
+                        {t("privacy.contact.content")}
+                      </p>
+
+                      <div className="bg-muted/50 p-6 rounded-lg">
+                        <div className="space-y-3">
+                          <p>
+                            <strong>{t("privacy.contact.company")}</strong>
+                          </p>
+                          <p>{t("privacy.contact.label.email")} {t("privacy.contact.email")}</p>
+                          <p>{t("privacy.contact.label.phone")} {t("privacy.contact.phone")}</p>
+                          <p>{t("privacy.contact.label.address")} {t("privacy.contact.address")}</p>
+                        </div>
+                      </div>
+
+                      <p>
+                        {t("privacy.contact.info")}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </AnimatedSection>
+            </div>
           </div>
         </section>
 
@@ -164,56 +423,38 @@ export default function PrivacyPage() {
 
         {/* Contact Section */}
         <section className="py-20">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <AnimatedSection>
-              <div className="max-w-4xl mx-auto text-center space-y-8">
+              <div className="text-center space-y-8">
                 <div className="space-y-4">
-                  <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 mb-6">
+                  <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20">
                     <Mail className="w-4 h-4 text-primary" />
                     <span className="text-primary font-medium text-sm">
-                      {t("privacy.contact.badge")}
+                      {t("privacy.contact.cta.badge")}
                     </span>
                   </div>
-                  <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground">
-                    {t("privacy.contact.title")}
+                  <h2 className="text-3xl sm:text-4xl font-bold text-foreground">
+                    {t("privacy.contact.cta.title")}
                   </h2>
                   <p className="text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-                    {t("privacy.contact.subtitle")}
+                    {t("privacy.contact.cta.subtitle")}
                   </p>
                 </div>
 
                 <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
                   <Button size="lg" asChild className="group">
-                    <a href="mailto:privacy@oren.com">
-                      {t("privacy.contact.primary")}
-                      {language === 'ar' ? (
+                    <a href="mailto:privacy@orenec.com">
+                      {t("privacy.contact.cta.email")}
+                      {language === "ar" ? (
                         <ArrowLeft className="ms-2 h-4 w-4" />
                       ) : (
                         <ArrowRight className="ms-2 h-4 w-4" />
                       )}
                     </a>
                   </Button>
-                  <Button size="lg" variant="outline" asChild className="bg-transparent hover:bg-primary/5">
-                    <a href="/contact">
-                      {t("privacy.contact.secondary")}
-                    </a>
+                  <Button size="lg" variant="outline" asChild>
+                    <a href="/contact">{t("privacy.contact.cta.form")}</a>
                   </Button>
-                </div>
-
-                {/* Trust Indicators */}
-                <div className="pt-8 flex flex-wrap items-center justify-center gap-6 text-sm text-muted-foreground">
-                  <div className="flex items-center gap-2">
-                    <div className="w-2 h-2 rounded-full bg-green-500" />
-                    <span>{t("privacy.trust.gdpr")}</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <div className="w-2 h-2 rounded-full bg-primary" />
-                    <span>{t("privacy.trust.ssl")}</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <div className="w-2 h-2 rounded-full bg-blue-500" />
-                    <span>{t("privacy.trust.design")}</span>
-                  </div>
                 </div>
               </div>
             </AnimatedSection>
@@ -222,5 +463,5 @@ export default function PrivacyPage() {
       </main>
       <Footer />
     </div>
-  )
+  );
 }

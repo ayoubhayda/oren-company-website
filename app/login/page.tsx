@@ -10,10 +10,10 @@ const page = () => {
     <div className="min-h-screen w-screen flex items-center justify-center">
       <div className="flex w-full max-w-sm flex-col gap-6">
         <Link href="/" className="flex items-center gap-2 self-center">
-          <Image src={darkLogo} alt="Oren logo" width={36} height={36} className="rounded-md hidden dark:block size-9" />
-          <Image src={lightLogo} alt="Oren logo" width={36} height={36} className="rounded-md dark:hidden size-9" />
+          <Image src={darkLogo} alt="Orenec logo" width={36} height={36} className="rounded-md hidden dark:block size-9" />
+          <Image src={lightLogo} alt="Orenec logo" width={36} height={36} className="rounded-md dark:hidden size-9" />
           <h1 className="text-2xl font-bold">
-            Or<span className="text-primary">en</span>
+          Oren<span className="text-primary">ec</span>
           </h1>
         </Link>
 

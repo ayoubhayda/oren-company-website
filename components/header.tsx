@@ -56,8 +56,8 @@ export function Header() {
         <div className="flex items-center justify-between h-16 lg:h-20">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2.5 hover:opacity-80 transition-opacity cursor-pointer">
-          <Image src={darkLogo} alt="Oren logo" width={36} height={36} className="rounded-md hidden dark:block h-[34px] w-[34px] md:h-9 md:w-9" />
-          <Image src={lightLogo} alt="Oren logo"  width={36} height={36} className="rounded-md dark:hidden h-[34px] w-[34px] md:h-9 md:w-9"/>
+          <Image src={darkLogo} alt="Orenec logo" width={36} height={36} className="rounded-md hidden dark:block h-[34px] w-[34px] md:h-9 md:w-9" />
+          <Image src={lightLogo} alt="Orenec logo"  width={36} height={36} className="rounded-md dark:hidden h-[34px] w-[34px] md:h-9 md:w-9"/>
           
             <div className="text-[22px] md:text-2xl font-bold text-foreground">
               {t("nav.logo")}

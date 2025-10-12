@@ -4,13 +4,12 @@ import { HeroSection } from "@/components/hero-section";
 import { ServicesSection } from "@/components/services-section";
 import { PortfolioPreview } from "@/components/portfolio-preview";
 import { ProcessSection } from "@/components/process-section";
-import { TestimonialsSection } from "@/components/testimonials-section";
 import { CTASection } from "@/components/cta-section";
 import ServicesBar from "@/components/general/ServicesBar";
 import SectionSeparator from "@/components/general/SectionSeparator";
 
 export const metadata = {
-  title: "Oren - Professional Web Development & Digital Solutions",
+  title: "Orenec - Professional Web Development & Digital Solutions",
   description:
     "Transform your digital presence with professional web development, custom platforms, e-commerce solutions, and digital marketing services. Trusted by startups and enterprises.",
   keywords: [
@@ -22,7 +21,7 @@ export const metadata = {
     "social media management",
   ],
   openGraph: {
-    title: "Oren - Professional Web Development & Digital Solutions",
+    title: "Orenec - Professional Web Development & Digital Solutions",
     description:
       "Transform your digital presence with professional web development, custom platforms, and digital marketing services.",
     type: "website",
@@ -42,8 +41,8 @@ export default function HomePage() {
         <ServicesSection />
         <SectionSeparator />
         <ProcessSection />
-        <SectionSeparator />
-        <PortfolioPreview />
+        {/* <SectionSeparator />
+        <PortfolioPreview /> */}
         <SectionSeparator />
         <CTASection />
       </main>

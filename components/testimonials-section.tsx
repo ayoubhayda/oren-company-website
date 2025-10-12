@@ -9,7 +9,7 @@ import { AnimatedSection, StaggerContainer, StaggerItem } from "@/components/ani
 const testimonials = [
   {
     quote:
-      "Oren transformed our online presence completely. Their attention to detail and technical expertise resulted in a website that not only looks stunning but performs exceptionally well.",
+      "Orenec transformed our online presence completely. Their attention to detail and technical expertise resulted in a website that not only looks stunning but performs exceptionally well.",
     author: "Sarah Johnson",
     role: "CEO",
     company: "TechStart Inc",
@@ -17,7 +17,7 @@ const testimonials = [
   },
   {
     quote:
-      "Working with Oren was a game-changer for our e-commerce business. They delivered a platform that increased our conversion rate by 45% in just three months.",
+      "Working with Orenec was a game-changer for our e-commerce business. They delivered a platform that increased our conversion rate by 45% in just three months.",
     author: "Michael Chen",
     role: "Founder",
     company: "ShopFlow",

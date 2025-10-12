@@ -12,6 +12,8 @@ import Link from "next/link"
 import Image from "next/image"
 import { notFound } from "next/navigation"
 import { useLanguage } from "@/components/language-provider"
+import { motion } from "framer-motion"
+import { StaggerContainer, StaggerItem } from "@/components/animated-section"
 
 // Mock data - in a real app, this would come from a CMS or database
 const posts: Record<
@@ -246,7 +248,13 @@ export default function BlogPostPage({ params }: { params: Promise<{ slug: strin
         <section className="pt-24 pb-12 lg:pt-24 lg:pb-10 bg-gradient-to-b from-background/50 via-background/80 to-background">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
-              <div className="mb-8">
+              <motion.div
+                className="mb-8"
+                initial={{ opacity: 0, x: language === "ar" ? 20 : -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, ease: "easeOut" }}
+              >
                 <Button variant="ghost" asChild className="group">
                   <Link href="/blog" className="flex items-center gap-2 hover:gap-3 transition-all">
                     {language === "ar" ? (
@@ -257,13 +265,33 @@ export default function BlogPostPage({ params }: { params: Promise<{ slug: strin
                     {t("blog.backToBlog")}
                   </Link>
                 </Button>
-              </div>
+              </motion.div>
 
               <div className="space-y-6">
-              <div className="flex flex-wrap items-center gap-4">
-                <Badge variant="secondary">{t(post.category)}</Badge>
+              <motion.div
+                className="flex flex-wrap items-center gap-4"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.1, ease: "easeOut" }}
+              >
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.4, delay: 0.2 }}
+                  whileHover={{ scale: 1.05 }}
+                >
+                  <Badge variant="secondary">{t(post.category)}</Badge>
+                </motion.div>
                 <div className="flex items-center gap-4 text-sm text-muted-foreground">
-                  <div className="flex items-center gap-1">
+                  <motion.div
+                    className="flex items-center gap-1"
+                    initial={{ opacity: 0, x: -10 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.4, delay: 0.3 }}
+                  >
                     <Calendar className="h-4 w-4" />
                     <span>
                       {new Date(post.date).toLocaleDateString(
@@ -275,25 +303,55 @@ export default function BlogPostPage({ params }: { params: Promise<{ slug: strin
                         }
                       )}
                     </span>
-                  </div>
-                  <div className="flex items-center gap-1">
+                  </motion.div>
+                  <motion.div
+                    className="flex items-center gap-1"
+                    initial={{ opacity: 0, x: -10 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.4, delay: 0.4 }}
+                  >
                     <Clock className="h-4 w-4" />
                           <span>{post.readTime.replace("min read", t("blog.readTime"))}</span>
-                  </div>
+                  </motion.div>
                 </div>
                 <div className="flex-1"></div>
-                <Button
-                  variant="outline"
-                  size="sm"
-                  className="bg-transparent"
-                  onClick={handleShare}
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.4, delay: 0.5 }}
+                  whileHover={{ scale: 1.05 }}
                 >
-                  <Share2 className="h-4 w-4" />
-                </Button>
-              </div>
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    className="bg-transparent"
+                    onClick={handleShare}
+                  >
+                    <Share2 className="h-4 w-4" />
+                  </Button>
+                </motion.div>
+              </motion.div>
 
-                <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-foreground">{t(post.title)}</h1>
-                <p className="text-lg sm:text-xl text-muted-foreground leading-relaxed">{t(post.excerpt)}</p>
+                <motion.h1
+                  className="text-4xl sm:text-5xl lg:text-6xl font-bold text-foreground"
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6, delay: 0.3, ease: "easeOut" }}
+                >
+                  {t(post.title)}
+                </motion.h1>
+                <motion.p
+                  className="text-lg sm:text-xl text-muted-foreground leading-relaxed"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6, delay: 0.4, ease: "easeOut" }}
+                >
+                  {t(post.excerpt)}
+                </motion.p>
               </div>
             </div>
           </div>
@@ -303,9 +361,16 @@ export default function BlogPostPage({ params }: { params: Promise<{ slug: strin
         <section className="py-2">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
-              <div className="relative aspect-[16/9] rounded-2xl overflow-hidden bg-muted">
+              <motion.div
+                className="relative aspect-[16/9] rounded-2xl overflow-hidden bg-muted"
+                initial={{ opacity: 0, scale: 0.95 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true, margin: "-100px" }}
+                transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
+                whileHover={{ scale: 1.02 }}
+              >
                 <Image src={post.image || "/placeholder.svg"} alt={post.title} fill className="object-cover" />
-              </div>
+              </motion.div>
             </div>
           </div>
         </section>
@@ -313,12 +378,18 @@ export default function BlogPostPage({ params }: { params: Promise<{ slug: strin
         {/* Content */}
         <section className="py-12 lg:py-16">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="max-w-4xl mx-auto">
+            <motion.div
+              className="max-w-4xl mx-auto"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.6, ease: "easeOut" }}
+            >
               <div
                 className="prose prose-lg dark:prose-invert max-w-none"
                 dangerouslySetInnerHTML={{ __html: String(t(post.content) || '') }}
               />
-            </div>
+            </motion.div>
           </div>
         </section>
 
@@ -327,11 +398,25 @@ export default function BlogPostPage({ params }: { params: Promise<{ slug: strin
           <section className="py-12 lg:py-20 bg-background">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
               <div className="max-w-4xl mx-auto">
-                <h2 className="text-3xl font-bold text-foreground mb-8">{t("blog.relatedArticles")}</h2>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <motion.h2
+                  className="text-3xl font-bold text-foreground mb-8"
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-100px" }}
+                  transition={{ duration: 0.6, ease: "easeOut" }}
+                >
+                  {t("blog.relatedArticles")}
+                </motion.h2>
+                <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 gap-8">
                   {post.relatedPosts.map((relatedPost) => (
-                    <Link key={relatedPost.id} href={`/blog/${relatedPost.id}`} className="group">
-                      <Card className="group transition-all duration-300 border-border flex flex-col justify-between h-full hover:border-primary/30 hover:-translate-y-1 overflow-hidden py-0">
+                    <StaggerItem key={relatedPost.id}>
+                      <Link href={`/blog/${relatedPost.id}`} className="group">
+                        <motion.div
+                          whileHover={{ y: -8, scale: 1.02 }}
+                          transition={{ duration: 0.3 }}
+                          className="h-full"
+                        >
+                          <Card className="group transition-all duration-300 border-border flex flex-col justify-between h-full hover:border-primary/30 hover:-translate-y-1 overflow-hidden py-0">
                         {/* Gradient overlay on hover */}
                         <div className="absolute inset-0 bg-gradient-to-br from-primary/0 via-primary/0 to-primary/5 transition-opacity duration-500 opacity-0 group-hover:opacity-100 pointer-events-none" />
 
@@ -387,10 +472,12 @@ export default function BlogPostPage({ params }: { params: Promise<{ slug: strin
                             </div>
                           </div>
                         </CardContent>
-                      </Card>
-                    </Link>
+                          </Card>
+                        </motion.div>
+                      </Link>
+                    </StaggerItem>
                   ))}
-                </div>
+                </StaggerContainer>
               </div>
             </div>
           </section>

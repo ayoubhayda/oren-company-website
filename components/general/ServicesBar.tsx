@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import {
   Code,
@@ -35,6 +35,13 @@ import { useLanguage } from "../language-provider";
 const ServicesBar = () => {
   const { t, language } = useLanguage();
   const rtl = language === "ar";
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    // Trigger entrance animation after component mounts
+    const timer = setTimeout(() => setIsVisible(true), 100);
+    return () => clearTimeout(timer);
+  }, []);
 
   const services = [
     { textKey: "services.complete-web-solutions", icon: Code },
@@ -64,25 +71,43 @@ const ServicesBar = () => {
   const duplicatedServices = [...services, ...services, ...services];
 
   return (
-    <div className="relative w-full overflow-hidden bg-gradient-to-r from-muted/30 via-primary/4 to-muted/30 border-y border-border py-6">
+    <motion.div
+      className="relative w-full overflow-hidden bg-gradient-to-r from-muted/30 via-primary/4 to-muted/30 border-y border-border py-6"
+      initial={{ opacity: 0, y: 30, scale: 0.95 }}
+      animate={isVisible ? {
+        opacity: 1,
+        y: 0,
+        scale: 1,
+      } : { opacity: 0, y: 30, scale: 0.95 }}
+      transition={{
+        duration: 0.8,
+        ease: [0.25, 0.1, 0.25, 1], // Custom easing for smooth entrance
+      }}
+    >
       {/* Subtle background pattern */}
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_1px_1px,_hsl(var(--primary)/0.08)_1px,_transparent_0)] bg-[size:20px_20px]"></div>
-      
+
       {/* Gradient overlays for fade effect - RTL aware */}
       <div className={`absolute ${rtl ? 'right-0' : 'left-0'} top-0 w-32 h-full ${rtl ? 'bg-gradient-to-l' : 'bg-gradient-to-r'} from-background to-transparent z-10`}></div>
       <div className={`absolute ${rtl ? 'left-0' : 'right-0'} top-0 w-32 h-full ${rtl ? 'bg-gradient-to-r' : 'bg-gradient-to-l'} from-background to-transparent z-10`}></div>
-      
+
       <motion.div
         className="flex items-center gap-9"
-        animate={{
+        initial={{ opacity: 0, y: 20 }}
+        animate={isVisible ? {
+          opacity: 1,
+          y: 0,
           x: rtl ? [0, "100%"] : [0, "-100%"],
-        }}
+        } : { opacity: 0, y: 20 }}
         transition={{
+          opacity: { duration: 0.6 },
+          y: { duration: 0.6 },
           x: {
             repeat: Infinity,
             repeatType: "loop",
             duration: rtl ? 45 : 45, // Slightly slower for RTL to match reading speed
             ease: "linear",
+            delay: 0.5, // Start scrolling after entrance animation
           },
         }}
       >
@@ -103,7 +128,7 @@ const ServicesBar = () => {
           );
         })}
       </motion.div>
-    </div>
+    </motion.div>
   );
 };
 

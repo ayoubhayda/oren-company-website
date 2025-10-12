@@ -210,10 +210,10 @@ export function AppSidebar({ user, ...props }: React.ComponentProps<typeof Sideb
               className="!px-0 hover:bg-transparent"
             >
               <Link href="/dashboard">
-                <Image src={darkLogo} alt="Oren logo" width={32} height={32} className="rounded-md hidden dark:block w-8 h-8" />
-                <Image src={lightLogo} alt="Oren logo"  width={32} height={32} className="rounded-md dark:hidden w-8 h-8"/>
+                <Image src={darkLogo} alt="Orenec logo" width={32} height={32} className="rounded-md hidden dark:block w-8 h-8" />
+                <Image src={lightLogo} alt="Orenec logo"  width={32} height={32} className="rounded-md dark:hidden w-8 h-8"/>
 
-                <span className="text-lg font-semibold">Oren Inc.</span>
+                <span className="text-lg font-semibold">Orenec Inc.</span>
               </Link>
             </SidebarMenuButton>
           </SidebarMenuItem>

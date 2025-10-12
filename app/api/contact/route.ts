@@ -65,7 +65,7 @@ export async function POST(request: NextRequest) {
 
     // Send email using Resend with professional HTML template
     const { data, error } = await resend.emails.send({
-      from: "Oren Company <onboarding@resend.dev>", // Replace with your actual domain
+      from: "Orenec Company <onboarding@resend.dev>", // Replace with your actual domain
       to: ["ayoubhayda01@gmail.com"],
       subject: `🚀 New Contact Inquiry - ${name}`,
       html: `
@@ -322,7 +322,7 @@ export async function POST(request: NextRequest) {
           <div class="email-container">
             <!-- Header -->
             <div class="header">
-              <img src="https://qjwm1mx719.ufs.sh/f/HXwqHLekiaEUyH6dyhFxLj8XS06zBnY3ZGveqlUaumPcJOWt" alt="Oren Company" class="logo-image">
+              <img src="https://qjwm1mx719.ufs.sh/f/HXwqHLekiaEUyH6dyhFxLj8XS06zBnY3ZGveqlUaumPcJOWt" alt="Orenec Company" class="logo-image">
               <h1 class="header-title">New Contact Inquiry</h1>
               <p class="header-subtitle">Someone reached out through your contact form</p>
             </div>
@@ -384,7 +384,7 @@ export async function POST(request: NextRequest) {
               <div class="action-section">
                 <h3 class="action-title">Ready to Connect?</h3>
                 <p class="action-subtitle">Click below to reply directly to this inquiry</p>
-                <a href="mailto:${email}?subject=Re: Your inquiry about ${formattedService || 'our services'}&body=Hi ${name},%0D%0A%0D%0AThank you for your interest in our services. I'd be happy to discuss your project in more detail.%0D%0A%0D%0ABest regards,%0D%0AThe Oren Company Team" class="reply-button">
+                <a href="mailto:${email}?subject=Re: Your inquiry about ${formattedService || 'our services'}&body=Hi ${name},%0D%0A%0D%0AThank you for your interest in our services. I'd be happy to discuss your project in more detail.%0D%0A%0D%0ABest regards,%0D%0AThe Orenec Company Team" class="reply-button">
                   <span style="color: #ffffff;">Reply to ${name}</span>
                 </a>
               </div>
@@ -393,7 +393,7 @@ export async function POST(request: NextRequest) {
             <!-- Footer -->
             <div class="footer">
               <div class="footer-content">
-                <div class="footer-brand" style="color: #000000;">Oren Company</div>
+                <div class="footer-brand" style="color: #000000;">Orenec Company</div>
                 <p style="color: #000000;">Innovative Technology Solutions</p>
                 <div class="footer-timestamp">
                   ${formattedDate} at ${formattedTime}

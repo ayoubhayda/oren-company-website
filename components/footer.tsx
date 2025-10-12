@@ -126,7 +126,7 @@ export function Footer() {
     { icon: Twitter, href: "#", label: t("footer.social.twitter") },
     {
       icon: Mail,
-      href: "mailto:hello@oren.com",
+      href: "mailto:hello@orenec.com",
       label: t("footer.social.email"),
     },
   ];

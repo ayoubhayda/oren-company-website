@@ -2,6 +2,7 @@
 
 import { Search, Palette, Code, Rocket, HeadphonesIcon, Waypoints } from "lucide-react";
 import { useLanguage } from "@/components/language-provider";
+import { motion } from "framer-motion";
 import {
   AnimatedSection,
   StaggerContainer,
@@ -72,7 +73,23 @@ export function ProcessSection() {
                 return (
                   <StaggerItem key={index} className="relative">
                     {/* Timeline Node - moves to left on mobile */}
-                    <div className="absolute left-[-2.5px] sm:left-1/2 sm:-translate-x-1/2 top-1/2 -translate-y-1/2 w-4 h-4 bg-primary rounded-full border-4 border-background shadow-lg z-10 transition-all duration-300 hover:scale-125" />
+                    <motion.div
+                      className="absolute left-[-2.5px] sm:left-1/2 sm:-translate-x-1/2 top-1/2 -translate-y-1/2 w-4 h-4 bg-primary rounded-full border-4 border-background shadow-lg z-10"
+                      initial={{ scale: 0, opacity: 0 }}
+                      whileInView={{ scale: 1, opacity: 1 }}
+                      viewport={{ once: true, margin: "-50px" }}
+                      transition={{
+                        duration: 0.5,
+                        delay: index * 0.1,
+                        type: "spring",
+                        stiffness: 200,
+                        damping: 10
+                      }}
+                      whileHover={{
+                        scale: 1.5,
+                        boxShadow: "0 0 20px rgba(var(--primary), 0.5)"
+                      }}
+                    />
 
                     {/* Process Card - always on right on mobile, alternating on desktop */}
                     <div
@@ -85,7 +102,23 @@ export function ProcessSection() {
                           isLeft ? "sm:pe-12 pl-7" : "sm:ps-12 pl-7"
                         }`}
                       >
-                        <div className="bg-card border border-border rounded-xl p-6 hover:border-primary/30 transition-all duration-300 hover:-translate-y-1">
+                        <motion.div
+                          className="bg-card border border-border rounded-xl p-6"
+                          whileHover={{
+                            y: -4,
+                            borderColor: "rgba(var(--primary), 0.3)",
+                            boxShadow: "0 10px 25px -5px rgba(var(--primary), 0.1)",
+                            transition: { duration: 0.3 }
+                          }}
+                          initial={{ opacity: 0, x: isLeft ? -30 : 30 }}
+                          whileInView={{ opacity: 1, x: 0 }}
+                          viewport={{ once: true, margin: "-50px" }}
+                          transition={{
+                            duration: 0.6,
+                            delay: index * 0.1 + 0.2,
+                            ease: "easeOut"
+                          }}
+                        >
                           {/* Header with Icon and Step Number */}
                           <div className="flex items-center space-x-4 mb-4">
                             <div className="flex-shrink-0 w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center">
@@ -103,7 +136,7 @@ export function ProcessSection() {
 
                           {/* Subtle accent line */}
                           <div className="mt-4 h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent" />
-                        </div>
+                        </motion.div>
                       </div>
                     </div>
                   </StaggerItem>

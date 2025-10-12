@@ -203,7 +203,7 @@ const config = {
       "value": "prisma-client-js"
     },
     "output": {
-      "value": "C:\\Users\\Aya\\Desktop\\Mes projets\\oren-company-website\\generated\\prisma",
+      "value": "/home/ayoubhayda/Documents/Projects-Library/oren-company-website/generated/prisma",
       "fromEnvVar": null
     },
     "config": {
@@ -212,12 +212,12 @@ const config = {
     "binaryTargets": [
       {
         "fromEnvVar": null,
-        "value": "windows",
+        "value": "rhel-openssl-3.0.x",
         "native": true
       }
     ],
     "previewFeatures": [],
-    "sourceFilePath": "C:\\Users\\Aya\\Desktop\\Mes projets\\oren-company-website\\prisma\\schema.prisma",
+    "sourceFilePath": "/home/ayoubhayda/Documents/Projects-Library/oren-company-website/prisma/schema.prisma",
     "isCustomOutput": true
   },
   "relativeEnvPaths": {

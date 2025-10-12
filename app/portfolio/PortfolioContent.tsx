@@ -12,6 +12,8 @@ import { useLanguage } from "@/components/language-provider"
 import SectionSeparator from "@/components/general/SectionSeparator"
 import JsonToHtml from "@/components/general/JsonToHtml"
 import { JSONContent } from "@tiptap/react"
+import { motion } from "framer-motion"
+import { StaggerContainer, StaggerItem } from "@/components/animated-section"
 
 const categories = [
   { key: "portfolio.filter.all", value: "All" },
@@ -143,41 +145,92 @@ export default function PortfolioContent({ projects }: { projects: Project[] }) 
         <section id="projects" className="relative py-20 pt-28 sm:pt-32">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             {/* Section Header */}
-            <div className="max-w-3xl mx-auto text-center mb-16">
+            <motion.div
+              className="max-w-3xl mx-auto text-center mb-16"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.6, ease: "easeOut" }}
+            >
               {/* Header Badge */}
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 mb-6">
-                <Grid3X3 className="w-4 h-4 text-primary" />
+              <motion.div
+                className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 mb-6"
+                initial={{ opacity: 0, scale: 0.8 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.2 }}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <motion.div>
+                  <Grid3X3 className="w-4 h-4 text-primary" />
+                </motion.div>
                 <span className="text-primary font-medium text-sm">
                   {t("portfolio.filter.badge")}
                 </span>
-              </div>
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-4">
+              </motion.div>
+              <motion.h2
+                className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-4"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 0.3 }}
+              >
                 {t("portfolio.filter.title")}
-              </h2>
-              <p className="text-lg text-muted-foreground">
+              </motion.h2>
+              <motion.p
+                className="text-lg text-muted-foreground"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 0.4 }}
+              >
                 {t("portfolio.filter.subtitle")}
-              </p>
-            </div>
+              </motion.p>
+            </motion.div>
 
             {/* Category Filter */}
-            <div className="flex flex-wrap justify-center gap-3 mb-16">
-              {categories.map((category) => (
-                <Button
+            <motion.div
+              className="flex flex-wrap justify-center gap-3 mb-16"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.5 }}
+            >
+              {categories.map((category, index) => (
+                <motion.div
                   key={category.key}
-                  variant={selectedCategory === category.value ? "default" : "outline"}
-                  onClick={() => setSelectedCategory(category.value)}
-                  className="rounded-full transition-all duration-300 hover:scale-105"
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.4, delay: 0.1 * index }}
+                  whileHover={{ scale: 1.05, y: -2 }}
+                  whileTap={{ scale: 0.95 }}
                 >
-                  {t(category.key)}
-                </Button>
+                  <Button
+                    variant={selectedCategory === category.value ? "default" : "outline"}
+                    onClick={() => setSelectedCategory(category.value)}
+                    className="rounded-full transition-all duration-300"
+                  >
+                    {t(category.key)}
+                  </Button>
+                </motion.div>
               ))}
-            </div>
+            </motion.div>
 
             {/* Projects Grid */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <StaggerContainer
+              key={`projects-${selectedCategory}-${filteredProjects.length}`}
+              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+            >
               {filteredProjects.map((project, index) => (
-                <div key={`${project.slug}-${index}`} className="group relative">
-                  <div className="relative bg-card border border-border rounded-lg overflow-hidden transition-all duration-300 hover:border-primary/50">
+                <StaggerItem key={`${project.slug}-${index}`}>
+                  <motion.div
+                    className="group relative h-full"
+                    whileHover={{ y: -8, scale: 1.02 }}
+                    transition={{ duration: 0.3 }}
+                  >
+                    <div className="relative bg-card border border-border rounded-lg overflow-hidden transition-all duration-300 hover:border-primary/50 h-full">
                     {/* Project Image */}
                     <div className="relative aspect-video overflow-hidden bg-muted">
                       <Image
@@ -323,12 +376,13 @@ export default function PortfolioContent({ projects }: { projects: Project[] }) 
                       </div>
                     </div>
 
-                    {/* Enhanced Hover Effect Border */}
-                    <div className="absolute inset-0 rounded-lg bg-gradient-to-r from-primary/20 via-primary/10 to-primary/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10 blur-xl" />
-                  </div>
-                </div>
+                      {/* Enhanced Hover Effect Border */}
+                      <div className="absolute inset-0 rounded-lg bg-gradient-to-r from-primary/20 via-primary/10 to-primary/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10 blur-xl" />
+                    </div>
+                  </motion.div>
+                </StaggerItem>
               ))}
-            </div>
+            </StaggerContainer>
 
             {/* Empty State */}
             {filteredProjects.length === 0 && (
@@ -345,50 +399,107 @@ export default function PortfolioContent({ projects }: { projects: Project[] }) 
         {/* CTA */}
         <section className="py-20 bg-background">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="max-w-4xl mx-auto text-center">
+            <motion.div
+              className="max-w-4xl mx-auto text-center"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.6, ease: "easeOut" }}
+            >
               {/* Header Badge */}
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 mb-8">
-                <MessageSquare className="w-4 h-4 text-primary" />
+              <motion.div
+                className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 mb-8"
+                initial={{ opacity: 0, scale: 0.8 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.2 }}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <motion.div>
+                  <MessageSquare className="w-4 h-4 text-primary" />
+                </motion.div>
                 <span className="text-primary font-medium text-sm">
                   {t("common.getStarted")}
                 </span>
-              </div>
+              </motion.div>
 
               {/* Main Heading */}
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-6 leading-tight">
+              <motion.h2
+                className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-6 leading-tight"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 0.3 }}
+              >
                 {t("portfolio.cta.title")}
-              </h2>
+              </motion.h2>
 
               {/* Subtitle */}
-              <p className="text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed mb-8">
+              <motion.p
+                className="text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed mb-8"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 0.4 }}
+              >
                 {t("portfolio.cta.subtitle")}
-              </p>
+              </motion.p>
 
               {/* CTA Buttons */}
-              <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-                <Button
-                  size="lg"
-                  asChild
-                  className="group bg-primary text-primary-foreground hover:bg-primary/90 shadow-none transition-all"
+              <motion.div
+                className="flex flex-col sm:flex-row items-center justify-center gap-4"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 0.5 }}
+              >
+                <motion.div
+                  whileHover={{ scale: 1.05, y: -2 }}
+                  whileTap={{ scale: 0.95 }}
+                  transition={{ duration: 0.2 }}
                 >
-                  <Link href="/contact">
-                    {t("hero.cta.primary")}
-                    <ArrowRight className="ms-2 h-4 w-4 transform rtl:rotate-180" />
-                  </Link>
-                </Button>
+                  <Button
+                    size="lg"
+                    asChild
+                    className="group bg-primary text-primary-foreground hover:bg-primary/90 shadow-none transition-all"
+                  >
+                    <Link href="/contact">
+                      <motion.span
+                        className="flex items-center gap-2"
+                        whileHover={{ x: 2 }}
+                        transition={{ duration: 0.2 }}
+                      >
+                        {t("hero.cta.primary")}
+                        <motion.div
+                          animate={{ x: [0, 4, 0] }}
+                          transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+                        >
+                          <ArrowRight className="h-4 w-4 transform rtl:rotate-180" />
+                        </motion.div>
+                      </motion.span>
+                    </Link>
+                  </Button>
+                </motion.div>
 
-                <Button
-                  size="lg"
-                  variant="outline"
-                  asChild
-                  className="group bg-transparent hover:bg-primary/5 border-border hover:border-primary/30 transition-all"
+                <motion.div
+                  whileHover={{ scale: 1.05, y: -2 }}
+                  whileTap={{ scale: 0.95 }}
+                  transition={{ duration: 0.2 }}
                 >
-                  <Link href="/services">
-                    {t("hero.cta.secondary")}
-                  </Link>
-                </Button>
-              </div>
-            </div>
+                  <Button
+                    size="lg"
+                    variant="outline"
+                    asChild
+                    className="group bg-transparent hover:bg-primary/5 border-border hover:border-primary/30 transition-all"
+                  >
+                    <Link href="/services">
+                      {t("hero.cta.secondary")}
+                    </Link>
+                  </Button>
+                </motion.div>
+              </motion.div>
+            </motion.div>
           </div>
         </section>
       </main>

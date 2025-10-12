@@ -18,18 +18,17 @@ const jetbrainsMono = JetBrains_Mono({
 })
 
 export const metadata: Metadata = {
-  title: "Oren - Web Development & Digital Solutions",
+  title: "Orenec - Web Development & Digital Solutions",
   description:
     "Professional web development, custom platforms, e-commerce solutions, and digital marketing services for startups and enterprises.",
   keywords: ["web development", "custom platforms", "e-commerce", "digital marketing", "social media management"],
-  authors: [{ name: "Oren" }],
+  authors: [{ name: "Orenec" }],
   openGraph: {
-    title: "Oren - Web Development & Digital Solutions",
+    title: "Orenec - Web Development & Digital Solutions",
     description:
       "Professional web development, custom platforms, e-commerce solutions, and digital marketing services.",
     type: "website",
-  },
-    generator: 'v0.app'
+  }
 }
 
 export default function RootLayout({

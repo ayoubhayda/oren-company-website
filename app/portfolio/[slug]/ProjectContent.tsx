@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client"
 
 import { useState } from "react"
@@ -18,7 +19,7 @@ import {
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog"
 import { Input } from "@/components/ui/input"
-import { Copy, Check } from "lucide-react"
+import { Copy, Check, View, Eye } from "lucide-react"
 import { ArrowLeft, ArrowRight, Calendar, Users, Building, Clock, Target, Zap, Quote, Image as ImageIcon, Layers, Star, Share2, ChevronLeft, ChevronRight, Github, MessageSquare } from "lucide-react"
 import Link from "next/link"
 import Image from "next/image"
@@ -466,7 +467,7 @@ export default function ProjectContent({ project, slug }: { project: ProjectData
                           target="_blank"
                           rel="noopener noreferrer"
                         >
-                          <ImageIcon className="h-4 w-4" />
+                          <Eye className="h-4 w-4" />
                           {t("project.viewLiveDemo")}
                         </a>
                       </Button>
@@ -640,7 +641,7 @@ export default function ProjectContent({ project, slug }: { project: ProjectData
                   <Card className="bg-primary/5 border-primary/20">
                     <CardContent className="p-6">
                       <Quote className="h-8 w-8 text-primary mb-4" />
-                      <p className="text-foreground mb-4 italic">"{t("project.testimonialQuote")}"</p>
+                      <p className="text-foreground mb-4 italic">&quot;{t("project.testimonialQuote")}&quot;</p>
                       <div>
                         <p className="font-semibold text-foreground">{t("project.testimonialAuthor")}</p>
                         <p className="text-sm text-muted-foreground">{t("project.testimonialRole")}</p>

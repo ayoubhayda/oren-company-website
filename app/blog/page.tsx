@@ -2,7 +2,7 @@
 
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
-import { useState } from "react";
+import { useState, useMemo, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { Card, CardContent } from "@/components/ui/card";
@@ -20,19 +20,15 @@ import {
   Calendar,
   Clock,
   Search,
-  Zap,
-  ArrowRight,
-  ArrowLeft,
   BookOpen,
-  CheckCircle,
-  AlertCircle,
   MailCheck,
   MailX,
 } from "lucide-react";
 import { useLanguage } from "@/components/language-provider";
 import SectionSeparator from "@/components/general/SectionSeparator";
-import MinimalSectionSeparator from "@/components/general/MinimalSectionSeparator";
 import { subscribeToNewsletter } from "@/lib/Services";
+import { motion } from "framer-motion";
+import { StaggerContainer, StaggerItem } from "@/components/animated-section";
 
 const categories = [
   { key: "all", labelKey: "blog.category.all" },
@@ -116,23 +112,31 @@ export default function BlogPage() {
   const [searchQuery, setSearchQuery] = useState("");
   const [newsletterEmail, setNewsletterEmail] = useState("");
   const [isNewsletterLoading, setIsNewsletterLoading] = useState(false);
-  const [newsletterMessage, setNewsletterMessage] = useState<{ type: "success" | "error"; text: string } | null>(null);
   const [newsletterDialogOpen, setNewsletterDialogOpen] = useState(false);
   const [newsletterDialogMessage, setNewsletterDialogMessage] = useState<{ type: "success" | "error"; text: string } | null>(null);
   const [newsletterDialogTimeout, setNewsletterDialogTimeout] = useState<NodeJS.Timeout | null>(null);
   const { t, language } = useLanguage();
 
-  const filteredPosts = posts.filter((post) => {
-    const postCategory = t(post.categoryKey);
-    const matchesCategory =
-      selectedCategory === "all" ||
-      postCategory.toLowerCase() === t(`blog.category.${selectedCategory}`);
-    const matchesSearch =
-      searchQuery === "" ||
-      t(post.titleKey).toLowerCase().includes(searchQuery.toLowerCase()) ||
-      t(post.excerptKey).toLowerCase().includes(searchQuery.toLowerCase());
-    return matchesCategory && matchesSearch;
-  });
+  const filteredPosts = useMemo(() => {
+    return posts.filter((post) => {
+      const postCategory = t(post.categoryKey);
+      const matchesCategory =
+        selectedCategory === "all" ||
+        postCategory.toLowerCase() === t(`blog.category.${selectedCategory}`).toLowerCase();
+      const matchesSearch =
+        searchQuery === "" ||
+        t(post.titleKey).toLowerCase().includes(searchQuery.toLowerCase()) ||
+        t(post.excerptKey).toLowerCase().includes(searchQuery.toLowerCase());
+      return matchesCategory && matchesSearch;
+    });
+  }, [selectedCategory, searchQuery, t]);
+
+  // Reset to "all" category when search is cleared and no results are shown
+  useEffect(() => {
+    if (searchQuery === "" && filteredPosts.length === 0 && selectedCategory !== "all") {
+      setSelectedCategory("all");
+    }
+  }, [searchQuery, filteredPosts.length, selectedCategory]);
 
   const handleNewsletterSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -157,7 +161,6 @@ export default function BlogPage() {
     }
 
     setIsNewsletterLoading(true);
-    setNewsletterMessage(null);
 
     try {
       await subscribeToNewsletter(newsletterEmail);
@@ -204,24 +207,55 @@ export default function BlogPage() {
       <Header />
       <main>
         {/* Hero Section */}
-        <section className="relative overflow-hidden pt-28 sm:pt-32 ">
-          <div className=" relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <div className="text-center">
-              {/* Hero budge */}
-              <div className="inline-flex items-center gap-2 px-4 py-2 mb-8 rounded-full bg-primary/10 border border-primary/20 text-sm font-medium text-primary">
-                <BookOpen className="w-4 h-4 text-primary" />
+        <section className="relative overflow-hidden pt-28 sm:pt-32">
+          <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <motion.div
+              className="text-center"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.6, ease: "easeOut" }}
+            >
+              {/* Hero badge */}
+              <motion.div
+                className="inline-flex items-center gap-2 px-4 py-2 mb-8 rounded-full bg-primary/10 border border-primary/20 text-sm font-medium text-primary"
+                initial={{ opacity: 0, scale: 0.8 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.2 }}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <motion.div
+                  whileHover={{ rotate: 5 }}
+                  transition={{ duration: 0.2 }}
+                >
+                  <BookOpen className="w-4 h-4 text-primary" />
+                </motion.div>
                 {t("blog.hero.badge")}
-              </div>
+              </motion.div>
 
               {/* Hero title */}
-              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-4">
+              <motion.h1
+                className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-4"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 0.3 }}
+              >
                 {t("blog.hero.title")}
-              </h1>
-              {/* Hero bio */}
-              <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+              </motion.h1>
+              {/* Hero subtitle */}
+              <motion.p
+                className="text-lg text-muted-foreground max-w-2xl mx-auto"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 0.4 }}
+              >
                 {t("blog.hero.subtitle")}
-              </p>
-            </div>
+              </motion.p>
+            </motion.div>
           </div>
         </section>
 
@@ -229,10 +263,27 @@ export default function BlogPage() {
         <section className="relative py-16 sm:py-20">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             {/* Search & Filter */}
-            <div className="max-w-4xl mx-auto mb-12 space-y-6">
+            <motion.div
+              className="max-w-4xl mx-auto mb-12 space-y-6"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+            >
               {/* Search */}
-              <div className="relative max-w-3xl mx-auto">
-                <Search className="absolute left-4 rtl:right-4 rtl:left-auto top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
+              <motion.div
+                className="relative max-w-3xl mx-auto"
+                initial={{ opacity: 0, scale: 0.95 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.3 }}
+              >
+                <motion.div
+                  whileHover={{ scale: 1.1, rotate: 5 }}
+                  transition={{ duration: 0.2 }}
+                >
+                  <Search className="absolute left-4 rtl:right-4 rtl:left-auto top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
+                </motion.div>
                 <Input
                   type="text"
                   placeholder={t("blog.searchPlaceholder")}
@@ -240,99 +291,176 @@ export default function BlogPage() {
                   onChange={(e) => setSearchQuery(e.target.value)}
                   className="h-12 pl-12 rtl:pr-12 rtl:pl-4 text-base bg-background/50 border-gray-200 focus:outline-none focus:border-primary focus:ring-0 focus-visible:border-primary focus-visible:ring-0 focus-visible:ring-offset-0 dark:bg-background dark:border-border dark:focus:border-primary"
                 />
-              </div>
+              </motion.div>
 
               {/* Category Filter */}
-              <div className="flex flex-wrap justify-center gap-3">
-                {categories.map((category) => (
-                  <Button
+              <motion.div
+                className="flex flex-wrap justify-center gap-3"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.4 }}
+              >
+                {categories.map((category, index) => (
+                  <motion.div
                     key={category.key}
-                    variant={
-                      selectedCategory === category.key ? "default" : "outline"
-                    }
-                    onClick={() => setSelectedCategory(category.key)}
-                    className="rounded-full"
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.4, delay: 0.5 + index * 0.1 }}
+                    whileHover={{ scale: 1.05, y: -2 }}
+                    whileTap={{ scale: 0.95 }}
                   >
-                    {t(category.labelKey)}
-                  </Button>
+                    <Button
+                      variant={
+                        selectedCategory === category.key ? "default" : "outline"
+                      }
+                      onClick={() => setSelectedCategory(category.key)}
+                      className="rounded-full"
+                    >
+                      {t(category.labelKey)}
+                    </Button>
+                  </motion.div>
                 ))}
-              </div>
-            </div>
+              </motion.div>
+            </motion.div>
 
             {/* Blog Posts */}
-            <div
-              id="blog-posts"
+            <StaggerContainer
+              key={`${searchQuery}-${selectedCategory}-${filteredPosts.length}`}
               className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
             >
               {filteredPosts.map((post) => (
-                <Link key={post.id} href={`/blog/${post.id}`} className="group">
-                  <Card className="group transition-all duration-300 border-border flex flex-col justify-between h-full hover:border-primary/30 hover:-translate-y-1 overflow-hidden py-0">
-                    {/* Gradient overlay on hover */}
-                    <div className="absolute inset-0 bg-gradient-to-br from-primary/0 via-primary/0 to-primary/5 transition-opacity duration-500 opacity-0 group-hover:opacity-100 pointer-events-none" />
+                <StaggerItem key={post.id}>
+                  <motion.div
+                    whileHover={{ y: -8, scale: 1.02 }}
+                    transition={{ duration: 0.3 }}
+                    className="group h-full"
+                  >
+                    <Link href={`/blog/${post.id}`} className="group">
+                      <Card className="group transition-all duration-300 border-border flex flex-col justify-between h-full hover:border-primary/30 overflow-hidden py-0">
+                        {/* Animated gradient overlay on hover */}
+                        <motion.div
+                          className="absolute inset-0 bg-gradient-to-br from-primary/0 via-primary/0 to-primary/5 pointer-events-none"
+                          initial={{ opacity: 0 }}
+                          whileHover={{ opacity: 1 }}
+                          transition={{ duration: 0.3 }}
+                        />
 
-                    <div className="relative aspect-[16/9] overflow-hidden bg-muted">
-                      <Image
-                        src={post.image || "/placeholder.svg"}
-                        alt={t(post.titleKey)}
-                        fill
-                        className="object-cover transition-transform duration-300 group-hover:scale-105"
-                      />
-                    </div>
-                    <CardContent className="pt-2 pb-6 px-6 relative z-10">
-                      <Badge variant="secondary" className="mb-3">
-                        {t(post.categoryKey)}
-                      </Badge>
-                      <h3 className="text-xl font-semibold text-foreground mb-2 group-hover:text-primary transition-colors line-clamp-2">
-                        {t(post.titleKey)}
-                      </h3>
-                      <p className="text-muted-foreground text-sm leading-relaxed mb-4 line-clamp-2">
-                        {t(post.excerptKey)}
-                      </p>
+                        <motion.div
+                          className="relative aspect-[16/9] overflow-hidden bg-muted"
+                          whileHover={{ scale: 1.05 }}
+                          transition={{ duration: 0.3 }}
+                        >
+                          <Image
+                            src={post.image || "/placeholder.svg"}
+                            alt={t(post.titleKey)}
+                            fill
+                            className="object-cover"
+                          />
+                        </motion.div>
+                        <CardContent className="pt-2 pb-6 px-6 relative z-10">
+                          <motion.div
+                            initial={{ opacity: 0, y: 10 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.4, delay: 0.1 }}
+                          >
+                            <Badge variant="secondary" className="mb-3">
+                              {t(post.categoryKey)}
+                            </Badge>
+                          </motion.div>
+                          <motion.h3
+                            className="text-xl font-semibold text-foreground mb-2 group-hover:text-primary transition-colors line-clamp-2"
+                            initial={{ opacity: 0, y: 10 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.4, delay: 0.2 }}
+                          >
+                            {t(post.titleKey)}
+                          </motion.h3>
+                          <motion.p
+                            className="text-muted-foreground text-sm leading-relaxed mb-4 line-clamp-2"
+                            initial={{ opacity: 0, y: 10 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.4, delay: 0.3 }}
+                          >
+                            {t(post.excerptKey)}
+                          </motion.p>
 
-                      {/* Meta */}
-                      <div className="flex items-center gap-4 text-xs text-muted-foreground pt-4 border-t border-border">
-                        <div className="flex items-center gap-1">
-                          <Calendar className="h-3 w-3" />
-                          <span>
-                            {new Date(post.date).toLocaleDateString(
-                              language === "ar"
-                                ? "ar-SA"
-                                : language === "fr"
-                                ? "fr-FR"
-                                : "en-US",
-                              {
-                                month: "short",
-                                day: "numeric",
-                                year: "numeric",
-                              }
-                            )}
-                          </span>
-                        </div>
-                        <div className="flex items-center gap-1">
-                          <Clock className="h-3 w-3" />
-                          <span>
-                            {post.readTime.replace(
-                              "min read",
-                              t("blog.readTime")
-                            )}
-                          </span>
-                        </div>
-                      </div>
-                    </CardContent>
-                  </Card>
-                </Link>
+                          {/* Meta */}
+                          <motion.div
+                            className="flex items-center gap-4 text-xs text-muted-foreground pt-4 border-t border-border"
+                            initial={{ opacity: 0, y: 10 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.4, delay: 0.4 }}
+                          >
+                            <motion.div
+                              className="flex items-center gap-1"
+                              whileHover={{ scale: 1.05 }}
+                              transition={{ duration: 0.2 }}
+                            >
+                              <Calendar className="h-3 w-3" />
+                              <span>
+                                {new Date(post.date).toLocaleDateString(
+                                  language === "ar"
+                                    ? "ar-SA"
+                                    : language === "fr"
+                                    ? "fr-FR"
+                                    : "en-US",
+                                  {
+                                    month: "short",
+                                    day: "numeric",
+                                    year: "numeric",
+                                  }
+                                )}
+                              </span>
+                            </motion.div>
+                            <motion.div
+                              className="flex items-center gap-1"
+                              whileHover={{ scale: 1.05 }}
+                              transition={{ duration: 0.2 }}
+                            >
+                              <Clock className="h-3 w-3" />
+                              <span>
+                                {post.readTime.replace(
+                                  "min read",
+                                  t("blog.readTime")
+                                )}
+                              </span>
+                            </motion.div>
+                          </motion.div>
+                        </CardContent>
+                      </Card>
+                    </Link>
+                  </motion.div>
+                </StaggerItem>
               ))}
-            </div>
+            </StaggerContainer>
 
             {/* Empty State */}
             {filteredPosts.length === 0 && (
-              <div className="text-center py-12">
-                <p className="text-muted-foreground">
+              <motion.div
+                className="text-center py-12"
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5 }}
+              >
+                <motion.p
+                  className="text-muted-foreground"
+                  initial={{ opacity: 0, y: 10 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: 0.2 }}
+                >
                   {searchQuery
                     ? `${t("blog.empty.search")} "${searchQuery}"`
                     : t("blog.empty.title")}
-                </p>
-              </div>
+                </motion.p>
+              </motion.div>
             )}
           </div>
         </section>
@@ -342,27 +470,65 @@ export default function BlogPage() {
         {/* Newsletter */}
         <section className="py-20 lg:py-32">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="max-w-2xl mx-auto text-center space-y-6">
-              <h2 className="text-3xl sm:text-4xl font-bold text-foreground">
+            <motion.div
+              className="max-w-2xl mx-auto text-center space-y-6"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.6, ease: "easeOut" }}
+            >
+              <motion.h2
+                className="text-3xl sm:text-4xl font-bold text-foreground"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+              >
                 {t("blog.newsletter.title")}
-              </h2>
-              <p className="text-lg text-muted-foreground">
+              </motion.h2>
+              <motion.p
+                className="text-lg text-muted-foreground"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 0.3 }}
+              >
                 {t("blog.newsletter.description")}
-              </p>
-              <form onSubmit={handleNewsletterSubmit} className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
-                <Input
-                  type="email"
-                  placeholder={t("footer.emailPlaceholder")}
-                  value={newsletterEmail}
-                  onChange={(e) => setNewsletterEmail(e.target.value)}
+              </motion.p>
+              <motion.form
+                onSubmit={handleNewsletterSubmit}
+                className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 0.4 }}
+              >
+                <motion.div
+                  whileHover={{ scale: 1.02 }}
+                  whileFocus={{ scale: 1.02 }}
+                  transition={{ duration: 0.2 }}
                   className="flex-1"
-                  disabled={isNewsletterLoading}
-                />
-                <Button type="submit" disabled={isNewsletterLoading}>
-                  {isNewsletterLoading ? t("footer.subscribing") || "Subscribing..." : t("footer.subscribe")}
-                </Button>
-              </form>
-            </div>
+                >
+                  <Input
+                    type="email"
+                    placeholder={t("footer.emailPlaceholder")}
+                    value={newsletterEmail}
+                    onChange={(e) => setNewsletterEmail(e.target.value)}
+                    className="flex-1"
+                    disabled={isNewsletterLoading}
+                  />
+                </motion.div>
+                <motion.div
+                  whileHover={{ scale: 1.05, y: -2 }}
+                  whileTap={{ scale: 0.95 }}
+                  transition={{ duration: 0.2 }}
+                >
+                  <Button type="submit" disabled={isNewsletterLoading}>
+                    {isNewsletterLoading ? t("footer.subscribing") || "Subscribing..." : t("footer.subscribe")}
+                  </Button>
+                </motion.div>
+              </motion.form>
+            </motion.div>
           </div>
         </section>
       </main>
@@ -371,39 +537,68 @@ export default function BlogPage() {
       {/* Newsletter Alert Dialog */}
       <AlertDialog open={newsletterDialogOpen} onOpenChange={setNewsletterDialogOpen}>
         <AlertDialogContent className="max-w-sm sm:max-w-md border border-border/50 bg-background backdrop-blur-md shadow-xl animate-in fade-in-0 zoom-in-95 duration-200">
-          <AlertDialogHeader className="space-y-0 p-0">
-            <div className="flex items-center gap-3 pb-2">
-              {/* Minimal icon styling */}
-              <div className={`flex-shrink-0 w-12 h-12 rounded-md flex items-center justify-center transition-colors duration-200 ${
-                newsletterDialogMessage?.type === "success"
-                  ? "bg-green-500/10 text-green-600 dark:text-green-400"
-                  : "bg-red-500/10 text-red-600 dark:text-red-400"
-              }`}>
-                {newsletterDialogMessage?.type === "success" ? (
-                  <MailCheck className="h-5 w-5" />
-                ) : (
-                  <MailX className="h-5 w-5" />
-                )}
-              </div>
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9, y: 20 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            exit={{ opacity: 0, scale: 0.9, y: 20 }}
+            transition={{ duration: 0.3, ease: "easeOut" }}
+          >
+            <AlertDialogHeader className="space-y-0 p-0">
+              <motion.div
+                className="flex items-center gap-3 pb-2"
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.3, delay: 0.1 }}
+              >
+                {/* Animated icon styling */}
+                <motion.div
+                  className={`flex-shrink-0 w-12 h-12 rounded-md flex items-center justify-center transition-colors duration-200 ${
+                    newsletterDialogMessage?.type === "success"
+                      ? "bg-green-500/10 text-green-600 dark:text-green-400"
+                      : "bg-red-500/10 text-red-600 dark:text-red-400"
+                  }`}
+                  initial={{ scale: 0 }}
+                  animate={{ scale: 1 }}
+                  transition={{ duration: 0.3, delay: 0.2, type: "spring", stiffness: 200 }}
+                >
+                  <motion.div
+                    animate={{
+                      rotate: newsletterDialogMessage?.type === "success" ? [0, 10, -10, 0] : [0, -5, 5, 0]
+                    }}
+                    transition={{ duration: 0.5, delay: 0.3 }}
+                  >
+                    {newsletterDialogMessage?.type === "success" ? (
+                      <MailCheck className="h-5 w-5" />
+                    ) : (
+                      <MailX className="h-5 w-5" />
+                    )}
+                  </motion.div>
+                </motion.div>
 
-              {/* Typography hierarchy */}
-              <div className="flex-1 space-y-1.5 text-start">
-                <AlertDialogTitle className={`text-base font-medium leading-tight transition-colors duration-200 ${
-                  newsletterDialogMessage?.type === "success"
-                    ? "text-green-700 dark:text-green-400"
-                    : "text-red-700 dark:text-red-400"
-                }`}>
-                  {newsletterDialogMessage?.type === "success"
-                    ? (t("footer.subscriptionSuccess") || "Successfully subscribed!")
-                    : (t("footer.subscriptionError") || "Subscription failed")
-                  }
-                </AlertDialogTitle>
-                <AlertDialogDescription className="text-sm text-muted-foreground leading-relaxed -mt-1">
-                  {newsletterDialogMessage?.text}
-                </AlertDialogDescription>
-              </div>
-            </div>
-          </AlertDialogHeader>
+                {/* Typography hierarchy */}
+                <motion.div
+                  className="flex-1 space-y-1.5 text-start"
+                  initial={{ opacity: 0, x: 20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.3, delay: 0.2 }}
+                >
+                  <AlertDialogTitle className={`text-base font-medium leading-tight transition-colors duration-200 ${
+                    newsletterDialogMessage?.type === "success"
+                      ? "text-green-700 dark:text-green-400"
+                      : "text-red-700 dark:text-red-400"
+                  }`}>
+                    {newsletterDialogMessage?.type === "success"
+                      ? (t("footer.subscriptionSuccess") || "Successfully subscribed!")
+                      : (t("footer.subscriptionError") || "Subscription failed")
+                    }
+                  </AlertDialogTitle>
+                  <AlertDialogDescription className="text-sm text-muted-foreground leading-relaxed -mt-1">
+                    {newsletterDialogMessage?.text}
+                  </AlertDialogDescription>
+                </motion.div>
+              </motion.div>
+            </AlertDialogHeader>
+          </motion.div>
         </AlertDialogContent>
       </AlertDialog>
     </div>

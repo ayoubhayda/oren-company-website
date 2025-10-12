@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight, MessageSquare, Play } from "lucide-react";
 import Link from "next/link";
 import { useLanguage } from "@/components/language-provider";
+import { motion } from "framer-motion";
 import { AnimatedSection } from "@/components/animated-section";
 
 export function CTASection() {
@@ -32,30 +33,66 @@ export function CTASection() {
           </p>
 
           {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Button
-              size="lg"
-              asChild
-              className="group bg-primary text-primary-foreground hover:bg-primary/90 shadow-none transition-all"
+          <motion.div
+            className="flex flex-col sm:flex-row items-center justify-center gap-4"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+          >
+            <motion.div
+              whileHover={{
+                scale: 1.05,
+                boxShadow: "0 10px 25px -5px rgba(var(--primary), 0.3)"
+              }}
+              whileTap={{ scale: 0.95 }}
+              transition={{ duration: 0.2 }}
             >
-              <Link href="/contact">
-                {t("hero.cta.primary")}
-                <ArrowRight className="ms-2 h-4 w-4 transform rtl:rotate-180 " />
-              </Link>
-            </Button>
+              <Button
+                size="lg"
+                asChild
+                className="group bg-primary text-primary-foreground hover:bg-primary/90 shadow-none transition-all"
+              >
+                <Link href="/contact">
+                  {t("hero.cta.primary")}
+                  <motion.div
+                    className="ms-2"
+                    animate={{ x: [0, 4, 0] }}
+                    transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+                  >
+                    <ArrowRight className="h-4 w-4 transform rtl:rotate-180" />
+                  </motion.div>
+                </Link>
+              </Button>
+            </motion.div>
 
-            <Button
-              size="lg"
-              variant="outline"
-              asChild
-              className="group bg-transparent hover:bg-primary/5 border-border hover:border-primary/30 transition-all"
+            <motion.div
+              whileHover={{
+                scale: 1.05,
+                boxShadow: "0 10px 25px -5px rgba(var(--primary), 0.1)"
+              }}
+              whileTap={{ scale: 0.95 }}
+              transition={{ duration: 0.2 }}
             >
-              <Link href="/portfolio">
-                {t("hero.cta.secondary")}
-                <Play className="ms-2 h-4 w-4 transform rtl:rotate-180" />
-              </Link>
-            </Button>
-          </div>
+              <Button
+                size="lg"
+                variant="outline"
+                asChild
+                className="group bg-transparent hover:bg-primary/5 border-border hover:border-primary/30 transition-all"
+              >
+                <Link href="/portfolio">
+                  {t("hero.cta.secondary")}
+                  <motion.div
+                    className="ms-2"
+                    whileHover={{ scale: 1.1, rotate: 5 }}
+                    transition={{ duration: 0.2 }}
+                  >
+                    <Play className="h-4 w-4 transform rtl:rotate-180" />
+                  </motion.div>
+                </Link>
+              </Button>
+            </motion.div>
+          </motion.div>
         </AnimatedSection>
       </div>
     </section>

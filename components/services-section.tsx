@@ -7,7 +7,6 @@ import {
   TrendingUp,
   Share2,
   Zap,
-  ArrowRight,
   Wrench,
 } from "lucide-react";
 import {
@@ -21,6 +20,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { useLanguage } from "@/components/language-provider";
 import Link from "next/link";
+import { motion } from "framer-motion";
 import {
   AnimatedSection,
   StaggerContainer,
@@ -96,11 +96,19 @@ export function ServicesSection() {
         <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
           {services.map((service, index) => (
             <StaggerItem key={index}>
-              <Card className={`group transition-all duration-300 border-border flex flex-col justify-between h-full ${
-                service.comingSoon
-                  ? "opacity-75 hover:border-muted-foreground/30 hover:-translate-y-0"
-                  : "hover:border-primary/30 hover:-translate-y-1"
-              }`}>
+              <motion.div
+                whileHover={{
+                  y: service.comingSoon ? 0 : -8,
+                  scale: service.comingSoon ? 1 : 1.02,
+                  transition: { duration: 0.3 }
+                }}
+                className="h-full"
+              >
+                <Card className={`group transition-all duration-300 border-border flex flex-col justify-between h-full ${
+                  service.comingSoon
+                    ? "opacity-75 hover:border-muted-foreground/30"
+                    : "hover:border-primary/30 hover:shadow-lg"
+                }`}>
 
                 <div className="relative flex flex-col gap-4">
                   <CardHeader className="space-y-4">
@@ -115,8 +123,9 @@ export function ServicesSection() {
                         }`} />
                       </div>
                       {service.comingSoon && (
+                        // Coming Soon Budge
                         <Badge variant="outline" className="text-xs text-muted-foreground border-muted-foreground/30">
-                          Coming Soon
+                          {t("common.comingSoon")}
                         </Badge>
                       )}
                     </div>
@@ -135,7 +144,7 @@ export function ServicesSection() {
                 <div className="mt-auto px-6 pt-0">
                   {service.comingSoon ? (
                     <Button variant="outline" disabled className="w-full opacity-50 cursor-not-allowed">
-                      Coming Soon
+                      {t("common.comingSoon")}
                     </Button>
                   ) : (
                     <Button
@@ -147,7 +156,8 @@ export function ServicesSection() {
                     </Button>
                   )}
                 </div>
-              </Card>
+                </Card>
+              </motion.div>
             </StaggerItem>
           ))}
         </StaggerContainer>

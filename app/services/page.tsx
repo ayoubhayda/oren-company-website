@@ -3,6 +3,8 @@
 import { useEffect, useState } from "react";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
+import { motion } from "framer-motion";
+import { StaggerContainer, StaggerItem } from "@/components/animated-section";
 import {
   Code,
   Palette,
@@ -115,12 +117,10 @@ const services = [
 export default function ServicesPage() {
   const { t } = useLanguage();
   const [mounted, setMounted] = useState(false);
-  const [isClient, setIsClient] = useState(false);
 
   // Interactive background effects
   useEffect(() => {
     setMounted(true);
-    setIsClient(true);
 
     const setupInteractiveEffects = () => {
       const heroSection = document.getElementById("hero-section");
@@ -184,51 +184,98 @@ export default function ServicesPage() {
 
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             {/* Section Header */}
-            <div className="max-w-3xl mx-auto text-center mb-16">
+            <motion.div
+              className="max-w-3xl mx-auto text-center mb-16"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.6, ease: "easeOut" }}
+            >
               {/* Header Badge */}
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 mb-6">
-                <Wrench className="w-4 h-4 text-primary" />
+              <motion.div
+                className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 mb-6"
+                initial={{ opacity: 0, scale: 0.8 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.2 }}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <motion.div>
+                  <Wrench className="w-4 h-4 text-primary" />
+                </motion.div>
                 <span className="text-primary font-medium text-sm">
                   {t("services.services.badge")}
                 </span>
-              </div>
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-4">
+              </motion.div>
+              <motion.h2
+                className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-4"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 0.3 }}
+              >
                 {t("services.title")}
-              </h2>
-              <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+              </motion.h2>
+              <motion.p
+                className="text-lg text-muted-foreground max-w-2xl mx-auto"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 0.4 }}
+              >
                 {t("services.subtitle")}
-              </p>
-            </div>
+              </motion.p>
+            </motion.div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+            <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
               {services.map((service, index) => (
-                <Card
-                  key={index}
-                  className={`group transition-all duration-300 border-border flex flex-col justify-between ${
-                    service.comingSoon
-                      ? "opacity-75 hover:border-muted-foreground/30 hover:-translate-y-0"
-                      : "hover:border-primary/30 hover:-translate-y-1"
-                  }`}
-                >
+                <StaggerItem key={index}>
+                  <motion.div
+                    whileHover={{ y: -8, scale: 1.02 }}
+                    transition={{ duration: 0.3 }}
+                    className="group h-full"
+                  >
+                    <Card
+                      className={`relative overflow-hidden border-border flex flex-col justify-between h-full transition-all duration-300 ${
+                        service.comingSoon
+                          ? "opacity-75 hover:border-muted-foreground/30"
+                          : "hover:border-primary/30"
+                      }`}
+                    >
+                      {/* Animated gradient overlay on hover */}
+                      <motion.div
+                        className="absolute inset-0 bg-gradient-to-br from-primary/0 via-primary/0 to-primary/5 pointer-events-none"
+                        initial={{ opacity: 0 }}
+                        whileHover={{ opacity: 1 }}
+                        transition={{ duration: 0.3 }}
+                      />
 
                   <div className="relative flex flex-col gap-5">
                     <CardHeader className="space-y-4">
                       <div className="flex items-start justify-between">
-                        <div
+                        <motion.div
                           className={`w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center transition-colors ${
                             service.comingSoon
                               ? "bg-muted-foreground/10"
                               : "group-hover:bg-primary/20"
                           }`}
+                          whileHover={{ backgroundColor: "rgb(0 105 255 / 0.2)", scale: 1.1 }}
+                          transition={{ duration: 0.2 }}
                         >
-                          <service.icon
-                            className={`h-7 w-7 transition-colors ${
-                              service.comingSoon
-                                ? "text-muted-foreground"
-                                : "text-primary"
-                            }`}
-                          />
-                        </div>
+                          <motion.div
+                            whileHover={{ rotate: 5 }}
+                            transition={{ duration: 0.2 }}
+                          >
+                            <service.icon
+                              className={`h-7 w-7 transition-colors ${
+                                service.comingSoon
+                                  ? "text-muted-foreground"
+                                  : "text-primary"
+                              }`}
+                            />
+                          </motion.div>
+                        </motion.div>
                         <div className="flex gap-2">
                           {service.badge && (
                             <Badge variant="secondary" className="text-xs">
@@ -240,40 +287,64 @@ export default function ServicesPage() {
                               variant="outline"
                               className="text-xs text-muted-foreground border-muted-foreground/30"
                             >
-                              Coming Soon
+                              {t("common.comingSoon")}
                             </Badge>
                           )}
                         </div>
                       </div>
-                      <CardTitle
-                        className={`text-2xl ${
-                          service.comingSoon ? "text-muted-foreground" : ""
-                        }`}
+                      <motion.div
+                        initial={{ opacity: 0, y: 10 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.4, delay: 0.1 }}
                       >
-                        {t(service.titleKey)}
-                      </CardTitle>
+                        <CardTitle
+                          className={`text-2xl ${
+                            service.comingSoon ? "text-muted-foreground" : ""
+                          }`}
+                        >
+                          {t(service.titleKey)}
+                        </CardTitle>
+                      </motion.div>
                     </CardHeader>
 
                     <CardContent className="space-y-5">
-                      <CardDescription
-                        className={`leading-relaxed text-base ${
-                          service.comingSoon
-                            ? "text-muted-foreground/80"
-                            : "text-muted-foreground"
-                        }`}
+                      <motion.div
+                        initial={{ opacity: 0, y: 10 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.4, delay: 0.2 }}
                       >
-                        {t(service.descriptionKey)}
-                      </CardDescription>
+                        <CardDescription
+                          className={`leading-relaxed text-base ${
+                            service.comingSoon
+                              ? "text-muted-foreground/80"
+                              : "text-muted-foreground"
+                          }`}
+                        >
+                          {t(service.descriptionKey)}
+                        </CardDescription>
+                      </motion.div>
 
-                      <div className="space-y-2.5">
+                      <motion.div
+                        className="space-y-2.5"
+                        initial={{ opacity: 0, y: 10 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.4, delay: 0.3 }}
+                      >
                         {service.features.map((feature, idx) => (
-                          <div
+                          <motion.div
                             key={idx}
                             className={`flex items-center gap-3 text-sm ${
                               service.comingSoon
                                 ? "text-muted-foreground/60"
                                 : "text-foreground/80"
                             }`}
+                            initial={{ opacity: 0, x: -20 }}
+                            whileInView={{ opacity: 1, x: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.3, delay: idx * 0.1 }}
                           >
                             <CheckCircle2
                               className={`w-4 h-4 flex-shrink-0 ${
@@ -283,48 +354,75 @@ export default function ServicesPage() {
                               }`}
                             />
                             <span>{t(feature)}</span>
-                          </div>
+                          </motion.div>
                         ))}
-                      </div>
+                      </motion.div>
                     </CardContent>
-                  </div>
+                    </div>
 
-                  <CardFooter className="relative z-40">
-                    {service.comingSoon ? (
-                      <Button
-                        variant="outline"
-                        disabled
-                        className="w-full opacity-50 cursor-not-allowed"
+                    <CardFooter className="relative z-40">
+                      <motion.div
+                        className="w-full"
+                        initial={{ opacity: 0, y: 10 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.4, delay: 0.4 }}
                       >
-                        Coming Soon
-                      </Button>
-                    ) : (
-                      <Button
-                        variant="outline"
-                        asChild
-                        className="w-full hover:bg-primary hover:text-white transition-colors"
-                      >
-                        <Link href={service.href}>{t("common.learnMore")}</Link>
-                      </Button>
-                    )}
-                  </CardFooter>
-                </Card>
+                        {service.comingSoon ? (
+                          <Button
+                            variant="outline"
+                            disabled
+                            className="w-full opacity-50 cursor-not-allowed"
+                          >
+                            {t("common.comingSoon")}
+                          </Button>
+                        ) : (
+                          <motion.div
+                            whileHover={{ scale: 1.02, y: -2 }}
+                            whileTap={{ scale: 0.98 }}
+                            transition={{ duration: 0.2 }}
+                          >
+                            <Button
+                              variant="outline"
+                              asChild
+                              className="w-full hover:bg-primary hover:text-white transition-colors"
+                            >
+                              <Link href={service.href}>{t("common.learnMore")}</Link>
+                            </Button>
+                          </motion.div>
+                        )}
+                      </motion.div>
+                    </CardFooter>
+                  </Card>
+              </motion.div>
+            </StaggerItem>
               ))}
-            </div>
+            </StaggerContainer>
 
             {/* Services CTA */}
-            <div className="text-center mt-16">
+            <motion.div
+              className="text-center mt-16"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.3 }}
+            >
               <div className="inline-flex items-center gap-2 text-sm text-muted-foreground">
                 <div className="w-8 h-px bg-gradient-to-r rtl:bg-gradient-to-l from-transparent to-primary"></div>
-                <Link
-                  href="/contact"
-                  className="hover:text-primary transition-colors"
+                <motion.div
+                  whileHover={{ scale: 1.05, x: 2 }}
+                  transition={{ duration: 0.2 }}
                 >
-                  {t("services.hero.cta")}
-                </Link>
+                  <Link
+                    href="/contact"
+                    className="hover:text-primary transition-colors"
+                  >
+                    {t("services.hero.cta")}
+                  </Link>
+                </motion.div>
                 <div className="w-8 h-px bg-gradient-to-l rtl:bg-gradient-to-r from-transparent to-primary"></div>
               </div>
-            </div>
+            </motion.div>
           </div>
         </section>
 
@@ -335,24 +433,52 @@ export default function ServicesPage() {
         <section className="py-20">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             {/* Section Header */}
-            <div className="max-w-3xl mx-auto text-center mb-16">
+            <motion.div
+              className="max-w-3xl mx-auto text-center mb-16"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.6, ease: "easeOut" }}
+            >
               {/* Header Badge */}
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 mb-6">
-                <Sparkles className="w-4 h-4 text-primary" />
+              <motion.div
+                className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 mb-6"
+                initial={{ opacity: 0, scale: 0.8 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.2 }}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <motion.div>
+                  <Sparkles className="w-4 h-4 text-primary" />
+                </motion.div>
                 <span className="text-primary font-medium text-sm">
                   {t("services.whychooseus.badge")}
                 </span>
-              </div>
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-6">
+              </motion.div>
+              <motion.h2
+                className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-6"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 0.3 }}
+              >
                 {t("services.whychooseus.title")}
-              </h2>
-              <p className="text-lg text-muted-foreground leading-relaxed">
+              </motion.h2>
+              <motion.p
+                className="text-lg text-muted-foreground leading-relaxed"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 0.4 }}
+              >
                 {t("services.whychooseus.description")}
-              </p>
-            </div>
+              </motion.p>
+            </motion.div>
 
             {/* Why Choose Us - Elegant Grid */}
-            <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6">
+            <StaggerContainer className="grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6">
               {[
                 {
                   titleKey: "services.whychooseus.expert.title",
@@ -375,33 +501,69 @@ export default function ServicesPage() {
                   icon: LifeBuoy,
                 },
               ].map((item, index) => (
-                <div
-                  key={index}
-                  className="group relative bg-card backdrop-blur-sm border border-border rounded-xl p-4 lg:p-5 transition-all duration-300 hover:-translate-y-0.5 hover:border-primary/30"
-                >
-                  {/* Icon */}
-                  <div className="flex items-center justify-center w-8 h-8 lg:w-10 lg:h-10 rounded-lg bg-primary/10 text-primary mb-3 group-hover:bg-primary/20 transition-colors">
-                    <item.icon className="w-4 h-4 lg:w-5 lg:h-5" />
-                  </div>
+                <StaggerItem key={index}>
+                  <motion.div
+                    whileHover={{ y: -8, scale: 1.02 }}
+                    transition={{ duration: 0.3 }}
+                    className="group h-full"
+                  >
+                    <div
+                      className="relative bg-card backdrop-blur-sm border border-border rounded-xl p-4 lg:p-5 transition-all duration-300 hover:border-primary/30 h-full"
+                    >
+                      {/* Icon */}
+                      <motion.div
+                        className="flex items-center justify-center w-8 h-8 lg:w-10 lg:h-10 rounded-lg bg-primary/10 text-primary mb-3 group-hover:bg-primary/20 transition-colors"
+                        whileHover={{ backgroundColor: "rgb(0 105 255 / 0.2)", scale: 1.1 }}
+                        transition={{ duration: 0.2 }}
+                      >
+                        <motion.div
+                          whileHover={{ rotate: 5 }}
+                          transition={{ duration: 0.2 }}
+                        >
+                          <item.icon className="w-4 h-4 lg:w-5 lg:h-5" />
+                        </motion.div>
+                      </motion.div>
 
-                  <h3 className="text-sm lg:text-base font-semibold text-foreground mb-2 group-hover:text-primary transition-colors">
-                    {t(item.titleKey)}
-                  </h3>
-                  <p className="text-xs lg:text-sm text-muted-foreground leading-relaxed">
-                    {t(item.descriptionKey)}
-                  </p>
-                </div>
+                      <motion.div
+                        initial={{ opacity: 0, y: 10 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.4, delay: 0.1 }}
+                      >
+                        <h3 className="text-sm lg:text-base font-semibold text-foreground mb-2 group-hover:text-primary transition-colors">
+                          {t(item.titleKey)}
+                        </h3>
+                      </motion.div>
+                      <motion.div
+                        initial={{ opacity: 0, y: 10 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.4, delay: 0.2 }}
+                      >
+                        <p className="text-xs lg:text-sm text-muted-foreground leading-relaxed">
+                          {t(item.descriptionKey)}
+                        </p>
+                      </motion.div>
+                    </div>
+                  </motion.div>
+                </StaggerItem>
               ))}
-            </div>
+            </StaggerContainer>
 
             {/* Why Choose Us CTA */}
-            <div className="text-center mt-16">
+            <motion.div
+              className="text-center mt-16"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.3 }}
+            >
               <div className="inline-flex items-center gap-2 text-sm text-muted-foreground">
                 <div className="w-8 h-px bg-gradient-to-r rtl:bg-gradient-to-l from-transparent to-primary"></div>
                 <span>{t("services.whychooseus.cta")}</span>
                 <div className="w-8 h-px bg-gradient-to-l rtl:bg-gradient-to-r from-transparent to-primary"></div>
               </div>
-            </div>
+            </motion.div>
           </div>
         </section>
 
