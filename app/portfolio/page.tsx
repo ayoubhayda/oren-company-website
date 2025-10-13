@@ -1,12 +1,6 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import PortfolioContent from "./PortfolioContent"
 import { getAllProjects } from "@/lib/Services"
-
-const categories = [
-  { key: "portfolio.filter.all", value: "All" },
-  { key: "portfolio.filter.webdev", value: "Web Development" },
-  { key: "portfolio.filter.ecommerce", value: "E-commerce" },
-  { key: "portfolio.filter.saas", value: "SaaS" }
-]
 
 // Helper function to safely parse JSON content
 const parseJsonContent = (content: any) => {
@@ -90,7 +84,8 @@ async function PortfolioPage() {
   let projects: any[] = []
 
   try {
-    projects = await getAllProjects()
+    projects = await getAllProjects();
+    console.log("Projects:", projects)
   } catch (error) {
     console.error("Error fetching projects:", error)
     // Return empty array if fetch fails

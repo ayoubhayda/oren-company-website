@@ -32,10 +32,10 @@ export const getAllProjects = async () => {
     }
   });
 
-  console.log('All projects in database:', projects.length, 'projects');
-  projects.forEach(p => {
-    console.log(`Project ${p.id}: ${p.shortTitleEN} - EN desc length: ${p.shortDescriptionEN?.length || 0}, FR desc length: ${p.shortDescriptionFR?.length || 0}, AR desc length: ${p.shortDescriptionAR?.length || 0}`);
-  });
+  // console.log('All projects in database:', projects.length, 'projects');
+  // projects.forEach(p => {
+  //   console.log(`Project ${p.id}: ${p.shortTitleEN} - EN desc length: ${p.shortDescriptionEN?.length || 0}, FR desc length: ${p.shortDescriptionFR?.length || 0}, AR desc length: ${p.shortDescriptionAR?.length || 0}`);
+  // });
 
   return projects;
 };
@@ -73,15 +73,15 @@ export const getProjectMutation = async (projectId: string) => {
   });
 
   // Debug logging to see what data is in the database
-  console.log('Database project data for ID:', projectId, {
-    hasData: !!projectData,
-    shortDescriptionEN: projectData?.shortDescriptionEN,
-    shortDescriptionFR: projectData?.shortDescriptionFR,
-    shortDescriptionAR: projectData?.shortDescriptionAR,
-    longDescriptionEN: projectData?.longDescriptionEN,
-    longDescriptionFR: projectData?.longDescriptionFR,
-    longDescriptionAR: projectData?.longDescriptionAR,
-  });
+  // console.log('Database project data for ID:', projectId, {
+  //   hasData: !!projectData,
+  //   shortDescriptionEN: projectData?.shortDescriptionEN,
+  //   shortDescriptionFR: projectData?.shortDescriptionFR,
+  //   shortDescriptionAR: projectData?.shortDescriptionAR,
+  //   longDescriptionEN: projectData?.longDescriptionEN,
+  //   longDescriptionFR: projectData?.longDescriptionFR,
+  //   longDescriptionAR: projectData?.longDescriptionAR,
+  // });
 
   return projectData;
 };

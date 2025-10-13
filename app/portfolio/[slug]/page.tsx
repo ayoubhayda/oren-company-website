@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import ProjectContent from "./ProjectContent"
 import { getProjectMutation } from "@/lib/Services"
 import { notFound } from "next/navigation"
@@ -20,7 +21,6 @@ async function ProjectPage({ params }: { params: Promise<{ slug: string }> }) {
   }
 
   // For now, use English as default and let client handle language switching
-  // TODO: Implement proper server-side language detection or pass language as param
 
   // Helper function to safely parse JSON content
   const parseJsonContent = (content: any) => {
