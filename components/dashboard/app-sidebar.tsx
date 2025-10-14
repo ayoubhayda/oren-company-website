@@ -34,8 +34,7 @@ import {
   SidebarMenuItem,
 } from "@/components/ui/sidebar"
 
-import darkLogo from "@/assets/logo/oren-blue-logo-dark.png";
-import lightLogo from "@/assets/logo/oren-blue-logo-light.png";
+import Logo from "@/assets/logo/orenec-logo-ltr.png";
 import Image from "next/image"
 import Link from "next/link"
 
@@ -210,10 +209,9 @@ export function AppSidebar({ user, ...props }: React.ComponentProps<typeof Sideb
               className="!px-0 hover:bg-transparent"
             >
               <Link href="/dashboard">
-                <Image src={darkLogo} alt="Orenec logo" width={32} height={32} className="rounded-md hidden dark:block w-8 h-8" />
-                <Image src={lightLogo} alt="Orenec logo"  width={32} height={32} className="rounded-md dark:hidden w-8 h-8"/>
+                <Image src={Logo} alt="Orenec logo"  width={36} height={36} className="h-[28px] w-auto"/>
 
-                <span className="text-lg font-semibold">Orenec Inc.</span>
+                <span className="text-lg font-semibold">Oren<span className="text-primary">ec</span></span>
               </Link>
             </SidebarMenuButton>
           </SidebarMenuItem>

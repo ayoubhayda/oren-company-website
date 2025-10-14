@@ -3,7 +3,14 @@
 
 import Link from "next/link";
 import { useLanguage } from "@/components/language-provider";
-import { Github, Linkedin, Twitter, Mail, MailCheck, MailX } from "lucide-react";
+import {
+  Github,
+  Linkedin,
+  Twitter,
+  Mail,
+  MailCheck,
+  MailX,
+} from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import {
@@ -14,8 +21,8 @@ import {
   AlertDialogTitle,
 } from "@/components/ui/alert-dialog";
 import Image from "next/image";
-import darkLogo from "@/assets/logo/oren-blue-logo-dark.png";
-import lightLogo from "@/assets/logo/oren-blue-logo-light.png";
+import rtlLogo from "@/assets/logo/orenec-logo-rtl.png";
+import ltrLogo from "@/assets/logo/orenec-logo-ltr.png";
 import { useState } from "react";
 import { subscribeToNewsletter } from "@/lib/Services";
 
@@ -24,14 +31,22 @@ export function Footer() {
   const [email, setEmail] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [dialogOpen, setDialogOpen] = useState(false);
-  const [dialogMessage, setDialogMessage] = useState<{ type: "success" | "error"; text: string } | null>(null);
-  const [dialogTimeout, setDialogTimeout] = useState<NodeJS.Timeout | null>(null);
+  const [dialogMessage, setDialogMessage] = useState<{
+    type: "success" | "error";
+    text: string;
+  } | null>(null);
+  const [dialogTimeout, setDialogTimeout] = useState<NodeJS.Timeout | null>(
+    null
+  );
 
   const handleNewsletterSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
     if (!email.trim()) {
-      const errorMessage = { type: "error" as const, text: t("footer.emailRequired") || "Email is required" };
+      const errorMessage = {
+        type: "error" as const,
+        text: t("footer.emailRequired") || "Email is required",
+      };
       setDialogMessage(errorMessage);
       setDialogOpen(true);
 
@@ -53,7 +68,12 @@ export function Footer() {
 
     try {
       await subscribeToNewsletter(email);
-      const successMessage = { type: "success" as const, text: t("footer.subscriptionSuccess") || "Successfully subscribed to our newsletter!" };
+      const successMessage = {
+        type: "success" as const,
+        text:
+          t("footer.subscriptionSuccess") ||
+          "Successfully subscribed to our newsletter!",
+      };
       setDialogMessage(successMessage);
       setDialogOpen(true);
       setEmail("");
@@ -71,7 +91,11 @@ export function Footer() {
     } catch (error) {
       const errorMessage = {
         type: "error" as const,
-        text: error instanceof Error ? error.message : t("footer.subscriptionError") || "Failed to subscribe. Please try again."
+        text:
+          error instanceof Error
+            ? error.message
+            : t("footer.subscriptionError") ||
+              "Failed to subscribe. Please try again.",
       };
       setDialogMessage(errorMessage);
       setDialogOpen(true);
@@ -139,23 +163,27 @@ export function Footer() {
           <div className="lg:col-span-2 flex flex-col items-center text-center sm:block sm:text-start">
             <Link
               href="/"
-              className="flex items-center gap-2 sm:gap-2.5 mb-4 hover:opacity-80 transition-opacity cursor-pointer"
+              className="flex items-center gap-2 mb-4 hover:opacity-80 transition-opacity cursor-pointer"
             >
               <Image
-                src={lightLogo}
-                alt="light-logo"
-                className="dark:hidden rounded-md w-8 h-8 sm:w-[34px] sm:h-[34px]"
-                width={34}
-                height={34}
-              />
-              <Image
-                src={darkLogo}
-                alt="dark-logo"
-                className="hidden dark:block rounded-md w-8 h-8 sm:w-[34px] sm:h-[34px]"
-                width={34}
-                height={34}
-              />
-              <h2 className="text-[22px] sm:text-2xl font-bold">{t("nav.logo")}</h2>
+                  src={rtlLogo}
+                  alt="Orenec logo"
+                  width={34}
+                  height={34}
+                  className="h-[32px] w-auto sm:h-[34px] ltr:hidden"
+                />
+                <Image
+                  src={ltrLogo}
+                  alt="Orenec logo"
+                  width={34}
+                  height={34}
+                  className="h-[32px] w-auto sm:h-[34px] rtl:hidden"
+                />
+                <h2 className="text-[22px] sm:text-2xl font-bold">
+                  {t("nav.logo")}
+                  <span className="text-primary rtl:hidden">ec</span>
+                  <span className="text-primary ltr:hidden">يك</span>
+                </h2>
             </Link>
             <p className="text-sm text-muted-foreground mb-6 leading-relaxed">
               {t("footer.description")}
@@ -176,32 +204,34 @@ export function Footer() {
                   disabled={isLoading}
                 />
                 <Button type="submit" disabled={isLoading}>
-                  {isLoading ? t("footer.subscribing") || "Subscribing..." : t("footer.subscribe")}
+                  {isLoading
+                    ? t("footer.subscribing") || "Subscribing..."
+                    : t("footer.subscribe")}
                 </Button>
               </form>
             </div>
 
             {/* Social Links */}
-          <div className="flex items-center justify-center gap-2 sm:hidden">
-            {socialLinks.map((social) => (
-              <Button
-                key={social.label}
-                variant="ghost"
-                size="icon"
-                asChild
-                className="h-9 w-9"
-              >
-                <a
-                  href={social.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={social.label}
+            <div className="flex items-center justify-center gap-2 sm:hidden">
+              {socialLinks.map((social) => (
+                <Button
+                  key={social.label}
+                  variant="ghost"
+                  size="icon"
+                  asChild
+                  className="h-9 w-9"
                 >
-                  <social.icon className="h-4 w-4" />
-                </a>
-              </Button>
-            ))}
-          </div>
+                  <a
+                    href={social.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={social.label}
+                  >
+                    <social.icon className="h-4 w-4" />
+                  </a>
+                </Button>
+              ))}
+            </div>
           </div>
 
           {/* Nav Column */}
@@ -265,8 +295,8 @@ export function Footer() {
           </div>
         </div>
 
-       {/* Bottom Bar */}
-       <div className="mt-8 sm:mt-12 pt-8 border-t border-border flex flex-col sm:flex-row justify-between items-center gap-4">
+        {/* Bottom Bar */}
+        <div className="mt-8 sm:mt-12 pt-8 border-t border-border flex flex-col sm:flex-row justify-between items-center gap-4">
           <p className="text-sm text-muted-foreground">
             © {new Date().getFullYear()} {t("nav.logo")}. {t("footer.rights")}
           </p>
@@ -301,11 +331,13 @@ export function Footer() {
           <AlertDialogHeader className="space-y-0 p-0">
             <div className="flex items-center gap-3 pb-2">
               {/* Minimal icon styling */}
-              <div className={`flex-shrink-0 w-12 h-12 rounded-md flex items-center justify-center transition-colors duration-200 ${
-                dialogMessage?.type === "success"
-                  ? "bg-green-500/10 text-green-600 dark:text-green-400"
-                  : "bg-red-500/10 text-red-600 dark:text-red-400"
-              }`}>
+              <div
+                className={`flex-shrink-0 w-12 h-12 rounded-md flex items-center justify-center transition-colors duration-200 ${
+                  dialogMessage?.type === "success"
+                    ? "bg-green-500/10 text-green-600 dark:text-green-400"
+                    : "bg-red-500/10 text-red-600 dark:text-red-400"
+                }`}
+              >
                 {dialogMessage?.type === "success" ? (
                   <MailCheck className="h-5 w-5" />
                 ) : (
@@ -315,15 +347,17 @@ export function Footer() {
 
               {/* Typography hierarchy */}
               <div className="flex-1 space-y-1.5 text-start">
-                <AlertDialogTitle className={`text-base font-medium leading-tight transition-colors duration-200 ${
-                  dialogMessage?.type === "success"
-                    ? "text-green-700 dark:text-green-400"
-                    : "text-red-700 dark:text-red-400"
-                }`}>
+                <AlertDialogTitle
+                  className={`text-base font-medium leading-tight transition-colors duration-200 ${
+                    dialogMessage?.type === "success"
+                      ? "text-green-700 dark:text-green-400"
+                      : "text-red-700 dark:text-red-400"
+                  }`}
+                >
                   {dialogMessage?.type === "success"
-                    ? (t("footer.subscriptionSuccess") || "Successfully subscribed!")
-                    : (t("footer.subscriptionError") || "Subscription failed")
-                  }
+                    ? t("footer.subscriptionSuccess") ||
+                      "Successfully subscribed!"
+                    : t("footer.subscriptionError") || "Subscription failed"}
                 </AlertDialogTitle>
                 <AlertDialogDescription className="text-sm text-muted-foreground leading-relaxed -mt-1">
                   {dialogMessage?.text}

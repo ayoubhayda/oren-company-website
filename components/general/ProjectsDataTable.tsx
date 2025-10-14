@@ -123,7 +123,7 @@ function CategoryBadge({ category }: { category: string }) {
   const categoryStyles: Record<string, string> = {
     "web-development":
       "bg-blue-50 text-blue-700 border-blue-200 dark:bg-blue-500/10 dark:text-blue-400 dark:border-blue-500/20",
-    "mobile-app":
+    "saas":
       "bg-purple-50 text-purple-700 border-purple-200 dark:bg-purple-500/10 dark:text-purple-400 dark:border-purple-500/20",
     ecommerce:
       "bg-green-50 text-green-700 border-green-200 dark:bg-green-500/10 dark:text-green-400 dark:border-green-500/20",
@@ -400,7 +400,7 @@ export function ProjectsDataTable({
             <SelectContent>
               <SelectItem value="all">All Categories</SelectItem>
               <SelectItem value="web-development">Web Development</SelectItem>
-              <SelectItem value="mobile-app">Mobile App</SelectItem>
+              <SelectItem value="saas">SaaS</SelectItem>
               <SelectItem value="ecommerce">E-commerce</SelectItem>
               <SelectItem value="design">Design</SelectItem>
               <SelectItem value="digital-marketing">

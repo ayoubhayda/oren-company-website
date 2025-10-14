@@ -9,8 +9,8 @@ import { useTheme } from "next-themes"
 import { useLanguage } from "@/components/language-provider"
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
 import Image from "next/image"
-import darkLogo from "@/assets/logo/oren-blue-logo-dark.png";
-import lightLogo from "@/assets/logo/oren-blue-logo-light.png";
+import rtlLogo from "@/assets/logo/orenec-logo-rtl.png";
+import ltrLogo from "@/assets/logo/orenec-logo-ltr.png";
 
 export function Header() {
   const [isScrolled, setIsScrolled] = useState(false)
@@ -55,13 +55,11 @@ export function Header() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 lg:h-20">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-2.5 hover:opacity-80 transition-opacity cursor-pointer">
-          <Image src={darkLogo} alt="Orenec logo" width={36} height={36} className="rounded-md hidden dark:block h-[34px] w-[34px] md:h-9 md:w-9" />
-          <Image src={lightLogo} alt="Orenec logo"  width={36} height={36} className="rounded-md dark:hidden h-[34px] w-[34px] md:h-9 md:w-9"/>
-          
-            <div className="text-[22px] md:text-2xl font-bold text-foreground">
-              {t("nav.logo")}
-              {/* Oren<span className="text-primary">ec</span> */}
+          <Link href="/" className="flex items-center gap-2 hover:opacity-80 transition-opacity cursor-pointer">
+          <Image src={rtlLogo} alt="Orenec logo"  width={36} height={36} className="h-[32px] w-auto md:h-9 ltr:hidden"/>
+          <Image src={ltrLogo} alt="Orenec logo"  width={36} height={36} className="h-[32px] w-auto md:h-9 rtl:hidden"/>
+            <div className="hidden sm:block text-[22px] md:text-2xl font-bold text-foreground">
+              {t("nav.logo")}<span className="text-primary rtl:hidden">ec</span><span className="text-primary ltr:hidden">يك</span>
             </div>
           </Link>
 

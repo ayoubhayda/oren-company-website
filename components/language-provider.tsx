@@ -79,7 +79,7 @@ const translations: Record<Language, Record<string, string>> = {
     "nav.about": "About",
     "nav.blog": "Blog",
     "nav.contact": "Contact",
-    "nav.logo": "Orenec",
+    "nav.logo": "Oren",
 
     // Hero
     "hero.title": "Build Your Digital Future",
@@ -3135,7 +3135,7 @@ export default {
     "nav.about": "من نحن",
     "nav.blog": "المدونة",
     "nav.contact": "اتصل بنا",
-    "nav.logo": "أورينيك",
+    "nav.logo": "أورين",
 
     // Hero
     "hero.title": "ابنِ مستقبلك الرقمي",
@@ -5908,7 +5908,7 @@ export default {
     "nav.about": "À propos",
     "nav.blog": "Blog",
     "nav.contact": "Contact",
-    "nav.logo": "Orenec",
+    "nav.logo": "Oren",
 
     // Hero
     "hero.title": "Votre Partenaire Digital",

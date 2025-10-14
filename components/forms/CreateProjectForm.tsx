@@ -506,7 +506,7 @@ const CreateProjectForm = () => {
                       >
                         <option value="">Select a category</option>
                         <option value="web-development">Web Development</option>
-                        <option value="mobile-app">Mobile App</option>
+                        <option value="saas">SaaS</option>
                         <option value="desktop-app">Desktop App</option>
                         <option value="ecommerce">E-commerce</option>
                         <option value="design">Design</option>

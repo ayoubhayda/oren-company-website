@@ -17,10 +17,33 @@ import { StaggerContainer, StaggerItem } from "@/components/animated-section"
 
 const categories = [
   { key: "portfolio.filter.all", value: "All" },
-  { key: "portfolio.filter.webdev", value: "Web Development" },
-  { key: "portfolio.filter.ecommerce", value: "E-commerce" },
-  { key: "portfolio.filter.saas", value: "SaaS" }
+  { key: "portfolio.filter.webdev", value: "web-development" },
+  { key: "portfolio.filter.ecommerce", value: "ecommerce" },
+  { key: "portfolio.filter.saas", value: "saas" },
+  { key: "portfolio.filter.design", value: "design" },
+  { key: "portfolio.filter.digitalMarketing", value: "digital-marketing" },
+  { key: "portfolio.filter.customPlatforms", value: "custom-platforms" }
 ]
+
+// Helper function to format category names for display
+const formatCategoryName = (category: string) => {
+  switch (category) {
+    case "web-development":
+      return "Web Development"
+    case "ecommerce":
+      return "E-commerce"
+    case "saas":
+      return "SaaS"
+    case "design":
+      return "Design"
+    case "digital-marketing":
+      return "Digital Marketing"
+    case "custom-platforms":
+      return "Custom Platforms"
+    default:
+      return category.charAt(0).toUpperCase() + category.slice(1).replace(/-/g, " ")
+  }
+}
 
 interface Project {
   id: string
@@ -212,7 +235,7 @@ export default function PortfolioContent({ projects }: { projects: Project[] }) 
                     onClick={() => setSelectedCategory(category.value)}
                     className="rounded-full transition-all duration-300"
                   >
-                    {t(category.key)}
+                    {category.value === "All" ? t(category.key) : formatCategoryName(category.value)}
                   </Button>
                 </motion.div>
               ))}
