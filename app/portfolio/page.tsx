@@ -85,7 +85,6 @@ async function PortfolioPage() {
 
   try {
     projects = await getAllProjects();
-    console.log("Projects:", projects)
   } catch (error) {
     console.error("Error fetching projects:", error)
     // Return empty array if fetch fails

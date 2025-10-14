@@ -61,6 +61,7 @@ export function Header() {
           
             <div className="text-[22px] md:text-2xl font-bold text-foreground">
               {t("nav.logo")}
+              {/* Oren<span className="text-primary">ec</span> */}
             </div>
           </Link>
 
