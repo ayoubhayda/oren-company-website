@@ -282,7 +282,7 @@ export default function PortfolioContent({ projects }: { projects: Project[] }) 
                     {/* Project Details */}
                     <div className="p-6">
                       <Link
-                        className="text-xl font-bold mb-3 group-hover:text-primary transition-colors duration-200"
+                        className="text-xl font-bold mb-3 group-hover:text-primary transition-colors duration-200 line-clamp-1"
                         href={`/portfolio/${project.slug}`}
                       >
                         {project.title}
