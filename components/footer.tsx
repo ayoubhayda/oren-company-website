@@ -21,8 +21,8 @@ import {
   AlertDialogTitle,
 } from "@/components/ui/alert-dialog";
 import Image from "next/image";
-import rtlLogo from "@/assets/logo/orenec-logo-rtl.png";
-import ltrLogo from "@/assets/logo/orenec-logo-ltr.png";
+import darkLogo from "@/assets/logo/oren-blue-logo-dark.png";
+import lightLogo from "@/assets/logo/oren-blue-logo-light.png";
 import { useState } from "react";
 import { subscribeToNewsletter } from "@/lib/Services";
 
@@ -163,22 +163,22 @@ export function Footer() {
           <div className="lg:col-span-2 flex flex-col items-center text-center sm:block sm:text-start">
             <Link
               href="/"
-              className="flex items-center gap-2 mb-4 hover:opacity-80 transition-opacity cursor-pointer"
+              className="flex items-center gap-2 sm:gap-2.5 mb-4 hover:opacity-80 transition-opacity cursor-pointer"
             >
               <Image
-                  src={rtlLogo}
-                  alt="Orenec logo"
-                  width={34}
-                  height={34}
-                  className="h-[32px] w-auto sm:h-[34px] ltr:hidden"
-                />
-                <Image
-                  src={ltrLogo}
-                  alt="Orenec logo"
-                  width={34}
-                  height={34}
-                  className="h-[32px] w-auto sm:h-[34px] rtl:hidden"
-                />
+                src={lightLogo}
+                alt="light-logo"
+                className="dark:hidden rounded-md w-8 h-8 sm:w-[34px] sm:h-[34px]"
+                width={34}
+                height={34}
+              />
+              <Image
+                src={darkLogo}
+                alt="dark-logo"
+                className="hidden dark:block rounded-md w-8 h-8 sm:w-[34px] sm:h-[34px]"
+                width={34}
+                height={34}
+              />
                 <h2 className="text-[22px] sm:text-2xl font-bold">
                   {t("nav.logo")}
                   <span className="text-primary rtl:hidden">ec</span>

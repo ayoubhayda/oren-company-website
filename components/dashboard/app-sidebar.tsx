@@ -1,7 +1,7 @@
-"use client"
+"use client";
 
-import * as React from "react"
-import { usePathname } from "next/navigation"
+import * as React from "react";
+import { usePathname } from "next/navigation";
 import {
   IconCamera,
   IconChartBar,
@@ -18,12 +18,12 @@ import {
   IconSearch,
   IconSettings,
   IconUsers,
-} from "@tabler/icons-react"
+} from "@tabler/icons-react";
 
-import { NavDocuments } from "@/components/dashboard/nav-documents"
-import { NavMain } from "@/components/dashboard/nav-main"
-import { NavSecondary } from "@/components/dashboard/nav-secondary"
-import { NavUser } from "@/components/dashboard/nav-user"
+import { NavDocuments } from "@/components/dashboard/nav-documents";
+import { NavMain } from "@/components/dashboard/nav-main";
+import { NavSecondary } from "@/components/dashboard/nav-secondary";
+import { NavUser } from "@/components/dashboard/nav-user";
 import {
   Sidebar,
   SidebarContent,
@@ -32,25 +32,26 @@ import {
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
-} from "@/components/ui/sidebar"
+} from "@/components/ui/sidebar";
 
-import Logo from "@/assets/logo/orenec-logo-ltr.png";
-import Image from "next/image"
-import Link from "next/link"
+import darkLogo from "@/assets/logo/oren-blue-logo-dark.png";
+import lightLogo from "@/assets/logo/oren-blue-logo-light.png";
+import Image from "next/image";
+import Link from "next/link";
 
 // Determines if a nav item is active based on current pathname
 function isNavItemActive(url: string, pathname: string): boolean {
   // Ignore placeholder links
-  if (url === "#" || !url) return false
+  if (url === "#" || !url) return false;
 
   // Exact match for root dashboard
   if (url === "/dashboard") {
-    return pathname === "/dashboard"
+    return pathname === "/dashboard";
   }
 
   // For all other routes, check if pathname starts with the URL
   // This handles nested routes like /dashboard/projects/123/edit
-  return pathname === url || pathname.startsWith(url + "/")
+  return pathname === url || pathname.startsWith(url + "/");
 }
 
 interface UserInfoProps {
@@ -59,7 +60,10 @@ interface UserInfoProps {
   image: string;
 }
 
-export function AppSidebar({ user, ...props }: React.ComponentProps<typeof Sidebar> & { user: UserInfoProps }) {
+export function AppSidebar({
+  user,
+  ...props
+}: React.ComponentProps<typeof Sidebar> & { user: UserInfoProps }) {
   const pathname = usePathname();
 
   const data = {
@@ -197,21 +201,33 @@ export function AppSidebar({ user, ...props }: React.ComponentProps<typeof Sideb
         ],
       },
     ],
-  }
+  };
 
   return (
     <Sidebar collapsible="offcanvas" {...props}>
       <SidebarHeader className="mb-4">
-        <SidebarMenu >
+        <SidebarMenu>
           <SidebarMenuItem>
-            <SidebarMenuButton
-              asChild
-              className="!px-0 hover:bg-transparent"
-            >
+            <SidebarMenuButton asChild className="!px-0 hover:bg-transparent">
               <Link href="/dashboard">
-                <Image src={Logo} alt="Orenec logo"  width={36} height={36} className="h-[28px] w-auto"/>
+                <Image
+                  src={darkLogo}
+                  alt="Orenec logo"
+                  width={32}
+                  height={32}
+                  className="rounded-md hidden dark:block w-8 h-8"
+                />
+                <Image
+                  src={lightLogo}
+                  alt="Orenec logo"
+                  width={32}
+                  height={32}
+                  className="rounded-md dark:hidden w-8 h-8"
+                />
 
-                <span className="text-lg font-semibold">Oren<span className="text-primary">ec</span></span>
+                <span className="text-lg font-semibold">
+                  Oren<span className="text-primary">ec</span>
+                </span>
               </Link>
             </SidebarMenuButton>
           </SidebarMenuItem>
@@ -226,5 +242,5 @@ export function AppSidebar({ user, ...props }: React.ComponentProps<typeof Sideb
         <NavUser user={user} />
       </SidebarFooter>
     </Sidebar>
-  )
+  );
 }
