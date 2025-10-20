@@ -10,6 +10,7 @@ import {
   Mail,
   MailCheck,
   MailX,
+  Instagram,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -145,12 +146,12 @@ export function Footer() {
   };
 
   const socialLinks = [
-    { icon: Github, href: "#", label: t("footer.social.github") },
-    { icon: Linkedin, href: "#", label: t("footer.social.linkedin") },
-    { icon: Twitter, href: "#", label: t("footer.social.twitter") },
+    // { icon: Github, href: "#", label: t("footer.social.github") },
+    { icon: Linkedin, href: "https://www.linkedin.com/in/orenec-agency/", label: t("footer.social.linkedin") },
+    { icon: Instagram, href: "https://www.instagram.com/ore.nec/", label: t("contact.social.instagram") },
     {
       icon: Mail,
-      href: "mailto:hello@orenec.com",
+      href: "mailto:contact@orenec.co.site",
       label: t("footer.social.email"),
     },
   ];
@@ -298,7 +299,7 @@ export function Footer() {
         {/* Bottom Bar */}
         <div className="mt-8 sm:mt-12 pt-8 border-t border-border flex flex-col sm:flex-row justify-between items-center gap-4">
           <p className="text-sm text-muted-foreground">
-            © {new Date().getFullYear()} {t("nav.logo")}. {t("footer.rights")}
+            © {new Date().getFullYear()} {t("nav.logo")}<span className="rtl:hidden">ec</span><span className="ltr:hidden">يك</span> . {t("footer.rights")}
           </p>
 
           {/* Social Links */}

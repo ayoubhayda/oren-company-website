@@ -20,8 +20,8 @@ const categories = [
   { key: "portfolio.filter.webdev", value: "web-development" },
   { key: "portfolio.filter.ecommerce", value: "ecommerce" },
   { key: "portfolio.filter.saas", value: "saas" },
-  { key: "portfolio.filter.design", value: "design" },
-  { key: "portfolio.filter.digitalMarketing", value: "digital-marketing" },
+  // { key: "portfolio.filter.design", value: "design" },
+  // { key: "portfolio.filter.digitalMarketing", value: "digital-marketing" },
   { key: "portfolio.filter.customPlatforms", value: "custom-platforms" }
 ]
 

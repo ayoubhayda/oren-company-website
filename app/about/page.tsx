@@ -375,10 +375,8 @@ export default function AboutPage() {
         <SectionSeparator />
 
         {/* Team */}
-        <section className="py-20">
-
+        {/* <section className="py-20">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
-            {/* Section Header */}
             <motion.div
               className="max-w-3xl mx-auto text-center mb-16"
               initial={{ opacity: 0, y: 30 }}
@@ -386,7 +384,6 @@ export default function AboutPage() {
               viewport={{ once: true, margin: "-100px" }}
               transition={{ duration: 0.6, ease: "easeOut" }}
             >
-              {/* Header Badge */}
               <motion.div
                 className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 mb-6"
                 initial={{ opacity: 0, scale: 0.8 }}
@@ -436,7 +433,6 @@ export default function AboutPage() {
                       <Card className="relative overflow-hidden border-border flex flex-col justify-between h-full transition-all duration-300 hover:border-primary/30 hover:shadow-lg">
                         <div className="relative flex flex-col gap-5">
                           <CardContent className="p-8 text-center">
-                            {/* Avatar placeholder */}
                             <motion.div
                               className="w-20 h-20 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-6 transition-colors duration-300"
                               whileHover={{ backgroundColor: "rgb(0 105 255 / 0.2)", scale: 1.1 }}
@@ -478,7 +474,7 @@ export default function AboutPage() {
                               {t(`about.team.${member.key}.bio`)}
                             </motion.p>
 
-                            {/* Social Links */}
+                            
                             <motion.div
                               className="flex justify-center gap-3 mt-6"
                               initial={{ opacity: 0, y: 10 }}
@@ -535,7 +531,6 @@ export default function AboutPage() {
               </div>
             </StaggerContainer>
 
-            {/* Call to Action */}
             <div className="text-center mt-16">
               <div className="inline-flex items-center gap-2 text-sm text-muted-foreground">
                 <div className="w-8 h-px bg-gradient-to-r rtl:bg-gradient-to-l from-transparent to-primary"></div>
@@ -546,7 +541,7 @@ export default function AboutPage() {
           </div>
         </section>
 
-        <SectionSeparator />
+        <SectionSeparator /> */}
 
         {/* CTA */}
         <section className="py-20">

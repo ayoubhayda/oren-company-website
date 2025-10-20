@@ -198,6 +198,21 @@ code[dir="ltr"] {
 	text-align: right;
 }
 
+/* Phone numbers and similar inputs should always be LTR */
+[dir="rtl"] input[type="tel"],
+[dir="rtl"] input[type="email"],
+[dir="rtl"] input[type="url"],
+[dir="rtl"] input[type="number"] {
+	direction: ltr !important;
+	text-align: right !important;
+}
+
+/* Override for inputs with explicit LTR direction */
+[dir="rtl"] input[dir="ltr"] {
+	direction: ltr !important;
+	text-align: right !important;
+}
+
 :root {
 	--background: oklch(1 0 0);
 	--foreground: oklch(0.145 0 0);
@@ -463,6 +478,16 @@ h6 {
 
 .dark .ut-upload-area {
 	@apply border-border hover:border-primary/50;
+}
+
+/* Scrollbar hide utility */
+.scrollbar-hide {
+	-ms-overflow-style: none;
+	scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+	display: none;
 }
 
 /* Reduced motion support */

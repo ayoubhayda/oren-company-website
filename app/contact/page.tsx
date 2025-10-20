@@ -219,7 +219,7 @@ export default function ContactPage() {
                       </motion.div>
 
                       {/* Phone / WhatsApp */}
-                      {/* <motion.div
+                      <motion.div
                         className="group"
                         initial={{ opacity: 0, y: 30 }}
                         whileInView={{ opacity: 1, y: 0 }}
@@ -247,14 +247,14 @@ export default function ContactPage() {
                               {t("contact.info.phoneLabel")}
                             </p>
                             <a
-                              href="tel:+212666666666"
+                              href="tel:+212651839241"
                               className="text-muted-foreground hover:text-primary transition-colors text-sm"
                             >
-                              +212 666 666 666
+                              <span dir="ltr" className="rtl:text-right">+212 651 839 241</span>
                             </a>
                           </div>
                         </div>
-                      </motion.div> */}
+                      </motion.div>
 
                       {/* Remote-first Location */}
                       <motion.div
@@ -335,7 +335,7 @@ export default function ContactPage() {
                         transition={{ duration: 0.6, delay: 0.5 }}
                       >
                         <motion.a
-                          href="https://www.linkedin.com/"
+                          href="https://www.linkedin.com/in/orenec-agency/"
                           target="_blank"
                           rel="noreferrer"
                           aria-label={t("contact.social.linkedin")}
@@ -346,7 +346,7 @@ export default function ContactPage() {
                           <Linkedin className="w-6 h-6" />
                         </motion.a>
                         <motion.a
-                          href="https://www.instagram.com/"
+                          href="https://www.instagram.com/ore.nec/"
                           target="_blank"
                           rel="noreferrer"
                           aria-label={t("contact.social.instagram")}
@@ -494,8 +494,9 @@ export default function ContactPage() {
                                 id="phone"
                                 name="phone"
                                 type="tel"
+                                dir="ltr"
                                 placeholder={t("contact.form.phonePlaceholder")}
-                                className="bg-background/50 border-gray-200 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-primary/30 dark:bg-card/50 dark:border-border"
+                                className="bg-background/50 border-gray-200 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-primary/30 dark:bg-card/50 dark:border-border rtl:text-right"
                               />
                             </div>
                           </div>

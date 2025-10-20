@@ -198,65 +198,23 @@ export default function BlogPostPage({ params }: { params: Promise<{ slug: strin
     notFound()
   }
 
-  // Share functionality
-  const handleShare = async () => {
-    const url = window.location.href
-    const title = t(post.title)
-
-    // Check if Web Share API is supported
-    if (navigator.share) {
-      try {
-        await navigator.share({
-          title: title,
-          text: t(post.excerpt),
-          url: url,
-        })
-      } catch (err) {
-        // User cancelled sharing or error occurred
-        if ((err as Error).name !== 'AbortError') {
-          console.error('Error sharing:', err)
-          fallbackShare(url, title)
-        }
-      }
-    } else {
-      // Fallback to clipboard API
-      fallbackShare(url, title)
-    }
-  }
-
-  const fallbackShare = async (url: string, title: string) => {
-    try {
-      await navigator.clipboard.writeText(`${title} - ${url}`)
-    } catch (err) {
-      console.error('Failed to copy to clipboard:', err)
-      // Final fallback - select text method
-      const textArea = document.createElement('textarea')
-      textArea.value = `${title} - ${url}`
-      document.body.appendChild(textArea)
-      textArea.select()
-      document.execCommand('copy')
-      document.body.removeChild(textArea)
-    }
-  }
-
 
   return (
     <div className="min-h-screen">
       <Header />
       <main>
         {/* Hero Section */}
-        <section className="pt-24 pb-12 lg:pt-24 lg:pb-10 bg-gradient-to-b from-background/50 via-background/80 to-background">
+        <section className="pt-24 sm:pt-32 pb-12 lg:pb-10 bg-gradient-to-b from-background/50 via-background/80 to-background">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
               <motion.div
-                className="mb-8"
+                className="mb-6"
                 initial={{ opacity: 0, x: language === "ar" ? 20 : -20 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, ease: "easeOut" }}
               >
-                <Button variant="ghost" asChild className="group">
-                  <Link href="/blog" className="flex items-center gap-2 hover:gap-3 transition-all">
+                <Link href="/blog" className="flex items-center gap-2 hover:gap-3 transition-all hover:text-primary">
                     {language === "ar" ? (
                       <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
                     ) : (
@@ -264,7 +222,6 @@ export default function BlogPostPage({ params }: { params: Promise<{ slug: strin
                     )}
                     {t("blog.backToBlog")}
                   </Link>
-                </Button>
               </motion.div>
 
               <div className="space-y-6">
@@ -316,26 +273,11 @@ export default function BlogPostPage({ params }: { params: Promise<{ slug: strin
                   </motion.div>
                 </div>
                 <div className="flex-1"></div>
-                <motion.div
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.4, delay: 0.5 }}
-                  whileHover={{ scale: 1.05 }}
-                >
-                  <Button
-                    variant="outline"
-                    size="sm"
-                    className="bg-transparent"
-                    onClick={handleShare}
-                  >
-                    <Share2 className="h-4 w-4" />
-                  </Button>
-                </motion.div>
+                
               </motion.div>
 
                 <motion.h1
-                  className="text-4xl sm:text-5xl lg:text-6xl font-bold text-foreground"
+                  className="text-4xl sm:text-5xl lg:text-6xl font-bold text-foreground leading-16 rtl:leading-20"
                   initial={{ opacity: 0, y: 30 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
