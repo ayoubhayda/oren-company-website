@@ -2,11 +2,10 @@
 
 import { useEffect, useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Play, Sparkles } from "lucide-react";
+import { ArrowRight, Play } from "lucide-react";
 import { useLanguage } from "@/components/language-provider";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import Silk from "./Silk";
 
 export function HeroSection() {
   const { t } = useLanguage();
@@ -104,22 +103,10 @@ export function HeroSection() {
   if (!mounted) return null;
 
   return (
-    <section className="h-screen flex justify-center items-end relative">
-      {/* Gradient Overlay */}
-      <div className="absolute inset-0 z-1  bg-gradient-to-b from-background/50 via-background/80 to-background" />
-      {/* <div className="absolute z-0 inset-0">
-        <Silk
-          speed={9}
-          scale={1}
-          color="#0069FF"
-          noiseIntensity={1.5}
-          rotation={0}
-        />
-      </div> */}
-
-      <div className="relative h-[calc(100vh-64px)] lg:h-[calc(100vh-80px)] w-full flex items-center justify-center overflow-hidden">
+    <section className="py-20 pt-28 sm:pt-32 min-h-screen flex justify-center items-end relative">
+      <div className="relative  w-full h-full flex items-center justify-center overflow-hidden">
         {/* Content */}
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-32">
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto text-center space-y-8">
             {/* Badge */}
             <motion.div
@@ -172,8 +159,8 @@ export function HeroSection() {
                   className="group w-full sm:w-auto shadow-none transition-all"
                 >
                   <Link href="/contact">
-                  {t("hero.cta.primary")}
-                  <ArrowRight className="ms-2 h-4 w-4 transform rtl:rotate-180 " />
+                    {t("hero.cta.primary")}
+                    <ArrowRight className="ms-2 h-4 w-4 transform rtl:rotate-180 " />
                   </Link>
                 </Button>
               </motion.div>
